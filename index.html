@@ -1,0 +1,2004 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eat Well, Live Better · Guillermo &amp; Pilar</title>
+<meta name="description" content="A straight, honest guide to taking back control of your body, for Guillermo and Pilar.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,500&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   Warm "Basque-Mediterranean wellness journal"
+   ============================================================ */
+:root{
+  --paper:#FBF6EC; --paper-2:#F4EBD8; --paper-3:#EFE3CC;
+  --ink:#2C2A24; --ink-soft:#5C5647; --ink-faint:#8C8472;
+  --olive:#4B5D34; --olive-deep:#384824; --leaf:#7C9A4B;
+  --terracotta:#C2553B; --terracotta-deep:#A8462E;
+  --honey:#DA9C45; --honey-soft:#F0D9A8;
+  --industrial-bg:#E7E2D6; --good-bg:#EAF0DC; --good-line:#C5D69A;
+  --eus-red:#D52B1E; --eus-green:#009B48;
+  --line:rgba(44,42,36,.12); --line-2:rgba(44,42,36,.22);
+  --shadow-sm:0 1px 2px rgba(56,72,36,.06), 0 4px 14px rgba(56,72,36,.06);
+  --shadow-md:0 6px 28px rgba(56,72,36,.12);
+  --display:'Fraunces','Cambria','Palatino Linotype','Book Antiqua',Georgia,serif;
+  --body:'Nunito','Segoe UI',system-ui,-apple-system,sans-serif;
+  --radius:18px; --radius-lg:26px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth; scroll-padding-top:84px}
+body{margin:0; background:var(--paper); color:var(--ink); font-family:var(--body); font-size:18px;
+  line-height:1.7; -webkit-font-smoothing:antialiased;
+  background-image:url("assets/img/bg-hills.svg"),
+    radial-gradient(1200px 600px at 85% -5%, rgba(218,156,69,.10), transparent 60%),
+    radial-gradient(900px 500px at -10% 10%, rgba(124,154,75,.10), transparent 55%);
+  background-repeat:no-repeat, no-repeat, no-repeat;
+  background-position:left -30px bottom, 0 0, 0 0;
+  background-size:580px auto, auto, auto;
+  background-attachment:fixed;}
+body::before{content:""; position:fixed; inset:0; pointer-events:none; z-index:0; opacity:.5;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.035'/%3E%3C/svg%3E");}
+body::after{content:""; position:fixed; right:-140px; bottom:-150px; width:560px; height:560px; pointer-events:none; z-index:0; opacity:.045;
+  background:url("assets/img/eguzkilore.svg") no-repeat center/contain;}
+/* tasteful hover lifts */
+.recipe,.minicard,.path,.affirm,.badge{transition:transform .18s ease, box-shadow .18s ease}
+.recipe:hover,.minicard:hover,.path:hover{transform:translateY(-3px); box-shadow:var(--shadow-md)}
+.affirm:hover{transform:translateY(-2px) rotate(-.4deg); box-shadow:var(--shadow-md)}
+.badge:hover{transform:translateY(-2px) scale(1.03)}
+/* hand-drawn scrawl underline that draws itself in on reveal */
+.scrawl{background-image:url("assets/img/scrawl.svg"); background-repeat:no-repeat; background-position:left 98%; background-size:0% .42em; padding-bottom:.08em}
+.in .scrawl{background-size:100% .42em; transition:background-size .8s ease .2s}
+@media (prefers-reduced-motion:reduce){ .scrawl{background-size:100% .42em} }
+h1,h2,h3,h4{font-family:var(--display); font-weight:600; line-height:1.12; color:var(--olive-deep); margin:0 0 .5em}
+h2{font-size:clamp(1.8rem,4vw,2.7rem); letter-spacing:-.01em}
+h3{font-size:1.4rem; color:var(--terracotta-deep)}
+p{margin:0 0 1em}
+a{color:var(--terracotta-deep)}
+strong{color:var(--olive-deep)}
+em{color:var(--ink-soft)}
+.eyebrow{font-family:var(--body); font-weight:800; letter-spacing:.16em; text-transform:uppercase;
+  font-size:.74rem; color:var(--terracotta); margin-bottom:.6rem; display:flex; align-items:center; gap:.55rem}
+.ikurrina{width:30px; height:20px; border-radius:3px; box-shadow:0 1px 3px rgba(0,0,0,.25); flex:none}
+.eus-ribbon{height:6px; border-radius:999px; background:linear-gradient(90deg,var(--eus-red) 0 33.3%, #fff 33.3% 66.6%, var(--eus-green) 66.6% 100%); opacity:.9; margin:0 0 1.2rem}
+#progress{position:fixed; top:0; left:0; height:4px; width:0%; z-index:60; background:linear-gradient(90deg,var(--eus-green),var(--honey),var(--eus-red))}
+
+header.bar{position:sticky; top:0; z-index:50; display:flex; align-items:center; gap:1rem;
+  padding:.7rem clamp(1rem,3vw,2rem); background:rgba(251,246,236,.86); backdrop-filter:blur(10px); border-bottom:1px solid var(--line)}
+.brand{display:flex; align-items:center; gap:.6rem; font-family:var(--display); font-weight:900; color:var(--olive-deep); font-size:1.15rem; letter-spacing:-.01em; text-decoration:none}
+.brand .mark{width:34px; height:34px; border-radius:50%; display:grid; place-items:center; background:radial-gradient(circle at 35% 30%,var(--leaf),var(--olive)); color:#fff; font-size:1.05rem; box-shadow:var(--shadow-sm)}
+.brand small{display:block; font-family:var(--body); font-weight:700; font-size:.62rem; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-faint)}
+.bar .spacer{flex:1}
+.langtoggle{display:inline-flex; background:var(--paper-3); border:1px solid var(--line); border-radius:999px; padding:3px}
+.langtoggle button{border:0; background:transparent; font-family:var(--body); font-weight:800; font-size:.82rem; padding:.35rem .8rem; border-radius:999px; cursor:pointer; color:var(--ink-soft)}
+.langtoggle button.active{background:var(--olive); color:#fff; box-shadow:var(--shadow-sm)}
+.menu-btn{border:1px solid var(--line-2); background:var(--paper); border-radius:999px; cursor:pointer; font-family:var(--body); font-weight:800; font-size:.85rem; color:var(--olive-deep); padding:.45rem .9rem; display:inline-flex; align-items:center; gap:.4rem}
+.menu-btn:hover{background:var(--paper-2)}
+
+.shell{position:relative; z-index:1; display:grid; grid-template-columns:248px minmax(0,1fr); gap:clamp(1rem,3vw,2.4rem); max-width:1280px; margin:0 auto; padding:0 clamp(1rem,3vw,2rem) 5rem}
+nav.rail{position:sticky; top:74px; align-self:start; height:calc(100vh - 90px); overflow:auto; padding:1.4rem .4rem 2rem; font-size:.95rem}
+nav.rail .group{font-family:var(--body); font-weight:800; letter-spacing:.13em; text-transform:uppercase; font-size:.66rem; color:var(--ink-faint); margin:1.3rem .8rem .4rem}
+nav.rail a{display:flex; align-items:center; gap:.55rem; padding:.5rem .8rem; border-radius:12px; text-decoration:none; color:var(--ink-soft); font-weight:700; transition:.15s}
+nav.rail a .ic{width:1.3em; text-align:center}
+nav.rail a:hover{background:var(--paper-2); color:var(--olive-deep)}
+nav.rail a.active{background:var(--olive); color:#fff; box-shadow:var(--shadow-sm)}
+main{min-width:0; padding-top:1.5rem}
+
+section.card{background:var(--paper); border:1px solid var(--line); border-radius:var(--radius-lg); padding:clamp(1.4rem,4vw,3rem); margin:0 0 2rem; box-shadow:var(--shadow-sm); scroll-margin-top:80px}
+section.card.tint{background:linear-gradient(180deg,var(--paper-2),var(--paper))}
+.lead{font-size:1.18rem; color:var(--ink-soft)}
+
+.callout{border-radius:var(--radius); padding:1.1rem 1.3rem; margin:1.2rem 0; border-left:5px solid var(--honey); background:var(--paper-2); font-size:1.05rem}
+.callout.key{border-color:var(--terracotta); background:#FBEDE6}
+.callout.win{border-color:var(--leaf); background:var(--good-bg)}
+.callout.warn{border-color:var(--eus-red); background:#FBE7E3}
+.callout ul{margin:.5rem 0 0; padding-left:1.2rem}
+.nugget{font-family:var(--display); font-style:italic; font-size:1.25rem; color:var(--olive-deep); border-top:2px dotted var(--line-2); border-bottom:2px dotted var(--line-2); padding:1rem 0; margin:1.6rem 0; text-align:center}
+.big-quote{font-family:var(--display); font-weight:600; font-size:clamp(1.5rem,3.5vw,2.1rem); color:var(--terracotta-deep); line-height:1.25; margin:.6rem 0 1.2rem}
+.why{font-family:var(--display); font-weight:900; color:var(--terracotta); font-size:1.12em; text-decoration:none; border-bottom:2px solid var(--honey-soft)}
+.why:hover{color:var(--terracotta-deep); border-color:var(--terracotta)}
+/* "voices in your head" speech bubbles */
+.voices{display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:.6rem; margin:1.3rem 0}
+.voice{background:#fff; border:1px solid var(--line); border-left:4px solid var(--terracotta); border-radius:12px;
+  padding:.6rem .85rem; box-shadow:var(--shadow-sm); transition:transform .15s, box-shadow .15s}
+.voice:nth-child(even){border-left-color:var(--honey)}
+.voice:nth-child(3n){border-left-color:var(--leaf)}
+.voice:hover{transform:translateY(-2px); box-shadow:var(--shadow-md)}
+.v-q{display:block; font-family:var(--display); font-weight:600; color:var(--olive-deep); font-size:1rem; line-height:1.25}
+.v-a{display:block; margin-top:.2rem; font-size:.83rem; color:var(--terracotta-deep); font-weight:700}
+/* gentle scroll reveal */
+@media (prefers-reduced-motion: no-preference){
+  .reveal{opacity:0; transform:translateY(18px); transition:opacity .55s ease, transform .55s ease}
+  .reveal.in{opacity:1; transform:none}
+}
+/* real photos with a slow ken-burns motion */
+.photo{position:relative; margin:1.2rem 0; border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow-sm)}
+.photo img{display:block; width:100%; height:clamp(180px,30vw,300px); object-fit:cover}
+.photo figcaption{position:absolute; right:8px; bottom:6px; font-size:.6rem; color:#fff; background:rgba(0,0,0,.4); padding:2px 8px; border-radius:999px; font-weight:700; letter-spacing:.03em}
+@media (prefers-reduced-motion: no-preference){
+  .photo.kenburns img{animation:kenburns 32s ease-in-out infinite alternate; will-change:transform}
+}
+@keyframes kenburns{from{transform:scale(1.1) translate(2%,1.2%)} to{transform:scale(1.16) translate(-2%,-1.2%)}}
+
+.btn{display:inline-flex; align-items:center; gap:.5rem; border:0; cursor:pointer; font-family:var(--body); font-weight:800; font-size:1rem; padding:.8rem 1.4rem; border-radius:999px; text-decoration:none; transition:.18s}
+.btn.primary{background:var(--terracotta); color:#fff; box-shadow:var(--shadow-sm)}
+.btn.primary:hover{background:var(--terracotta-deep); transform:translateY(-1px)}
+.btn.ghost{background:var(--paper); color:var(--olive-deep); border:1.5px solid var(--line-2)}
+.btn.ghost:hover{background:var(--paper-2)}
+.nextprev{display:flex; justify-content:space-between; gap:1rem; margin-top:1.6rem; flex-wrap:wrap}
+
+.hero{position:relative; overflow:hidden; border-radius:var(--radius-lg); margin:1.6rem 0 2.2rem; padding:clamp(2rem,6vw,4.5rem) clamp(1.4rem,5vw,3.4rem);
+  background:radial-gradient(800px 400px at 80% -20%, rgba(218,156,69,.30), transparent 60%), linear-gradient(155deg,#56693c,#3a4a23); color:#FBF6EC; box-shadow:var(--shadow-md)}
+.hero::after{content:""; position:absolute; left:0; right:0; bottom:0; height:7px; background:linear-gradient(90deg,var(--eus-red) 0 33.3%, #fff 33.3% 66.6%, var(--eus-green) 66.6% 100%); opacity:.95}
+.hero h1{color:#fff; font-size:clamp(2.4rem,7vw,4.4rem); font-weight:900; letter-spacing:-.02em; margin-bottom:.2em}
+.hero .sub{font-size:clamp(1.05rem,2.5vw,1.35rem); max-width:48ch; color:#F0E9D6}
+.hero .for{font-family:var(--display); font-style:italic; font-size:1.3rem; color:var(--honey-soft); margin-bottom:1.4rem}
+.hero .veg{position:absolute; font-size:clamp(4rem,12vw,9rem); opacity:.16; right:4%; bottom:1rem; transform:rotate(-12deg)}
+.hero .veg2{position:absolute; font-size:5rem; opacity:.12; left:6%; top:6%; transform:rotate(14deg)}
+.hero .cta{display:flex; gap:.8rem; flex-wrap:wrap; margin-top:1.6rem; position:relative; z-index:2}
+
+/* ---- Cover ---- */
+.hero-stage{margin:1.4rem 0 0}
+.hero::after{content:""; position:absolute; inset:0; pointer-events:none; border-radius:inherit; background:radial-gradient(300px 300px at var(--mx,50%) var(--my,0%), rgba(255,255,255,.13), transparent 60%); opacity:0; transition:opacity .4s; mix-blend-mode:soft-light}
+.hero:hover::after{opacity:1}
+/* Cover: The Postcard, warm cream */
+.hero.v3{background:radial-gradient(620px 480px at 50% 125%, rgba(194,85,59,.16), transparent 60%), linear-gradient(180deg,#FBF6EC,#F1E5CD); color:var(--ink); border:1px solid var(--line)}
+.hero.v3 h1{color:var(--olive-deep)}
+.hero.v3 .sub{color:var(--ink-soft)}
+.hero.v3 .for{color:var(--terracotta-deep)}
+
+.table-wrap{overflow-x:auto; margin:1.2rem 0}
+table{width:100%; border-collapse:collapse; font-size:.98rem}
+th,td{text-align:left; padding:.7rem .8rem; border-bottom:1px solid var(--line)}
+th{font-family:var(--body); font-weight:800; color:var(--olive-deep); background:var(--paper-2)}
+
+.hint{font-size:.85rem; color:var(--ink-faint); font-weight:700}
+
+.grid2{display:grid; grid-template-columns:1fr 1fr; gap:1.1rem; margin:1.2rem 0}
+.minicard{background:var(--paper); border:1px solid var(--line); border-radius:var(--radius); padding:1.2rem; box-shadow:var(--shadow-sm)}
+.minicard.good{background:var(--good-bg); border-color:var(--good-line)}
+.minicard.bad{background:var(--industrial-bg); border-color:#D6CFBE}
+.minicard h3{margin-top:0}
+.minicard ul{margin:.4rem 0 0; padding-left:1.1rem}
+.minicard li{margin:.35rem 0}
+.path{border-radius:var(--radius-lg); padding:1.4rem 1.5rem; box-shadow:var(--shadow-sm); border:1px solid var(--line)}
+.path.med{background:linear-gradient(160deg,#EAF0DC,#F4EBD8)}
+.path.lc{background:linear-gradient(160deg,#FBEDE6,#F4EBD8)}
+.path h3{font-size:1.5rem}
+
+details{background:var(--paper-2); border:1px solid var(--line); border-radius:14px; margin:.7rem 0; overflow:hidden}
+details[open]{box-shadow:var(--shadow-sm)}
+summary{cursor:pointer; padding:.9rem 1.1rem; font-weight:800; color:var(--olive-deep); list-style:none; display:flex; align-items:center; justify-content:space-between; gap:.6rem}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+"; font-family:var(--display); font-size:1.4rem; color:var(--terracotta); transition:.2s}
+details[open] summary::after{transform:rotate(45deg)}
+details .body{padding:0 1.1rem 1.1rem; color:var(--ink-soft)}
+details .body ul{padding-left:1.1rem}
+details .body li{margin:.4rem 0}
+
+.widget{background:var(--paper-2); border:1px solid var(--line); border-radius:var(--radius-lg); padding:1.4rem clamp(1.1rem,3vw,1.8rem); margin:1.3rem 0; box-shadow:var(--shadow-sm)}
+.field{display:flex; flex-direction:column; gap:.3rem; margin:.5rem 0}
+.field label{font-weight:800; font-size:.86rem; color:var(--olive-deep)}
+.field input,.field select{font-family:var(--body); font-size:1rem; padding:.65rem .8rem; border:1.5px solid var(--line-2); border-radius:12px; background:var(--paper); color:var(--ink); width:100%}
+.field input:focus,.field select:focus{outline:3px solid rgba(124,154,75,.35); border-color:var(--olive)}
+.formgrid{display:grid; grid-template-columns:1fr 1fr; gap:.4rem 1rem}
+.segmented{display:inline-flex; background:var(--paper); border:1.5px solid var(--line-2); border-radius:999px; padding:.2rem; gap:.2rem; width:max-content}
+.segmented button{border:0; background:none; font-family:var(--body); font-weight:800; font-size:.9rem; color:var(--ink-soft); padding:.42rem 1.1rem; border-radius:999px; cursor:pointer; transition:.15s}
+.segmented button.on{background:var(--olive); color:#fff; box-shadow:var(--shadow-sm)}
+.segmented button:not(.on):hover{background:var(--paper-2)}
+.result{display:grid; grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); gap:.8rem; margin-top:1.1rem}
+.result .stat{background:var(--paper); border:1px solid var(--line); border-radius:14px; padding:.9rem; text-align:center}
+.result .stat b{display:block; font-family:var(--display); font-size:1.9rem; color:var(--terracotta-deep); line-height:1}
+.result .stat span{font-size:.78rem; font-weight:800; color:var(--ink-faint); text-transform:uppercase; letter-spacing:.06em}
+
+.tracker-top{display:flex; align-items:center; gap:1rem; flex-wrap:wrap; margin-bottom:1rem}
+.pbar{flex:1; min-width:160px; height:16px; background:var(--paper-3); border-radius:999px; overflow:hidden; border:1px solid var(--line)}
+.pbar i{display:block; height:100%; width:0%; background:linear-gradient(90deg,var(--leaf),var(--honey),var(--terracotta)); transition:width .5s}
+.days{display:grid; grid-template-columns:repeat(15,1fr); gap:6px; margin:1rem 0}
+.day{aspect-ratio:1; border-radius:8px; border:1.5px solid var(--line-2); background:var(--paper); cursor:pointer; font-weight:800; font-size:.8rem; color:var(--ink-faint); display:grid; place-items:center; transition:.15s}
+.day:hover{border-color:var(--olive)}
+.day.done{background:var(--leaf); border-color:var(--olive); color:#fff}
+.day.s2.done{background:var(--honey); border-color:#b9842f}
+.day.s3.done{background:var(--terracotta); border-color:var(--terracotta-deep); color:#fff}
+.badges{display:flex; gap:.8rem; flex-wrap:wrap; margin-top:1rem}
+.badge{flex:1; min-width:140px; text-align:center; padding:1rem; border-radius:16px; border:2px dashed var(--line-2); background:var(--paper); opacity:.5; transition:.3s}
+.badge.unlocked{opacity:1; border-style:solid; border-color:var(--honey); background:var(--honey-soft); box-shadow:var(--shadow-sm)}
+.badge .em{font-size:2rem; display:block}
+.badge b{display:block; font-family:var(--display); color:var(--olive-deep)}
+
+.filters{display:flex; gap:.5rem; flex-wrap:wrap; margin:1.1rem 0}
+.filters button{border:1.5px solid var(--line-2); background:var(--paper); border-radius:999px; padding:.4rem .9rem; font-weight:800; cursor:pointer; font-family:var(--body); color:var(--ink-soft); font-size:.86rem}
+.filters button.active{background:var(--olive); color:#fff; border-color:var(--olive)}
+.recipes{display:grid; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); gap:1rem}
+.recipe{background:var(--paper); border:1px solid var(--line); border-radius:18px; padding:1.1rem; box-shadow:var(--shadow-sm); display:flex; flex-direction:column}
+.recipe .emoji{font-size:2.2rem}
+.recipe h4{font-family:var(--display); font-size:1.2rem; margin:.3rem 0; color:var(--olive-deep)}
+.recipe .macros{font-size:.82rem; font-weight:800; color:var(--terracotta-deep); margin-bottom:.4rem}
+.recipe .tagrow{margin-top:auto; padding-top:.6rem}
+.recipe .tag{display:inline-block; font-size:.72rem; font-weight:800; background:var(--paper-3); border-radius:999px; padding:.18rem .55rem; margin:.12rem; color:var(--ink-soft)}
+.recipe{cursor:pointer}
+.recipe .recipe-more{margin-top:.6rem; font-size:.78rem; font-weight:800; color:var(--terracotta-deep); opacity:.75}
+.recipe:hover .recipe-more{opacity:1}
+/* recipe detail modal */
+#recipeModal{position:fixed; inset:0; z-index:85; background:rgba(34,40,22,.5); backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px); display:none; padding:max(4vh,1rem) 1rem; overflow:auto}
+#recipeModal:not([hidden]){display:block}
+.rm-card{position:relative; max-width:460px; margin:0 auto; background:radial-gradient(360px 240px at 100% 0%, rgba(218,156,69,.12), transparent 65%), var(--paper); border:1px solid var(--line); border-radius:22px; padding:1.5rem 1.5rem 1.7rem; box-shadow:0 26px 70px rgba(34,40,22,.42); opacity:0; transform:translateY(16px) scale(.985); transition:opacity .25s, transform .25s}
+#recipeModal.show .rm-card{opacity:1; transform:none}
+.rm-emoji{font-size:3.2rem; text-align:center; margin:.2rem 0 .5rem}
+.rm-photo{border-radius:16px; overflow:hidden; margin:0 0 .8rem; border:1px solid var(--line)}
+.rm-photo img{width:100%; aspect-ratio:16/10; object-fit:cover; display:block}
+.rm-card h3{margin:.1rem 0 .7rem; color:var(--olive-deep)}
+.rm-card .eyebrow{margin-bottom:.15rem; text-transform:capitalize}
+.rm-ing{font-size:.92rem; margin:0 0 1rem}
+.rm-portions{display:grid; gap:.7rem; margin:.3rem 0 1rem}
+.rm-portion{background:var(--paper-2); border:1px solid var(--line); border-radius:14px; padding:.7rem .85rem}
+.rm-plabel{font-size:.72rem; font-weight:800; text-transform:uppercase; letter-spacing:.05em; color:var(--ink-faint); margin-bottom:.35rem}
+.rm-bar{position:relative; height:24px; background:var(--paper-3); border-radius:999px; margin:.3rem 0; overflow:hidden}
+.rm-bar-fill{position:absolute; left:0; top:0; bottom:0; border-radius:999px; transition:width .45s cubic-bezier(.2,.8,.2,1)}
+.rm-bar-fill.cal{background:linear-gradient(90deg,var(--honey-soft),var(--honey))}
+.rm-bar-fill.pro{background:linear-gradient(90deg,var(--leaf),var(--olive))}
+.rm-bar span{position:absolute; right:.6rem; top:50%; transform:translateY(-50%); font-size:.74rem; font-weight:800; color:var(--olive-deep)}
+.rm-tip{margin:.3rem 0 0; font-size:.95rem}
+.recipe-pic{margin:-1.1rem -1.1rem .7rem; border-radius:18px 18px 0 0; overflow:hidden; aspect-ratio:16/10; background:var(--paper-3)}
+.recipe-pic img{width:100%; height:100%; object-fit:cover; display:block; transition:transform .35s ease}
+.recipe:hover .recipe-pic img{transform:scale(1.07)}
+.rm-macros{display:grid; gap:.4rem; margin:.3rem 0 1rem}
+.rm-mrow{display:grid; grid-template-columns:4.3rem 1fr 3.1rem; align-items:center; gap:.5rem}
+.rm-mlbl{font-size:.78rem; font-weight:800; color:var(--ink-soft)}
+.rm-mval{font-size:.78rem; font-weight:800; color:var(--olive-deep); text-align:right}
+.rm-bar-fill.carb{background:linear-gradient(90deg,#e7c98a,var(--honey))}
+.rm-bar-fill.fat{background:linear-gradient(90deg,#d99b86,var(--terracotta))}
+.rm-table{width:100%; border-collapse:collapse; margin:.2rem 0 1rem; font-size:.9rem}
+.rm-table th{font-weight:800; color:var(--ink-faint); font-size:.72rem; text-transform:uppercase; letter-spacing:.04em; text-align:right; padding:.3rem .5rem}
+.rm-table th:first-child{text-align:left}
+.rm-table td{padding:.35rem .5rem; border-top:1px solid var(--line); text-align:right; font-weight:700; color:var(--olive-deep)}
+.rm-table td:first-child{text-align:left; color:var(--ink-soft); font-weight:800}
+.rm-tweaks{background:var(--paper-2); border:1px solid var(--line); border-radius:14px; padding:.7rem .85rem; margin:.2rem 0 1rem}
+.rm-tweaks-h{font-size:.72rem; font-weight:800; text-transform:uppercase; letter-spacing:.05em; color:var(--ink-faint); margin-bottom:.4rem}
+.rm-tweak{display:flex; justify-content:space-between; gap:.6rem; font-size:.88rem; padding:.2rem 0; border-top:1px dotted var(--line)}
+.rm-tweak:first-of-type{border-top:0}
+.rm-tweak b{color:var(--terracotta-deep); white-space:nowrap}
+
+.contract{background:repeating-linear-gradient(0deg, transparent, transparent 38px, rgba(56,72,36,.07) 38px, rgba(56,72,36,.07) 39px), var(--paper); border:2px solid var(--olive); border-radius:var(--radius-lg); padding:clamp(1.2rem,3vw,2rem); box-shadow:var(--shadow-md); position:relative}
+.contract h3{font-family:var(--display); color:var(--olive-deep); text-align:center; font-size:1.6rem}
+.contract .seal{position:absolute; top:-14px; right:18px; font-size:2.4rem}
+.contract .vows{margin:.4rem 0 1rem; padding-left:1.2rem}
+.contract .vows li{margin:.5rem 0}
+.contract .blank{display:inline-block; min-width:130px; border-bottom:2px solid var(--ink); height:1.15em; vertical-align:bottom}
+.contract .blank.wide{min-width:60%}
+.contract .sign{display:grid; grid-template-columns:1fr 1fr; gap:1.2rem; margin-top:1.6rem}
+.contract .sigline{border-top:2px solid var(--ink); padding-top:.3rem; font-size:.8rem; color:var(--ink-faint); font-weight:700; text-align:center}
+
+.affirms{display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:1rem; margin:1.2rem 0}
+.affirm{background:linear-gradient(160deg,#EAF0DC,#F4EBD8); border:1px solid var(--good-line); border-radius:18px; padding:1.2rem 1.3rem; font-family:var(--display); font-weight:600; font-size:1.18rem; color:var(--olive-deep); box-shadow:var(--shadow-sm); line-height:1.3}
+.affirm .star{color:var(--terracotta); font-size:1.2rem; display:block; margin-bottom:.3rem}
+.quotes-list{list-style:none; padding:0; margin:1rem 0}
+.quotes-list li{border-left:4px solid var(--honey); background:var(--paper-2); border-radius:0 12px 12px 0; padding:.7rem 1rem; margin:.6rem 0; font-family:var(--display); font-style:italic; color:var(--olive-deep)}
+
+#esBanner{display:none; background:var(--honey-soft); border:1px solid var(--honey); color:var(--olive-deep); border-radius:14px; padding:.8rem 1.1rem; margin:0 0 1.2rem; font-weight:700}
+html[data-lang="es"] #esBanner{display:block}
+/* bilingual content toggle (per section) */
+.lang-es{display:none}
+html[data-lang="es"] .lang-en{display:none}
+html[data-lang="es"] .lang-es{display:block}
+/* sticky read-aloud bar (full-width footer player) */
+#audiobar{position:fixed; left:50%; bottom:max(.9rem,env(safe-area-inset-bottom)); transform:translateX(-50%); z-index:70;
+  width:min(720px, calc(100% - 1.4rem)); display:flex; align-items:center; gap:.55rem clamp(.5rem,2vw,.9rem); flex-wrap:wrap;
+  background:url("assets/img/player-mountains.svg") bottom/100% 42px no-repeat, linear-gradient(160deg,#465831,#283519); color:#FBF6EC; padding:.7rem clamp(.85rem,2.5vw,1.2rem) 1.05rem;
+  border:1px solid rgba(255,255,255,.10); border-radius:18px;
+  box-shadow:0 16px 44px rgba(34,40,22,.45), inset 0 1px 0 rgba(255,255,255,.08)}
+#audiobar::before{content:""; position:absolute; left:1.3rem; right:1.3rem; top:0; height:3px; border-radius:0 0 6px 6px;
+  background:linear-gradient(90deg,var(--eus-red) 0 33.3%,#fff 33.3% 66.6%,var(--eus-green) 66.6% 100%); opacity:.85}
+#audiobar[hidden]{display:none}
+.audio-btn{width:44px; height:44px; flex:none; border-radius:50%; border:0; cursor:pointer; font-size:1.05rem;
+  background:var(--terracotta); color:#fff; display:grid; place-items:center; line-height:1;
+  box-shadow:0 3px 11px rgba(168,70,46,.5); transition:transform .15s, background .15s}
+.audio-btn:hover{background:var(--terracotta-deep); transform:translateY(-2px)}
+.audio-btn:active{transform:translateY(0)}
+.audio-btn.alt{width:38px; height:38px; background:rgba(255,255,255,.14); box-shadow:none; font-size:.95rem}
+.audio-btn.alt:hover{background:rgba(255,255,255,.30)}
+.audio-label{display:flex; flex-direction:column; gap:.18rem; flex:none; min-width:0; font-family:var(--body); font-weight:800; font-size:.9rem; line-height:1.15}
+.audio-label small{font-weight:700; font-size:.66rem; opacity:.85; letter-spacing:.05em; display:flex; align-items:center; gap:.35rem; margin-top:.15rem}
+.audio-label small::before{content:""; width:7px; height:7px; border-radius:50%; background:var(--eus-green); box-shadow:0 0 0 0 rgba(124,154,75,.7); animation:audioPulse 2s infinite}
+@keyframes audioPulse{0%{box-shadow:0 0 0 0 rgba(124,154,75,.6)} 70%{box-shadow:0 0 0 6px rgba(124,154,75,0)} 100%{box-shadow:0 0 0 0 rgba(124,154,75,0)}}
+.audio-pick{position:relative}
+.audio-pick-btn{display:flex; align-items:center; gap:.5rem; font-family:var(--body); font-weight:800; font-size:.9rem; color:#fff; background:rgba(255,255,255,.13); border:1px solid rgba(255,255,255,.26); border-radius:999px; padding:.32rem .85rem; cursor:pointer; max-width:min(52vw,250px); transition:background .15s}
+.audio-pick-btn:hover{background:rgba(255,255,255,.24)}
+.audio-pick-btn span{overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+.apk-chev{flex:none; transition:transform .2s}
+.audio-pick.open .apk-chev{transform:rotate(180deg)}
+.audio-pick-menu{position:absolute; bottom:calc(100% + .55rem); left:0; z-index:72; min-width:235px; max-width:80vw;
+  background:var(--paper); border:1px solid var(--line); border-radius:14px; padding:.4rem; box-shadow:0 18px 46px rgba(34,40,22,.42); display:grid; gap:.1rem;
+  animation:apkRise .2s ease}
+@keyframes apkRise{from{opacity:0; transform:translateY(8px)} to{opacity:1; transform:none}}
+.audio-pick-menu[hidden]{display:none}
+.audio-pick-menu button{display:flex; align-items:center; gap:.55rem; width:100%; text-align:left; font-family:var(--body); font-weight:700; font-size:.9rem; color:var(--ink); background:none; border:0; border-radius:10px; padding:.5rem .65rem; cursor:pointer}
+.audio-pick-menu button:hover{background:var(--paper-2)}
+.audio-pick-menu button.on{background:var(--olive); color:#fff}
+.audio-pick-menu button .num{width:1.45rem; height:1.45rem; flex:none; display:grid; place-items:center; font-size:.7rem; font-weight:800; border-radius:7px; background:var(--paper-3); color:var(--olive-deep)}
+.audio-pick-menu button.on .num{background:rgba(255,255,255,.25); color:#fff}
+.audio-time{font-family:var(--body); font-weight:700; font-size:.78rem; opacity:.85; flex:none; font-variant-numeric:tabular-nums}
+.audio-track{flex:1 1 150px; height:8px; border-radius:999px; background:rgba(255,255,255,.20); cursor:pointer; position:relative; min-width:110px}
+.audio-fill{height:100%; width:0%; background:linear-gradient(90deg,var(--honey),var(--terracotta)); border-radius:999px; position:relative}
+.audio-fill::after{content:""; position:absolute; right:-5px; top:50%; transform:translateY(-50%); width:13px; height:13px; border-radius:50%; background:#fff; box-shadow:0 1px 5px rgba(0,0,0,.45); opacity:0; transition:opacity .15s}
+.audio-track:hover .audio-fill::after{opacity:1}
+#qrPop{position:absolute; bottom:calc(100% + .6rem); left:.4rem; z-index:71; width:230px; text-align:center;
+  background:var(--paper); color:var(--ink); border:1px solid var(--line-2); border-radius:16px; padding:1rem; box-shadow:var(--shadow-md)}
+#qrPop[hidden]{display:none}
+#qrPop p{font-size:.8rem; color:var(--ink-soft); margin:0 0 .6rem; font-weight:700; line-height:1.35}
+#qrPop img{width:190px; height:190px; background:#fff; border-radius:8px; display:block; margin:0 auto}
+#qrPop .btn{margin-top:.7rem; font-size:.84rem; padding:.5rem 1rem}
+
+#overlay{position:fixed; inset:0; z-index:80; background:rgba(34,40,22,.5); backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px); display:none; padding:max(4vh,1rem) 1rem; overflow:auto}
+#overlay.show{display:block; animation:ovFade .25s ease}
+@keyframes ovFade{from{opacity:0} to{opacity:1}}
+#overlay .sheet{position:relative; max-width:640px; margin:0 auto; overflow:hidden;
+  background:radial-gradient(440px 300px at 100% 0%, rgba(218,156,69,.13), transparent 65%), var(--paper);
+  border:1px solid var(--line); border-radius:24px; padding:1.7rem 1.6rem 1.9rem; box-shadow:0 26px 70px rgba(34,40,22,.42)}
+#overlay.show .sheet{animation:ovRise .32s cubic-bezier(.2,.8,.2,1)}
+@keyframes ovRise{from{opacity:0; transform:translateY(16px) scale(.985)} to{opacity:1; transform:none}}
+.sheet .eyebrow{margin-bottom:.25rem}
+.sheet h3{font-size:1.55rem; color:var(--olive-deep); margin:0 0 1rem}
+#overlayLinks{display:grid; grid-template-columns:1fr 1fr; gap:.2rem .9rem}
+#overlayLinks .group{grid-column:1/-1; font-family:var(--body); font-weight:800; font-size:.66rem; letter-spacing:.14em; text-transform:uppercase; color:var(--terracotta); margin:.85rem 0 .15rem; padding-left:.15rem}
+#overlayLinks .group:first-child{margin-top:0}
+#overlay a{display:flex; align-items:center; gap:.7rem; padding:.5rem .65rem; border-radius:12px; text-decoration:none; color:var(--ink); font-weight:700; font-size:.95rem; border:1px solid transparent; transition:transform .15s, background .15s, border-color .15s}
+#overlay a .ic{width:1.9rem; height:1.9rem; flex:none; display:grid; place-items:center; background:var(--paper-2); border:1px solid var(--line); border-radius:9px; font-size:1rem; transition:.15s}
+#overlay a:hover{background:var(--paper-2); border-color:var(--line); transform:translateX(3px)}
+#overlay a:hover .ic{background:var(--olive); border-color:var(--olive); transform:scale(1.06)}
+.ov-close{position:absolute; top:1rem; right:1rem; z-index:2; border:1.5px solid var(--line-2); background:var(--paper); color:var(--olive-deep); border-radius:50%; width:2.1rem; height:2.1rem; cursor:pointer; font-size:1rem; display:grid; place-items:center; transition:.18s}
+.ov-close:hover{background:var(--terracotta); color:#fff; border-color:var(--terracotta); transform:rotate(90deg)}
+@media(max-width:560px){ #overlayLinks{grid-template-columns:1fr} }
+
+footer{text-align:center; color:var(--ink-faint); font-size:.85rem; padding:2rem 1rem 4rem; position:relative; z-index:1}
+
+@media(max-width:880px){
+  .shell{grid-template-columns:1fr}
+  nav.rail{display:none}
+  .grid2,.formgrid,.contract .sign{grid-template-columns:1fr}
+  .days{grid-template-columns:repeat(10,1fr)}
+}
+@media(min-width:881px){ .menu-btn{display:none} }
+@media print{
+  header.bar,nav.rail,#progress,#overlay,.menu-btn,.nextprev,.langtoggle,#audiobar{display:none!important}
+  body{background:#fff; font-size:12pt} body::before{display:none} body::after{display:none}
+  .shell{display:block; max-width:100%; padding:0}
+  section.card{box-shadow:none; border:1px solid #ccc; page-break-inside:avoid; margin:0 0 1rem}
+  .hero{color:#000; background:#fff!important; border:2px solid var(--olive)}
+  .hero h1,.hero .sub,.hero .for{color:#000}
+  /* cheat sheet: let it span pages, break cleanly between blocks */
+  #cheatsheet{page-break-inside:auto}
+  #cheatsheet .sheet-page{page-break-inside:avoid; page-break-after:always}
+  #cheatsheet .sheet-page:last-child{page-break-after:auto}
+  /* power page: compress everything onto a single printed page (creed is the priority) */
+  #motivation{font-size:10pt; page-break-inside:avoid; page-break-before:always}
+  #motivation .eus-ribbon{margin:0 0 .35rem}
+  #motivation .lead{display:none}
+  #motivation .hint{display:none}
+  #motivation .mky{display:none}
+  #motivation h3{margin:.45rem 0 .2rem; font-size:11.5pt}
+  #motivation .affirms{grid-template-columns:1fr 1fr; gap:.3rem; margin:.25rem 0}
+  #motivation .affirm{padding:.25rem .5rem; font-size:9pt; border-radius:9px; box-shadow:none; line-height:1.2}
+  #motivation .affirm .star{display:inline; margin:0 .3rem 0 0; font-size:9pt}
+  #motivation .affirms .affirm:nth-child(n+4){display:none}
+  #motivation .callout{padding:.45rem .65rem; margin:.4rem 0; font-size:9.3pt}
+  #motivation .quotes-list{columns:2; column-gap:.9rem; margin:.25rem 0}
+  #motivation .quotes-list li{break-inside:avoid; padding:.25rem .5rem; margin:.25rem 0; font-size:9pt; line-height:1.2}
+  #motivation .quotes-list li:nth-child(n+7){display:none}
+  #motivation .creed{padding:.55rem .8rem; margin:.4rem 0}
+  #motivation .creed h3{margin:.05rem 0 .3rem; font-size:12.5pt}
+  #motivation .creed .cascade{font-size:10.5pt; margin:0 0 .35rem; line-height:1.3}
+  #motivation .creed p{margin:.28rem 0; font-size:9.6pt; line-height:1.32}
+  #motivation .nugget{margin:.4rem 0 0; padding:.4rem 0; font-size:11.5pt}
+  /* calories in/out prints as a clean static infographic */
+  .cio{break-inside:avoid; padding:.8rem}
+  .cio-slider,.cio-steps,.cio-help,.cio-help-pop{display:none}
+  .cio-burn-num input{border:none}
+  .cio-fill,.cio-fill.out,.cio-chip,.cio-curve,.cio-area,.cio-end,.cio-nums .stat b,.cio-graph-foot b{-webkit-print-color-adjust:exact; print-color-adjust:exact}
+}
+/* ===== cheat sheet ===== */
+#cheatsheet .sheet-page{margin:0 0 1.6rem}
+#cheatsheet .sheet-page + .sheet-page{padding-top:1.4rem; border-top:1px dashed var(--line)}
+.levers{list-style:none; margin:1rem 0 0; padding:0; counter-reset:lev}
+.levers li{position:relative; padding:.7rem .9rem .7rem 3rem; margin:0 0 .6rem; background:var(--paper-2);
+  border:1px solid var(--line); border-radius:14px}
+.levers li::before{counter-increment:lev; content:counter(lev); position:absolute; left:.7rem; top:.7rem;
+  width:1.7rem; height:1.7rem; border-radius:50%; background:var(--olive); color:#fff; font-weight:800;
+  display:flex; align-items:center; justify-content:center; font-size:.95rem}
+table.swaps{width:100%; border-collapse:collapse; margin:1rem 0 0; font-size:.96rem}
+table.swaps th{padding:.55rem .7rem; text-align:left; font-size:.95rem}
+table.swaps th.bad{background:#f7e0db; color:#8a3324; border-radius:10px 0 0 0}
+table.swaps th.good{background:#e3ead2; color:#4a5a22; border-radius:0 10px 0 0}
+table.swaps td{padding:.5rem .7rem; border-bottom:1px solid var(--line); vertical-align:top}
+table.swaps td.bad{width:46%; color:#7a3a2c}
+table.swaps tr:last-child td{border-bottom:none}
+.tips6{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:.8rem; margin:1rem 0 0}
+.tipcard{background:var(--paper-2); border:1px solid var(--line); border-radius:14px; padding:.9rem 1rem}
+.tipcard h3{margin:0 0 .3rem; font-size:1.02rem}
+.tipcard p{margin:0; font-size:.93rem}
+.foodgrid{display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:.9rem; margin:.7rem 0 1.4rem}
+.fooditem{margin:0; text-align:center}
+.fooditem .pic{position:relative; border-radius:14px; overflow:hidden; border:1px solid var(--line)}
+.fooditem .pic img{width:100%; aspect-ratio:1/1; object-fit:cover; display:block}
+.fooditem .lbl{display:block; margin-top:.4rem; font-weight:700; font-size:.88rem; line-height:1.2}
+.foodgrid.avoid .pic img{filter:saturate(.5) contrast(.96)}
+.foodgrid.avoid .pic::before,.foodgrid.avoid .pic::after{content:""; position:absolute; top:50%; left:7%;
+  right:7%; height:9px; background:rgba(178,52,34,.82); border-radius:6px; box-shadow:0 0 0 2px rgba(255,255,255,.55)}
+.foodgrid.avoid .pic::before{transform:translateY(-50%) rotate(45deg)}
+.foodgrid.avoid .pic::after{transform:translateY(-50%) rotate(-45deg)}
+.foodgrid.good .pic::after{content:"✓"; position:absolute; top:7px; right:7px; width:26px; height:26px;
+  border-radius:50%; background:var(--olive); color:#fff; font-weight:800; font-size:15px; display:flex;
+  align-items:center; justify-content:center; box-shadow:0 1px 3px rgba(0,0,0,.25)}
+.foodhead{margin:1.1rem 0 .2rem; font-size:1.05rem}
+/* ===== power-page creed (the resilience message) ===== */
+.creed{background:linear-gradient(165deg,#FBEDE6,#F4EBD8); border:2px solid var(--terracotta);
+  border-radius:20px; padding:1.4rem 1.6rem; margin:1.4rem 0; box-shadow:var(--shadow-sm)}
+.creed h3{margin:.1rem 0 .7rem; color:var(--terracotta-deep); font-size:1.45rem}
+.creed .cascade{font-family:var(--display); font-weight:600; font-size:1.25rem; color:var(--olive-deep);
+  line-height:1.45; margin:0 0 1rem}
+.creed p{margin:.7rem 0}
+.creed strong{color:var(--terracotta-deep)}
+/* ===== Calories In / Out interactive (live graph, prints static) ===== */
+.cio{--c:var(--leaf); background:var(--paper); border:1px solid var(--line); border-radius:20px; padding:1.2rem 1.2rem 1.4rem; margin:1.5rem 0; box-shadow:var(--shadow-sm)}
+.cio[data-state=gain]{--c:var(--terracotta)} .cio[data-state=hold]{--c:var(--honey)}
+.cio-top{display:flex; align-items:flex-end; justify-content:space-between; gap:1rem; flex-wrap:wrap; margin-bottom:1rem}
+.cio-burn{display:flex; flex-direction:column}
+.cio-burn-lbl{font-size:.72rem; font-weight:800; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-faint)}
+.cio-burn-num{font-family:var(--display); line-height:1; color:var(--olive-deep)}
+.cio-burn-num b{font-size:2.6rem}
+.cio-burn-note{font-size:.76rem; color:var(--ink-faint); font-weight:700; margin-top:.2rem}
+.cio-chip{font-family:var(--display); font-weight:700; font-size:1.05rem; color:#fff; background:var(--c); border-radius:999px; padding:.4rem .95rem; box-shadow:var(--shadow-sm); transition:background .25s}
+.cio-bars{display:grid; gap:.45rem; margin:.2rem 0 1rem}
+.cio-bar{display:grid; grid-template-columns:6.5rem 1fr; align-items:center; gap:.6rem}
+.cio-bar-lbl{font-size:.7rem; font-weight:800; letter-spacing:.03em; text-transform:uppercase; color:var(--ink-faint); text-align:right}
+.cio-track{position:relative; height:30px; background:var(--paper-3); border-radius:999px; overflow:hidden}
+.cio-fill{position:absolute; left:0; top:0; bottom:0; border-radius:999px; transition:width .4s cubic-bezier(.2,.8,.2,1), background .25s}
+.cio-fill.out{background:linear-gradient(90deg,var(--honey-soft),var(--honey)); width:72%}
+.cio-fill.in{background:var(--c)}
+.cio-bar-num{position:absolute; right:.7rem; top:50%; transform:translateY(-50%); font-weight:800; font-size:.82rem; color:var(--olive-deep); z-index:2}
+.cio-slider{margin:.1rem 0 1.1rem}
+.cio-slider input[type=range]{width:100%; accent-color:var(--terracotta); height:1.6rem; cursor:pointer}
+.cio-slider-cap{text-align:center; font-size:.74rem; font-weight:800; color:var(--ink-faint); margin-top:.1rem}
+.cio-graph-head{display:flex; justify-content:space-between; align-items:baseline; font-weight:800; font-size:.84rem; color:var(--olive-deep)}
+.cio-graph-sub{font-size:.7rem; color:var(--ink-faint); text-transform:uppercase; letter-spacing:.05em}
+.cio-graph svg{width:100%; height:auto; display:block; color:var(--c); margin:.35rem 0}
+.cio-base{stroke:var(--line-2); stroke-width:1.5; stroke-dasharray:4 5}
+.cio-area{fill:var(--c); opacity:.14; transition:opacity .25s}
+.cio-curve{fill:none; stroke:var(--c); stroke-width:3.5; stroke-linecap:round; stroke-linejoin:round; transition:stroke .25s}
+.cio-end{fill:var(--c); stroke:#fff; stroke-width:2.5; transition:fill .25s}
+.cio-graph-foot{display:flex; justify-content:space-between; font-size:.78rem; font-weight:800; color:var(--ink-faint)}
+.cio-graph-foot b{color:var(--c); font-family:var(--display); font-size:1.05rem}
+.cio-nums{display:grid; grid-template-columns:repeat(3,1fr); gap:.6rem; margin-top:.9rem}
+.cio-nums .stat{background:var(--paper-2); border:1px solid var(--line); border-radius:14px; padding:.7rem .4rem; text-align:center}
+.cio-nums .stat b{display:block; font-family:var(--display); font-size:1.55rem; line-height:1; color:var(--c)}
+.cio-nums .stat span{font-size:.66rem; font-weight:800; color:var(--ink-faint); text-transform:uppercase; letter-spacing:.03em}
+.cio-burn-num input{font-family:var(--display); font-size:2.6rem; font-weight:600; color:var(--olive-deep); width:4.6ch; border:none; border-bottom:2px dashed var(--line-2); background:transparent; padding:0 .05em; line-height:1; -moz-appearance:textfield}
+.cio-burn-num input:focus{outline:none; border-bottom-color:var(--terracotta)}
+.cio-burn-num input::-webkit-outer-spin-button,.cio-burn-num input::-webkit-inner-spin-button{-webkit-appearance:none; margin:0}
+.cio-help{width:1.3rem; height:1.3rem; border-radius:50%; border:1.5px solid var(--terracotta); color:var(--terracotta); background:var(--paper); font-weight:800; font-size:.78rem; cursor:pointer; line-height:1; padding:0; vertical-align:middle}
+.cio-help:hover{background:var(--terracotta); color:#fff}
+.cio-help-pop{margin:0 0 1rem; background:#FBEDE6; border:1px solid var(--line); border-left:4px solid var(--terracotta); border-radius:14px; padding:.8rem 1rem; font-size:.92rem}
+.cio-help-pop strong{color:var(--terracotta-deep)} .cio-help-pop p{margin:.45rem 0 0}
+.cio-steps{display:flex; align-items:center; gap:.5rem; flex-wrap:wrap; margin:0 0 1rem}
+.cio-steps-lbl{font-size:.7rem; font-weight:800; text-transform:uppercase; letter-spacing:.04em; color:var(--ink-faint)}
+.cio-steps-opts{display:flex; gap:.35rem; flex-wrap:wrap}
+.cio-steps-opts button{font-family:var(--body); font-weight:800; font-size:.8rem; border:1.5px solid var(--line-2); background:var(--paper); color:var(--olive-deep); border-radius:999px; padding:.3rem .7rem; cursor:pointer; transition:.15s}
+.cio-steps-opts button:hover{background:var(--paper-2)}
+.cio-steps-opts button.on{background:var(--olive); color:#fff; border-color:var(--olive)}
+.cio-steps-out{font-size:.78rem; font-weight:800; color:var(--terracotta-deep); margin-left:auto}
+.cio-sexrow{display:flex; align-items:center; gap:.55rem; margin:0 0 1rem; flex-wrap:wrap}
+.segmented.sm button{padding:.28rem .85rem; font-size:.82rem}
+.cio-inputs{display:grid; grid-template-columns:repeat(3,1fr); gap:.3rem .7rem; margin:.2rem 0 1.1rem}
+.cio-inputs .field{margin:.15rem 0}
+@media(max-width:520px){ .cio-inputs{grid-template-columns:1fr 1fr} }
+.cio-summary{margin:.9rem 0 0; font-size:.95rem; color:var(--olive-deep); background:var(--paper-2); border:1px solid var(--line); border-radius:12px; padding:.6rem .85rem; text-align:center; line-height:1.4}
+.cio-summary b{color:var(--c)}
+@media (max-width:520px){ .cio-bar{grid-template-columns:4.5rem 1fr} .cio-nums{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+<div id="progress"></div>
+
+<header class="bar">
+  <a class="brand" href="#welcome">
+    <span class="mark">🫒</span>
+    <span>Eat Well, Live Better<small data-i18n="brandsub">A guide for Guillermo &amp; Pilar</small></span>
+  </a>
+  <span class="spacer"></span>
+  <button class="menu-btn" onclick="toggleOverlay()">☰ <span data-i18n="chapters">Chapters</span></button>
+  <div class="langtoggle" role="group" aria-label="Language">
+    <button id="btn-en" class="active" onclick="setLang('en')">EN</button>
+    <button id="btn-es" onclick="setLang('es')">ES</button>
+  </div>
+</header>
+
+<div id="overlay" onclick="if(event.target.id==='overlay')toggleOverlay()">
+  <div class="sheet">
+    <button class="ov-close" onclick="toggleOverlay()" aria-label="Close menu">✕</button>
+    <div class="eyebrow">Your guide</div>
+    <h3>Jump to a chapter</h3>
+    <div id="overlayLinks"></div>
+  </div>
+</div>
+
+<div id="recipeModal" hidden onclick="if(event.target.id==='recipeModal')closeRecipe()">
+  <div class="rm-card" id="rmCard"></div>
+</div>
+
+<div class="shell">
+  <nav class="rail" id="rail"></nav>
+  <main>
+
+  <!-- HERO / COVER -->
+  <section class="hero-stage" id="welcome">
+
+    <div class="hero v3">
+      <div class="eyebrow">
+        <svg class="ikurrina" viewBox="0 0 30 20" aria-label="Ikurriña">
+          <rect width="30" height="20" fill="#D52B1E"/>
+          <g stroke="#009B48" stroke-width="3.4"><line x1="0" y1="0" x2="30" y2="20"/><line x1="30" y1="0" x2="0" y2="20"/></g>
+          <rect x="13" y="0" width="4" height="20" fill="#fff"/><rect x="0" y="8" width="30" height="4" fill="#fff"/>
+        </svg>
+        Amorebieta · Euskal Herria
+      </div>
+      <div class="lang-en">
+      <h1>Lose the kilos.<br>And <span class="scrawl">keep them off</span>.</h1>
+      <div class="for">For good this time, even with the whisky cheesecake. 😄</div>
+      <p class="sub">Not a diet. And definitely not one of Marten's witchcraft green power-juices. 😅
+        This is how you lose weight the healthy way and actually keep it off: a shift in mindset, a few
+        simple systems, little tricks and easy tips you will really stick to. Real Basque food, no
+        starving, and learning to smile at a craving instead of obeying it. Because in the end it was
+        never about short-term kilos, it was about your <a href="#why" class="why">WHY</a>, your systems,
+        and the long life you want from here.</p>
+      <div class="cta">
+        <a class="btn primary" href="#start">Start with a smile</a>
+        <button class="btn ghost" onclick="toggleOverlay()">See all chapters</button>
+      </div>
+      </div>
+      <div class="lang-es">
+      <h1>Perded los kilos.<br>Y <span class="scrawl">que no vuelvan</span>.</h1>
+      <div class="for">Esta vez para siempre, sí, hasta con la tarta de queso al whisky. 😄</div>
+      <p class="sub">Esto no es una dieta. Y desde luego no es uno de los zumos verdes de brujería de Marten. 😅 Así es como se adelgaza de forma sana y se mantiene de verdad: un cambio de mentalidad, unos cuantos sistemas sencillos, pequeños trucos y consejos fáciles que de verdad vais a mantener. Comida vasca de verdad, sin pasar hambre, y aprender a sonreírle a un antojo en vez de obedecerlo. Porque al final nunca fue cuestión de kilos para un verano, fue cuestión de vuestro <a href="#why" class="why">PORQUÉ</a>, vuestros sistemas y la vida larga que queréis a partir de ahora.</p>
+      <div class="cta">
+        <a class="btn primary" href="#start">Empezad con una sonrisa</a>
+        <button class="btn ghost" onclick="toggleOverlay()">Ver todos los capítulos</button>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STRONG OPENER -->
+  <section class="card" id="start">
+    <div class="lang-en">
+    <div class="eyebrow">First things first</div>
+    <h2>You have tried before. I get it.</h2>
+    <p>In a minute I will tell you a little story about a whisky cheesecake in a Chinese restaurant, and
+      five words in Spanish you will be itching to use, the kind you would not say in front of
+      the foreman. 😄 But before that story, something
+      important.</p>
+    <p>Hey Guillermo and Pilar. I know exactly what you are probably thinking right now: <em>"Madre mía, this is a
+      lot of reading. I just want the solution, the quick fix. I don't want to study a whole book."</em>
+      Fair enough.</p>
+    <p>So here is how easy I make it: you do not even have to read it. Your hands have lifted enough
+      today. For once, let your ears do the work.
+      <strong>Press play and let a real Spanish voice read the whole thing to you, out loud.</strong>
+      Take your time, brick by brick. Best of all on the sofa next to Pilar (your partner in crime, and
+      the cook who keeps you fed like a king, which is exactly why this is a team sport 😄), half an hour
+      at most. That is all it takes.</p>
+    <p>And Pilar, this is every bit as much for you. You are the heart of this kitchen, a true maestra of
+      Spanish and Basque cooking, making sure your man never sits down to a cold plate after a hard day.
+      That is love. It also makes you two a team, because Guillermo can be strong as an ox all day, then
+      walk in, see your famous ali-oli smiling up at him at 800 calories a spoon, and the whole fight
+      starts over. 😄 (More on taming that mayonnaise in the <a href="#tips">extra tips</a>.)</p>
+    <p>Probably you have tried to lose weight before. Probably more than once. Maybe you held on for a
+      few days, a few weeks, even a few months, lost a couple of kilos and felt great, and then life got
+      busy and the old habits crept back in. Sometimes it is simply hard to stick to the rules.</p>
+    <p>And maybe you are still not happy with where you are. That is exactly why this guide exists. You
+      are not starting over, you are starting wiser.</p>
+    <p>So, that is why the real question is this:</p>
+    <p class="big-quote">"Will you give 25 minutes, just once, to change how you live for the next 30
+      years?" 🔥</p>
+    <p>This is not about following yet another strict food system with a long list of rules you can
+      barely wait to escape. You know the scene: late at night, comfy on the sofa, watching your
+      favourite show and staring down your favourite sweet like it owes you money, your brain working
+      overtime to build the perfect legal case for why you simply have to eat it tonight. 😄</p>
+    <p>Because that
+      is the trap: you grit your teeth, you drop a few kilos, you go back to the old way, you gain it all
+      back, and round and round you go. <strong>Lose, gain, lose, gain.</strong> Exhausting, and it never
+      ends.</p>
+
+    <p><strong>I am not putting you through that.</strong> I am after something completely different: the moment it
+      <strong>clicks.</strong> When you finally understand <em>why</em>, a switch flips inside you and it
+      stays flipped. Not a diet you survive. A person you become.</p>
+    <p class="big-quote">This is the difference between losing weight for one summer, and changing for
+      the rest of your life.</p>
+    <p>So let me show you where it really starts, with the captain of your ship. 🚢</p>
+    <div class="nextprev"><span></span><a class="btn primary" href="#captain">Next: Who's the captain?</a></div>
+    </div>
+    <div class="lang-es">
+    <div class="eyebrow">Lo primero de todo</div>
+    <h2>Ya lo habéis intentado antes. Lo entiendo.</h2>
+    <p>Dentro de un momento os contaré una pequeña historia sobre una tarta de queso al whisky en un restaurante chino, y cinco palabras que os vais a morir de ganas de usar, de esas que no se dicen delante del capataz. 😄 Pero antes de esa historia, algo importante.</p>
+    <p>Hola Guillermo y Pilar. Sé perfectamente lo que estaréis pensando ahora mismo: <em>«Madre mía, cuánto para leer. Yo solo quiero la solución, el remedio rápido. No me apetece estudiarme un libro entero».</em> Me parece justo.</p>
+    <p>Así que mirad qué fácil os lo pongo: ni siquiera tenéis que leerlo. Las manos ya han levantado bastante por hoy. Por una vez, que trabajen los oídos. <strong>Dadle al play y dejad que una voz española de verdad os lo lea todo, en voz alta.</strong> Con calma, ladrillo a ladrillo. Mejor aún en el sofá, al lado de Pilar (tu cómplice, y la cocinera que te tiene como a un rey, que es justo por lo que esto es deporte de equipo 😄), media hora como mucho. Eso es todo lo que hace falta.</p>
+    <p>Y Pilar, esto es igual de tuyo. Tú eres el corazón de esta cocina, una auténtica maestra de la cocina española y vasca, la que se asegura de que tu hombre siempre tenga un plato caliente después de un día duro. Eso es amor. Y también os convierte en un equipo, porque Guillermo puede estar fuerte como un toro todo el día, llegar a casa, ver tu famoso ali-oli sonriéndole desde la mesa con 800 calorías por cucharada, y vuelta a empezar la batalla. 😄 (Más sobre cómo domar esa mayonesa en los <a href="#tips">consejos extra</a>.)</p>
+    <p>Seguramente ya habéis intentado adelgazar antes. Seguramente más de una vez. A lo mejor aguantasteis unos días, unas semanas, incluso unos meses, perdisteis un par de kilos y os sentíais genial, y entonces la vida se complicó y las viejas costumbres se colaron de nuevo. A veces, sencillamente, cuesta seguir las normas.</p>
+    <p>Y puede que todavía no estéis a gusto con donde estáis. Justo por eso existe esta guía. No empezáis de cero, empezáis con más cabeza.</p>
+    <p>Así que la verdadera pregunta es esta:</p>
+    <p class="big-quote">«¿Vais a dedicar 25 minutos, una sola vez, para cambiar cómo vais a vivir los próximos 30 años?» 🔥</p>
+    <p>No se trata de seguir otra dieta estricta más, con una lista de normas de las que no veis la hora de escapar. Ya conocéis la escena: tarde por la noche, a gustito en el sofá, viendo vuestra serie favorita y mirando fijamente vuestro dulce favorito como si os debiera dinero, con el cerebro a tope buscando el argumento perfecto para justificar por qué hay que comérselo esta noche sí o sí. 😄</p>
+    <p>Porque esa es la trampa: apretáis los dientes, perdéis unos kilos, volvéis a las andadas, lo recuperáis todo, y vuelta a empezar. <strong>Perder, ganar, perder, ganar.</strong> Agotador, y no se acaba nunca.</p>
+    <p><strong>No os voy a hacer pasar por eso.</strong> Voy detrás de algo completamente distinto: el momento en que hace <strong>clic</strong>. Cuando por fin entendéis el <em>porqué</em>, algo se enciende dentro de vosotros y se queda encendido. No una dieta que aguantar. Una persona en la que os convertís.</p>
+    <p class="big-quote">Esta es la diferencia entre perder peso para un verano, y cambiar para el resto de vuestra vida.</p>
+    <p>Así que dejadme enseñaros dónde empieza todo de verdad: con el capitán de vuestro barco. 🚢</p>
+    <div class="nextprev"><span></span><a class="btn primary" href="#captain">Siguiente: ¿Quién es el capitán?</a></div>
+    </div>
+  </section>
+
+  <!-- CAPTAIN (the fun hook, up front) -->
+  <section class="card tint" id="captain">
+    <div class="lang-en">
+    <div class="eyebrow">Start here, with a smile</div>
+    <h2>Who is the captain of your ship? 🚢</h2>
+    <p>You are going to be tested, more often than you would like, and you knew that before you even
+      opened this. How it ends comes down to one question.</p>
+    <p>Here is the real question, bigger than any diet: <strong>will you be weaker than your cravings, or
+      stronger than your impulses?</strong> And on the days you lose that fight, it is almost always one
+      of two things: no system was ready in your pocket, or your <a href="#why" class="why">WHY</a> was
+      too weak.</p>
+    <p>Right now, when a craving shows up, your body snaps its fingers, and you obey. The body is steering
+      the ship, and you, the captain, have quietly let go of the wheel. You are going to take that wheel
+      back. Because a craving is just an impulse. It has no power of its own. <strong>The only one with
+      real power here is you.</strong></p>
+    <p>So picture this. You are out for dinner at the Chinese restaurant, the one you love, and a
+      gorgeous little whisky cheesecake is sitting on the table, batting its eyes at you. You look it
+      dead in the eye, you smile, and you tell it: <strong>"Vete a tu puta casa"</strong> 😄. Go home,
+      you are not invited tonight. And when the bill comes and you never even ordered it, you sit back,
+      grin, and say: <em>"See? I won. Because I am stronger than you."</em></p>
+    <div class="callout win"><strong>Here is the magic part.</strong> Every time you win one of those
+      little standoffs, it adds up, and it literally <strong>rewires your brain.</strong> Do it enough,
+      and something beautiful happens: it stops being about food at all. It is no longer <em>"can I
+      follow diet A, or diet B, or this plan or that one?"</em> It becomes: <em>"I understand how this
+      works now, and I don't need that anymore, because I am in control."</em> That is the whole game.</div>
+    <p>Your body just has to be retrained, reconditioned, like a muscle in the gym. That takes two
+      things money cannot buy: <strong>self-discipline and self-control.</strong> The good news: like
+      any muscle, it gets stronger every single time you use it, and the cravings get quieter.</p>
+    <p class="nugget">"Will you be weaker than your cravings, or stronger than your impulses? That is the
+      only real question."</p>
+    <div class="nextprev"><a class="btn ghost" href="#start">Back</a><a class="btn primary" href="#struggles">Next: Does this sound familiar?</a></div>
+    </div>
+    <div class="lang-es">
+    <div class="eyebrow">Empezamos con una sonrisa</div>
+    <h2>¿Quién es el capitán de vuestro barco? 🚢</h2>
+    <p>Os van a poner a prueba, más veces de las que os gustaría, y eso ya lo sabíais antes de abrir esto. Cómo acaba la historia depende de una sola pregunta.</p>
+    <p>Y la verdadera pregunta, más grande que cualquier dieta, es esta: <strong>¿vais a ser más débiles que vuestros antojos, o más fuertes que vuestros impulsos?</strong> Y los días que perdáis esa batalla, casi siempre es por una de dos cosas: no teníais ningún sistema preparado en el bolsillo, o vuestro <a href="#why" class="why">PORQUÉ</a> era demasiado débil.</p>
+    <p>Ahora mismo, cuando aparece un antojo, el cuerpo ladra una orden y vosotros obedecéis. El cuerpo lleva el barco, y vosotros, el capitán, habéis soltado el timón sin daros cuenta. Vais a recuperar ese timón. Porque un antojo es solo un impulso. No tiene ningún poder propio. <strong>El único que tiene poder de verdad aquí sois vosotros.</strong></p>
+    <p>Imaginaos la escena. Estáis cenando en el restaurante chino, ese que tanto os gusta, y una preciosa tarta de queso al whisky descansa sobre la mesa, haciéndoos ojitos. La miráis fijamente, sonreís y le decís: <strong>«Vete a tu puta casa»</strong> 😄. A casa, que esta noche no estás invitada. Y cuando llega la cuenta y ni siquiera la habéis pedido, os recostáis, sonreís y decís: <em>«¿Ves? He ganado. Porque soy más fuerte que tú».</em></p>
+    <div class="callout win"><strong>Y aquí está la magia.</strong> Cada vez que ganáis uno de esos pequeños pulsos, suma, y literalmente <strong>os reconfigura el cerebro.</strong> Hacedlo suficientes veces y pasa algo precioso: deja de ir de comida. Ya no es <em>«¿puedo seguir la dieta A, o la B, o este plan o aquel?».</em> Se convierte en: <em>«Ahora entiendo cómo funciona esto, y ya no lo necesito, porque tengo el control».</em> Ese es todo el juego.</div>
+    <p>Al cuerpo solo hay que reeducarlo, reacondicionarlo, como un músculo en el gimnasio. Eso requiere dos cosas que el dinero no puede comprar: <strong>autodisciplina y autocontrol.</strong> La buena noticia: como cualquier músculo, se hace más fuerte cada vez que lo usáis, y los antojos se van callando.</p>
+    <p class="nugget">«¿Seréis más débiles que vuestros antojos, o más fuertes que vuestros impulsos? Esa es la única pregunta que importa.»</p>
+    <div class="nextprev"><a class="btn ghost" href="#start">Atrás</a><a class="btn primary" href="#struggles">Siguiente: ¿Esto te suena?</a></div>
+    </div>
+  </section>
+
+  <!-- STRUGGLES (relatable excuses, right after the captain hook) -->
+  <section class="card" id="struggles">
+    <div class="lang-en">
+    <div class="eyebrow">Know the enemy</div>
+    <h2>Does this sound familiar? 🗣️</h2>
+    <p class="lead">I am no mind reader. But I would happily bet a good bottle of Rioja that a few of
+      these little voices have visited you on a hard day. 😄 Have a read, have a laugh, nod along. Then
+      it is time to work on them.</p>
+    <div class="voices">
+      <div class="voice"><span class="v-q">"I'm starving, I <em>need</em> to eat right now."</span><span class="v-a">even though lunch was two hours ago, and it was not a small one 🙄</span></div>
+      <div class="voice"><span class="v-q">"Just this once won't hurt."</span><span class="v-a">the most expensive little sentence in the world</span></div>
+      <div class="voice"><span class="v-q">"I've had a hard day. I deserve this."</span><span class="v-a">funny how a nice carrot never gets that excuse</span></div>
+      <div class="voice"><span class="v-q">"I'll just have one."</span><span class="v-a">one Kalimotxo, one biscuit, one more... and hey, no one is looking 😏</span></div>
+      <div class="voice"><span class="v-q">"A bit of white bread won't matter."</span><span class="v-a">it doesn't even taste that special, but the brain swears it is worth it</span></div>
+      <div class="voice"><span class="v-q">"It's the weekend, I'll be good on Monday."</span><span class="v-a">your body cannot read the calendar</span></div>
+      <div class="voice"><span class="v-q">"It's only a small pintxo."</span><span class="v-a">small pintxo, big night, the count always surprises you</span></div>
+      <div class="voice"><span class="v-q">"I work hard all day, I burn it off anyway."</span><span class="v-a">you cannot out-train a fork, not even on the scaffolding</span></div>
+      <div class="voice"><span class="v-q">"Life is too short to say no to good food."</span><span class="v-a">it is also too short to spend out of breath</span></div>
+    </div>
+    <div class="callout key"><strong>None of these mean you are weak.</strong> They are your brain's old
+      wiring talking, the very same script in everyone who ever tried to change. The difference between
+      the people who make it and the people who don't is simple: the ones who make it <strong>saw these
+      coming and had an answer ready.</strong> That is exactly what I am here to help you build, together.</div>
+    <div class="nextprev"><a class="btn ghost" href="#captain">Back</a><a class="btn primary" href="#systems">Next: Willpower vs Systems</a></div>
+    </div>
+    <div class="lang-es">
+    <div class="eyebrow">Conoce al enemigo</div>
+    <h2>¿Esto te suena? 🗣️</h2>
+    <p class="lead">No soy adivino. Pero me jugaría una buena botella de Rioja a que alguna de estas vocecillas os ha visitado en un día difícil. 😄 Leedlas, reíos, asentid con la cabeza. Y luego toca ponerse a trabajarlas.</p>
+    <div class="voices">
+      <div class="voice"><span class="v-q">«Me muero de hambre, necesito comer ahora mismo.»</span><span class="v-a">y eso que comisteis hace dos horas, y no fue precisamente poco 🙄</span></div>
+      <div class="voice"><span class="v-q">«Por una vez no pasa nada.»</span><span class="v-a">la frasecita más cara del mundo</span></div>
+      <div class="voice"><span class="v-q">«He tenido un día duro. Me lo merezco.»</span><span class="v-a">qué curioso que una buena zanahoria nunca se gane esa excusa</span></div>
+      <div class="voice"><span class="v-q">«Solo uno.»</span><span class="v-a">un kalimotxo, una galleta, uno más... y total, no mira nadie 😏</span></div>
+      <div class="voice"><span class="v-q">«Un poco de pan blanco no importa.»</span><span class="v-a">si ni siquiera sabe a nada especial, pero el cerebro jura que merece la pena</span></div>
+      <div class="voice"><span class="v-q">«Es finde, el lunes me porto bien.»</span><span class="v-a">tu cuerpo no sabe leer el calendario</span></div>
+      <div class="voice"><span class="v-q">«Es solo un pintxo pequeño.»</span><span class="v-a">pintxo pequeño, noche larga, la cuenta siempre sorprende</span></div>
+      <div class="voice"><span class="v-q">«Trabajo duro todo el día, ya lo quemo.»</span><span class="v-a">a un tenedor no se le gana entrenando, ni en el andamio</span></div>
+      <div class="voice"><span class="v-q">«La vida es demasiado corta para decir no a la buena comida.»</span><span class="v-a">también es demasiado corta para pasarla sin aliento</span></div>
+    </div>
+    <div class="callout key"><strong>Nada de esto significa que seáis débiles.</strong> Es el cableado antiguo de vuestro cerebro hablando, el mismísimo guion que tiene todo el que alguna vez intentó cambiar. La diferencia entre los que lo consiguen y los que no es sencilla: los que lo consiguen <strong>las vieron venir y tenían una respuesta preparada.</strong> Justo eso es lo que estoy aquí para ayudaros a construir, juntos.</div>
+    <div class="nextprev"><a class="btn ghost" href="#captain">Atrás</a><a class="btn primary" href="#systems">Siguiente: Fuerza de voluntad vs. sistemas</a></div>
+    </div>
+  </section>
+
+  <!-- WILLPOWER VS SYSTEMS (mindset: flesh/spirit + bucket, then systems) -->
+  <section class="card tint" id="systems">
+    <div class="lang-en">
+    <div class="eyebrow">The secret of people who succeed</div>
+    <h2>Willpower vs. Systems 🧰</h2>
+
+    <p><strong>Your flesh vs. your spirit. 😇</strong> There is an old line in the Bible: <em>"the spirit is willing, but the flesh is weak."</em>
+      It is spot on. Your <strong>flesh</strong> (the body) is the drama queen
+      that whines for dessert, begs for the late-night snack, and wants everything right now. Your
+      <strong>spirit</strong> (the real you) is the one who decides who you want to become. The flesh is
+      loud, but the spirit is the boss. This whole guide is really just one thing: getting your spirit
+      fit enough to put the flesh back in its seat.</p>
+
+    <p class="big-quote">"Willpower is a small bucket of water. By the evening it is usually empty."</p>
+    <p>Every time you say no, you pour a little more out. And right when it runs dry, the whole kitchen
+      wakes up, and temptation with it.</p>
+    <p>It starts as a whisper from the fridge: <em>"Guillermo... Guillermooo..."</em> Then the biscuits
+      chime in from the cupboard: <em>"Pilar... Pilaaar..."</em> and soon the whole kitchen is one big
+      choir. But that is not the kitchen singing. It is your flesh, that same drama queen, throwing a
+      tantrum for its dessert. 😄</p>
+    <p>And those two at least have the decency to stay hidden. That big bowl of sweets parked right in
+      front of the TV does not even bother to whisper, it just sits there in plain sight, smiling at
+      you all evening. 😄</p>
+    <p>That is why <strong class="scrawl">systems over willpower</strong> matter so much.</p>
+    <p class="big-quote">The people who make it are not stronger than you. They simply built systems, so
+      willpower never has to save the day.</p>
+    <p>Inside you there is a stronger version and a weaker version of yourself, and both are real. Every
+      time you keep your word, the strong one grows. Every time you break it, the weak one does. My job
+      is to make sure the strong you never fights alone. That is all a system is: a little trick waiting
+      in your pocket, so the right choice is half made before the craving even shows up.</p>
+    <p>And here is the part that changes everything: a craving is a wave, not a wall. It rises, it peaks,
+      and if you do not feed it, it breaks and rolls away, usually in a few minutes. Like the waves at
+      Mundaka, it always looks bigger from the shore than it really is. You do not have to beat it. You
+      just have to outlast it.</p>
+
+    <figure class="photo kenburns">
+      <img src="assets/img/mundaka.webp" style="object-position:center 58%" alt="The famous left-hand wave peeling along the Mundaka sandbar, below the Santa Katalina hermitage" loading="lazy">
+      <figcaption>The left at Mundaka, Bizkaia 🌊</figcaption>
+    </figure>
+
+    <p class="lead">When the bucket is empty and the wave comes, what do you do? You reach into your
+      pocket for a system. That, right there, is the whole difference between the people who fail and the
+      people who make it.</p>
+    <div class="grid2">
+      <div class="minicard bad"><h3>😣 Why people fail</h3><ul>
+        <li>Running on willpower and motivation alone</li>
+        <li>Gritting their teeth and hoping to "be good"</li>
+        <li>Keeping sweets and junk in the house, in plain sight</li>
+        <li>Shopping hungry, with no list</li>
+        <li>No plan for the weak moment, so the weaker version wins</li>
+        <li>Doing it alone, with no one to answer to</li>
+      </ul></div>
+      <div class="minicard good"><h3>💪 How you win</h3><ul>
+        <li>Keep healthy nuts nearby (not the salty, sugary kind) for when hunger hits</li>
+        <li>Want something sweet? Greek yogurt with fruit, a little honey and banana. Make that your default</li>
+        <li>Get the sweets out of the house. If it is not in front of you, you will not eat it</li>
+        <li>Clear the junk out of the fridge and cupboards completely</li>
+        <li>Decide your meals in advance, when you are calm and full</li>
+        <li>Get an accountability partner. Guillermo and Pilar, do this together and support each other</li>
+      </ul></div>
+    </div>
+    <div class="callout win"><strong>It is not a fight you win with gritted teeth.</strong> It is a
+      fight you win by setting things up beforehand, so the weak version of you barely gets a chance.</div>
+    <p>And at the very end of this guide there is one more powerful system: a <a href="#contract">45-day
+      contract</a> you sign, to lock the whole thing in.</p>
+    <p class="nugget">"It is not about willpower. It is about the system you have ready when temptation
+      shows up."</p>
+    <div class="nextprev"><a class="btn ghost" href="#struggles">Back</a><a class="btn primary" href="#honest">Next: So how do you do it?</a></div>
+    </div>
+    <div class="lang-es">
+    <div class="eyebrow">El secreto de los que lo consiguen</div>
+    <h2>Fuerza de voluntad vs. sistemas 🧰</h2>
+
+    <p><strong>Vuestra carne contra vuestro espíritu. 😇</strong> Hay una frase antigua en la Biblia: <em>«el espíritu está dispuesto, pero la carne es débil.»</em> Da en el clavo. Vuestra <strong>carne</strong> (el cuerpo) es la reina del drama que lloriquea por el postre, suplica el picoteo de medianoche y lo quiere todo ya. Vuestro <strong>espíritu</strong> (el vosotros de verdad) es quien decide en quién os queréis convertir. La carne grita, pero el espíritu manda. Toda esta guía es en realidad una sola cosa: poner a vuestro espíritu en forma para que devuelva a la carne a su sitio.</p>
+
+    <p class="big-quote">«La fuerza de voluntad es un cubo pequeño de agua. Para la noche suele estar vacío.»</p>
+    <p>Cada vez que decís que no, vertéis un poco más. Y justo cuando se queda seco, toda la cocina se despierta, y con ella la tentación.</p>
+    <p>Empieza como un susurro desde la nevera: <em>«Guillermo... Guillermooo...»</em> Luego se suman las galletas desde el armario: <em>«Pilar... Pilaaar...»</em> y enseguida toda la cocina es un gran coro. Pero no es la cocina la que canta. Es vuestra carne, esa misma reina del drama, montando una pataleta por su postre. 😄</p>
+    <p>Y esos al menos tienen la decencia de quedarse escondidos. Ese cuenco enorme de dulces aparcado justo delante de la tele ni siquiera se molesta en susurrar, se queda ahí a la vista, sonriéndoos toda la tarde. 😄</p>
+    <p>Por eso importan tanto los sistemas por encima de la fuerza de voluntad.</p>
+    <p class="big-quote">Los que lo consiguen no son más fuertes que vosotros. Simplemente construyeron sistemas, para que la fuerza de voluntad no tenga que salvar el día.</p>
+    <p>Dentro de vosotros hay una versión más fuerte y una más débil, y las dos son reales. Cada vez que cumplís vuestra palabra, crece la fuerte. Cada vez que la rompéis, crece la débil. Mi trabajo es asegurarme de que el vosotros fuerte nunca pelee solo. Eso es todo lo que es un sistema: un pequeño truco esperando en el bolsillo, para que la decisión correcta esté medio tomada antes incluso de que aparezca el antojo.</p>
+    <p>Y aquí está lo que lo cambia todo: un antojo es una ola, no un muro. Sube, llega a su punto más alto y, si no lo alimentáis, rompe y se aleja, normalmente en unos minutos. Como las olas de Mundaka, siempre parece más grande desde la orilla de lo que en realidad es. No tenéis que vencerlo. Solo tenéis que aguantar más que él.</p>
+
+    <figure class="photo kenburns">
+      <img src="assets/img/mundaka.webp" style="object-position:center 58%" alt="La famosa ola izquierda rompiendo en la barra de Mundaka, bajo la ermita de Santa Catalina" loading="lazy">
+      <figcaption>La izquierda de Mundaka, Bizkaia 🌊</figcaption>
+    </figure>
+
+    <p class="lead">Cuando el cubo está vacío y llega la ola, ¿qué hacéis? Metéis la mano en el bolsillo y sacáis un sistema. Eso, justo ahí, es toda la diferencia entre los que fracasan y los que lo consiguen.</p>
+    <div class="grid2">
+      <div class="minicard bad"><h3>😣 Por qué fracasa la gente</h3><ul>
+        <li>Tirando solo de fuerza de voluntad y motivación</li>
+        <li>Apretando los dientes y esperando «portarse bien»</li>
+        <li>Teniendo dulces y porquerías en casa, a la vista</li>
+        <li>Comprando con hambre y sin lista</li>
+        <li>Sin plan para el momento débil, así que gana la versión más débil</li>
+        <li>Haciéndolo solos, sin nadie a quien rendir cuentas</li>
+      </ul></div>
+      <div class="minicard good"><h3>💪 Cómo ganáis vosotros</h3><ul>
+        <li>Tened a mano frutos secos sanos (no los salados ni azucarados) para cuando ataque el hambre</li>
+        <li>¿Os apetece algo dulce? Yogur griego con fruta, un poco de miel y plátano. Que sea vuestra opción por defecto</li>
+        <li>Sacad los dulces de casa. Si no lo tenéis delante, no os lo coméis</li>
+        <li>Vaciad por completo de porquerías la nevera y los armarios</li>
+        <li>Decidid las comidas con antelación, cuando estéis tranquilos y llenos</li>
+        <li>Buscad un compañero de cuentas. Guillermo y Pilar, hacedlo juntos y apoyaos el uno al otro</li>
+      </ul></div>
+    </div>
+    <div class="callout win"><strong>No es una pelea que se gane apretando los dientes.</strong> Es una pelea que se gana preparándolo todo de antemano, para que la versión débil de vosotros apenas tenga oportunidad.</div>
+    <p>Y al final del todo de esta guía hay un sistema más, muy potente: un <a href="#contract">contrato de 45 días</a> que firmáis, para dejarlo todo bien atado.</p>
+    <p class="nugget">«No va de fuerza de voluntad. Va del sistema que tenéis listo cuando aparece la tentación.»</p>
+    <div class="nextprev"><a class="btn ghost" href="#struggles">Atrás</a><a class="btn primary" href="#honest">Siguiente: ¿Y cómo se hace?</a></div>
+    </div>
+  </section>
+
+  <!-- HONEST -->
+  <section class="card tint" id="honest">
+    <div class="lang-en">
+    <div class="eyebrow">So how do you actually do it?</div>
+    <h2>It won't be easy. But it is possible.</h2>
+    <p>I am not going to lie to you. This will not always be easy. Some days you will be hungry, some
+      evenings you will want to quit. That is normal, and it is part of it. But it is absolutely
+      <strong>possible</strong>, and plenty of people who are no stronger than you have done it.</p>
+    <p class="big-quote">The magic you are looking for is in the thing you are trying to avoid.</p>
+
+    <div class="callout win"><strong>Here is the big secret, and it changes everything:</strong> this is
+      <strong>not about food.</strong> It is not about rules or another diet. It is a <strong>deep shift
+      in the way your mind works</strong>, a real understanding of your own brain, and a change in your
+      <strong>lifestyle.</strong> That is why the whole focus here is lifestyle, not a meal plan. Get the
+      mind right and the food takes care of itself. So the order is simple: understand it, shift your
+      thinking, sign your contract, and <em>then</em> comes the food and the recipes.</div>
+
+    <h3>The broken hunger timetable</h3>
+    <p>Here is what is probably happening right now. You wake up and before your eyes are even open,
+      your stomach is already shouting <em>"feed me."</em> At work you finish lunch and you are already
+      thinking about dinner. In the evening you are on the sofa with a late snack. You eat late, you go
+      to bed with a full belly, and while your body should be resting it is busy digesting all night.
+      In the morning, no break, and the whole thing starts again. Your hunger is running on a broken
+      timetable. A big part of this plan is simply <strong>fixing that timetable</strong>, so your body
+      learns to rest, and learns to burn its own fat instead of always begging for the next meal.</p>
+    <div class="callout"><strong>Why bother understanding all this?</strong> Because if you only follow
+      rules without understanding the <em>why</em>, the whole house of cards falls down on the first
+      hard evening. Understand it once, and it stays with you for good.</div>
+
+    <div class="nextprev"><a class="btn ghost" href="#systems">Back</a><a class="btn primary" href="#why">Next: Your Why</a></div>
+    </div>
+    <div class="lang-es">
+    <div class="eyebrow">¿Y cómo se hace de verdad?</div>
+    <h2>No será fácil. Pero es posible.</h2>
+    <p>No os voy a mentir. Esto no siempre será fácil. Habrá días con hambre, y noches en las que querréis
+      tirar la toalla. Es normal, y forma parte del camino. Pero es absolutamente <strong>posible</strong>,
+      y un montón de gente que no es más fuerte que vosotros ya lo ha conseguido.</p>
+    <p class="big-quote">La magia que buscáis está justo en aquello que intentáis evitar.</p>
+
+    <div class="callout win"><strong>Aquí está el gran secreto, y lo cambia todo:</strong> esto
+      <strong>no va de comida.</strong> No va de normas ni de otra dieta. Es un <strong>cambio profundo en
+      cómo funciona vuestra mente</strong>, entender de verdad vuestro propio cerebro, y un cambio en
+      vuestro <strong>estilo de vida.</strong> Por eso todo el foco está en el estilo de vida, no en un
+      plan de comidas. Poned la mente en su sitio y la comida se resuelve sola. Así que el orden es
+      sencillo: entenderlo, cambiar la forma de pensar, firmar vuestro contrato, y <em>entonces</em>
+      llegan la comida y las recetas.</div>
+
+    <h3>El horario del hambre, estropeado</h3>
+    <p>Esto es lo que seguramente os pasa ahora. Os despertáis y, antes de abrir los ojos, el estómago ya
+      grita <em>«dame de comer».</em> En el trabajo termináis de comer y ya estáis pensando en la cena. Por
+      la noche, en el sofá, con un último picoteo. Coméis tarde, os vais a la cama con la barriga llena, y
+      mientras el cuerpo debería descansar, se pasa toda la noche digiriendo. Por la mañana, sin pausa, y
+      vuelta a empezar. Vuestra hambre funciona con un horario estropeado. Buena parte de este plan es
+      simplemente <strong>arreglar ese horario</strong>, para que el cuerpo aprenda a descansar y a quemar
+      su propia grasa en vez de mendigar la siguiente comida.</p>
+    <div class="callout"><strong>¿Para qué entender todo esto?</strong> Porque si solo seguís normas sin
+      entender el <em>porqué</em>, el castillo de naipes se cae a la primera noche difícil. Entendedlo una
+      vez, y se queda con vosotros para siempre.</div>
+
+    <div class="nextprev"><a class="btn ghost" href="#systems">Atrás</a><a class="btn primary" href="#why">Siguiente: Vuestro Porqué</a></div>
+    </div>
+  </section>
+
+  <!-- WHY -->
+  <section class="card" id="why">
+    <div class="lang-en">
+    <div class="eyebrow">The most important page</div>
+    <h2>Your Big WHY ❤️</h2>
+    <p class="lead">Please do not skip this one. Everything else stands on it.</p>
+    <p class="big-quote">"Without a strong why, no plan survives a bad evening."</p>
+    <p>Willpower runs out, but a real reason refuels itself. So get it clear now. <strong>Why do you
+      really want to lose weight? What gives you strength?</strong> Is it your grandchildren? Your
+      heart? The man you want to see in the mirror? The extra years you want with your family? Whatever
+      it is, find it, because in the weak moments (and everyone has them) this is the thing you reach
+      for.</p>
+
+    <div class="callout key">
+      <strong>Do this for real: the fridge note.</strong> Write your reason down on paper, in your own
+      words. Then stick it on the <strong>fridge</strong>, somewhere you will see it every single day.
+      Read it when you are tempted. This little piece of paper is stronger than any amount of willpower.
+    </div>
+
+    <div class="callout win">
+      <strong>The mirror.</strong> Stand in front of the mirror. If you do not like what you see, do
+      not look away, and do not stand there judging yourself either. Look yourself in the eye and say:
+      <em>"This is not how I want to feel. I am going to change something."</em> Then take your power
+      back: <em>"I brought my body here, so I can bring it back. Food does not control me. I am stronger
+      than my impulses."</em> Say it out loud if you want to. But if that feels strange, just think it,
+      and mean it. Either way, you are taking responsibility back, and that is where the real change,
+      and your new journey, begins.
+    </div>
+
+    <details><summary>Reasons that tend to be powerful</summary>
+      <div class="body"><ul>
+        <li>👨‍👧 Being strong and mobile enough to play with grandchildren for many years.</li>
+        <li>💪 Less out of breath on the scaffolding, easier knees and back, more energy after work.</li>
+        <li>❤️ Less excess fat means less strain on your heart and blood vessels.</li>
+        <li>😌 Feeling good in your clothes and in your own skin. Confidence counts.</li>
+      </ul></div>
+    </details>
+    <details><summary>The science, briefly (so the why has muscle)</summary>
+      <div class="body"><p>Excess weight raises the risk of heart disease, type-2 diabetes, and at
+      least 13 types of cancer (World Health Organization). The good news: losing just <strong>5 to
+      10% of your body weight</strong> already brings real improvements in blood pressure, blood sugar,
+      and cholesterol. You do not need a "perfect" weight to win big on health.</p></div>
+    </details>
+
+    <div class="callout win">✍️ <strong>Write your reason down by hand</strong> on the printed version,
+      and stick it on the fridge. Paper you see every single day beats anything on a screen. I will walk
+      you through this part on the PDF.</div>
+    <p class="nugget">"The why is the engine. Everything else is just steering."</p>
+    <div class="nextprev"><a class="btn ghost" href="#honest">Back</a><a class="btn primary" href="#how">Next: How it works</a></div>
+    </div>
+    <div class="lang-es">
+    <div class="eyebrow">La página más importante</div>
+    <h2>Vuestro gran PORQUÉ ❤️</h2>
+    <p class="lead">Por favor, no os saltéis esta. Todo lo demás se apoya en ella.</p>
+    <p class="big-quote">«Sin un porqué fuerte, ningún plan sobrevive a una mala noche.»</p>
+    <p>La fuerza de voluntad se agota, pero una razón de verdad se recarga sola. Así que tenedlo claro
+      ahora. <strong>¿Por qué queréis adelgazar de verdad? ¿Qué os da fuerza?</strong> ¿Vuestros nietos?
+      ¿El corazón? ¿El hombre que queréis ver en el espejo? ¿Los años de más que queréis con vuestra
+      familia? Sea lo que sea, encontradlo, porque en los momentos débiles (y todos los tenemos) es a esto
+      a lo que os agarráis.</p>
+
+    <div class="callout key">
+      <strong>Hacedlo de verdad: la nota en la nevera.</strong> Escribid vuestra razón en un papel, con
+      vuestras propias palabras. Pegadla en la <strong>nevera</strong>, en un sitio donde la veáis cada
+      día. Leedla cuando os tiente la comida. Este trocito de papel es más fuerte que toda la fuerza de
+      voluntad del mundo.
+    </div>
+
+    <div class="callout win">
+      <strong>El espejo.</strong> Poneos delante del espejo. Si no os gusta lo que veis, no apartéis la
+      mirada, pero tampoco os quedéis ahí juzgándoos. Miraos a los ojos y decid: <em>«Así no es como quiero
+      sentirme. Voy a cambiar algo.»</em> Y luego recuperad vuestro poder: <em>«Yo traje mi cuerpo hasta
+      aquí, así que puedo devolverlo. La comida no me controla. Soy más fuerte que mis impulsos.»</em>
+      Decidlo en voz alta si queréis. Y si os resulta raro, pensadlo, pero de verdad. De cualquier modo,
+      estáis recuperando la responsabilidad, y ahí es donde empieza el cambio de verdad, y vuestro nuevo
+      camino.
+    </div>
+
+    <details><summary>Razones que suelen tener mucha fuerza</summary>
+      <div class="body"><ul>
+        <li>👨‍👧 Estar fuertes y ágiles para jugar con los nietos durante muchos años.</li>
+        <li>💪 Menos ahogo en el andamio, rodillas y espalda más llevaderas, más energía después del trabajo.</li>
+        <li>❤️ Menos grasa de más significa menos esfuerzo para el corazón y los vasos sanguíneos.</li>
+        <li>😌 Sentirse bien con la ropa y en la propia piel. La confianza cuenta.</li>
+      </ul></div>
+    </details>
+    <details><summary>La ciencia, en breve (para que el porqué tenga músculo)</summary>
+      <div class="body"><p>El exceso de peso aumenta el riesgo de enfermedad del corazón, diabetes tipo 2 y
+      al menos 13 tipos de cáncer (Organización Mundial de la Salud). La buena noticia: perder solo un
+      <strong>5 a 10 % de vuestro peso</strong> ya trae mejoras reales en la tensión, el azúcar en sangre y
+      el colesterol. No hace falta un peso «perfecto» para ganar mucho en salud.</p></div>
+    </details>
+
+    <div class="callout win">✍️ <strong>Escribid vuestra razón a mano</strong> en la versión impresa, y
+      pegadla en la nevera. Un papel que veis cada día gana a cualquier cosa en una pantalla. Os guiaré por
+      esta parte en el PDF.</div>
+    <p class="nugget">«El porqué es el motor. Todo lo demás es solo el volante.»</p>
+    <div class="nextprev"><a class="btn ghost" href="#honest">Atrás</a><a class="btn primary" href="#how">Siguiente: Cómo funciona</a></div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="card" id="how">
+    <div class="eyebrow">The whole machine, in one picture</div>
+    <h2>Calories In, Calories Out ⚖️</h2>
+    <p class="lead"><strong>Calories IN</strong> is the food and drink you take in. <strong>Calories
+      OUT</strong> is everything your body burns just living, working and moving. Tip the balance, and over
+      time your weight quietly follows.</p>
+    <div class="callout key">
+      <strong>Eat less than you burn, and you lose.</strong><br>
+      <strong>Eat more than you burn, and you gain.</strong><br>Everything else is detail.
+    </div>
+
+    <div class="cio" id="cio" data-state="lose">
+      <div class="cio-top">
+        <div class="cio-burn">
+          <span class="cio-burn-lbl">Your daily burn (OUT) <button type="button" class="cio-help" id="cioHelpBtn" onclick="cioHelp()" aria-label="How is this worked out?">?</button></span>
+          <span class="cio-burn-num"><input id="cioBurn" type="number" min="1200" max="5000" step="10" value="2600" inputmode="numeric" aria-label="Your daily burn in calories"> kcal</span>
+          <span class="cio-burn-note" id="cioBurnNote">example, type your own or use the calculator below</span>
+        </div>
+        <div class="cio-chip" id="cioChip">Losing fat 🔥</div>
+      </div>
+
+      <div class="cio-sexrow">
+        <span class="cio-steps-lbl">Base need for a</span>
+        <div class="segmented sm" id="cioSexSeg">
+          <button type="button" data-v="m" class="on" onclick="cioSetSex('m')">man</button>
+          <button type="button" data-v="f" onclick="cioSetSex('f')">woman</button>
+        </div>
+        <span class="cio-steps-lbl" style="margin-left:auto">a woman burns less</span>
+      </div>
+
+      <div class="cio-inputs">
+        <div class="field"><label>Age</label><input id="cioAge" type="number" inputmode="numeric" oninput="cioRecalc()"></div>
+        <div class="field"><label>Height (cm)</label><input id="cioHt" type="number" inputmode="numeric" oninput="cioRecalc()"></div>
+        <div class="field"><label>Weight (kg)</label><input id="cioWt" type="number" inputmode="numeric" oninput="cioRecalc()"></div>
+        <div class="field" style="grid-column:1/-1"><label>How active is your day?</label>
+          <select id="cioAct" onchange="cioRecalc()">
+            <option value="1.2">Mostly sitting, very little moving</option>
+            <option value="1.375">At home, light moving (cooking, errands, short walks)</option>
+            <option value="1.55">On your feet a good part of the day</option>
+            <option value="1.725" selected>Active job or hard daily labour</option>
+            <option value="1.9">Hard physical job plus training on top</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="cio-help-pop" id="cioHelpPop" hidden>
+        <strong>How do I know this number is right?</strong>
+        <p>It is a solid estimate, not a lab reading. It starts from your body's resting burn (from your
+        weight, height, age and sex, the standard Mifflin-St Jeor formula), times how active your day is,
+        plus any extra walking. The honest part: <strong>the scale is the real test.</strong> Pick a number,
+        eat to it for 2 to 3 weeks and watch. Losing too fast? Eat a little more. Nothing moving? Trim a
+        little, or add steps. Your body shows you the exact number over time.</p>
+        <p class="hint">Method: Mifflin-St Jeor (1990) plus an activity factor, the same approach dietitians
+        use. About 7,700 kcal of food equals 1 kg of body fat, and roughly 40 kcal per 1,000 steps walked.</p>
+      </div>
+
+      <div class="cio-steps">
+        <span class="cio-steps-lbl">Walking on top</span>
+        <div class="cio-steps-opts" id="cioSteps">
+          <button type="button" data-st="0" class="on" onclick="cioSetSteps(0)">home day</button>
+          <button type="button" data-st="2000" onclick="cioSetSteps(2000)">+2k steps</button>
+          <button type="button" data-st="5000" onclick="cioSetSteps(5000)">+5k</button>
+          <button type="button" data-st="10000" onclick="cioSetSteps(10000)">+10k</button>
+        </div>
+        <span class="cio-steps-out" id="cioStepsOut">home day</span>
+      </div>
+
+      <div class="cio-bars">
+        <div class="cio-bar"><span class="cio-bar-lbl">OUT · burn</span>
+          <div class="cio-track"><div class="cio-fill out" id="cioOut"></div><span class="cio-bar-num" id="cioOutNum">2,600</span></div></div>
+        <div class="cio-bar"><span class="cio-bar-lbl">IN · you eat</span>
+          <div class="cio-track"><div class="cio-fill in" id="cioIn"></div><span class="cio-bar-num" id="cioInNum">2,100</span></div></div>
+      </div>
+
+      <div class="cio-slider">
+        <input type="range" id="cioEat" min="1600" max="3600" step="50" value="2100" aria-label="What you eat each day in calories">
+        <div class="cio-slider-cap">drag to change what you eat each day 🍽️</div>
+      </div>
+
+      <div class="cio-graph">
+        <div class="cio-graph-head"><span>Your weight, if you keep this up</span><span class="cio-graph-sub">next 12 weeks</span></div>
+        <svg id="cioSvg" viewBox="0 0 600 200" aria-hidden="true">
+          <line class="cio-base" id="cioBaseLine" x1="0" x2="600" y1="100" y2="100"></line>
+          <path class="cio-area" id="cioArea" d=""></path>
+          <path class="cio-curve" id="cioCurve" d=""></path>
+          <circle class="cio-end" id="cioEnd" r="6" cx="600" cy="160"></circle>
+        </svg>
+        <div class="cio-graph-foot"><span>today</span><b id="cioEndKg">−6.0 kg</b></div>
+      </div>
+
+      <div class="cio-nums">
+        <div class="stat"><b id="cioGap">−500</b><span>kcal gap / day</span></div>
+        <div class="stat"><b id="cioWeek">0.45</b><span>kg / week</span></div>
+        <div class="stat"><b id="cioProj">5.5</b><span>kg in 12 weeks</span></div>
+      </div>
+
+      <p class="cio-summary" id="cioSummary"></p>
+    </div>
+
+    <p>Think of your body like a wood stove. The food you eat is the wood you feed in. The fire is your
+      body burning it all day. Feed it a little <strong>less</strong> than it burns, and it reaches into
+      the woodpile you already carry, your fat, to cover the gap. A small daily gap of about <strong>500
+      kcal</strong> melts roughly half a kilo of fat a week. Steady, and easy to keep. A body doing hard
+      physical work burns a lot, so you do not need to starve, just stay a little under.</p>
+    <div class="callout">🔎 <strong>Two numbers run the whole thing:</strong> your burn (the calculator
+      below works it out for you) and roughly what you eat. The catch is that a lot of calories
+      <em>hide</em>, in oil, sauces and drinks, while others are plain to see. Becoming aware of them, the
+      visible and the hidden, is the real skill. More on spotting the sneaky ones in the
+      <a href="#tips">extra tips</a>.</div>
+    <details><summary>🔥 The aha-moment: metabolic flexibility</summary>
+      <div class="body"><p>Your body can run on two fuels: the food you just ate, and the fat you have
+      stored. If you eat constantly, snack after snack all day, your body gets used to fuel from the
+      outside and gets lazy at burning fat. Then when you skip a snack it panics ("where is my fuel?")
+      even though you are carrying plenty as fat. That panic shows up as cravings and feeling weak. The
+      fix is not to panic-eat, it is to eat real meals with protein and be okay with a little normal
+      hunger between them, so your body remembers how to burn its own reserves.</p></div>
+    </details>
+    <p class="nugget">"If you only feed your body from the outside, it never learns to burn the fuel it
+      is already carrying."</p>
+    <div class="nextprev"><a class="btn ghost" href="#why">Back</a><a class="btn primary" href="#paths">Next: Your path</a></div>
+  </section>
+
+  <!-- PATHS -->
+  <section class="card tint" id="paths">
+    <div class="lang-en">
+    <div class="eyebrow">Choose your road</div>
+    <h2>Your Path 🛤️</h2>
+    <p class="lead">Two paths that both work. The best one is the one you will actually keep.</p>
+    <div class="grid2">
+      <div class="path med">
+        <h3>🫒 Mediterranean</h3>
+        <p><strong>Recommended start.</strong> Basically how Pilar already cooks: fish, vegetables,
+          beans, fruit, good olive oil. The most studied diet for heart health and long life.</p>
+        <p><strong>The one habit that changes the Basque kitchen most:</strong> measure the oil. One
+          tablespoon is about 120 calories; a "glug", that famously generous Basque pour, can be 400 or
+          more. Use a spoon or a spray, grill
+          and stew more. Same dishes, hundreds of calories lighter, zero flavor lost.</p>
+      </div>
+      <div class="path lc">
+        <h3>🍳 Low-carb / High-protein</h3>
+        <p><strong>The "get-in-shape fast" way.</strong> More protein, fewer refined carbs (not zero).
+          Protein is the most filling food there is, so the calorie deficit happens almost by itself,
+          and it protects your muscle while you lose fat.</p>
+        <p>Quick early results (some is water weight) and strong appetite control. Just do not go
+          extreme, and keep some smart carbs around your hard work days for energy.</p>
+      </div>
+    </div>
+    <details><summary>Which should I pick? (and a word on "carnivore")</summary>
+      <div class="body"><p>Love fish, vegetables and Pilar's cooking? Start Mediterranean. Love meat and
+      eggs and want faster early results? Try low-carb. Many people blend both: a Mediterranean base
+      with extra protein and fewer refined carbs. Carnivore (only meat, no plants) is the extreme end,
+      very restrictive and it cuts out the fiber and plant nutrients that protect your heart and gut,
+      so I do not recommend it as a default. Pick a starting point, try it for 2 to 3 weeks, adjust.</p></div>
+    </details>
+    <p class="nugget">"The best diet is the one you will actually keep."</p>
+    <div class="nextprev"><a class="btn ghost" href="#how">Back</a><a class="btn primary" href="#plan">Next: Your 45-day plan</a></div>
+    </div>
+    <div class="lang-es">
+    <div class="eyebrow">Elegid vuestro camino</div>
+    <h2>Vuestro Camino 🛤️</h2>
+    <p class="lead">Dos caminos que funcionan. El mejor es el que de verdad vais a mantener.</p>
+    <div class="grid2">
+      <div class="path med">
+        <h3>🫒 Mediterránea</h3>
+        <p><strong>El inicio recomendado.</strong> Básicamente como ya cocina Pilar: pescado, verduras,
+          legumbres, fruta, buen aceite de oliva. La dieta más estudiada para el corazón y para vivir
+          muchos años.</p>
+        <p><strong>El hábito que más cambia la cocina vasca:</strong> medir el aceite. Una cucharada son
+          unas 120 calorías; un «chorro», esa famosa generosidad vasca, puede ser 400 o más. Usad una
+          cuchara o un espray, y más a la plancha y al guiso. Los mismos platos, cientos de calorías menos,
+          sin perder nada de sabor.</p>
+      </div>
+      <div class="path lc">
+        <h3>🍳 Baja en carbohidratos / Alta en proteína</h3>
+        <p><strong>La vía «ponerse en forma rápido».</strong> Más proteína, menos carbohidratos refinados
+          (no cero). La proteína es lo que más sacia, así que el déficit casi se hace solo, y protege el
+          músculo mientras perdéis grasa.</p>
+        <p>Resultados rápidos al principio (parte es agua) y mucho control del apetito. Eso sí, no os
+          vayáis al extremo, y guardad algunos carbohidratos buenos para los días de trabajo duro, por la
+          energía.</p>
+      </div>
+    </div>
+    <details><summary>¿Cuál elijo? (y una palabra sobre lo «carnívoro»)</summary>
+      <div class="body"><p>¿Os encantan el pescado, las verduras y la cocina de Pilar? Empezad por la
+      mediterránea. ¿Os tira la carne y los huevos y queréis resultados rápidos? Probad la baja en
+      carbohidratos. Mucha gente mezcla las dos: una base mediterránea con más proteína y menos
+      carbohidratos refinados. Lo carnívoro (solo carne, sin plantas) es el extremo, muy restrictivo, y
+      deja fuera la fibra y los nutrientes de las plantas que protegen el corazón y el intestino, así que
+      no lo recomiendo por defecto. Elegid un punto de partida, probadlo 2 o 3 semanas, ajustad.</p></div>
+    </details>
+    <p class="nugget">«La mejor dieta es la que de verdad vais a mantener.»</p>
+    <div class="nextprev"><a class="btn ghost" href="#how">Atrás</a><a class="btn primary" href="#plan">Siguiente: Vuestro plan de 45 días</a></div>
+    </div>
+  </section>
+
+  <!-- 45 DAY PLAN -->
+  <section class="card" id="plan">
+    <div class="eyebrow">Your road, with little wins</div>
+    <h2>The 45-Day Plan 🗺️</h2>
+    <p class="lead">Three stages of 15 days. You do not do everything at once, you stack one easy win on
+      top of another. Tap a day when you have done your best. 💚</p>
+    <div class="tracker-top">
+      <div class="pbar"><i id="pbarFill"></i></div>
+      <strong id="pbarLabel">0 / 45 days</strong>
+      <button class="btn ghost" onclick="resetDays()" style="padding:.4rem .9rem; font-size:.85rem">Reset</button>
+    </div>
+    <div class="days" id="daysGrid"></div>
+    <div class="badges" id="badges">
+      <div class="badge" data-b="15"><span class="em">🌱</span><b>First leg!</b><span class="hint">Day 15</span></div>
+      <div class="badge" data-b="30"><span class="em">🏅</span><b>Halfway!</b><span class="hint">Day 30</span></div>
+      <div class="badge" data-b="45"><span class="em">🏆</span><b>You did it!</b><span class="hint">Day 45</span></div>
+    </div>
+    <div class="grid2" style="margin-top:1.4rem">
+      <div class="minicard"><h3>🟢 Stage 1 · Days 1 to 15</h3><b>Awareness &amp; easy swaps</b>
+        <ul><li>Do the WHY exercise</li><li>Cut sugary drinks first</li><li>Measure the oil</li><li>Half the plate vegetables</li><li>Kitchen closes after dinner</li></ul></div>
+      <div class="minicard"><h3>🟡 Stage 2 · Days 16 to 30</h3><b>Structure &amp; habits</b>
+        <ul><li>Pick your path</li><li>Protein at every meal</li><li>Skip white bread and wine on normal days</li><li>Build danger-zone systems</li><li>A walk after dinner</li></ul></div>
+    </div>
+    <div class="minicard" style="margin-top:0"><h3>🔵 Stage 3 · Days 31 to 45</h3><b>Consistency &amp; make it yours</b>
+      <ul><li>Keep it steady, consistency beats intensity</li><li>Handle a real event well on purpose</li><li>Weigh yourself every 2 or 3 days and adjust</li><li>Plan your "after day 45": which 4 or 5 habits stay forever?</li></ul></div>
+    <p class="nugget">"Anyone can be good for three days. The art is keeping the good grade."</p>
+    <div class="nextprev"><a class="btn ghost" href="#paths">Back</a><a class="btn primary" href="#contract">Next: Your contract</a></div>
+  </section>
+
+  <!-- CONTRACT -->
+  <section class="card tint" id="contract">
+    <div class="lang-en">
+    <div class="eyebrow">Lock it in</div>
+    <h2>Your 45-Day Contract ✍️</h2>
+    <p class="lead">Here is a trick that genuinely works. You make a promise in writing, you put
+      something on the line, and you sign it. That turns a vague wish into a real commitment. I have
+      written it for you, you read it, you adjust it until it feels right, and then you sign it on paper.</p>
+    <div class="callout key"><strong>Why a contract, and why now?</strong> Most people only change when
+      it is already too late, after the heart scare, the bad diagnosis, the moment the doctor turns
+      serious. You are doing it <strong>before</strong> that, while it is still a choice and not an
+      emergency. That is exactly what this contract is for.</div>
+
+    <h3>Put something on the line</h3>
+    <p>A promise with nothing at stake is easy to break. So add a little weight to it. The rule is
+      simple: <strong>make success feel good, and make quitting a little painful.</strong> Pick what
+      fits you:</p>
+    <div class="grid2">
+      <div class="minicard good"><h3>🎁 The reward (if you make it)</h3><ul>
+        <li>You both put a little money in a jar, and at day 45 you spend it on something you have wanted for ages: a trip, a great meal out, a day away together.</li>
+        <li>Or a non-money reward you have been promising yourselves for years.</li>
+      </ul></div>
+      <div class="minicard bad"><h3>⚖️ The stake (if you break it)</h3><ul>
+        <li>Money you would hate to lose, held by Marten, that goes to charity (or to your partner) if you quit.</li>
+        <li>Or a food stake: no wine or dessert for the next two weeks. A forfeit you will actually feel.</li>
+        <li>Or a chore: whoever breaks it cooks and cleans for a week.</li>
+      </ul></div>
+    </div>
+
+    <div class="contract">
+      <span class="seal">🤝</span>
+      <h3>My 45-Day Commitment</h3>
+      <p>I, <span class="blank"></span>, on this day <span class="blank"></span>, make this promise to
+        myself and to my partner <span class="blank"></span>:</p>
+      <ul class="vows">
+        <li>I will be <strong>stronger than my cravings.</strong> A craving is just a wave, and I let it pass.</li>
+        <li>I will <strong>not give in to my impulses.</strong> An impulse has no power. I am the captain of my ship.</li>
+        <li>My <strong>systems are stronger than my willpower</strong>, because I know my willpower will run dry, and my systems will not.</li>
+        <li>I will <strong>eat below the calories my body truly needs</strong>, most days, without starving myself.</li>
+        <li>When the impulse hits, I <strong>stay strong, go to my list of habits, and read my why again.</strong></li>
+        <li>I will <strong>follow the plan and prepare my meals</strong>, and keep it simple.</li>
+        <li>I will <strong>weigh myself every 2 or 3 days and write it down</strong>, to see the honest truth.</li>
+      </ul>
+      <p><strong>My simple starting rules:</strong></p>
+      <ul class="vows">
+        <li>No eating after 7 p.m. The kitchen closes.</li>
+        <li>Cut the obvious things first: the sweets and the snacks. This alone changes a lot.</li>
+        <li>Skip the white bread and the wine on normal days.</li>
+        <li>Half my plate vegetables, a palm of protein, water instead of sugary drinks.</li>
+      </ul>
+      <p>I make this commitment for <strong>45 days</strong>, because changing a lifetime system is hard
+        and deserves a real promise. I am doing this now, on purpose, before life forces me to.</p>
+      <p><strong>If I keep it, my reward is:</strong> <span class="blank wide"></span></p>
+      <p><strong>If I break it, my stake is:</strong> <span class="blank wide"></span></p>
+      <div class="sign">
+        <div class="sigline">My signature</div>
+        <div class="sigline">My partner / witness</div>
+      </div>
+    </div>
+    <p class="hint">Marten prepares and prints the real one. You read it, adjust it together, and sign it
+      by hand. That signature matters.</p>
+    <div class="nextprev"><a class="btn ghost" href="#plan">Back</a><a class="btn primary" href="#recipes">Next: Recipes</a></div>
+    </div>
+    <div class="lang-es">
+    <div class="eyebrow">Dejadlo bien atado</div>
+    <h2>Vuestro Contrato de 45 Días ✍️</h2>
+    <p class="lead">Aquí va un truco que funciona de verdad. Hacéis una promesa por escrito, ponéis algo en
+      juego, y la firmáis. Eso convierte un deseo vago en un compromiso real. Yo os lo he escrito; vosotros
+      lo leéis, lo ajustáis hasta que os encaje, y luego lo firmáis en papel.</p>
+    <div class="callout key"><strong>¿Por qué un contrato, y por qué ahora?</strong> La mayoría solo cambia
+      cuando ya es tarde, tras el susto de corazón, el mal diagnóstico, el momento en que el médico se pone
+      serio. Vosotros lo hacéis <strong>antes</strong> de eso, mientras todavía es una elección y no una
+      urgencia. Justo para eso sirve este contrato.</div>
+
+    <h3>Poned algo en juego</h3>
+    <p>Una promesa sin nada en juego es fácil de romper. Así que dadle algo de peso. La regla es sencilla:
+      <strong>haced que ganar siente bien, y que rendirse duela un poco.</strong> Elegid lo que os encaje:</p>
+    <div class="grid2">
+      <div class="minicard good"><h3>🎁 La recompensa (si lo conseguís)</h3><ul>
+        <li>Los dos metéis un poco de dinero en un bote, y el día 45 lo gastáis en algo que lleváis tiempo queriendo: un viaje, una buena comida fuera, un día juntos.</li>
+        <li>O una recompensa sin dinero que os lleváis prometiendo años.</li>
+      </ul></div>
+      <div class="minicard bad"><h3>⚖️ La prenda (si lo rompéis)</h3><ul>
+        <li>Dinero que os dolería perder, guardado por Marten, que va a una ONG (o a vuestra pareja) si lo dejáis.</li>
+        <li>O una prenda de comida: sin vino ni postre las próximas dos semanas. Un castigo que de verdad notéis.</li>
+        <li>O una tarea: quien lo rompa cocina y limpia una semana.</li>
+      </ul></div>
+    </div>
+
+    <div class="contract">
+      <span class="seal">🤝</span>
+      <h3>Mi Compromiso de 45 Días</h3>
+      <p>Yo, <span class="blank"></span>, hoy día <span class="blank"></span>, hago esta promesa a mí mismo
+        y a mi pareja <span class="blank"></span>:</p>
+      <ul class="vows">
+        <li>Seré <strong>más fuerte que mis antojos.</strong> Un antojo es solo una ola, y dejo que pase.</li>
+        <li><strong>No cederé a mis impulsos.</strong> Un impulso no tiene poder. Soy el capitán de mi barco.</li>
+        <li>Mis <strong>sistemas son más fuertes que mi fuerza de voluntad</strong>, porque sé que la voluntad se me agotará y los sistemas no.</li>
+        <li><strong>Comeré por debajo de las calorías que mi cuerpo necesita de verdad</strong>, la mayoría de los días, sin pasar hambre.</li>
+        <li>Cuando llegue el impulso, <strong>me mantengo fuerte, voy a mi lista de hábitos y releo mi porqué.</strong></li>
+        <li><strong>Seguiré el plan y prepararé mis comidas</strong>, y lo mantendré sencillo.</li>
+        <li><strong>Me pesaré cada 2 o 3 días y lo apuntaré</strong>, para ver la verdad sin engaños.</li>
+      </ul>
+      <p><strong>Mis reglas sencillas para empezar:</strong></p>
+      <ul class="vows">
+        <li>Nada de comer después de las 19:00. La cocina cierra.</li>
+        <li>Cortar primero lo evidente: los dulces y el picoteo. Solo esto ya cambia mucho.</li>
+        <li>Sin pan blanco y sin vino los días normales.</li>
+        <li>Medio plato de verduras, una palma de proteína, agua en vez de bebidas azucaradas.</li>
+      </ul>
+      <p>Asumo este compromiso durante <strong>45 días</strong>, porque cambiar el sistema de toda una vida
+        es difícil y merece una promesa de verdad. Lo hago ahora, a propósito, antes de que la vida me obligue.</p>
+      <p><strong>Si lo cumplo, mi recompensa es:</strong> <span class="blank wide"></span></p>
+      <p><strong>Si lo rompo, mi prenda es:</strong> <span class="blank wide"></span></p>
+      <div class="sign">
+        <div class="sigline">Mi firma</div>
+        <div class="sigline">Mi pareja / testigo</div>
+      </div>
+    </div>
+    <p class="hint">Marten prepara e imprime el de verdad. Vosotros lo leéis, lo ajustáis juntos y lo
+      firmáis a mano. Esa firma importa.</p>
+    <div class="nextprev"><a class="btn ghost" href="#plan">Atrás</a><a class="btn primary" href="#recipes">Siguiente: Recetas</a></div>
+    </div>
+  </section>
+
+  <!-- RECIPES -->
+  <section class="card" id="recipes">
+    <div class="eyebrow">Pick by mood</div>
+    <h2>Recipes 🍳</h2>
+    <p class="lead">Simple, filling, Basque and Mediterranean friendly. "Today I feel like..." then tap a
+      filter.</p>
+    <div class="filters" id="recipeFilters"></div>
+    <div class="recipes" id="recipeGrid"></div>
+    <div class="nextprev"><a class="btn ghost" href="#contract">Back</a><a class="btn primary" href="#tips">Next: Extra tips</a></div>
+  </section>
+
+  <!-- EXTRA TIPS -->
+  <section class="card tint" id="tips">
+    <div class="eyebrow">The slightly-more-medical bonus</div>
+    <h2>Extra Tips 💡</h2>
+    <details open><summary>🧪 The hunger hormone: Ghrelin</summary>
+      <div class="body"><p>Your hunger is not just willpower, it is partly <strong>hormones</strong>.
+      <strong>Ghrelin</strong> is the body's "hunger hormone": it rises when your stomach is empty and
+      makes you feel hungry. Here is the key fact: <strong>protein lowers ghrelin more than carbs or fat
+      do</strong>, and keeps it down longer. At the same time, protein boosts your "I am full" hormones
+      (GLP-1 and PYY). So more protein means less hunger plus more fullness, which means fewer cravings,
+      naturally. That is the machinery behind "lead every meal with protein."</p>
+      <p class="hint">Sources: Blom et al., Am J Clin Nutr 2006; Leidy et al. 2015; Cummings et al., Diabetes 2001.</p></div>
+    </details>
+    <details><summary>🥄 Where the calories hide (the mayonnaise shock)</summary>
+      <div class="body"><p>You cannot change what you cannot see. A bowl of homemade mayonnaise or ali-oli
+      can be 100 ml of oil, around <strong>880 hidden calories</strong>, sitting there looking completely
+      innocent. You do not have to cut everything. <strong>Pick two or three to drop or swap</strong> and
+      that alone can be your whole daily deficit, with the same meals and the same pleasure.</p>
+      <ul>
+        <li>🥄 Homemade mayonnaise or ali-oli, a bowl: about 800 kcal → yogurt-based, or far less oil</li>
+        <li>🫗 A "glug" of frying oil, 3 spoons: about 360 kcal → measure 1 spoon, or a spray</li>
+        <li>🍰 Whisky cheesecake (tarta de queso): about 400 kcal → skip it, or share one spoon</li>
+        <li>🥤 A can of cola or a sugary drink: about 140 kcal → sparkling water with lemon</li>
+      </ul></div>
+    </details>
+    <details><summary>💶 Budget your day like money</summary>
+      <div class="body"><p>You have a calorie budget each day, so spend it where it is worth it. Big dinner
+      planned, paella and wine with the family? Keep breakfast and lunch lighter and arrive with room to
+      enjoy it, guilt-free. Some days front-loaded, some back-loaded, and over the week it balances. And
+      start glancing at labels now and then, not to stress, just to see where the calories were quietly
+      hiding.</p></div>
+    </details>
+    <details><summary>🛟 Danger zones: eating out, parties, on the go</summary>
+      <div class="body"><ul>
+        <li><strong>Eating out:</strong> budget the day, order protein and vegetables first, water alongside any alcohol, and you do not have to clean the plate.</li>
+        <li><strong>Parties:</strong> eat a small protein snack before you go, pick your treats on purpose, and stand away from the food table.</li>
+        <li><strong>On the go:</strong> always carry a small pack of nuts, fruit, or a boiled egg. Then the pastry counter can bat its eyes all it likes, you are simply not interested.</li>
+        <li><strong>Evening and TV:</strong> kitchen closed, water in hand, any treat pre-decided.</li>
+      </ul></div>
+    </details>
+    <details><summary>🎯 Preparation beats willpower</summary>
+      <div class="body"><p>Willpower is weakest exactly when you need it: tired, stressed, evening,
+      hungry. So do not rely on it. Prepare while calm and full: meals decided ahead, good food in the
+      house, nuts in your pocket, a pre-decided treat. When the craving hits, you just follow the plan
+      you already made.</p></div>
+    </details>
+    <details><summary>⏸️ Beat a craving in the moment</summary>
+      <div class="body"><ul>
+        <li><strong>Name it:</strong> "This is a craving, not real hunger."</li>
+        <li><strong>Drink water and wait 10 minutes.</strong> Cravings come in waves and break.</li>
+        <li><strong>Do something with your hands:</strong> walk, make tea, brush your teeth.</li>
+        <li><strong>Still want it?</strong> Have a small, pre-decided portion, sitting down. No guilt.</li>
+      </ul></div>
+    </details>
+    <details><summary>❤️ When motivation dips, get the note out</summary>
+      <div class="body"><p>Do not think your way back with logic, go back to your feeling. Get the note
+      from the fridge, your real reason for starting, and read it. "Why did I actually begin this?"
+      Thirty seconds restarts the engine.</p></div>
+    </details>
+    <details><summary>A few more quick wins</summary>
+      <div class="body"><ul>
+        <li><strong>Sleep.</strong> Bad sleep raises ghrelin and next-day cravings.</li>
+        <li><strong>Protein first</strong> on the plate.</li>
+        <li><strong>Slow down.</strong> Fullness takes about 20 minutes.</li>
+        <li><strong>A walk after dinner</strong> helps blood sugar and curbs grazing.</li>
+        <li><strong>Do not drink your calories:</strong> water, coffee, tea.</li>
+      </ul></div>
+    </details>
+    <p class="nugget">"It is not willpower, it is preparation. And when motivation dips, get the note out."</p>
+    <div class="nextprev"><a class="btn ghost" href="#recipes">Back</a><a class="btn primary" href="#cheatsheet">Next: The cheat sheet</a></div>
+  </section>
+
+  <!-- CHEAT SHEET (print-first, fits 3 to 4 pages) -->
+  <section class="card tint" id="cheatsheet">
+    <div class="eyebrow">The whole guide on the fridge door</div>
+    <h2>The Cheat Sheet 📄</h2>
+    <p class="lead">If you forget everything else, keep these pages. The whole guide squeezed down to what
+      you can glance at on a hard day. Print it, stick it on the fridge, and follow it.</p>
+
+    <div class="sheet-page">
+      <h3>The 7 biggest levers 🎯</h3>
+      <p class="hint">Not the easiest seven, the ones with the biggest payoff for the effort. Do mostly
+        these and the rest takes care of itself.</p>
+      <ol class="levers">
+        <li><strong>Stop drinking your calories.</strong> Cola, juice, sugary coffee, most of the
+          alcohol. The fastest, biggest win there is, and you barely feel it. One can of cola is about a
+          third of a day's sugar, gone in two minutes.</li>
+        <li><strong>Protein and vegetables first, every meal.</strong> Half the plate vegetables, a palm
+          of protein, then a smaller side of bread, rice, or potato. Full on fewer calories. This is the
+          lever that makes hunger bearable.</li>
+        <li><strong>Don't keep the trigger food in the house.</strong> You don't beat the biscuits at
+          10 p.m. on the couch, you beat them on Saturday in the shop. If it isn't there, you won't eat it.</li>
+        <li><strong>Close the kitchen after dinner.</strong> Last food about 3 hours before bed, then
+          water or tea, brush your teeth, done. The evening couch is where most plans quietly die.</li>
+        <li><strong>Move every day.</strong> Not the gym, just movement: a walk after dinner, the stairs,
+          parking further away. Steps add up to real calories and they cool down cravings.</li>
+        <li><strong>Protect your sleep.</strong> One bad night and your hunger hormones turn up the volume
+          the next day. Good sleep is a weight-loss tool, treat it like one.</li>
+        <li><strong>Measure your fats.</strong> Oil with a spoon or a spray, never a free pour. One
+          tablespoon of olive oil is about 120 kcal. Easy to drown a healthy meal without noticing.</li>
+      </ol>
+      <p class="nugget">"It is not about willpower. It is about setting things up so you barely need any."</p>
+    </div>
+
+    <div class="sheet-page">
+      <h3>Avoid this, do this instead 🔁</h3>
+      <p class="hint">The typical stumbling blocks, and the simple swap for each. Read the left, do the right.</p>
+      <table class="swaps">
+        <thead><tr><th class="bad">❌ Avoid this</th><th class="good">✅ Do this instead</th></tr></thead>
+        <tbody>
+          <tr><td class="bad">Cola, juice, energy drinks</td><td>Sparkling water with lemon; coffee or tea, no sugar</td></tr>
+          <tr><td class="bad">A free pour of oil into the pan</td><td>Measure it: one spoon, or a spray (1 tbsp ≈ 120 kcal)</td></tr>
+          <tr><td class="bad">Eating in front of the TV</td><td>Eat at the table, on a plate; skip the automatic second helping</td></tr>
+          <tr><td class="bad">A mountain of white bread or rice</td><td>Half a plate of vegetables first, a smaller side of carbs</td></tr>
+          <tr><td class="bad">Shopping hungry with no list</td><td>Eat first, shop the edges of the store, stick to the list</td></tr>
+          <tr><td class="bad">"Just one" from the big bag</td><td>Buy single-serve, and keep it out of the house</td></tr>
+          <tr><td class="bad">Snacking all day long</td><td>2 or 3 real meals; let the body burn its own fat between</td></tr>
+          <tr><td class="bad">Sausages, bacon, chorizo every day</td><td>Fish, eggs, chicken; cured meat as an occasional treat</td></tr>
+          <tr><td class="bad">The late-night cupboard hunt</td><td>Kitchen closed, water or tea, brush teeth, treat pre-decided</td></tr>
+          <tr><td class="bad">A pastry breakfast</td><td>Eggs or yogurt, so you stay full until lunch</td></tr>
+          <tr><td class="bad">Sitting still all evening</td><td>A 10-minute walk after dinner</td></tr>
+          <tr><td class="bad">"I blew it, I'll start Monday"</td><td>Next meal, back to normal. One slip is not a collapse</td></tr>
+          <tr><td class="bad">Weighing daily and panicking</td><td>Weigh weekly at the same time, judge by the trend</td></tr>
+          <tr><td class="bad">Eating because you're stressed</td><td>Run the HALT check first, then walk, breathe, or call someone</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="sheet-page">
+      <h3>What lands in the basket 🧺</h3>
+      <p class="hint">Win the shop and you barely fight at home. A picture is easier to remember than a
+        rule, so here it is: the ones to leave behind, and the ones to load up on.</p>
+      <h4 class="foodhead">❌ Leave it on the shelf (or buy rarely, single-serve)</h4>
+      <div class="foodgrid avoid">
+        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/cola.webp" alt="Sugary drinks like cola" loading="lazy"></div><span class="lbl">Sugary drinks</span></figure>
+        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/sweets.webp" alt="Sweets, chocolate and pastries" loading="lazy"></div><span class="lbl">Sweets &amp; pastries</span></figure>
+        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/chips.webp" alt="Crisps and fried snacks" loading="lazy"></div><span class="lbl">Crisps &amp; fried snacks</span></figure>
+        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/meat.webp" alt="Cured and processed meat" loading="lazy"></div><span class="lbl">Cured meat, daily</span></figure>
+        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/white.webp" alt="White bread and sugary cereal" loading="lazy"></div><span class="lbl">White bread &amp; sugary cereal</span></figure>
+        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/ready.webp" alt="Ready meals and instant noodles" loading="lazy"></div><span class="lbl">Ready meals &amp; instant noodles</span></figure>
+      </div>
+      <h4 class="foodhead">✅ Fill the cart with these</h4>
+      <div class="foodgrid good">
+        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/veg.webp" alt="Fresh vegetables and salad" loading="lazy"></div><span class="lbl">Vegetables &amp; salad</span></figure>
+        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/fish.webp" alt="Fresh fish and tinned fish" loading="lazy"></div><span class="lbl">Fish &amp; seafood</span></figure>
+        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/eggs.webp" alt="Fresh eggs" loading="lazy"></div><span class="lbl">Eggs</span></figure>
+        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/beans.webp" alt="Beans, lentils and chickpeas" loading="lazy"></div><span class="lbl">Beans &amp; lentils</span></figure>
+        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/fruit.webp" alt="Seasonal fruit" loading="lazy"></div><span class="lbl">Fruit</span></figure>
+        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/yogurt.webp" alt="Plain yogurt with berries and nuts" loading="lazy"></div><span class="lbl">Plain yogurt &amp; nuts</span></figure>
+      </div>
+    </div>
+
+    <div class="sheet-page">
+      <h3>The six that quietly decide it 🔑</h3>
+      <p class="hint">The big diet stuff gets all the attention. These six decide whether it actually sticks.</p>
+      <div class="tips6">
+        <div class="tipcard"><h3>😴 Sleep</h3><p>Short sleep raises your hunger hormone and your cravings
+          the very next day. Guard it like part of the plan, because it is.</p></div>
+        <div class="tipcard"><h3>😤 Stress and feelings</h3><p>A lot of eating is mood, not hunger. Run the
+          <strong>HALT</strong> check: am I Hungry, Angry, Lonely, or Tired? If it is a feeling, food won't
+          fix it. Walk, breathe, or call someone.</p></div>
+        <div class="tipcard"><h3>🚶 Move more, all day</h3><p>You cannot out-train a fork, but daily
+          movement counts: a walk after meals, the stairs, parking further off. More steps than yesterday.</p></div>
+        <div class="tipcard"><h3>💪 Keep your muscle</h3><p>Lose fat, not muscle. Enough protein plus using
+          your muscles a little protects your metabolism and keeps you strong as the years go.</p></div>
+        <div class="tipcard"><h3>⏳ Be patient</h3><p>The scale does not drop in a straight line. Some weeks
+          it sticks, then it moves. That is not failure, judge by the month, not the morning.</p></div>
+        <div class="tipcard"><h3>📏 Track it right</h3><p>Weigh once a week, same morning. Better still,
+          watch how your belt sits and how your clothes fit. That is the real progress.</p></div>
+      </div>
+      <div class="callout win"><strong>Tiny tweaks that punch above their weight:</strong> eat at the table
+        with no screen, use a slightly smaller plate, and wait two minutes before going back for seconds.
+        The craving for "more" usually passes.</div>
+      <p class="nugget">"Keep these pages on the fridge. On a hard day you don't need motivation, you just
+        need to glance at the plan and follow it."</p>
+    </div>
+
+    <div class="nextprev"><a class="btn ghost" href="#tips">Back</a><a class="btn primary" href="#motivation">Next: Your power page</a></div>
+  </section>
+
+  <!-- MOTIVATION / POWER PAGE -->
+  <section class="card" id="motivation">
+    <div class="eus-ribbon" style="max-width:130px"></div>
+    <div class="eyebrow">Read this whenever you need it</div>
+    <h2>Your Power Page 🔥</h2>
+    <p class="lead">When the evening is hard, when the craving is loud, when you forgot why you started,
+      come back here. Read it slowly. Read it out loud if you can. These are yours now.</p>
+
+    <div class="creed">
+      <h3>The one that matters most 🔁</h3>
+      <p class="cascade">One bad hour does not mean the next hour has to be bad.<br>
+        A bad morning does not mean the whole day has to be bad.<br>
+        A bad day does not mean the next day has to be bad.<br>
+        A bad week does not mean the next week has to be bad.</p>
+      <p>The slip is not what beats you. <strong>Giving up after it is.</strong> It is not how often you
+        fall. It is <strong>how often you get back up.</strong> The people who make it are not stronger than
+        you, and it is not pure willpower, it is their <strong>systems</strong>, and they got up one more
+        time than they went down. Everyone falls. Everyone. Maybe the sweets won seven nights, so they got
+        up and fought back on the eighth.</p>
+      <p>So when you slip, do not be hard on yourself. The old voice will say: <em>"I tried again and I
+        failed. I am just not made for this, I cannot do it."</em> Do not buy it. Just say: <strong>"I am
+        only practicing,"</strong> and start again. Next meal, next morning, next day. Getting up, again and
+        again, <strong>is the muscle.</strong> Every time, it grows stronger.</p>
+      <p>And the deepest part: if you want this <strong>with your whole heart</strong>, you will find your
+        way. The food rules matter, of course, and calories in and calories out is real. But the main thing
+        was never the diet. It is your <strong>mindset.</strong></p>
+      <p>So do not chase miracles, <strong>chase consistency.</strong> Expect the slow, steady climb instead
+        of magic, and one day you look up and the change is not a diet you are surviving, it is simply
+        <strong>who you are now.</strong></p>
+    </div>
+
+    <h3>For the fighter in you 💪</h3>
+    <p class="hint">Hard, no-excuses fuel. Read them like you mean every word.</p>
+    <div class="affirms">
+      <div class="affirm"><span class="star">★</span>Nobody is coming to do this for me. I save myself.</div>
+      <div class="affirm"><span class="star">★</span>I do not negotiate with my weaker self. Ever.</div>
+      <div class="affirm"><span class="star">★</span>I am the captain of my ship. My cravings do not steer me.</div>
+      <div class="affirm"><span class="star">★</span>The pain of discipline is lighter than the pain of regret.</div>
+      <div class="affirm"><span class="star">★</span>I can do hard things. I do them every single day at work.</div>
+      <div class="affirm"><span class="star">★</span>I am not finished. I am just getting started.</div>
+    </div>
+    <h3>For the loving heart in you 💗</h3>
+    <p class="hint">Softer fuel. Just as strong.</p>
+    <div class="affirms">
+      <div class="affirm"><span class="star">★</span>I am worth taking care of. My body deserves my love.</div>
+      <div class="affirm"><span class="star">★</span>I treat my body with kindness, not punishment.</div>
+      <div class="affirm"><span class="star">★</span>Every good choice is a gift to the people I love.</div>
+      <div class="affirm"><span class="star">★</span>I am becoming my healthiest self, gently and surely.</div>
+      <div class="affirm"><span class="star">★</span>I keep my word to myself, because I matter.</div>
+      <div class="affirm"><span class="star">★</span>I want to be here, strong and well, for many years.</div>
+    </div>
+    <div class="callout win mky">💡 <strong>Make them yours.</strong> Pick the two or three that hit hardest.
+      Guillermo and Pilar, each choose your own. Better still, <strong>write your own</strong> in your own
+      words. Then put them on little papers around the house, on the mirror, the fridge, the car, and
+      read them out loud when you need them. The strongest affirmation is the one that gives <em>you</em>
+      the most strength.</div>
+    <h3>Remember these truths 💭</h3>
+    <ul class="quotes-list">
+      <li>It is not how often I fall. It is how often I get back up.</li>
+      <li>I am not failing. I am practicing, and I practice again tomorrow.</li>
+      <li>I do not chase miracles. I chase consistency, and consistency rebuilds me.</li>
+      <li>It is not about willpower. It is about the systems I set up before the weak moment.</li>
+      <li>Will I be weaker than my cravings, or stronger than my impulses? Today, stronger.</li>
+      <li>A craving feels like hunger, but it is just a wave. Waves always break.</li>
+      <li>One exit off the highway does not mean I crash the car. Next meal, back on the road.</li>
+      <li>Discipline is not punishment. It is the freedom to become who I want to be.</li>
+    </ul>
+    <div class="callout win"><strong>You are not alone in this.</strong> Guillermo and Pilar, you have
+      each other. On the hard days, one of you carries the other. That is the strongest system of all.</div>
+    <p class="nugget">"You are stronger than your impulses. Today, prove it to yourself one more time."</p>
+    <div class="nextprev"><a class="btn ghost" href="#cheatsheet">Back</a><a class="btn primary" href="#welcome">Back to the top ↑</a></div>
+  </section>
+
+  <footer>
+    <div class="eus-ribbon" style="max-width:160px; margin:0 auto 1rem"></div>
+    Made with care for Guillermo &amp; Pilar · Amorebieta 🌿<br>
+    <span class="hint">Health claims are backed by reputable sources (WHO, IARC, peer-reviewed studies). This guide is general education, not medical advice.</span>
+  </footer>
+
+  </main>
+
+  <!-- sticky read-aloud bar (Spanish voice) -->
+  <div id="audiobar" hidden>
+    <button id="audioBtn" class="audio-btn" onclick="toggleAudio()" aria-label="Reproducir / pausar">▶</button>
+    <button class="audio-btn alt" onclick="stopAudio()" aria-label="Parar">⏹</button>
+    <button class="audio-btn alt" onclick="toggleQR()" aria-label="Descargar al móvil">📱</button>
+    <div class="audio-label">
+      <div class="audio-pick" id="audioPickWrap">
+        <button type="button" class="audio-pick-btn" id="audioPickBtn" onclick="toggleAudioMenu(event)" aria-haspopup="listbox" aria-label="Elegir capítulo">
+          <span id="audioPickLabel">…</span>
+          <svg class="apk-chev" width="11" height="7" viewBox="0 0 12 8" aria-hidden="true"><path d="M1 1l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+        </button>
+        <div class="audio-pick-menu" id="audioPickMenu" hidden role="listbox"></div>
+      </div>
+      <small>voz española</small>
+    </div>
+    <span id="audioCur" class="audio-time">0:00</span>
+    <div id="audioTrack" class="audio-track" onclick="seekAudio(event)"><div id="audioFill" class="audio-fill"></div></div>
+    <span id="audioDur" class="audio-time">0:00</span>
+    <div id="qrPop" hidden>
+      <p>Escanéalo con el móvil para escuchar o descargar este capítulo.</p>
+      <img id="qrImg" alt="Código QR">
+      <a id="qrDl" class="btn primary" download>Descargar MP3</a>
+    </div>
+    <audio id="player" preload="metadata"></audio>
+  </div>
+</div>
+
+<script>
+/* ============ DATA ============ */
+const CHAPTERS=[
+  {g:"Start"},
+  {id:"welcome",ic:"🫒",t:"Welcome"},
+  {id:"start",ic:"🔥",t:"Before you begin"},
+  {id:"captain",ic:"🚢",t:"Who's the captain?"},
+  {id:"struggles",ic:"🗣️",t:"Sound familiar?"},
+  {id:"systems",ic:"🧰",t:"Willpower vs Systems"},
+  {id:"honest",ic:"🤝",t:"How you do it"},
+  {g:"Mindset"},
+  {id:"why",ic:"❤️",t:"Your Why"},
+  {g:"Learn"},
+  {id:"how",ic:"⚖️",t:"Calories in, out"},
+  {g:"Do"},
+  {id:"paths",ic:"🛤️",t:"Your path"},
+  {id:"plan",ic:"🗺️",t:"45-day plan"},
+  {g:"Commit"},
+  {id:"contract",ic:"✍️",t:"Your contract"},
+  {g:"Keep going"},
+  {id:"recipes",ic:"🍳",t:"Recipes"},
+  {id:"tips",ic:"💡",t:"Extra tips"},
+  {id:"cheatsheet",ic:"📄",t:"Cheat sheet"},
+  {id:"motivation",ic:"🔥",t:"Power page"},
+];
+
+const RECIPES=[
+  {e:"🍳",n:"Tomato and egg toast",m:"breakfast",cal:320,p:18,tags:["mediterranean","eggs","quick"],img:"assets/img/recipes/tomato-egg-toast.webp"},
+  {e:"🥣",n:"Yogurt power bowl",m:"breakfast",cal:300,p:20,tags:["yogurt","quick","no-cook"],img:"assets/img/recipes/yogurt-bowl.jpg"},
+  {e:"🍳",n:"Veggie omelette",m:"breakfast",cal:350,p:24,tags:["lowcarb","eggs"],img:"assets/img/recipes/veggie-omelette.jpg"},
+  {e:"🥣",n:"Proper porridge",m:"breakfast",cal:350,p:14,tags:["mediterranean","comfort"],img:"assets/img/recipes/porridge.webp"},
+  {e:"🧀",n:"Cottage cheese plate",m:"breakfast",cal:280,p:22,tags:["lowcarb","no-cook"],img:"assets/img/recipes/cottage-cheese.webp"},
+  {e:"🐟",n:"Grilled fish, salad and beans",m:"lunch",cal:500,p:38,tags:["mediterranean","fish"],img:"assets/img/recipes/grilled-fish-beans.webp"},
+  {e:"🥘",n:"Marmitako-style tuna stew",m:"lunch",cal:520,p:35,tags:["basque","mediterranean","comfort","fish"],img:"assets/img/recipes/marmitako.webp"},
+  {e:"🫘",n:"Garbanzos with morcilla (Basque)",m:"lunch",cal:480,p:26,tags:["basque","comfort","meat"],img:"assets/img/recipes/garbanzos-morcilla.webp"},
+  {e:"🍗",n:"Chicken and vegetable traybake",m:"lunch",cal:480,p:40,tags:["mediterranean","lowcarb","meat"],img:"assets/img/recipes/chicken-traybake.webp"},
+  {e:"🫘",n:"Lentil and vegetable stew",m:"lunch",cal:450,p:24,tags:["mediterranean","comfort"],img:"assets/img/recipes/lentil-stew.webp"},
+  {e:"🥗",n:"Big tuna and egg salad bowl",m:"lunch",cal:400,p:35,tags:["lowcarb","quick","no-cook","fish"],img:"assets/img/recipes/tuna-egg-salad.webp"},
+  {e:"🐟",n:"Bacalao with peppers (light pil-pil)",m:"lunch",cal:420,p:40,tags:["basque","mediterranean","fish","lowcarb"],img:"assets/img/recipes/bacalao.webp"},
+  {e:"🥩",n:"Steak with grilled vegetables",m:"dinner",cal:520,p:42,tags:["lowcarb","meat"],img:"assets/img/recipes/steak-veg.webp"},
+  {e:"🍲",n:"Vegetable soup with boiled eggs",m:"dinner",cal:300,p:16,tags:["mediterranean","comfort","eggs"],img:"assets/img/recipes/veg-soup-eggs.webp"},
+  {e:"🐟",n:"Pan-seared fish with greens",m:"dinner",cal:350,p:32,tags:["mediterranean","lowcarb","fish"],img:"assets/img/recipes/panseared-fish.webp"},
+  {e:"🍜",n:"Zucchini noodles with prawns",m:"dinner",cal:330,p:28,tags:["lowcarb","fish"],img:"assets/img/recipes/zucchini-prawns.webp"},
+  {e:"🍳",n:"Pisto with a fried egg",m:"dinner",cal:350,p:14,tags:["basque","mediterranean","comfort","eggs"],img:"assets/img/recipes/pisto-egg.webp"},
+  {e:"🫑",n:"Piperrada with egg",m:"dinner",cal:330,p:16,tags:["basque","mediterranean","eggs","comfort"],img:"assets/img/recipes/piperrada.webp"},
+  {e:"🥚",n:"Boiled eggs (carry-snack)",m:"snack",cal:70,p:6,tags:["lowcarb","quick"],img:"assets/img/recipes/boiled-eggs.webp"},
+  {e:"🥜",n:"Small handful of nuts",m:"snack",cal:170,p:6,tags:["quick","no-cook"],img:"assets/img/recipes/nuts.webp"},
+  {e:"🍫",n:"85% dark chocolate, 2 squares",m:"snack",cal:110,p:2,tags:["sweet","no-cook"],img:"assets/img/recipes/dark-choc.webp"},
+  {e:"🍓",n:"Greek yogurt with berries",m:"snack",cal:140,p:12,tags:["yogurt","sweet","no-cook"],img:"assets/img/recipes/greek-yogurt-berries.webp"},
+];
+
+/* ============ NAV ============ */
+const rail=document.getElementById('rail'), ovLinks=document.getElementById('overlayLinks');
+CHAPTERS.forEach(c=>{
+  if(c.g){const h=document.createElement('div'); h.className='group'; h.textContent=c.g; rail.appendChild(h);
+    const h2=h.cloneNode(true); ovLinks.appendChild(h2); return;}
+  const a=document.createElement('a'); a.href='#'+c.id; a.dataset.target=c.id;
+  a.innerHTML='<span class="ic">'+c.ic+'</span><span>'+c.t+'</span>'; rail.appendChild(a);
+  const a2=a.cloneNode(true); a2.addEventListener('click',toggleOverlay); ovLinks.appendChild(a2);
+});
+
+/* ============ LANGUAGE (architecture ready; ES filled as last step) ============ */
+const I18N={en:{brandsub:"A guide for Guillermo & Pilar", chapters:"Chapters"},
+  es:{brandsub:"Una guía para Guillermo y Pilar", chapters:"Capítulos"}};
+function setLang(l){
+  document.documentElement.dataset.lang=l;
+  document.getElementById('btn-en').classList.toggle('active',l==='en');
+  document.getElementById('btn-es').classList.toggle('active',l==='es');
+  document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.dataset.i18n; if(I18N[l][k])el.textContent=I18N[l][k];});
+  localStorage.setItem('gp_lang',l);
+}
+
+/* (Calculator merged into the Calories In/Out widget above) */
+
+/* ============ CALORIES IN / OUT LIVE GRAPH ============ */
+const CIO={KPK:7700, WEEKS:12, start:95, steps:0, sex:'m', base:0};
+const cioEl=id=>document.getElementById(id);
+const cioFmt=n=>Math.round(n).toLocaleString('en-US');
+const cioBonus=()=>Math.round(CIO.steps*0.04/10)*10;            // ~40 kcal / 1000 steps, to nearest 10
+function cioDraw(){
+  const burnEl=cioEl('cioBurn'); if(!burnEl) return;
+  const burn=Math.max(0,+burnEl.value||0), eat=+cioEl('cioEat').value, diff=eat-burn;  // diff<0 = deficit
+  const kgWeek=diff*7/CIO.KPK, change=kgWeek*CIO.WEEKS;          // negative = weight lost
+  const state= diff<-40?'lose': diff>40?'gain':'hold';
+  cioEl('cio').dataset.state=state;
+  const scale=Math.max(3600,burn,eat);
+  cioEl('cioOut').style.width=(burn/scale*100)+'%';
+  cioEl('cioIn').style.width=(eat/scale*100)+'%';
+  cioEl('cioOutNum').textContent=cioFmt(burn);
+  cioEl('cioInNum').textContent=cioFmt(eat);
+  cioEl('cioStepsOut').textContent= CIO.steps? ('+'+cioFmt(cioBonus())+' kcal') : 'home day';
+  cioEl('cioChip').textContent= state==='lose'?'Losing fat 🔥': state==='gain'?'Gaining weight':'Holding steady';
+  cioEl('cioGap').textContent=(diff>=0?'+':'−')+cioFmt(Math.abs(diff));
+  cioEl('cioWeek').textContent=Math.abs(kgWeek).toFixed(2);
+  cioEl('cioProj').textContent=Math.abs(change).toFixed(1);
+  cioEl('cioEndKg').textContent=(change<=0?'−':'+')+Math.abs(change).toFixed(1)+' kg in 12 weeks';
+  cioEl('cioSummary').innerHTML= state==='hold'
+    ? ('At <b>'+cioFmt(eat)+'</b> kcal a day you would hold steady, right around your burn.')
+    : ('Burning <b>'+cioFmt(burn)+'</b> and eating <b>'+cioFmt(eat)+'</b> a day, you would '+(state==='lose'?'lose':'gain')+' about <b>'+Math.abs(kgWeek).toFixed(2)+' kg a week</b>, roughly <b>'+Math.abs(change).toFixed(1)+' kg in 12 weeks</b>.');
+  // weight curve over the next 12 weeks
+  const W=576,H=200, top=CIO.start+12, bot=CIO.start-12;
+  const ymap=w=>Math.max(6,Math.min(H-6,(top-w)/(top-bot)*H));
+  let d='';
+  for(let wk=0; wk<=CIO.WEEKS; wk++){ const x=wk/CIO.WEEKS*W, yy=ymap(CIO.start+kgWeek*wk); d+=(wk?' L':'M')+x.toFixed(1)+' '+yy.toFixed(1); }
+  cioEl('cioCurve').setAttribute('d',d);
+  cioEl('cioArea').setAttribute('d', d+(' L'+W+' '+H+' L0 '+H+' Z'));
+  const ey=ymap(CIO.start+change);
+  cioEl('cioEnd').setAttribute('cx',W); cioEl('cioEnd').setAttribute('cy',ey);
+  const by=ymap(CIO.start); cioEl('cioBaseLine').setAttribute('y1',by); cioEl('cioBaseLine').setAttribute('y2',by);
+}
+function cioSetSteps(st){
+  CIO.steps=st;
+  document.querySelectorAll('#cioSteps button').forEach(b=>b.classList.toggle('on', +b.dataset.st===st));
+  cioEl('cioBurn').value=Math.round((CIO.base||0)+cioBonus());
+  cioDraw();
+}
+function cioSetSex(s){ CIO.sex=s;
+  document.querySelectorAll('#cioSexSeg button').forEach(b=>b.classList.toggle('on', b.dataset.v===s));
+  cioRecalc();
+}
+function cioHelp(){ const p=cioEl('cioHelpPop'); if(p) p.hidden=!p.hidden; }
+function cioBMR(){
+  const age=+cioEl('cioAge').value||48, ht=+cioEl('cioHt').value||178, wt=+cioEl('cioWt').value||95;
+  CIO.start=wt;
+  return 10*wt + 6.25*ht - 5*age + (CIO.sex==='f'?-161:5);
+}
+function cioRecalc(){
+  const act=+cioEl('cioAct').value||1.725;
+  CIO.base=cioBMR()*act;
+  const burn=Math.round(CIO.base+cioBonus());
+  cioEl('cioBurn').value=burn;
+  const e=cioEl('cioEat'); e.max=Math.max(3600, burn+800);
+  if(!CIO._touchedEat) e.value=Math.max(+e.min, burn-500);
+  cioEl('cioBurnNote').textContent='estimated from your numbers, edit any field above';
+  cioDraw(); cioSave();
+}
+function cioSave(){ try{ localStorage.setItem('gp_calc', JSON.stringify({sex:CIO.sex, age:cioEl('cioAge').value, ht:cioEl('cioHt').value, wt:cioEl('cioWt').value, act:cioEl('cioAct').value})); }catch(e){} }
+function cioInit(){
+  let c=null; try{ c=JSON.parse(localStorage.getItem('gp_calc')||'null'); }catch(e){}
+  if(c){ CIO.sex=c.sex||'m'; cioEl('cioAge').value=c.age||''; cioEl('cioHt').value=c.ht||''; cioEl('cioWt').value=c.wt||''; if(c.act)cioEl('cioAct').value=c.act; }
+  else { cioEl('cioAge').value=48; cioEl('cioHt').value=178; cioEl('cioWt').value=95; }
+  document.querySelectorAll('#cioSexSeg button').forEach(b=>b.classList.toggle('on', b.dataset.v===CIO.sex));
+  cioRecalc();
+}
+if(cioEl('cioBurn')){
+  cioEl('cioEat').addEventListener('input',()=>{ CIO._touchedEat=true; cioDraw(); });
+  cioEl('cioBurn').addEventListener('input',()=>{ CIO.base=(+cioEl('cioBurn').value||0)-cioBonus(); cioDraw(); });
+  cioInit();
+}
+
+/* ============ 45-DAY TRACKER ============ */
+const daysGrid=document.getElementById('daysGrid');
+let DAYS=JSON.parse(localStorage.getItem('gp_days')||'[]');
+function renderDays(){
+  daysGrid.innerHTML='';
+  for(let i=1;i<=45;i++){
+    const d=document.createElement('button'); d.className='day '+(i<=15?'s1':i<=30?'s2':'s3');
+    if(DAYS.includes(i))d.classList.add('done'); d.textContent=i;
+    d.addEventListener('click',()=>{DAYS.includes(i)?DAYS=DAYS.filter(x=>x!==i):DAYS.push(i); localStorage.setItem('gp_days',JSON.stringify(DAYS)); renderDays();});
+    daysGrid.appendChild(d);
+  }
+  const n=DAYS.length, pct=Math.round(n/45*100);
+  document.getElementById('pbarFill').style.width=pct+'%';
+  document.getElementById('pbarLabel').textContent=n+' / 45 days';
+  document.querySelectorAll('.badge').forEach(b=>b.classList.toggle('unlocked',n>=+b.dataset.b));
+}
+function resetDays(){if(confirm('Clear all marked days?')){DAYS=[]; localStorage.setItem('gp_days','[]'); renderDays();}}
+renderDays();
+
+/* ============ RECIPES ============ */
+const FILTERS=[["all","🍽️ All"],["basque","🍲 Basque classics"],["breakfast","🌅 Breakfast"],["lunch","☀️ Lunch"],["dinner","🌙 Dinner"],["snack","🥜 Snack"],
+  ["mediterranean","🫒 Mediterranean"],["lowcarb","🍳 Low-carb"],["yogurt","🥣 Feel like yogurt"],["eggs","🍳 Feel like eggs"],["fish","🐟 Feel like fish"],["quick","⚡ Quick"],["sweet","🍫 Sweet-tooth"]];
+const rf=document.getElementById('recipeFilters'), rg=document.getElementById('recipeGrid');
+let curFilter='all';
+FILTERS.forEach(([k,l])=>{const b=document.createElement('button'); if(k==='all')b.classList.add('active'); b.textContent=l;
+  b.addEventListener('click',()=>{curFilter=k; document.querySelectorAll('#recipeFilters button').forEach(x=>x.classList.remove('active')); b.classList.add('active'); renderRecipes();}); rf.appendChild(b);});
+function renderRecipes(){
+  rg.innerHTML='';
+  const list=RECIPES.filter(r=>curFilter==='all'||r.m===curFilter||r.tags.includes(curFilter));
+  if(!list.length){rg.innerHTML='<p class="hint">No recipes for that yet, more coming soon. 🌱</p>'; return;}
+  list.forEach(r=>{const d=document.createElement('div'); d.className='recipe'; d.tabIndex=0; d.title='Tap for details';
+    d.innerHTML=(r.img?'<div class="recipe-pic"><img src="'+r.img+'" alt="'+r.n+'" loading="lazy"></div>':'<div class="emoji">'+r.e+'</div>')+
+      '<h4>'+r.n+'</h4><div class="macros">about '+r.cal+' kcal · '+r.p+' g protein</div>'+
+      '<div class="tagrow">'+r.tags.map(t=>'<span class="tag">'+t+'</span>').join('')+'</div><div class="recipe-more">See details ›</div>';
+    const open=()=>openRecipe(RECIPES.indexOf(r));
+    d.onclick=open; d.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open();}}; rg.appendChild(d);});
+}
+renderRecipes();
+
+/* ============ RECIPE DETAIL MODAL ============ */
+const RDETAIL={
+ "Tomato and egg toast":{ing:"2 eggs, a slice of wholegrain bread, fresh tomato, garlic, a little olive oil",c:22,f:14,tip:"One slice of bread and an oil spray instead of a glug saves around 150 kcal."},
+ "Yogurt power bowl":{ing:"Greek yogurt, fresh berries, a few oats and nuts, a little honey",c:30,f:10,tip:"Use plain yogurt, not the flavoured pots, and let the fruit do the sweetening."},
+ "Veggie omelette":{ing:"3 eggs, peppers, onion, spinach, a little olive oil",c:8,f:24,tip:"Cook it in a non-stick pan with an oil spray, not a glug, to keep it light."},
+ "Proper porridge":{ing:"Oats, milk or water, cinnamon, banana, a few nuts",c:50,f:10,tip:"Top with fruit instead of sugar or syrup."},
+ "Cottage cheese plate":{ing:"Cottage cheese, tomato, cucumber, a couple of wholegrain crackers",c:18,f:12,tip:"High protein, no cooking, and it keeps you full till lunch."},
+ "Grilled fish, salad and beans":{ing:"White fish, mixed salad, white beans, lemon, olive oil",c:40,f:20,tip:"Grill it, do not fry it, and measure the oil with a spoon."},
+ "Marmitako-style tuna stew":{ing:"Tuna, potato, peppers, onion, tomato, smoked paprika",c:45,f:20,tip:"A Basque classic. Go a little easy on the potato and the oil."},
+ "Garbanzos with morcilla (Basque)":{ing:"Chickpeas, a little morcilla (Basque blood sausage), onion, red pepper, smoked paprika",c:45,f:22,tip:"A little morcilla flavours the whole pot, so use one piece, not three."},
+ "Chicken and vegetable traybake":{ing:"Chicken, courgette, peppers, onion, herbs, a little olive oil",c:20,f:26,tip:"One tray, little oil, and fill half of it with vegetables."},
+ "Lentil and vegetable stew":{ing:"Lentils, carrot, onion, tomato, a little chorizo for flavour",c:55,f:14,tip:"A small piece of chorizo flavours the whole pot, no need for more."},
+ "Big tuna and egg salad bowl":{ing:"Tinned tuna, 2 eggs, lettuce, tomato, onion, olives",c:14,f:22,tip:"Dress with lemon and one spoon of oil, not a free pour."},
+ "Bacalao with peppers (light pil-pil)":{ing:"Cod (bacalao), red and green peppers, garlic, olive oil, parsley",c:8,f:24,tip:"A lighter pil-pil: less oil, and let the cod and garlic carry it."},
+ "Steak with grilled vegetables":{ing:"Lean steak, peppers, courgette, onion",c:15,f:32,tip:"A palm-sized piece of meat, and half the plate vegetables."},
+ "Vegetable soup with boiled eggs":{ing:"Mixed vegetables, stock, 2 boiled eggs",c:22,f:15,tip:"Warm, filling and very light, perfect for the evening."},
+ "Pan-seared fish with greens":{ing:"White fish, green beans or chard, garlic, lemon",c:12,f:18,tip:"Sear it in a dry or lightly sprayed pan."},
+ "Zucchini noodles with prawns":{ing:"Courgette, prawns, garlic, a little chilli, tomato",c:18,f:14,tip:"Courgette instead of pasta cuts the calories right down."},
+ "Pisto with a fried egg":{ing:"Courgette, peppers, onion, tomato, 1 egg",c:25,f:20,tip:"The Basque ratatouille. Top with one egg and measure the oil."},
+ "Piperrada with egg":{ing:"Peppers, onion, tomato, garlic, 1 to 2 eggs, olive oil",c:18,f:20,tip:"The Basque pepper classic. Measure the oil and it stays light."},
+ "Boiled eggs (carry-snack)":{ing:"2 eggs, a pinch of salt",c:1,f:5,tip:"Carry them to the site, they beat the petrol-station pastry every time."},
+ "Small handful of nuts":{ing:"A small handful of unsalted nuts",c:5,f:14,tip:"A handful, not the whole bag, they are calorie-dense."},
+ "85% dark chocolate, 2 squares":{ing:"2 squares of 85% dark chocolate",c:8,f:8,tip:"A pre-decided treat: two squares, sitting down, no guilt."},
+ "Greek yogurt with berries":{ing:"Greek yogurt, a handful of berries",c:14,f:4,tip:"Make this your default sweet fix instead of biscuits."},
+};
+const GTWEAKS=[
+ ["🫒","One extra tablespoon of olive oil","+120 kcal"],
+ ["🍬","A teaspoon of sugar (coffee, on top)","+16 kcal"],
+ ["🥤","A glass of cola or juice alongside","+140 kcal"],
+ ["🍉","A sweet dessert swapped for watermelon","−250 kcal"],
+];
+function openRecipe(i){
+  const r=RECIPES[i]; if(!r) return; const det=RDETAIL[r.n]||{};
+  const p=r.p, c=det.c||0, f=det.f||0;
+  const mbar=(label,val,max,cls)=>'<div class="rm-mrow"><span class="rm-mlbl">'+label+'</span>'+
+    '<div class="rm-bar"><div class="rm-bar-fill '+cls+'" style="width:'+Math.min(100,val/max*100).toFixed(1)+'%"></div></div>'+
+    '<span class="rm-mval">'+val+' g</span></div>';
+  const trow=(label,a,b)=>'<tr><td>'+label+'</td><td>'+a+'</td><td>'+b+'</td></tr>';
+  document.getElementById('rmCard').innerHTML=
+    '<button class="ov-close" onclick="closeRecipe()" aria-label="Close">✕</button>'+
+    (r.img?'<div class="rm-photo"><img src="'+r.img+'" alt="'+r.n+'" loading="lazy"></div>':'<div class="rm-emoji">'+r.e+'</div>')+
+    '<div class="eyebrow">'+r.m+(r.tags.indexOf('basque')>-1?' · Basque classic':'')+'</div><h3>'+r.n+'</h3>'+
+    (det.ing?'<p class="rm-ing"><strong>What is in it:</strong> '+det.ing+'</p>':'')+
+    '<div class="rm-plabel">Macros, one portion</div>'+
+    '<div class="rm-macros">'+mbar('Protein',p,60,'pro')+mbar('Carbs',c,70,'carb')+mbar('Fat',f,45,'fat')+'</div>'+
+    '<table class="rm-table"><thead><tr><th></th><th>1 portion</th><th>2 portions</th></tr></thead><tbody>'+
+      trow('Calories',r.cal+' kcal',(r.cal*2)+' kcal')+trow('Protein',p+' g',(p*2)+' g')+trow('Carbs',c+' g',(c*2)+' g')+trow('Fat',f+' g',(f*2)+' g')+
+    '</tbody></table>'+
+    '<div class="rm-tweaks"><div class="rm-tweaks-h">Small changes that add up</div>'+
+      GTWEAKS.map(t=>'<div class="rm-tweak"><span>'+t[0]+' '+t[1]+'</span><b>'+t[2]+'</b></div>').join('')+'</div>'+
+    (det.tip?'<div class="callout win rm-tip">💡 <strong>Lighter:</strong> '+det.tip+'</div>':'');
+  const m=document.getElementById('recipeModal'); m.hidden=false; requestAnimationFrame(()=>m.classList.add('show'));
+}
+function closeRecipe(){ const m=document.getElementById('recipeModal'); m.classList.remove('show'); setTimeout(()=>{m.hidden=true;},220); }
+
+/* ============ PROGRESS, SCROLLSPY, OVERLAY ============ */
+const prog=document.getElementById('progress');
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement; const pct=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;
+  prog.style.width=pct+'%';
+},{passive:true});
+const spy=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){
+    document.querySelectorAll('nav.rail a').forEach(a=>a.classList.toggle('active',a.dataset.target===e.target.id));
+    updateAudioBar(e.target.id);
+  }});
+},{rootMargin:'-40% 0px -55% 0px'});
+document.querySelectorAll('main section[id]').forEach(s=>spy.observe(s));
+function toggleOverlay(){document.getElementById('overlay').classList.toggle('show');}
+
+/* ============ READ-ALOUD AUDIO (Spanish voice) ============ */
+/* Audio chapters: id matches the <section id>, title shows in the player picker, file is the stitched MP3 */
+const AUDIO_CHAPTERS=[
+  {id:'start',     title:'Antes de empezar',                file:'assets/audio/01-antes-de-empezar.mp3'},
+  {id:'captain',   title:'Quién es el capitán',             file:'assets/audio/02-quien-es-el-capitan.mp3'},
+  {id:'struggles', title:'¿Esto te suena?',                 file:'assets/audio/03-esto-te-suena.mp3'},
+  {id:'systems',   title:'Fuerza de voluntad vs. sistemas', file:'assets/audio/04-fuerza-de-voluntad.mp3'},
+];
+const AUDIO=Object.fromEntries(AUDIO_CHAPTERS.map(c=>[c.id,c.file]));
+function buildAudioMenu(){
+  const menu=document.getElementById('audioPickMenu'); if(!menu) return;
+  menu.innerHTML='';
+  AUDIO_CHAPTERS.forEach((c,i)=>{ const b=document.createElement('button'); b.type='button'; b.dataset.id=c.id;
+    b.innerHTML='<span class="num">'+(i+1)+'</span><span>'+c.title+'</span>'; b.onclick=()=>selectAudioChapter(c.id); menu.appendChild(b); });
+  setAudioPickLabel(AUDIO_CHAPTERS[0].id);
+}
+function setAudioPickLabel(id){ const c=AUDIO_CHAPTERS.find(x=>x.id===id); const lab=document.getElementById('audioPickLabel'); if(lab&&c)lab.textContent=c.title;
+  document.querySelectorAll('#audioPickMenu button').forEach(b=>b.classList.toggle('on', b.dataset.id===id)); }
+function toggleAudioMenu(ev){ ev.stopPropagation(); const w=document.getElementById('audioPickWrap'), m=document.getElementById('audioPickMenu');
+  const willOpen=m.hidden; m.hidden=!willOpen; w.classList.toggle('open', willOpen); }
+function selectAudioChapter(id){ const m=document.getElementById('audioPickMenu'); m.hidden=true; document.getElementById('audioPickWrap').classList.remove('open'); pickAudio(id); }
+document.addEventListener('click',e=>{ const w=document.getElementById('audioPickWrap'); if(w&&!w.contains(e.target)){ const m=document.getElementById('audioPickMenu'); if(m&&!m.hidden){m.hidden=true; w.classList.remove('open');} } });
+buildAudioMenu();
+const player=document.getElementById('player');
+function pickAudio(id){
+  const sec=document.getElementById(id); if(sec) sec.scrollIntoView({behavior:'smooth', block:'start'});
+  updateAudioBar(id);
+  player.play().then(()=>setAudioBtn(true)).catch(()=>{});
+}
+function fmtTime(s){ if(!isFinite(s)||s<0)return '0:00'; s=Math.floor(s); return Math.floor(s/60)+':'+String(s%60).padStart(2,'0'); }
+function setAudioBtn(playing){document.getElementById('audioBtn').textContent=playing?'⏸':'▶';}
+function resetAudioUI(){ document.getElementById('audioFill').style.width='0%'; document.getElementById('audioCur').textContent='0:00'; }
+function updateAudioBar(id){
+  const bar=document.getElementById('audiobar');
+  const src=AUDIO[id];
+  if(!src){ if(!player.paused)player.pause(); setAudioBtn(false); bar.hidden=true; return; }
+  bar.hidden=false;
+  setAudioPickLabel(id);
+  const want=new URL(src, location.href).href;
+  if(player.src!==want){ player.pause(); player.src=src; setAudioBtn(false); resetAudioUI(); document.getElementById('audioDur').textContent='0:00'; }
+}
+function toggleAudio(){
+  if(player.paused){ player.play().then(()=>setAudioBtn(true)).catch(()=>{}); }
+  else { player.pause(); setAudioBtn(false); }
+}
+function stopAudio(){ player.pause(); player.currentTime=0; setAudioBtn(false); resetAudioUI(); }
+function toggleQR(){
+  const pop=document.getElementById('qrPop');
+  if(pop.hidden){
+    const url=player.src;
+    document.getElementById('qrImg').src='https://api.qrserver.com/v1/create-qr-code/?size=220x220&margin=10&data='+encodeURIComponent(url);
+    document.getElementById('qrDl').href=url;
+    pop.hidden=false;
+  } else { pop.hidden=true; }
+}
+function seekAudio(ev){ const t=document.getElementById('audioTrack'), r=t.getBoundingClientRect();
+  const ratio=Math.min(1,Math.max(0,(ev.clientX-r.left)/r.width));
+  if(isFinite(player.duration)) player.currentTime=ratio*player.duration; }
+player.addEventListener('loadedmetadata',()=>{ document.getElementById('audioDur').textContent=fmtTime(player.duration); });
+player.addEventListener('timeupdate',()=>{ const d=player.duration||0;
+  document.getElementById('audioFill').style.width=(d?player.currentTime/d*100:0)+'%';
+  document.getElementById('audioCur').textContent=fmtTime(player.currentTime); });
+player.addEventListener('ended',()=>{ setAudioBtn(false); });
+
+/* ============ SCROLL REVEAL ============ */
+if(window.matchMedia && matchMedia('(prefers-reduced-motion: no-preference)').matches){
+  const rev=document.querySelectorAll('main section.card, .hero-stage');
+  rev.forEach(el=>el.classList.add('reveal'));
+  const rio=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in'); rio.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px'});
+  rev.forEach(el=>rio.observe(el));
+}
+
+/* ============ HERO CURSOR SPOTLIGHT ============ */
+(function(){ const hero=document.querySelector('.hero'); if(!hero) return;
+  hero.addEventListener('mousemove',e=>{ const r=hero.getBoundingClientRect();
+    hero.style.setProperty('--mx',((e.clientX-r.left)/r.width*100)+'%');
+    hero.style.setProperty('--my',((e.clientY-r.top)/r.height*100)+'%'); });
+})();
+
+/* ============ RESTORE SAVED STATE ============ */
+(function restore(){
+  const lang=localStorage.getItem('gp_lang'); if(lang)setLang(lang);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El equipo Claude Code — Imagen + Voz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FBF3E6; --card:#FFFDF8; --ink:#2B2018; --ink2:#5A4A3B; --muted:#917E6B;
+    --line:#EAD9C2; --terracotta:#D9663B; --honey:#E4A53A; --leaf:#3E9B5F;
+    --leaf2:#2f7d4b; --leaf-edge:#1f5e36; --terra2:#c44a26; --terra-edge:#8f3318;
+    --shadow:0 18px 44px -18px rgba(90,55,25,.4), 0 3px 10px rgba(90,55,25,.08);
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; min-height:100vh; color:var(--ink); line-height:1.6;
+    font-family:"Hanken Grotesk",system-ui,sans-serif;
+    background:
+      radial-gradient(800px 460px at 85% -10%, rgba(217,102,59,.16), transparent 60%),
+      radial-gradient(700px 460px at 5% 5%, rgba(228,165,58,.16), transparent 58%),
+      var(--paper);
+    display:flex; align-items:center; justify-content:center; padding:34px 18px;
+  }
+  .stage{width:100%; max-width:780px}
+  .kicker{font-family:"Hanken Grotesk"; text-align:center; font-size:.76rem; letter-spacing:.22em; text-transform:uppercase; color:var(--terracotta); font-weight:800; margin-bottom:10px}
+  h1{font-family:"Fraunces",serif; font-weight:600; text-align:center; font-size:clamp(1.8rem,4.5vw,2.6rem); margin:0 0 4px; letter-spacing:-.01em}
+  .tagline{text-align:center; color:var(--muted); margin:0 0 22px; font-size:.98rem}
+
+  .card{background:var(--card); border:1px solid var(--line); border-radius:24px; box-shadow:var(--shadow); overflow:hidden}
+  .frame{position:relative; background:#000; aspect-ratio:3/2}
+  .frame img{width:100%; height:100%; object-fit:cover; display:block}
+  .frame .badge{position:absolute; left:14px; bottom:14px; background:rgba(43,32,24,.72); color:#fff;
+    backdrop-filter:blur(4px); font-size:.74rem; font-weight:700; padding:6px 12px; border-radius:999px}
+
+  .body{padding:24px 26px 28px}
+
+  /* language toggle */
+  .lang{display:flex; gap:6px; justify-content:center; margin-bottom:18px}
+  .lang button{font-family:inherit; cursor:pointer; border:1px solid var(--line); background:var(--paper);
+    color:var(--ink2); font-weight:800; font-size:.85rem; padding:7px 16px; border-radius:999px; transition:.15s}
+  .lang button.active{background:var(--ink); color:var(--paper); border-color:var(--ink)}
+
+  .desc{font-size:1.06rem; color:var(--ink2); margin:0 0 24px; min-height:6em}
+  .desc::first-letter{font-family:"Fraunces",serif; font-size:2.6em; line-height:.8; float:left; margin:6px 10px 0 0; color:var(--terracotta); font-weight:600}
+
+  /* 3D buttons */
+  .controls{display:flex; gap:16px; justify-content:center; flex-wrap:wrap; align-items:center}
+  .btn3d{--c:var(--leaf); --c2:var(--leaf2); --edge:var(--leaf-edge);
+    font-family:inherit; cursor:pointer; border:none; color:#fff; font-size:1.12rem; font-weight:800; letter-spacing:.01em;
+    padding:16px 30px; border-radius:18px; background:linear-gradient(180deg,var(--c),var(--c2));
+    box-shadow:0 7px 0 var(--edge), 0 14px 24px -6px rgba(0,0,0,.3); transform:translateY(0);
+    transition:transform .08s ease, box-shadow .08s ease, filter .15s; display:inline-flex; align-items:center; gap:12px}
+  .btn3d:hover{filter:brightness(1.06)}
+  .btn3d:active{transform:translateY(7px); box-shadow:0 0 0 var(--edge), 0 4px 10px rgba(0,0,0,.22)}
+  .btn3d:disabled{opacity:.45; cursor:default; transform:translateY(7px); box-shadow:0 0 0 var(--edge); filter:none}
+  .btn3d.stop{--c:var(--terracotta); --c2:var(--terra2); --edge:var(--terra-edge)}
+  .btn3d .ico{font-size:1.05em; line-height:1; display:inline-block}
+  .btn3d.playing{animation:pulse 1.3s ease-in-out infinite}
+  @keyframes pulse{0%,100%{filter:brightness(1)}50%{filter:brightness(1.16)}}
+
+  .progress{height:8px; background:var(--paper); border:1px solid var(--line); border-radius:999px; margin:22px auto 0; max-width:340px; overflow:hidden}
+  .progress span{display:block; height:100%; width:0; background:linear-gradient(90deg,var(--honey),var(--terracotta)); transition:width .15s}
+  .status{text-align:center; color:var(--muted); font-size:.82rem; margin-top:10px; font-variant-numeric:tabular-nums}
+  .foot{text-align:center; color:var(--muted); font-size:.78rem; margin-top:20px}
+  .foot .kbd{font-family:monospace; background:var(--card); border:1px solid var(--line); border-radius:6px; padding:1px 6px}
+</style>
+</head>
+<body>
+  <div class="stage">
+    <div class="kicker">GPT-Image · ElevenLabs · Claude Code</div>
+    <h1 id="title">El equipo de Claude Code</h1>
+    <p class="tagline" id="tag">Una imagen creada con IA — y la voz que te cuenta qué se ve.</p>
+
+    <div class="card">
+      <div class="frame">
+        <img src="assets/img/team-claude-code.png" alt="Tres jóvenes trabajando con Claude Code en un loft">
+        <span class="badge">🎨 GPT-Image · 1536×1024</span>
+      </div>
+      <div class="body">
+        <div class="lang">
+          <button data-l="es" class="active">🇪🇸 Español</button>
+          <button data-l="de">🇩🇪 Deutsch</button>
+        </div>
+
+        <p class="desc" id="desc"></p>
+
+        <div class="controls">
+          <button class="btn3d" id="play"><span class="ico">▶</span> <span id="playlbl">Reproducir</span></button>
+          <button class="btn3d stop" id="stop"><span class="ico">■</span> <span id="stoplbl">Parar</span></button>
+        </div>
+        <div class="progress"><span id="bar"></span></div>
+        <div class="status" id="status">0:00 / 0:00</div>
+      </div>
+    </div>
+    <p class="foot">Guillermo&nbsp;Y&nbsp;Pillar · <span class="kbd">site/team-bild-demo.html</span></p>
+  </div>
+
+  <audio id="player" preload="metadata"></audio>
+
+<script>
+  const DATA = {
+    es: {
+      title: "El equipo de Claude Code",
+      tag: "Una imagen creada con IA — y la voz que te cuenta qué se ve.",
+      play: "Reproducir", stop: "Parar",
+      audio: "assets/audio/team-claude-code-es.mp3",
+      text: "Miras, como si fuera una casa de muñecas, dentro de un acogedor loft: falta la pared delantera y el techo desciende en el lado derecho con un suave ángulo. En un largo escritorio de madera están sentados tres jóvenes, uno al lado del otro, frente a tres monitores. En las pantallas brilla código de colores, y en el centro destaca la palabra «Claude» — los tres trabajan juntos en inteligencia artificial con Claude Code. A la izquierda, uno teclea muy concentrado. En el centro, otro se recuesta relajado y le da un buen mordisco a una rodaja de sandía. A la derecha, el tercero disfruta de un trozo de tarta. Plantas de interior, una alfombra cálida, un reloj de pared y unos pequeños pósters hacen el ambiente hogareño. Todo está en tonos cálidos y terrosos — terracota, amarillo miel y verde hoja. Una pequeña escena tranquila: trabajar, relajarse y picar algo, todo al mismo tiempo."
+    },
+    de: {
+      title: "Das Claude-Code-Team",
+      tag: "Ein mit KI erstelltes Bild — und die Stimme, die erklärt, was zu sehen ist.",
+      play: "Abspielen", stop: "Stopp",
+      audio: "assets/audio/team-claude-code.mp3",
+      text: "Du blickst wie in ein Puppenhaus in eine gemütliche Loft-Wohnung — die vordere Wand fehlt, und das Dach fällt auf der rechten Seite in einem sanften Winkel ab. An einem langen Holzschreibtisch sitzen drei junge Männer nebeneinander vor drei Monitoren. Auf den Bildschirmen leuchtet bunter Code, und in der Mitte prangt der Schriftzug „Claude“ — die drei arbeiten zusammen an künstlicher Intelligenz mit Claude Code. Links tippt einer hochkonzentriert in die Tasten. In der Mitte lehnt sich einer entspannt zurück und beißt genüsslich in eine Scheibe Wassermelone. Rechts lässt sich der Dritte ein Stück Kuchen schmecken. Zimmerpflanzen, ein warmer Teppich, eine Wanduhr und kleine Poster machen den Raum heimelig. Alles ist in warmen Erdtönen gehalten — Terrakotta, Honiggelb und Blattgrün. Eine kleine, friedliche Szene: arbeiten, chillen und naschen, alles zur gleichen Zeit."
+    }
+  };
+
+  const player = document.getElementById('player');
+  const playBtn = document.getElementById('play');
+  const stopBtn = document.getElementById('stop');
+  const bar = document.getElementById('bar');
+  const status = document.getElementById('status');
+  let lang = 'es';
+
+  function fmt(s){ s=Math.max(0,Math.floor(s||0)); return Math.floor(s/60)+':'+String(s%60).padStart(2,'0'); }
+
+  function setLang(l){
+    lang = l;
+    const d = DATA[l];
+    document.documentElement.lang = l;
+    document.getElementById('title').textContent = d.title;
+    document.getElementById('tag').textContent = d.tag;
+    document.getElementById('desc').textContent = d.text;
+    document.getElementById('playlbl').textContent = d.play;
+    document.getElementById('stoplbl').textContent = d.stop;
+    document.querySelectorAll('.lang button').forEach(b=>b.classList.toggle('active', b.dataset.l===l));
+    player.pause(); player.currentTime = 0;
+    player.src = d.audio;
+    playBtn.classList.remove('playing');
+    bar.style.width = '0%'; status.textContent = '0:00 / 0:00';
+  }
+
+  document.querySelectorAll('.lang button').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.l)));
+  playBtn.addEventListener('click', ()=> player.play());
+  stopBtn.addEventListener('click', ()=>{ player.pause(); player.currentTime = 0; });
+
+  player.addEventListener('play', ()=> playBtn.classList.add('playing'));
+  player.addEventListener('pause', ()=> playBtn.classList.remove('playing'));
+  player.addEventListener('ended', ()=>{ playBtn.classList.remove('playing'); player.currentTime = 0; });
+  player.addEventListener('timeupdate', ()=>{
+    const pct = player.duration ? (player.currentTime/player.duration*100) : 0;
+    bar.style.width = pct + '%';
+    status.textContent = fmt(player.currentTime) + ' / ' + fmt(player.duration);
+  });
+
+  setLang('es');
+</script>
+</body>
+</html>
