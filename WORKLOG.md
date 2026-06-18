@@ -100,6 +100,14 @@
     the Guillermo example), which drives the IN/OUT bars, intake slider and 12-week weight curve in real
     time. The burn stays manually editable. Removed the old `#calc` section, its nav entry, `calcTDEE` and
     `setSex`; saved/restored via the same `gp_calc` key (now through `cioInit`/`cioSave`).
+- **Castellano translation pass (text only, no audio yet):** added `.lang-es` blocks for **How you do it
+  (#honest), Your Why (#why), Your Path (#paths) and the Contract (#contract)** (vosotros, lightly Basque).
+  So ES text now covers cover..Willpower **and** How-you-do-it..Contract. **Still need ES:** the
+  interactive/structured sections, which need surgical prose-only wrapping so their shared widgets/IDs are
+  not duplicated: **#how (Calories In/Out widget prose), #plan (45-day tracker), #recipes (grid/modal data
+  is JS), #tips, #cheatsheet, #motivation.** Audio for all the new ES is also still to be generated.
+- **Saved to GitHub:** private repo **https://github.com/Martennwt/guillermo-y-pilar-guide** (branch
+  `main`). No secrets in the repo (API keys live outside the project; scripts only read them by path).
 
 **Still open (next): recipe photos + research** — add real (free-licensed, web-sourced, NOT AI) photos
 starting with the Veggie Omelette and Yogurt Bowl (the modal already supports an `img` field per recipe,
