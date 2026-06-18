@@ -1,0 +1,16 @@
+[
+  {
+    "id": "veggie-omelette",
+    "file": "veggie-omelette.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Tortilla_de_patata_-_San_Sebasti%C3%A1n.jpg",
+    "artist": "Kent Wang",
+    "license": "CC BY-SA 2.0"
+  },
+  {
+    "id": "yogurt-bowl",
+    "file": "yogurt-bowl.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Yogurt_parfait_with_granola_and_blueberries_in_shot_glasses_with_silverware_spoons_(17098581522).jpg",
+    "artist": "Personal Creations",
+    "license": "CC BY 2.0"
+  }
+]

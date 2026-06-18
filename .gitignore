@@ -1,0 +1,11 @@
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# temp / scratch files
+*.tmp
+_proof.*
+_iso*.html
+_c.js
+_check.js
