@@ -261,6 +261,17 @@ details .body li{margin:.4rem 0}
 .rm-tweak{display:flex; justify-content:space-between; gap:.6rem; font-size:.88rem; padding:.2rem 0; border-top:1px dotted var(--line)}
 .rm-tweak:first-of-type{border-top:0}
 .rm-tweak b{color:var(--terracotta-deep); white-space:nowrap}
+.rm-shop{margin:.2rem 0 0; border:1px solid var(--line); border-radius:14px; background:var(--paper-2); overflow:hidden}
+.rm-shop>summary{list-style:none; cursor:pointer; padding:.75rem .9rem; font-weight:800; color:var(--olive-deep); display:flex; align-items:center; justify-content:space-between; gap:.5rem}
+.rm-shop>summary::-webkit-details-marker{display:none}
+.rm-shop>summary::after{content:"▾"; color:var(--ink-faint); transition:transform .2s}
+.rm-shop[open]>summary::after{transform:rotate(180deg)}
+.rm-shop-body{padding:.1rem .95rem 1rem}
+.rm-shop-body ul{list-style:none; margin:.2rem 0 0; padding:0}
+.rm-shop-body li{display:flex; align-items:flex-start; gap:.55rem; padding:.42rem 0; border-top:1px dashed var(--line); font-size:1rem; color:var(--ink)}
+.rm-shop-body li:first-child{border-top:0}
+.rm-shop-body li::before{content:"☐"; color:var(--leaf); font-weight:900; font-size:1.05rem; line-height:1.25}
+.rm-shop-note{font-size:.8rem; color:var(--ink-faint); margin:.6rem 0 0}
 
 .contract{background:repeating-linear-gradient(0deg, transparent, transparent 38px, rgba(56,72,36,.07) 38px, rgba(56,72,36,.07) 39px), var(--paper); border:2px solid var(--olive); border-radius:var(--radius-lg); padding:clamp(1.2rem,3vw,2rem); box-shadow:var(--shadow-md); position:relative}
 .contract h3{font-family:var(--display); color:var(--olive-deep); text-align:center; font-size:1.6rem}
@@ -307,6 +318,12 @@ html[data-lang="es"] .lang-es{display:block}
 .audio-pick{position:relative}
 .audio-pick-btn{display:flex; align-items:center; gap:.5rem; font-family:var(--body); font-weight:800; font-size:.9rem; color:#fff; background:rgba(255,255,255,.13); border:1px solid rgba(255,255,255,.26); border-radius:999px; padding:.32rem .85rem; cursor:pointer; max-width:min(52vw,250px); transition:background .15s}
 .audio-pick-btn:hover{background:rgba(255,255,255,.24)}
+.audio-voice{display:inline-flex; gap:.25rem; margin-top:.22rem; align-items:center}
+.audio-voice .vlab{font-size:.6rem; font-weight:800; letter-spacing:.06em; text-transform:uppercase; opacity:.6; margin-right:.1rem}
+.audio-voice button{font-family:var(--body); font-weight:800; font-size:.6rem; letter-spacing:.04em; text-transform:uppercase; color:rgba(251,246,236,.72); background:rgba(255,255,255,.10); border:1px solid rgba(255,255,255,.22); border-radius:999px; padding:.14rem .6rem; cursor:pointer; transition:.15s}
+.audio-voice button:hover{background:rgba(255,255,255,.2)}
+.audio-voice button.on{background:#fff; color:var(--olive-deep); border-color:#fff}
+.audio-pick-menu button.disabled{opacity:.42; cursor:default}
 .audio-pick-btn span{overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
 .apk-chev{flex:none; transition:transform .2s}
 .audio-pick.open .apk-chev{transform:rotate(180deg)}
@@ -497,6 +514,38 @@ table.swaps tr:last-child td{border-bottom:none}
 .cio-summary{margin:.9rem 0 0; font-size:.95rem; color:var(--olive-deep); background:var(--paper-2); border:1px solid var(--line); border-radius:12px; padding:.6rem .85rem; text-align:center; line-height:1.4}
 .cio-summary b{color:var(--c)}
 @media (max-width:520px){ .cio-bar{grid-template-columns:4.5rem 1fr} .cio-nums{grid-template-columns:1fr} }
+/* ===== The journey: 4 steps ===== */
+.journey{margin:1.7rem 0 .4rem; display:grid; gap:1rem}
+.jstep{position:relative; background:var(--paper); border:1px solid var(--line); border-left:6px solid var(--c);
+  border-radius:var(--radius-lg); padding:1.4rem 1.55rem 1.5rem; box-shadow:var(--shadow-sm)}
+.jstep.s1{--c:var(--honey)} .jstep.s2{--c:var(--terracotta)} .jstep.s3{--c:var(--eus-red)} .jstep.s4{--c:var(--leaf)}
+.jhead{display:flex; align-items:center; gap:.85rem; margin-bottom:.55rem}
+.jnum{flex:none; width:2.7rem; height:2.7rem; border-radius:50%; background:var(--c); color:#fff;
+  display:grid; place-items:center; font-family:var(--display); font-weight:900; font-size:1.4rem; line-height:1; box-shadow:var(--shadow-sm)}
+.jtitle{margin:0; font-family:var(--display); font-weight:600; line-height:1.12; font-size:clamp(1.35rem,3.6vw,1.8rem); color:var(--olive-deep)}
+.jtitle .je{margin-right:.3rem}
+.jessence{font-weight:800; color:var(--terracotta-deep); font-size:1.05rem; margin:0 0 .7rem}
+.jstep p{margin:0 0 .8rem} .jstep p:last-child{margin-bottom:0}
+.jkey{margin:.9rem 0 0; font-weight:700; background:var(--paper-2); border:1px solid var(--line); border-left:3px solid var(--c); border-radius:12px; padding:.6rem .9rem; font-size:.97rem}
+.jkey b{color:var(--olive-deep)}
+.jflow{display:flex; flex-wrap:wrap; gap:.45rem; align-items:center; justify-content:center; margin:1.3rem 0 .2rem; font-weight:800; font-size:.92rem; color:var(--ink-soft)}
+.jflow b{background:var(--paper-2); border:1px solid var(--line); border-radius:999px; padding:.32rem .85rem; color:var(--olive-deep)}
+.jflow i{color:var(--honey); font-style:normal; font-weight:900}
+@media(max-width:520px){ .jhead{gap:.6rem} .jnum{width:2.3rem; height:2.3rem; font-size:1.2rem} .jstep{padding:1.2rem 1.15rem 1.25rem} }
+/* ===== Honest check-in quiz ===== */
+.quiz{display:grid; gap:.5rem; margin:1.3rem 0 .4rem}
+.quiz-row{display:flex; align-items:center; justify-content:space-between; gap:1rem; background:var(--paper); border:1px solid var(--line); border-radius:14px; padding:.7rem .55rem .7rem .95rem}
+.quiz-row.commit{background:var(--good-bg); border-color:var(--good-line)}
+.quiz-q{font-weight:700; color:var(--ink); font-size:.97rem}
+.quiz-opts{display:flex; gap:.4rem; flex:none}
+.quiz-opts button{font-family:var(--body); font-weight:800; font-size:.8rem; border:1.5px solid var(--line-2); background:var(--paper-2); color:var(--ink-soft); border-radius:999px; padding:.34rem .9rem; cursor:pointer; transition:.15s}
+.quiz-opts button:hover{background:var(--paper-3)}
+.quiz-opts button.on{background:var(--terracotta); border-color:var(--terracotta); color:#fff}
+.quiz-result{margin-top:.5rem; display:flex; align-items:center; gap:1.1rem; background:var(--paper); border:1px solid var(--line); border-left:6px solid var(--terracotta); border-radius:16px; padding:1rem 1.2rem; box-shadow:var(--shadow-sm)}
+.quiz-score{font-family:var(--display); font-weight:900; font-size:2.7rem; line-height:1; color:var(--terracotta); flex:none; min-width:1.4em; text-align:center}
+.quiz-msg{font-size:.97rem; color:var(--ink); line-height:1.5}
+.quiz-msg b{color:var(--olive-deep)}
+@media(max-width:540px){ .quiz-row{flex-direction:column; align-items:stretch; gap:.55rem} .quiz-opts{justify-content:flex-end} }
 </style>
 </head>
 <body>
@@ -546,13 +595,16 @@ table.swaps tr:last-child td{border-bottom:none}
       </div>
       <div class="lang-en">
       <h1>Lose the kilos.<br>And <span class="scrawl">keep them off</span>.</h1>
-      <div class="for">For good this time, even with the whisky cheesecake. 😄</div>
-      <p class="sub">Not a diet. And definitely not one of Marten's witchcraft green power-juices. 😅
-        This is how you lose weight the healthy way and actually keep it off: a shift in mindset, a few
-        simple systems, little tricks and easy tips you will really stick to. Real Basque food, no
-        starving, and learning to smile at a craving instead of obeying it. Because in the end it was
-        never about short-term kilos, it was about your <a href="#why" class="why">WHY</a>, your systems,
-        and the long life you want from here.</p>
+      <div class="for">Real change this time, and the whisky cheesecake can stay. 😄</div>
+      <p class="sub">This is not a diet, and it is definitely not one of Marten's witchcraft green
+        power-juices. 😅 It is how you lose weight the healthy way and actually keep it off. The main
+        thing is a shift in mindset, backed by a few simple systems and little tricks you will actually
+        stick to. You keep your real Basque food, just with a few small adjustments, and bring in some newer,
+        lighter, healthier recipes alongside it. No starving, and you learn to smile at a craving instead
+        of obeying it. Because this was never about short-term
+        kilos or another diet. It is about the mental strength to become the person you want to be, with
+        the body you want, and to stay that way, not change for a week and slip back into your old
+        habits.</p>
       <div class="cta">
         <a class="btn primary" href="#start">Start with a smile</a>
         <button class="btn ghost" onclick="toggleOverlay()">See all chapters</button>
@@ -560,8 +612,8 @@ table.swaps tr:last-child td{border-bottom:none}
       </div>
       <div class="lang-es">
       <h1>Perded los kilos.<br>Y <span class="scrawl">que no vuelvan</span>.</h1>
-      <div class="for">Esta vez para siempre, sí, hasta con la tarta de queso al whisky. 😄</div>
-      <p class="sub">Esto no es una dieta. Y desde luego no es uno de los zumos verdes de brujería de Marten. 😅 Así es como se adelgaza de forma sana y se mantiene de verdad: un cambio de mentalidad, unos cuantos sistemas sencillos, pequeños trucos y consejos fáciles que de verdad vais a mantener. Comida vasca de verdad, sin pasar hambre, y aprender a sonreírle a un antojo en vez de obedecerlo. Porque al final nunca fue cuestión de kilos para un verano, fue cuestión de vuestro <a href="#why" class="why">PORQUÉ</a>, vuestros sistemas y la vida larga que queréis a partir de ahora.</p>
+      <div class="for">Un cambio de verdad esta vez, y la tarta de queso al whisky se queda. 😄</div>
+      <p class="sub">Esto no es una dieta, y desde luego no es uno de los zumos verdes de brujería de Marten. 😅 Es la forma de adelgazar de manera sana y mantenerlo de verdad. Lo principal es un cambio de mentalidad, apoyado en unos cuantos sistemas sencillos y pequeños trucos que de verdad vais a mantener. Seguís con vuestra comida vasca de verdad, solo con unos pequeños ajustes, y sumáis algunas recetas más nuevas, ligeras y saludables. Sin pasar hambre, y aprendéis a sonreírle a un antojo en vez de obedecerlo. Porque esto nunca fue cuestión de kilos para un verano ni de otra dieta más. Es cuestión de la fuerza mental para convertiros en la persona que queréis ser, con el cuerpo que queréis, y quedaros ahí, no cambiar una semana y recaer en las viejas costumbres.</p>
       <div class="cta">
         <a class="btn primary" href="#start">Empezad con una sonrisa</a>
         <button class="btn ghost" onclick="toggleOverlay()">Ver todos los capítulos</button>
@@ -576,17 +628,16 @@ table.swaps tr:last-child td{border-bottom:none}
     <div class="eyebrow">First things first</div>
     <h2>You have tried before. I get it.</h2>
     <p>In a minute I will tell you a little story about a whisky cheesecake in a Chinese restaurant, and
-      five words in Spanish you will be itching to use, the kind you would not say in front of
-      the foreman. 😄 But before that story, something
+      five words in Spanish you will be itching to use. But before that story, something
       important.</p>
     <p>Hey Guillermo and Pilar. I know exactly what you are probably thinking right now: <em>"Madre mía, this is a
       lot of reading. I just want the solution, the quick fix. I don't want to study a whole book."</em>
       Fair enough.</p>
     <p>So here is how easy I make it: you do not even have to read it. Your hands have lifted enough
-      today. For once, let your ears do the work.
-      <strong>Press play and let a real Spanish voice read the whole thing to you, out loud.</strong>
+      for this week. For once, let your ears do the work.
+      <strong><span class="scrawl">Press play</span> and let a real Spanish voice read the whole thing to you, out loud.</strong>
       Take your time, brick by brick. Best of all on the sofa next to Pilar (your partner in crime, and
-      the cook who keeps you fed like a king, which is exactly why this is a team sport 😄), half an hour
+      the cook who keeps you fed like a king, which is exactly <span class="scrawl">why this is a team sport</span> 😄), half an hour
       at most. That is all it takes.</p>
     <p>And Pilar, this is every bit as much for you. You are the heart of this kitchen, a true maestra of
       Spanish and Basque cooking, making sure your man never sits down to a cold plate after a hard day.
@@ -597,8 +648,8 @@ table.swaps tr:last-child td{border-bottom:none}
       few days, a few weeks, even a few months, lost a couple of kilos and felt great, and then life got
       busy and the old habits crept back in. Sometimes it is simply hard to stick to the rules.</p>
     <p>And maybe you are still not happy with where you are. That is exactly why this guide exists. You
-      are not starting over, you are starting wiser.</p>
-    <p>So, that is why the real question is this:</p>
+      are <span class="scrawl">not starting over, you are starting wiser</span>.</p>
+    <p>So, that is why the question is this:</p>
     <p class="big-quote">"Will you give 25 minutes, just once, to change how you live for the next 30
       years?" 🔥</p>
     <p>This is not about following yet another strict food system with a long list of rules you can
@@ -612,28 +663,26 @@ table.swaps tr:last-child td{border-bottom:none}
 
     <p><strong>I am not putting you through that.</strong> I am after something completely different: the moment it
       <strong>clicks.</strong> When you finally understand <em>why</em>, a switch flips inside you and it
-      stays flipped. Not a diet you survive. A person you become.</p>
-    <p class="big-quote">This is the difference between losing weight for one summer, and changing for
-      the rest of your life.</p>
-    <p>So let me show you where it really starts, with the captain of your ship. 🚢</p>
+      stays flipped. It is not a diet you survive. It is who you become.</p>
+    <p class="big-quote">This is the difference between losing weight for one summer, and <span class="scrawl">changing for
+      the rest of your life</span>.</p>
     <div class="nextprev"><span></span><a class="btn primary" href="#captain">Next: Who's the captain?</a></div>
     </div>
     <div class="lang-es">
     <div class="eyebrow">Lo primero de todo</div>
     <h2>Ya lo habéis intentado antes. Lo entiendo.</h2>
-    <p>Dentro de un momento os contaré una pequeña historia sobre una tarta de queso al whisky en un restaurante chino, y cinco palabras que os vais a morir de ganas de usar, de esas que no se dicen delante del capataz. 😄 Pero antes de esa historia, algo importante.</p>
+    <p>Dentro de un momento os contaré una pequeña historia sobre una tarta de queso al whisky en un restaurante chino, y cinco palabras que os vais a morir de ganas de usar. Pero antes de esa historia, algo importante.</p>
     <p>Hola Guillermo y Pilar. Sé perfectamente lo que estaréis pensando ahora mismo: <em>«Madre mía, cuánto para leer. Yo solo quiero la solución, el remedio rápido. No me apetece estudiarme un libro entero».</em> Me parece justo.</p>
-    <p>Así que mirad qué fácil os lo pongo: ni siquiera tenéis que leerlo. Las manos ya han levantado bastante por hoy. Por una vez, que trabajen los oídos. <strong>Dadle al play y dejad que una voz española de verdad os lo lea todo, en voz alta.</strong> Con calma, ladrillo a ladrillo. Mejor aún en el sofá, al lado de Pilar (tu cómplice, y la cocinera que te tiene como a un rey, que es justo por lo que esto es deporte de equipo 😄), media hora como mucho. Eso es todo lo que hace falta.</p>
+    <p>Así que mirad qué fácil os lo pongo: ni siquiera tenéis que leerlo. Las manos ya han levantado bastante por esta semana. Por una vez, que trabajen los oídos. <strong><span class="scrawl">Dadle al play</span> y dejad que una voz española de verdad os lo lea todo, en voz alta.</strong> Con calma, ladrillo a ladrillo. Mejor aún en el sofá, al lado de Pilar (tu cómplice, y la cocinera que te tiene como a un rey, que es justo <span class="scrawl">por lo que esto es deporte de equipo</span> 😄), media hora como mucho. Eso es todo lo que hace falta.</p>
     <p>Y Pilar, esto es igual de tuyo. Tú eres el corazón de esta cocina, una auténtica maestra de la cocina española y vasca, la que se asegura de que tu hombre siempre tenga un plato caliente después de un día duro. Eso es amor. Y también os convierte en un equipo, porque Guillermo puede estar fuerte como un toro todo el día, llegar a casa, ver tu famoso ali-oli sonriéndole desde la mesa con 800 calorías por cucharada, y vuelta a empezar la batalla. 😄 (Más sobre cómo domar esa mayonesa en los <a href="#tips">consejos extra</a>.)</p>
     <p>Seguramente ya habéis intentado adelgazar antes. Seguramente más de una vez. A lo mejor aguantasteis unos días, unas semanas, incluso unos meses, perdisteis un par de kilos y os sentíais genial, y entonces la vida se complicó y las viejas costumbres se colaron de nuevo. A veces, sencillamente, cuesta seguir las normas.</p>
-    <p>Y puede que todavía no estéis a gusto con donde estáis. Justo por eso existe esta guía. No empezáis de cero, empezáis con más cabeza.</p>
-    <p>Así que la verdadera pregunta es esta:</p>
+    <p>Y puede que todavía no estéis a gusto con donde estáis. Justo por eso existe esta guía. <span class="scrawl">No empezáis de cero, empezáis con más cabeza</span>.</p>
+    <p>Así que la pregunta es esta:</p>
     <p class="big-quote">«¿Vais a dedicar 25 minutos, una sola vez, para cambiar cómo vais a vivir los próximos 30 años?» 🔥</p>
     <p>No se trata de seguir otra dieta estricta más, con una lista de normas de las que no veis la hora de escapar. Ya conocéis la escena: tarde por la noche, a gustito en el sofá, viendo vuestra serie favorita y mirando fijamente vuestro dulce favorito como si os debiera dinero, con el cerebro a tope buscando el argumento perfecto para justificar por qué hay que comérselo esta noche sí o sí. 😄</p>
     <p>Porque esa es la trampa: apretáis los dientes, perdéis unos kilos, volvéis a las andadas, lo recuperáis todo, y vuelta a empezar. <strong>Perder, ganar, perder, ganar.</strong> Agotador, y no se acaba nunca.</p>
-    <p><strong>No os voy a hacer pasar por eso.</strong> Voy detrás de algo completamente distinto: el momento en que hace <strong>clic</strong>. Cuando por fin entendéis el <em>porqué</em>, algo se enciende dentro de vosotros y se queda encendido. No una dieta que aguantar. Una persona en la que os convertís.</p>
-    <p class="big-quote">Esta es la diferencia entre perder peso para un verano, y cambiar para el resto de vuestra vida.</p>
-    <p>Así que dejadme enseñaros dónde empieza todo de verdad: con el capitán de vuestro barco. 🚢</p>
+    <p><strong>No os voy a hacer pasar por eso.</strong> Voy detrás de algo completamente distinto: el momento en que hace <strong>clic</strong>. Cuando por fin entendéis el <em>porqué</em>, algo se enciende dentro de vosotros y se queda encendido. No es una dieta que aguantar. Es la persona en la que os convertís.</p>
+    <p class="big-quote">Esta es la diferencia entre perder peso para un verano, y <span class="scrawl">cambiar para el resto de vuestra vida</span>.</p>
     <div class="nextprev"><span></span><a class="btn primary" href="#captain">Siguiente: ¿Quién es el capitán?</a></div>
     </div>
   </section>
@@ -645,14 +694,17 @@ table.swaps tr:last-child td{border-bottom:none}
     <h2>Who is the captain of your ship? 🚢</h2>
     <p>You are going to be tested, more often than you would like, and you knew that before you even
       opened this. How it ends comes down to one question.</p>
-    <p>Here is the real question, bigger than any diet: <strong>will you be weaker than your cravings, or
+    <p><strong>Will you be weaker than your cravings, or
       stronger than your impulses?</strong> And on the days you lose that fight, it is almost always one
       of two things: no system was ready in your pocket, or your <a href="#why" class="why">WHY</a> was
       too weak.</p>
     <p>Right now, when a craving shows up, your body snaps its fingers, and you obey. The body is steering
       the ship, and you, the captain, have quietly let go of the wheel. You are going to take that wheel
-      back. Because a craving is just an impulse. It has no power of its own. <strong>The only one with
-      real power here is you.</strong></p>
+      back. Because <span class="scrawl">a craving is just an impulse. It has no power of its own.</span> <strong>The only one with
+      real power here is you.</strong> And here is the part that changes everything: the day you truly
+      become stronger than your impulses, you are not just winning one craving, you are winning all of
+      them. The way you eat, the way you carry yourself, the way you look at the person in the mirror, it
+      all shifts. Win that one fight inside your head, and you have already won the whole thing.</p>
     <p>So picture this. You are out for dinner at the Chinese restaurant, the one you love, and a
       gorgeous little whisky cheesecake is sitting on the table, batting its eyes at you. You look it
       dead in the eye, you smile, and you tell it: <strong>"Vete a tu puta casa"</strong> 😄. Go home,
@@ -674,8 +726,8 @@ table.swaps tr:last-child td{border-bottom:none}
     <div class="eyebrow">Empezamos con una sonrisa</div>
     <h2>¿Quién es el capitán de vuestro barco? 🚢</h2>
     <p>Os van a poner a prueba, más veces de las que os gustaría, y eso ya lo sabíais antes de abrir esto. Cómo acaba la historia depende de una sola pregunta.</p>
-    <p>Y la verdadera pregunta, más grande que cualquier dieta, es esta: <strong>¿vais a ser más débiles que vuestros antojos, o más fuertes que vuestros impulsos?</strong> Y los días que perdáis esa batalla, casi siempre es por una de dos cosas: no teníais ningún sistema preparado en el bolsillo, o vuestro <a href="#why" class="why">PORQUÉ</a> era demasiado débil.</p>
-    <p>Ahora mismo, cuando aparece un antojo, el cuerpo ladra una orden y vosotros obedecéis. El cuerpo lleva el barco, y vosotros, el capitán, habéis soltado el timón sin daros cuenta. Vais a recuperar ese timón. Porque un antojo es solo un impulso. No tiene ningún poder propio. <strong>El único que tiene poder de verdad aquí sois vosotros.</strong></p>
+    <p><strong>¿Vais a ser más débiles que vuestros antojos, o más fuertes que vuestros impulsos?</strong> Y los días que perdáis esa batalla, casi siempre es por una de dos cosas: no teníais ningún sistema preparado en el bolsillo, o vuestro <a href="#why" class="why">PORQUÉ</a> era demasiado débil.</p>
+    <p>Ahora mismo, cuando aparece un antojo, el cuerpo ladra una orden y vosotros obedecéis. El cuerpo lleva el barco, y vosotros, el capitán, habéis soltado el timón sin daros cuenta. Vais a recuperar ese timón. Porque <span class="scrawl">un antojo es solo un impulso. No tiene ningún poder propio.</span> <strong>El único que tiene poder de verdad aquí sois vosotros.</strong> Y aquí está lo que lo cambia todo: el día en que de verdad os hacéis más fuertes que vuestros impulsos, no estáis ganando un solo antojo, los estáis ganando todos. Cómo coméis, cómo os movéis, cómo miráis a la persona del espejo: todo se mueve con vosotros. Ganad esa batalla dentro de vuestra cabeza, y ya lo habéis ganado todo.</p>
     <p>Imaginaos la escena. Estáis cenando en el restaurante chino, ese que tanto os gusta, y una preciosa tarta de queso al whisky descansa sobre la mesa, haciéndoos ojitos. La miráis fijamente, sonreís y le decís: <strong>«Vete a tu puta casa»</strong> 😄. A casa, que esta noche no estás invitada. Y cuando llega la cuenta y ni siquiera la habéis pedido, os recostáis, sonreís y decís: <em>«¿Ves? He ganado. Porque soy más fuerte que tú».</em></p>
     <div class="callout win"><strong>Y aquí está la magia.</strong> Cada vez que ganáis uno de esos pequeños pulsos, suma, y literalmente <strong>os reconfigura el cerebro.</strong> Hacedlo suficientes veces y pasa algo precioso: deja de ir de comida. Ya no es <em>«¿puedo seguir la dieta A, o la B, o este plan o aquel?».</em> Se convierte en: <em>«Ahora entiendo cómo funciona esto, y ya no lo necesito, porque tengo el control».</em> Ese es todo el juego.</div>
     <p>Al cuerpo solo hay que reeducarlo, reacondicionarlo, como un músculo en el gimnasio. Eso requiere dos cosas que el dinero no puede comprar: <strong>autodisciplina y autocontrol.</strong> La buena noticia: como cualquier músculo, se hace más fuerte cada vez que lo usáis, y los antojos se van callando.</p>
@@ -735,7 +787,7 @@ table.swaps tr:last-child td{border-bottom:none}
     <div class="eyebrow">The secret of people who succeed</div>
     <h2>Willpower vs. Systems 🧰</h2>
 
-    <p><strong>Your flesh vs. your spirit. 😇</strong> There is an old line in the Bible: <em>"the spirit is willing, but the flesh is weak."</em>
+    <p><strong>Your flesh vs. your spirit. 😇</strong> There is an old line in the Bible: <em>"<span class="scrawl">the spirit is willing, but the flesh is weak</span>."</em>
       It is spot on. Your <strong>flesh</strong> (the body) is the drama queen
       that whines for dessert, begs for the late-night snack, and wants everything right now. Your
       <strong>spirit</strong> (the real you) is the one who decides who you want to become. The flesh is
@@ -756,10 +808,17 @@ table.swaps tr:last-child td{border-bottom:none}
     <p class="big-quote">The people who make it are not stronger than you. They simply built systems, so
       willpower never has to save the day.</p>
     <p>Inside you there is a stronger version and a weaker version of yourself, and both are real. Every
-      time you keep your word, the strong one grows. Every time you break it, the weak one does. My job
-      is to make sure the strong you never fights alone. That is all a system is: a little trick waiting
-      in your pocket, so the right choice is half made before the craving even shows up.</p>
-    <p>And here is the part that changes everything: a craving is a wave, not a wall. It rises, it peaks,
+      time you keep your word, the strong one grows. Every time you break it, the weak one grows instead.
+      So which one do you want to feed? You grow the strong one with this guide: by listening to the audio
+      again and again, and coming back to it whenever you wobble, you slowly let your own mind change.</p>
+    <p>You know the saying, <em>"you can't teach an old dog new tricks."</em> Now, I am not calling anyone
+      old here, please do not punch me. 😄 I am only saying that a mind which has already lived forty or
+      fifty good years has its grooves cut a little deeper, so it takes a touch more patience to reroute.
+      That is exactly why consistency wins, and why this is built as an audiobook and a guided system you
+      can come back to any time you need a nudge back on track. And you never have to fight that alone.
+      That is all a system is: a little trick waiting in your pocket, so the right choice is half made
+      before the craving even shows up.</p>
+    <p>And here is the part that changes everything: <span class="scrawl">a craving is a wave, not a wall</span>. It rises, it peaks,
       and if you do not feed it, it breaks and rolls away, usually in a few minutes. Like the waves at
       Mundaka, it always looks bigger from the shore than it really is. You do not have to beat it. You
       just have to outlast it.</p>
@@ -769,31 +828,12 @@ table.swaps tr:last-child td{border-bottom:none}
       <figcaption>The left at Mundaka, Bizkaia 🌊</figcaption>
     </figure>
 
-    <p class="lead">When the bucket is empty and the wave comes, what do you do? You reach into your
-      pocket for a system. That, right there, is the whole difference between the people who fail and the
-      people who make it.</p>
-    <div class="grid2">
-      <div class="minicard bad"><h3>😣 Why people fail</h3><ul>
-        <li>Running on willpower and motivation alone</li>
-        <li>Gritting their teeth and hoping to "be good"</li>
-        <li>Keeping sweets and junk in the house, in plain sight</li>
-        <li>Shopping hungry, with no list</li>
-        <li>No plan for the weak moment, so the weaker version wins</li>
-        <li>Doing it alone, with no one to answer to</li>
-      </ul></div>
-      <div class="minicard good"><h3>💪 How you win</h3><ul>
-        <li>Keep healthy nuts nearby (not the salty, sugary kind) for when hunger hits</li>
-        <li>Want something sweet? Greek yogurt with fruit, a little honey and banana. Make that your default</li>
-        <li>Get the sweets out of the house. If it is not in front of you, you will not eat it</li>
-        <li>Clear the junk out of the fridge and cupboards completely</li>
-        <li>Decide your meals in advance, when you are calm and full</li>
-        <li>Get an accountability partner. Guillermo and Pilar, do this together and support each other</li>
-      </ul></div>
-    </div>
-    <div class="callout win"><strong>It is not a fight you win with gritted teeth.</strong> It is a
-      fight you win by setting things up beforehand, so the weak version of you barely gets a chance.</div>
-    <p>And at the very end of this guide there is one more powerful system: a <a href="#contract">45-day
-      contract</a> you sign, to lock the whole thing in.</p>
+    <p>And you will have them, make no mistake. Your brain, which you trained for years, screams that the
+      body needs to eat something right now or the world is going to end, and the old drama queen, that
+      weak flesh, takes the stage all over again. You win that round the same way every time: you ride the
+      wave out, and you get back up, again and again. There is much more on this on the <a href="#motivation">Power
+      Page</a>, and this is exactly what the audio is for: in the car, on the sofa, give it one or two
+      minutes and you are back on track.</p>
     <p class="nugget">"It is not about willpower. It is about the system you have ready when temptation
       shows up."</p>
     <div class="nextprev"><a class="btn ghost" href="#struggles">Back</a><a class="btn primary" href="#honest">Next: So how do you do it?</a></div>
@@ -802,7 +842,7 @@ table.swaps tr:last-child td{border-bottom:none}
     <div class="eyebrow">El secreto de los que lo consiguen</div>
     <h2>Fuerza de voluntad vs. sistemas 🧰</h2>
 
-    <p><strong>Vuestra carne contra vuestro espíritu. 😇</strong> Hay una frase antigua en la Biblia: <em>«el espíritu está dispuesto, pero la carne es débil.»</em> Da en el clavo. Vuestra <strong>carne</strong> (el cuerpo) es la reina del drama que lloriquea por el postre, suplica el picoteo de medianoche y lo quiere todo ya. Vuestro <strong>espíritu</strong> (el vosotros de verdad) es quien decide en quién os queréis convertir. La carne grita, pero el espíritu manda. Toda esta guía es en realidad una sola cosa: poner a vuestro espíritu en forma para que devuelva a la carne a su sitio.</p>
+    <p><strong>Vuestra carne contra vuestro espíritu. 😇</strong> Hay una frase antigua en la Biblia: <em>«<span class="scrawl">el espíritu está dispuesto, pero la carne es débil</span>.»</em> Da en el clavo. Vuestra <strong>carne</strong> (el cuerpo) es la reina del drama que lloriquea por el postre, suplica el picoteo de medianoche y lo quiere todo ya. Vuestro <strong>espíritu</strong> (el vosotros de verdad) es quien decide en quién os queréis convertir. La carne grita, pero el espíritu manda. Toda esta guía es en realidad una sola cosa: poner a vuestro espíritu en forma para que devuelva a la carne a su sitio.</p>
 
     <p class="big-quote">«La fuerza de voluntad es un cubo pequeño de agua. Para la noche suele estar vacío.»</p>
     <p>Cada vez que decís que no, vertéis un poco más. Y justo cuando se queda seco, toda la cocina se despierta, y con ella la tentación.</p>
@@ -810,35 +850,16 @@ table.swaps tr:last-child td{border-bottom:none}
     <p>Y esos al menos tienen la decencia de quedarse escondidos. Ese cuenco enorme de dulces aparcado justo delante de la tele ni siquiera se molesta en susurrar, se queda ahí a la vista, sonriéndoos toda la tarde. 😄</p>
     <p>Por eso importan tanto los sistemas por encima de la fuerza de voluntad.</p>
     <p class="big-quote">Los que lo consiguen no son más fuertes que vosotros. Simplemente construyeron sistemas, para que la fuerza de voluntad no tenga que salvar el día.</p>
-    <p>Dentro de vosotros hay una versión más fuerte y una más débil, y las dos son reales. Cada vez que cumplís vuestra palabra, crece la fuerte. Cada vez que la rompéis, crece la débil. Mi trabajo es asegurarme de que el vosotros fuerte nunca pelee solo. Eso es todo lo que es un sistema: un pequeño truco esperando en el bolsillo, para que la decisión correcta esté medio tomada antes incluso de que aparezca el antojo.</p>
-    <p>Y aquí está lo que lo cambia todo: un antojo es una ola, no un muro. Sube, llega a su punto más alto y, si no lo alimentáis, rompe y se aleja, normalmente en unos minutos. Como las olas de Mundaka, siempre parece más grande desde la orilla de lo que en realidad es. No tenéis que vencerlo. Solo tenéis que aguantar más que él.</p>
+    <p>Dentro de vosotros hay una versión más fuerte y una más débil, y las dos son reales. Cada vez que cumplís vuestra palabra, crece la fuerte. Cada vez que la rompéis, crece la débil. Entonces, ¿a cuál queréis alimentar? A la fuerte la hacéis crecer con esta guía: escuchando el audio una y otra vez, y volviendo a ella cada vez que flaqueáis, dejáis poco a poco que vuestra mente cambie.</p>
+    <p>Ya conocéis el dicho: <em>«loro viejo no aprende a hablar.»</em> Ojo, que no estoy llamando viejo a nadie, no me peguéis. 😄 Solo digo que una mente que ya ha vivido cuarenta o cincuenta buenos años tiene los surcos un poco más marcados, así que cuesta algo más de paciencia redirigirla. Justo por eso gana la constancia, y por eso esto está hecho como un audiolibro y un sistema guiado al que podéis volver siempre que necesitéis un empujón para retomar el rumbo. Y eso no lo tenéis que pelear solos. Eso es todo lo que es un sistema: un pequeño truco esperando en el bolsillo, para que la decisión correcta esté medio tomada antes incluso de que aparezca el antojo.</p>
+    <p>Y aquí está lo que lo cambia todo: <span class="scrawl">un antojo es una ola, no un muro</span>. Sube, llega a su punto más alto y, si no lo alimentáis, rompe y se aleja, normalmente en unos minutos. Como las olas de Mundaka, siempre parece más grande desde la orilla de lo que en realidad es. No tenéis que vencerlo. Solo tenéis que aguantar más que él.</p>
 
     <figure class="photo kenburns">
       <img src="assets/img/mundaka.webp" style="object-position:center 58%" alt="La famosa ola izquierda rompiendo en la barra de Mundaka, bajo la ermita de Santa Catalina" loading="lazy">
       <figcaption>La izquierda de Mundaka, Bizkaia 🌊</figcaption>
     </figure>
 
-    <p class="lead">Cuando el cubo está vacío y llega la ola, ¿qué hacéis? Metéis la mano en el bolsillo y sacáis un sistema. Eso, justo ahí, es toda la diferencia entre los que fracasan y los que lo consiguen.</p>
-    <div class="grid2">
-      <div class="minicard bad"><h3>😣 Por qué fracasa la gente</h3><ul>
-        <li>Tirando solo de fuerza de voluntad y motivación</li>
-        <li>Apretando los dientes y esperando «portarse bien»</li>
-        <li>Teniendo dulces y porquerías en casa, a la vista</li>
-        <li>Comprando con hambre y sin lista</li>
-        <li>Sin plan para el momento débil, así que gana la versión más débil</li>
-        <li>Haciéndolo solos, sin nadie a quien rendir cuentas</li>
-      </ul></div>
-      <div class="minicard good"><h3>💪 Cómo ganáis vosotros</h3><ul>
-        <li>Tened a mano frutos secos sanos (no los salados ni azucarados) para cuando ataque el hambre</li>
-        <li>¿Os apetece algo dulce? Yogur griego con fruta, un poco de miel y plátano. Que sea vuestra opción por defecto</li>
-        <li>Sacad los dulces de casa. Si no lo tenéis delante, no os lo coméis</li>
-        <li>Vaciad por completo de porquerías la nevera y los armarios</li>
-        <li>Decidid las comidas con antelación, cuando estéis tranquilos y llenos</li>
-        <li>Buscad un compañero de cuentas. Guillermo y Pilar, hacedlo juntos y apoyaos el uno al otro</li>
-      </ul></div>
-    </div>
-    <div class="callout win"><strong>No es una pelea que se gane apretando los dientes.</strong> Es una pelea que se gana preparándolo todo de antemano, para que la versión débil de vosotros apenas tenga oportunidad.</div>
-    <p>Y al final del todo de esta guía hay un sistema más, muy potente: un <a href="#contract">contrato de 45 días</a> que firmáis, para dejarlo todo bien atado.</p>
+    <p>Y los vais a tener, no os engañéis. Vuestro cerebro, que habéis entrenado durante años, grita que el cuerpo necesita comer algo ahora mismo o se acaba el mundo, y la vieja reina del drama, esa carne débil, vuelve a salir a escena. Esa batalla se gana siempre igual: aguantáis la ola y os volvéis a levantar, una y otra vez. Hay mucho más sobre esto en la <a href="#motivation">Página de Poder</a>, y justo para eso está el audio: en el coche, en el sofá, dadle uno o dos minutos y volvéis al rumbo.</p>
     <p class="nugget">«No va de fuerza de voluntad. Va del sistema que tenéis listo cuando aparece la tentación.»</p>
     <div class="nextprev"><a class="btn ghost" href="#struggles">Atrás</a><a class="btn primary" href="#honest">Siguiente: ¿Y cómo se hace?</a></div>
     </div>
@@ -849,59 +870,80 @@ table.swaps tr:last-child td{border-bottom:none}
     <div class="lang-en">
     <div class="eyebrow">So how do you actually do it?</div>
     <h2>It won't be easy. But it is possible.</h2>
-    <p>I am not going to lie to you. This will not always be easy. Some days you will be hungry, some
-      evenings you will want to quit. That is normal, and it is part of it. But it is absolutely
+    <p>This will not always be easy. Some days you will be hungry, some evenings you will want to quit.
+      That is normal, it is part of it, and on exactly those evenings the <a href="#motivation">Power
+      Page</a> is there for you: come back, read it, and keep going. It is absolutely
       <strong>possible</strong>, and plenty of people who are no stronger than you have done it.</p>
+
+    <div class="callout win"><strong>Do this as a team.</strong> Your real strength is each other. Be honest
+      accountability partners: <em>"today I really wanted the sweets, but I didn't,"</em> or <em>"I wanted
+      to, and I slipped."</em> You say it either way, and either way it pulls you both forward. Two pulling
+      together beat one pulling alone, and it lifts your odds enormously.</div>
     <p class="big-quote">The magic you are looking for is in the thing you are trying to avoid.</p>
 
-    <div class="callout win"><strong>Here is the big secret, and it changes everything:</strong> this is
-      <strong>not about food.</strong> It is not about rules or another diet. It is a <strong>deep shift
-      in the way your mind works</strong>, a real understanding of your own brain, and a change in your
-      <strong>lifestyle.</strong> That is why the whole focus here is lifestyle, not a meal plan. Get the
-      mind right and the food takes care of itself. So the order is simple: understand it, shift your
-      thinking, sign your contract, and <em>then</em> comes the food and the recipes.</div>
+    <p><strong>Here is the heart of it:</strong> this is
+      <strong>not about food.</strong> It is not rules or another diet, it is a <strong>deep shift in the
+      way your mind works</strong> and a change in your <strong>lifestyle.</strong> This is the foundation,
+      and build it on sand and no recipe, no diet, nothing on earth will hold. Get the mind right and the
+      food takes care of itself. So the order is simple: understand it, shift your thinking, sign your
+      contract, and <em>then</em> comes the food and the recipes.</p>
 
     <h3>The broken hunger timetable</h3>
-    <p>Here is what is probably happening right now. You wake up and before your eyes are even open,
-      your stomach is already shouting <em>"feed me."</em> At work you finish lunch and you are already
-      thinking about dinner. In the evening you are on the sofa with a late snack. You eat late, you go
-      to bed with a full belly, and while your body should be resting it is busy digesting all night.
-      In the morning, no break, and the whole thing starts again. Your hunger is running on a broken
-      timetable. A big part of this plan is simply <strong>fixing that timetable</strong>, so your body
-      learns to rest, and learns to burn its own fat instead of always begging for the next meal.</p>
-    <div class="callout"><strong>Why bother understanding all this?</strong> Because if you only follow
-      rules without understanding the <em>why</em>, the whole house of cards falls down on the first
-      hard evening. Understand it once, and it stays with you for good.</div>
+    <p>Here is what is probably happening: you eat late, go to bed with a full belly, and while your body
+      should be resting it digests all night. In the morning, no break, and it starts again. Your hunger is
+      running on a broken timetable. A big part of this plan is simply <strong>fixing that timetable</strong>,
+      so your body learns to rest, and learns to burn its own fat instead of always begging for the next meal.</p>
+
+    <div class="callout win"><strong>🔥 The aha-moment, metabolic flexibility:</strong> your body can run on
+      two fuels, the food you just ate and the fat you already carry. Eat constantly, snack after snack all
+      day, and it gets used to fuel from outside and lazy at burning its own fat. Skip a snack and it panics,
+      <em>"where is my fuel?"</em>, even though you are carrying plenty as fat, and that panic shows up as
+      cravings and feeling weak. The fix is not to panic-eat, it is to eat real meals with protein and be okay
+      with a little normal hunger between them, so your body remembers how to burn its own reserves.</div>
+
+    <p>Why bother understanding all this? Because rules you follow without the <em>why</em> collapse on the
+      first hard evening. Understand it once, and it stays with you for good.</p>
 
     <div class="nextprev"><a class="btn ghost" href="#systems">Back</a><a class="btn primary" href="#why">Next: Your Why</a></div>
     </div>
     <div class="lang-es">
     <div class="eyebrow">¿Y cómo se hace de verdad?</div>
     <h2>No será fácil. Pero es posible.</h2>
-    <p>No os voy a mentir. Esto no siempre será fácil. Habrá días con hambre, y noches en las que querréis
-      tirar la toalla. Es normal, y forma parte del camino. Pero es absolutamente <strong>posible</strong>,
-      y un montón de gente que no es más fuerte que vosotros ya lo ha conseguido.</p>
+    <p>Esto no siempre será fácil. Habrá días con hambre, y noches en las que querréis tirar la toalla. Es
+      normal, forma parte del camino, y justo esas noches la <a href="#motivation">Página de Poder</a> está
+      ahí para vosotros: volved, leedla y seguid. Pero es absolutamente <strong>posible</strong>, y un montón
+      de gente que no es más fuerte que vosotros ya lo ha conseguido.</p>
+
+    <div class="callout win"><strong>Hacedlo en equipo.</strong> Vuestra verdadera fuerza es el uno al otro.
+      Sed compañeros de cuentas honestos: <em>«hoy me apetecían muchísimo los dulces, pero no caí»</em>, o
+      <em>«quise hacerlo, y caí».</em> Os lo contáis igual, y de cualquier modo os tira a los dos hacia
+      delante. Dos tirando juntos le ganan a uno solo, y dispara vuestras probabilidades.</div>
     <p class="big-quote">La magia que buscáis está justo en aquello que intentáis evitar.</p>
 
-    <div class="callout win"><strong>Aquí está el gran secreto, y lo cambia todo:</strong> esto
-      <strong>no va de comida.</strong> No va de normas ni de otra dieta. Es un <strong>cambio profundo en
-      cómo funciona vuestra mente</strong>, entender de verdad vuestro propio cerebro, y un cambio en
-      vuestro <strong>estilo de vida.</strong> Por eso todo el foco está en el estilo de vida, no en un
-      plan de comidas. Poned la mente en su sitio y la comida se resuelve sola. Así que el orden es
-      sencillo: entenderlo, cambiar la forma de pensar, firmar vuestro contrato, y <em>entonces</em>
-      llegan la comida y las recetas.</div>
+    <p><strong>El meollo del asunto:</strong> esto
+      <strong>no va de comida.</strong> No va de normas ni de otra dieta, es un <strong>cambio profundo en
+      cómo funciona vuestra mente</strong> y un cambio en vuestro <strong>estilo de vida.</strong> Este es el
+      fundamento, y si lo construís sobre arena no habrá receta, dieta ni nada en el mundo que aguante. Poned
+      la mente en su sitio y la comida se resuelve sola. Así que el orden es sencillo: entenderlo, cambiar la
+      forma de pensar, firmar vuestro contrato, y <em>entonces</em> llegan la comida y las recetas.</p>
 
     <h3>El horario del hambre, estropeado</h3>
-    <p>Esto es lo que seguramente os pasa ahora. Os despertáis y, antes de abrir los ojos, el estómago ya
-      grita <em>«dame de comer».</em> En el trabajo termináis de comer y ya estáis pensando en la cena. Por
-      la noche, en el sofá, con un último picoteo. Coméis tarde, os vais a la cama con la barriga llena, y
-      mientras el cuerpo debería descansar, se pasa toda la noche digiriendo. Por la mañana, sin pausa, y
-      vuelta a empezar. Vuestra hambre funciona con un horario estropeado. Buena parte de este plan es
-      simplemente <strong>arreglar ese horario</strong>, para que el cuerpo aprenda a descansar y a quemar
-      su propia grasa en vez de mendigar la siguiente comida.</p>
-    <div class="callout"><strong>¿Para qué entender todo esto?</strong> Porque si solo seguís normas sin
-      entender el <em>porqué</em>, el castillo de naipes se cae a la primera noche difícil. Entendedlo una
-      vez, y se queda con vosotros para siempre.</div>
+    <p>Esto es lo que seguramente os pasa: coméis tarde, os vais a la cama con la barriga llena y, mientras
+      el cuerpo debería descansar, se pasa la noche digiriendo. Por la mañana, sin pausa, y vuelta a empezar.
+      Vuestra hambre funciona con un horario estropeado. Buena parte de este plan es simplemente
+      <strong>arreglar ese horario</strong>, para que el cuerpo aprenda a descansar y a quemar su propia grasa
+      en vez de mendigar la siguiente comida.</p>
+
+    <div class="callout win"><strong>🔥 El momento aha, la flexibilidad metabólica:</strong> vuestro cuerpo
+      puede funcionar con dos combustibles, la comida que acabáis de comer y la grasa que ya lleváis encima.
+      Si coméis sin parar, picoteo tras picoteo todo el día, se acostumbra al combustible de fuera y se vuelve
+      vago quemando su propia grasa. Saltáis un picoteo y entra en pánico, <em>«¿dónde está mi combustible?»</em>,
+      aunque lleváis grasa de sobra, y ese pánico aparece como antojos y sensación de debilidad. El truco no es
+      comer por pánico, es comer comidas de verdad con proteína y llevar bien algo de hambre normal entre ellas,
+      para que el cuerpo recuerde cómo quemar sus propias reservas.</div>
+
+    <p>¿Para qué entender todo esto? Porque las normas que seguís sin el <em>porqué</em> se caen a la primera
+      noche difícil. Entendedlo una vez, y se queda con vosotros para siempre.</p>
 
     <div class="nextprev"><a class="btn ghost" href="#systems">Atrás</a><a class="btn primary" href="#why">Siguiente: Vuestro Porqué</a></div>
     </div>
@@ -914,11 +956,14 @@ table.swaps tr:last-child td{border-bottom:none}
     <h2>Your Big WHY ❤️</h2>
     <p class="lead">Please do not skip this one. Everything else stands on it.</p>
     <p class="big-quote">"Without a strong why, no plan survives a bad evening."</p>
-    <p>Willpower runs out, but a real reason refuels itself. So get it clear now. <strong>Why do you
-      really want to lose weight? What gives you strength?</strong> Is it your grandchildren? Your
-      heart? The man you want to see in the mirror? The extra years you want with your family? Whatever
-      it is, find it, because in the weak moments (and everyone has them) this is the thing you reach
-      for.</p>
+    <p>Willpower matters, and it is genuinely strong. It is a muscle, and like we said you can train it so
+      it grows. But some days the tank is simply empty, and on those days willpower alone will not carry
+      you. So the real question is what you lean on when it is gone, and that is your why: willpower runs
+      out, but a real reason refuels itself. So get it clear now. <strong>Why do you really want to lose
+      weight? What gives you strength?</strong> Is it your health, simply wanting to stay fit and feel fit again? Is it the man, or the woman, you
+      want to see in the mirror? Is it the extra years you want with your family, and with your future
+      grandchildren, the ones not even born yet? 😊 Whatever it is, find it, because in the weak moments, and everyone has them, this
+      is the thing you reach for. This is what gives you strength when the willpower is gone.</p>
 
     <div class="callout key">
       <strong>Do this for real: the fridge note.</strong> Write your reason down on paper, in your own
@@ -936,37 +981,27 @@ table.swaps tr:last-child td{border-bottom:none}
       and your new journey, begins.
     </div>
 
-    <details><summary>Reasons that tend to be powerful</summary>
-      <div class="body"><ul>
-        <li>👨‍👧 Being strong and mobile enough to play with grandchildren for many years.</li>
-        <li>💪 Less out of breath on the scaffolding, easier knees and back, more energy after work.</li>
-        <li>❤️ Less excess fat means less strain on your heart and blood vessels.</li>
-        <li>😌 Feeling good in your clothes and in your own skin. Confidence counts.</li>
-      </ul></div>
-    </details>
-    <details><summary>The science, briefly (so the why has muscle)</summary>
-      <div class="body"><p>Excess weight raises the risk of heart disease, type-2 diabetes, and at
-      least 13 types of cancer (World Health Organization). The good news: losing just <strong>5 to
-      10% of your body weight</strong> already brings real improvements in blood pressure, blood sugar,
-      and cholesterol. You do not need a "perfect" weight to win big on health.</p></div>
-    </details>
 
     <div class="callout win">✍️ <strong>Write your reason down by hand</strong> on the printed version,
       and stick it on the fridge. Paper you see every single day beats anything on a screen. I will walk
       you through this part on the PDF.</div>
     <p class="nugget">"The why is the engine. Everything else is just steering."</p>
-    <div class="nextprev"><a class="btn ghost" href="#honest">Back</a><a class="btn primary" href="#how">Next: How it works</a></div>
+    <div class="nextprev"><a class="btn ghost" href="#honest">Back</a><a class="btn primary" href="#checkin">Next: Honest check-in</a></div>
     </div>
     <div class="lang-es">
     <div class="eyebrow">La página más importante</div>
     <h2>Vuestro gran PORQUÉ ❤️</h2>
     <p class="lead">Por favor, no os saltéis esta. Todo lo demás se apoya en ella.</p>
     <p class="big-quote">«Sin un porqué fuerte, ningún plan sobrevive a una mala noche.»</p>
-    <p>La fuerza de voluntad se agota, pero una razón de verdad se recarga sola. Así que tenedlo claro
-      ahora. <strong>¿Por qué queréis adelgazar de verdad? ¿Qué os da fuerza?</strong> ¿Vuestros nietos?
-      ¿El corazón? ¿El hombre que queréis ver en el espejo? ¿Los años de más que queréis con vuestra
-      familia? Sea lo que sea, encontradlo, porque en los momentos débiles (y todos los tenemos) es a esto
-      a lo que os agarráis.</p>
+    <p>La fuerza de voluntad importa, y es de verdad fuerte. Es un músculo y, como ya dijimos, se puede
+      entrenar para que crezca. Pero hay días en que el depósito está simplemente vacío, y esos días la
+      fuerza de voluntad sola no os va a llevar. Por eso la verdadera pregunta es en qué os apoyáis cuando
+      no está, y eso es vuestro porqué: la fuerza de voluntad se agota, pero una razón de verdad se recarga
+      sola. Así que tenedlo claro ahora. <strong>¿Por qué queréis adelgazar de verdad? ¿Qué os da fuerza?</strong> ¿Vuestra salud, simplemente querer estar en forma y sentiros en forma otra vez? ¿El hombre, o la
+      mujer, que queréis volver a ver en el espejo? ¿Los años de más que queréis con vuestra familia, y con
+      vuestros futuros nietos, los que ni siquiera han nacido todavía? 😊 Sea lo que sea, encontradlo, porque en los momentos débiles, y todos los
+      tenemos, es a esto a lo que os agarráis. Esto es lo que os da fuerza cuando ya no os queda fuerza de
+      voluntad.</p>
 
     <div class="callout key">
       <strong>Hacedlo de verdad: la nota en la nevera.</strong> Escribid vuestra razón en un papel, con
@@ -985,26 +1020,37 @@ table.swaps tr:last-child td{border-bottom:none}
       camino.
     </div>
 
-    <details><summary>Razones que suelen tener mucha fuerza</summary>
-      <div class="body"><ul>
-        <li>👨‍👧 Estar fuertes y ágiles para jugar con los nietos durante muchos años.</li>
-        <li>💪 Menos ahogo en el andamio, rodillas y espalda más llevaderas, más energía después del trabajo.</li>
-        <li>❤️ Menos grasa de más significa menos esfuerzo para el corazón y los vasos sanguíneos.</li>
-        <li>😌 Sentirse bien con la ropa y en la propia piel. La confianza cuenta.</li>
-      </ul></div>
-    </details>
-    <details><summary>La ciencia, en breve (para que el porqué tenga músculo)</summary>
-      <div class="body"><p>El exceso de peso aumenta el riesgo de enfermedad del corazón, diabetes tipo 2 y
-      al menos 13 tipos de cáncer (Organización Mundial de la Salud). La buena noticia: perder solo un
-      <strong>5 a 10 % de vuestro peso</strong> ya trae mejoras reales en la tensión, el azúcar en sangre y
-      el colesterol. No hace falta un peso «perfecto» para ganar mucho en salud.</p></div>
-    </details>
 
     <div class="callout win">✍️ <strong>Escribid vuestra razón a mano</strong> en la versión impresa, y
       pegadla en la nevera. Un papel que veis cada día gana a cualquier cosa en una pantalla. Os guiaré por
       esta parte en el PDF.</div>
     <p class="nugget">«El porqué es el motor. Todo lo demás es solo el volante.»</p>
-    <div class="nextprev"><a class="btn ghost" href="#honest">Atrás</a><a class="btn primary" href="#how">Siguiente: Cómo funciona</a></div>
+    <div class="nextprev"><a class="btn ghost" href="#honest">Atrás</a><a class="btn primary" href="#checkin">Siguiente: Chequeo honesto</a></div>
+    </div>
+  </section>
+
+  <!-- HONEST CHECK-IN (self-assessment, an exercise) -->
+  <section class="card tint" id="checkin">
+    <div class="lang-en">
+    <div class="eyebrow">Exercise · be honest, this matters</div>
+    <h2>Your honest check-in ✅</h2>
+    <p class="lead">No judgement, and no one sees this but you. It is just a quick snapshot of where the easy
+      wins are hiding. Answer fast and from the gut. Every <strong>yes</strong> is not a failure, it is a
+      lever you can actually move.</p>
+    </div>
+    <div class="lang-es">
+    <div class="eyebrow">Ejercicio · sed honestos, esto importa</div>
+    <h2>Vuestro chequeo honesto ✅</h2>
+    <p class="lead">Sin juzgar, y nadie ve esto salvo vosotros. Es solo una foto rápida de dónde se esconden
+      las victorias fáciles. Responded rápido y a bote pronto. Cada <strong>sí</strong> no es un fracaso, es
+      una palanca que de verdad podéis mover.</p>
+    </div>
+    <div class="quiz" id="quizBox"></div>
+    <div class="lang-en">
+    <div class="nextprev"><a class="btn ghost" href="#why">Back</a><a class="btn primary" href="#how">Next: Calories in, out</a></div>
+    </div>
+    <div class="lang-es">
+    <div class="nextprev"><a class="btn ghost" href="#why">Atrás</a><a class="btn primary" href="#how">Siguiente: Calorías</a></div>
     </div>
   </section>
 
@@ -1118,17 +1164,9 @@ table.swaps tr:last-child td{border-bottom:none}
       <em>hide</em>, in oil, sauces and drinks, while others are plain to see. Becoming aware of them, the
       visible and the hidden, is the real skill. More on spotting the sneaky ones in the
       <a href="#tips">extra tips</a>.</div>
-    <details><summary>🔥 The aha-moment: metabolic flexibility</summary>
-      <div class="body"><p>Your body can run on two fuels: the food you just ate, and the fat you have
-      stored. If you eat constantly, snack after snack all day, your body gets used to fuel from the
-      outside and gets lazy at burning fat. Then when you skip a snack it panics ("where is my fuel?")
-      even though you are carrying plenty as fat. That panic shows up as cravings and feeling weak. The
-      fix is not to panic-eat, it is to eat real meals with protein and be okay with a little normal
-      hunger between them, so your body remembers how to burn its own reserves.</p></div>
-    </details>
     <p class="nugget">"If you only feed your body from the outside, it never learns to burn the fuel it
       is already carrying."</p>
-    <div class="nextprev"><a class="btn ghost" href="#why">Back</a><a class="btn primary" href="#paths">Next: Your path</a></div>
+    <div class="nextprev"><a class="btn ghost" href="#checkin">Back</a><a class="btn primary" href="#paths">Next: Your path</a></div>
   </section>
 
   <!-- PATHS -->
@@ -1546,7 +1584,284 @@ table.swaps tr:last-child td{border-bottom:none}
         need to glance at the plan and follow it."</p>
     </div>
 
-    <div class="nextprev"><a class="btn ghost" href="#tips">Back</a><a class="btn primary" href="#motivation">Next: Your power page</a></div>
+    <div class="nextprev"><a class="btn ghost" href="#tips">Back</a><a class="btn primary" href="#faster">Next: Want it faster?</a></div>
+  </section>
+
+  <!-- WANT FASTER RESULTS (accelerators, PDF-friendly) -->
+  <section class="card tint" id="faster">
+    <div class="lang-en">
+    <div class="eyebrow">For when you want to see it move</div>
+    <h2>Want faster results? ⚡</h2>
+    <p class="lead">The mindset stays the foundation, always. But if you want the scale to move faster
+      while you keep doing the inner work, here are a few proven accelerators. Pick one or two to start,
+      do not throw them all on at once.</p>
+
+    <h3>🚶 The simplest, strongest one: walk</h3>
+    <p>Steps are quietly one of the healthiest and most powerful things you can do, good for the body and
+      the head at the same time. Here is a real one for you: once around the Amorebieta park, back through
+      the little woods toward Durango, then turn around and come home. That is close to <strong class="scrawl">7,000
+      steps</strong>.</p>
+    <div class="callout win"><strong>Do the maths, it adds up fast.</strong>
+      <ul>
+        <li><strong>~7,000 steps ≈ about 5 km ≈ roughly 300 kcal</strong> burned, on top of your normal day.</li>
+        <li>Every day for a week: <strong>~2,000 kcal.</strong></li>
+        <li>In a month: <strong>~9,000 kcal, more than 1 kg of pure fat,</strong> from the walk alone.</li>
+        <li>Now eat a little less on top of that, and the deficit roughly doubles. You will be surprised how fast you see it.</li>
+      </ul>
+      <span class="hint">(Rough numbers: a heavier body burns a bit more, a lighter one a bit less.)</span></div>
+
+    <h3>The other accelerators</h3>
+    <div class="grid2">
+      <div class="minicard good"><h3>🕗 16:8 (eating window)</h3>
+        <p>Eat inside an 8-hour window, give your body 16 hours off. Easy version: last meal by 18:00 to
+          19:00, skip breakfast, break the fast at lunch. It is also pure discipline training, because
+          your body finally learns to live off its own fat instead of always begging for the next meal,
+          like an oven you have to throw firewood into every single hour.</p>
+        <p class="hint">On medication or with a health condition? Check with your doctor first.</p></div>
+      <div class="minicard good"><h3>🥩 Lower-carb, higher-protein</h3>
+        <p>Ease off the bread, rice and sugar, and build the plate around protein, a big salad, and just a
+          little smart carb. Protein keeps you full for hours and protects your muscle while the fat comes
+          off.</p></div>
+    </div>
+    <ul class="quotes-list">
+      <li><strong>Protein at every meal.</strong> A palm or two per plate quietly switches the hunger off.</li>
+      <li><strong>Half the plate vegetables.</strong> High volume, low calories: eat more, weigh less.</li>
+      <li><strong>Cut the liquid calories.</strong> Sugary drinks, juice, beer and wine do not fill you, but they pile up fast.</li>
+      <li><strong>Protect your sleep.</strong> A bad night makes the next day hungrier. That is biology, not weakness.</li>
+    </ul>
+
+    <h3>Beat the hunger 🥄</h3>
+    <figure class="photo">
+      <img style="height:auto" src="assets/img/morning-glass.jpg" alt="A glass of lemon water with the morning-drink ingredients beside it" loading="lazy">
+      <figcaption>The morning glass, on an empty stomach 🍋</figcaption>
+    </figure>
+    <p><strong>The morning glass.</strong> First thing, on an empty stomach: a glass of water with half a
+      lemon, a splash of vinegar, a pinch of salt, a little cayenne pepper and a small pinch of cinnamon.
+      Leave out whatever you do not like, but get a small glass of it into you to start the day. Here is
+      what each part is quietly doing:</p>
+    <ul class="quotes-list">
+      <li><strong>🥛 Water first.</strong> You wake up dehydrated, and thirst is constantly mistaken for hunger. A big glass on its own already takes the edge off.</li>
+      <li><strong>🍋 Lemon.</strong> Vitamin C and a fresh taste that makes plain water easy to drink, so you actually keep the habit.</li>
+      <li><strong>🍶 Vinegar.</strong> A little (apple-cider is nice) can soften the blood-sugar spike from your next meal and nudge fullness up a notch.</li>
+      <li><strong>🧂 A pinch of salt.</strong> A few electrolytes, which matter most on a 16:8 morning, and it helps the water actually absorb.</li>
+      <li><strong>🌶️ Cayenne.</strong> The capsaicin gives a small, real bump to metabolism and tends to take the sharp edge off the appetite.</li>
+      <li><strong>🍂 Cinnamon.</strong> Helps steady blood sugar and adds a touch of natural sweetness, so the brain feels treated without a gram of sugar.</li>
+    </ul>
+    <div class="callout"><strong>Why it works:</strong> none of these is a magic pill, the honest truth is each one is just a small nudge. But stacked together, on an empty stomach and for almost zero calories, they hydrate you, steady your blood sugar and quietly turn the morning hunger down. A tiny ritual that starts the day on your terms.</div>
+    <ul class="quotes-list">
+      <li><strong>Hungry? Make a tea first.</strong> Thirst and habit love to dress up as hunger. The tea buys ten minutes, and the urge usually passes.</li>
+      <li><strong>Craving hitting hard?</strong> Train yourself to reach for a handful of nuts, fat-rich and genuinely filling.</li>
+      <li><strong>Crunch a carrot</strong> when the mouth is bored, not hungry.</li>
+      <li><strong>Have an apple,</strong> fibre, sweetness and water, nature's snack.</li>
+    </ul>
+    <p class="nugget">"Speed helps, but the mindset is what makes it stay. Use the accelerators, keep the foundation."</p>
+    <div class="nextprev"><a class="btn ghost" href="#cheatsheet">Back</a><a class="btn primary" href="#pillars">Next: The 4 steps</a></div>
+    </div>
+    <div class="lang-es">
+    <div class="eyebrow">Para cuando queréis verlo moverse</div>
+    <h2>¿Queréis resultados más rápidos? ⚡</h2>
+    <p class="lead">La mentalidad sigue siendo el fundamento, siempre. Pero si queréis que la báscula se
+      mueva más rápido mientras seguís con el trabajo interior, aquí tenéis unos cuantos aceleradores
+      probados. Empezad por uno o dos, no os echéis todos encima a la vez.</p>
+
+    <h3>🚶 El más simple y más potente: andar</h3>
+    <p>Los pasos son, sin hacer ruido, una de las cosas más sanas y potentes que podéis hacer, buenas para
+      el cuerpo y para la cabeza a la vez. Una de verdad para vosotros: una vuelta al parque de Amorebieta,
+      volver por el bosquecito hacia Durango, y daros la vuelta a casa. Eso son casi <strong class="scrawl">7.000
+      pasos</strong>.</p>
+    <div class="callout win"><strong>Echad la cuenta, suma rápido.</strong>
+      <ul>
+        <li><strong>~7.000 pasos ≈ unos 5 km ≈ unas 300 kcal</strong> quemadas, además de vuestro día normal.</li>
+        <li>Cada día durante una semana: <strong>~2.000 kcal.</strong></li>
+        <li>En un mes: <strong>~9.000 kcal, más de 1 kg de pura grasa,</strong> solo del paseo.</li>
+        <li>Ahora comed un poco menos encima, y el déficit casi se dobla. Os vais a sorprender de lo rápido que se nota.</li>
+      </ul>
+      <span class="hint">(Números aproximados: un cuerpo más pesado quema algo más, uno más ligero algo menos.)</span></div>
+
+    <h3>Los otros aceleradores</h3>
+    <div class="grid2">
+      <div class="minicard good"><h3>🕗 16:8 (ventana de comida)</h3>
+        <p>Comed dentro de una ventana de 8 horas y dad 16 horas de descanso al cuerpo. Versión fácil:
+          última comida hacia las 18:00 o 19:00, saltaos el desayuno y romped el ayuno en la comida. Es
+          también entrenamiento puro de disciplina, porque el cuerpo por fin aprende a vivir de su propia
+          grasa en vez de mendigar la siguiente comida, como un horno al que hay que echar leña cada hora.</p>
+        <p class="hint">¿Tomáis medicación o tenéis alguna condición? Consultad antes con vuestro médico.</p></div>
+      <div class="minicard good"><h3>🥩 Menos carbohidratos, más proteína</h3>
+        <p>Aflojad el pan, el arroz y el azúcar, y montad el plato sobre la proteína, una buena ensalada y
+          solo un poco de carbohidrato inteligente. La proteína os mantiene llenos durante horas y protege
+          el músculo mientras se va la grasa.</p></div>
+    </div>
+    <ul class="quotes-list">
+      <li><strong>Proteína en cada comida.</strong> Una palma o dos por plato apagan el hambre sin ruido.</li>
+      <li><strong>Medio plato de verdura.</strong> Mucho volumen, pocas calorías: coméis más y pesáis menos.</li>
+      <li><strong>Fuera las calorías líquidas.</strong> Refrescos, zumos, cerveza y vino no llenan, pero suman rapidísimo.</li>
+      <li><strong>Cuidad el sueño.</strong> Una mala noche hace que el día siguiente tengáis más hambre. Es biología, no debilidad.</li>
+    </ul>
+
+    <h3>Ganarle al hambre 🥄</h3>
+    <figure class="photo">
+      <img style="height:auto" src="assets/img/morning-glass.jpg" alt="Un vaso de agua con limón y los ingredientes de la bebida de la mañana al lado" loading="lazy">
+      <figcaption>El vaso de la mañana, en ayunas 🍋</figcaption>
+    </figure>
+    <p><strong>El vaso de la mañana.</strong> Lo primero, en ayunas: un vaso de agua con medio limón, un
+      chorrito de vinagre, una pizca de sal, un poco de cayena y una pizca pequeña de canela. Dejad fuera lo
+      que no os guste, pero meteos un vasito para empezar el día. Esto es lo que hace cada parte, sin hacer
+      ruido:</p>
+    <ul class="quotes-list">
+      <li><strong>🥛 Primero el agua.</strong> Os despertáis deshidratados, y la sed se confunde constantemente con hambre. Un buen vaso ya quita el filo él solo.</li>
+      <li><strong>🍋 Limón.</strong> Vitamina C y un sabor fresco que hace fácil beber agua, así de verdad mantenéis el hábito.</li>
+      <li><strong>🍶 Vinagre.</strong> Un poco (el de manzana va bien) puede suavizar el pico de azúcar de la siguiente comida y subir un punto la saciedad.</li>
+      <li><strong>🧂 Una pizca de sal.</strong> Unos electrolitos, que importan sobre todo en una mañana de 16:8, y ayudan a que el agua se absorba de verdad.</li>
+      <li><strong>🌶️ Cayena.</strong> La capsaicina da un pequeño empujón real al metabolismo y suele quitarle el filo al apetito.</li>
+      <li><strong>🍂 Canela.</strong> Ayuda a estabilizar el azúcar en sangre y aporta un toque de dulzor natural, así el cerebro se siente premiado sin un gramo de azúcar.</li>
+    </ul>
+    <div class="callout"><strong>Por qué funciona:</strong> ninguno es una pastilla mágica, la verdad honesta es que cada uno es solo un pequeño empujón. Pero juntos, en ayunas y con casi cero calorías, os hidratan, estabilizan el azúcar y bajan sin ruido el hambre de la mañana. Un pequeño ritual para empezar el día en vuestros términos.</div>
+    <ul class="quotes-list">
+      <li><strong>¿Hambre? Haceos primero un té.</strong> La sed y la costumbre se disfrazan de hambre. El té os da diez minutos, y las ganas suelen pasar.</li>
+      <li><strong>¿Antojo fuerte?</strong> Entrenaos para echar mano de un puñado de frutos secos, ricos en grasa y de verdad saciantes.</li>
+      <li><strong>Mordisquead una zanahoria</strong> cuando la boca está aburrida, no hambrienta.</li>
+      <li><strong>Tomad una manzana:</strong> fibra, dulzor y agua, el aperitivo de la naturaleza.</li>
+    </ul>
+    <p class="nugget">«La velocidad ayuda, pero es la mentalidad la que lo hace quedarse. Usad los aceleradores, mantened el fundamento.»</p>
+    <div class="nextprev"><a class="btn ghost" href="#cheatsheet">Atrás</a><a class="btn primary" href="#pillars">Siguiente: Los 4 pasos</a></div>
+    </div>
+  </section>
+
+  <!-- THE 4 STEPS (recap of the whole journey, near the end) -->
+  <section class="card tint" id="pillars">
+    <div class="lang-en">
+    <div class="eyebrow">The whole journey on one page</div>
+    <h2>The 4 Steps, in Order 🧭</h2>
+    <p class="lead">Everything in this guide comes down to four steps, and the order matters. Three of them
+      happen inside your head. Only the last one is about food. Win the first three, and the food almost
+      takes care of itself.</p>
+
+    <div class="journey">
+      <div class="jstep s1">
+        <div class="jhead"><div class="jnum">1</div>
+          <h3 class="jtitle"><span class="je">🧠</span>Understand it</h3></div>
+        <p class="jessence">First you see how it really works, so the rules finally make sense.</p>
+        <p>This is not another diet with a list of rules to obey blindly. It is a real understanding of your
+          own body and brain. You learn that your hunger is running on a broken timetable, that a craving is
+          not an emergency but a wave that rises, peaks, and breaks in a few minutes, and that calories in
+          versus calories out is simply how the body works, no magic required.</p>
+        <p>Why bother? Because rules you do not understand collapse on the first hard evening. Understand the
+          <em>why</em> just once, and it stays with you for good.</p>
+        <div class="jkey"><b>The point:</b> knowledge that survives a bad night beats motivation that does not.</div>
+      </div>
+
+      <div class="jstep s2">
+        <div class="jhead"><div class="jnum">2</div>
+          <h3 class="jtitle"><span class="je">🚢</span>Shift your thinking</h3></div>
+        <p class="jessence">Then something clicks, and you stop fighting food with gritted teeth.</p>
+        <p>This is the moment that changes everything. You take back the wheel and become the captain of your
+          own ship again. You stop leaning on willpower, that small bucket of water that is empty by evening,
+          and you build simple systems instead, so the right choice is half made before the craving even shows
+          up. The stronger version of you grows every single time you keep your word.</p>
+        <p>It stops being <em>"can I follow diet A or diet B?"</em> and becomes <em>"I understand this now, and
+          I am the one in control."</em> It is not a diet you survive. It is who you become.</p>
+        <div class="jkey"><b>The point:</b> you do not beat a craving with force, you outlast it with a system.</div>
+      </div>
+
+      <div class="jstep s3">
+        <div class="jhead"><div class="jnum">3</div>
+          <h3 class="jtitle"><span class="je">❤️</span>Sign your contract</h3></div>
+        <p class="jessence">Then you lock it in, because change only lasts when the heart truly wants it.</p>
+        <p>This is why the <a href="#why">WHY</a> page is the most important one in the whole guide. Willpower
+          runs out, but a real reason refuels itself. So you find your deep why, the grandchildren, your heart,
+          the years you want with your family, you write it down by hand, and you sign a contract with yourself.
+          Stick it on the fridge, where you see it every single day.</p>
+        <p>And here is the honest part: change needs time, and it will come, but only when you want it with your
+          whole heart. You will slip, everyone does. The slip is not what beats you. Giving up after it is. So
+          you get up one more time than you go down, again and again, because that getting back up is the muscle,
+          and every time it grows stronger.</p>
+        <div class="jkey"><b>The point:</b> a why on paper, and a promise to never quit, outlast any bad week.</div>
+      </div>
+
+      <div class="jstep s4">
+        <div class="jhead"><div class="jnum">4</div>
+          <h3 class="jtitle"><span class="je">🍳</span>Then the food and the recipes</h3></div>
+        <p class="jessence">And only now does food come, and by now it is the easy part.</p>
+        <p>With the mind right, the food almost takes care of itself. Now you pick your path, Mediterranean or
+          lower-carb and higher-protein, fix your daily rhythm, do a calm shop with a list, and cook real food
+          you actually love. This is where Pilar's kitchen turns from a danger zone into your biggest advantage.</p>
+        <p>The plan, the paths, and every recipe are waiting just below. But you arrive there as a different
+          person: not someone hunting for the next miracle diet, someone who already understands the game.</p>
+        <div class="jkey"><b>The point:</b> fix the mind first, and the plate becomes the easy, enjoyable part.</div>
+      </div>
+    </div>
+
+    <div class="jflow"><b>🧠 Understand</b> <i>→</i> <b>🚢 Shift</b> <i>→</i> <b>❤️ Commit</b> <i>→</i> <b>🍳 Eat</b></div>
+    <p class="nugget">"Win the three fights in your head, and the fourth one, the food, barely puts up a fight."</p>
+    <div class="nextprev"><a class="btn ghost" href="#faster">Back</a><a class="btn primary" href="#motivation">Next: Your power page</a></div>
+    </div>
+    <div class="lang-es">
+    <div class="eyebrow">Todo el camino en una sola página</div>
+    <h2>Los 4 Pasos, en Orden 🧭</h2>
+    <p class="lead">Todo lo que hay en esta guía se reduce a cuatro pasos, y el orden importa. Tres de ellos
+      ocurren dentro de vuestra cabeza. Solo el último va de comida. Ganad los tres primeros, y la comida casi
+      se resuelve sola.</p>
+
+    <div class="journey">
+      <div class="jstep s1">
+        <div class="jhead"><div class="jnum">1</div>
+          <h3 class="jtitle"><span class="je">🧠</span>Entenderlo</h3></div>
+        <p class="jessence">Primero veis cómo funciona de verdad, y así las normas por fin tienen sentido.</p>
+        <p>Esto no es otra dieta con una lista de normas que obedecer a ciegas. Es entender de verdad vuestro
+          propio cuerpo y cerebro. Aprendéis que vuestra hambre funciona con un horario estropeado, que un antojo
+          no es una emergencia sino una ola que sube, llega a su punto más alto y rompe en unos minutos, y que las
+          calorías que entran frente a las que salen es, sencillamente, cómo funciona el cuerpo, sin ninguna magia.</p>
+        <p>¿Para qué? Porque las normas que no entendéis se derrumban a la primera noche difícil. Entended el
+          <em>porqué</em> una sola vez, y se queda con vosotros para siempre.</p>
+        <div class="jkey"><b>La clave:</b> el conocimiento que sobrevive a una mala noche gana a la motivación que no.</div>
+      </div>
+
+      <div class="jstep s2">
+        <div class="jhead"><div class="jnum">2</div>
+          <h3 class="jtitle"><span class="je">🚢</span>Cambiar la forma de pensar</h3></div>
+        <p class="jessence">Luego algo hace clic, y dejáis de pelear con la comida apretando los dientes.</p>
+        <p>Este es el momento que lo cambia todo. Recuperáis el timón y volvéis a ser el capitán de vuestro propio
+          barco. Dejáis de depender de la fuerza de voluntad, ese cubo pequeño de agua que para la noche está vacío,
+          y construís en su lugar sistemas sencillos, para que la decisión correcta esté medio tomada antes incluso
+          de que aparezca el antojo. La versión fuerte de vosotros crece cada vez que cumplís vuestra palabra.</p>
+        <p>Deja de ser <em>«¿puedo seguir la dieta A o la B?»</em> y se convierte en <em>«ahora entiendo esto, y el
+          control lo tengo yo».</em> No es una dieta que aguantar. Es la persona en la que os convertís.</p>
+        <div class="jkey"><b>La clave:</b> a un antojo no lo vencéis a la fuerza, lo aguantáis con un sistema.</div>
+      </div>
+
+      <div class="jstep s3">
+        <div class="jhead"><div class="jnum">3</div>
+          <h3 class="jtitle"><span class="je">❤️</span>Firmar vuestro contrato</h3></div>
+        <p class="jessence">Luego lo dejáis bien atado, porque el cambio solo dura cuando el corazón lo quiere de verdad.</p>
+        <p>Por eso la página del <a href="#why">PORQUÉ</a> es la más importante de toda la guía. La fuerza de voluntad
+          se agota, pero una razón de verdad se recarga sola. Así que encontráis vuestro porqué profundo, los nietos,
+          vuestro corazón, los años que queréis con vuestra familia, lo escribís a mano y firmáis un contrato con
+          vosotros mismos. Pegadlo en la nevera, donde lo veáis cada día.</p>
+        <p>Y aquí va la parte honesta: el cambio necesita tiempo, y llegará, pero solo cuando lo queráis con todo el
+          corazón. Vais a tropezar, todos lo hacemos. El tropiezo no es lo que os derrota. Rendirse después, sí. Así
+          que os levantáis una vez más de las que caéis, una y otra vez, porque ese levantarse es el músculo, y cada
+          vez se hace más fuerte.</p>
+        <div class="jkey"><b>La clave:</b> un porqué en papel, y la promesa de no rendirse, aguantan más que cualquier mala semana.</div>
+      </div>
+
+      <div class="jstep s4">
+        <div class="jhead"><div class="jnum">4</div>
+          <h3 class="jtitle"><span class="je">🍳</span>Y entonces, la comida y las recetas</h3></div>
+        <p class="jessence">Y solo ahora llega la comida, y a estas alturas es la parte fácil.</p>
+        <p>Con la mente en su sitio, la comida casi se resuelve sola. Ahora elegís vuestro camino, mediterráneo o más
+          bajo en carbohidratos y más alto en proteína, arregláis vuestro horario diario, hacéis una compra tranquila
+          y con lista, y cocináis comida de verdad que de verdad os gusta. Aquí es donde la cocina de Pilar pasa de
+          zona de peligro a vuestra mayor ventaja.</p>
+        <p>El plan, los caminos y todas las recetas os esperan justo aquí abajo. Pero llegáis a ellos siendo otra
+          persona: no alguien a la caza de la próxima dieta milagro, sino alguien que ya entiende el juego.</p>
+        <div class="jkey"><b>La clave:</b> arreglad primero la mente, y el plato se convierte en la parte fácil y disfrutona.</div>
+      </div>
+    </div>
+
+    <div class="jflow"><b>🧠 Entender</b> <i>→</i> <b>🚢 Cambiar</b> <i>→</i> <b>❤️ Comprometerse</b> <i>→</i> <b>🍳 Comer</b></div>
+    <p class="nugget">«Ganad las tres batallas de la cabeza, y la cuarta, la comida, apenas opondrá resistencia.»</p>
+    <div class="nextprev"><a class="btn ghost" href="#faster">Atrás</a><a class="btn primary" href="#motivation">Siguiente: Vuestra página de poder</a></div>
+    </div>
   </section>
 
   <!-- MOTIVATION / POWER PAGE -->
@@ -1619,7 +1934,7 @@ table.swaps tr:last-child td{border-bottom:none}
     <div class="callout win"><strong>You are not alone in this.</strong> Guillermo and Pilar, you have
       each other. On the hard days, one of you carries the other. That is the strongest system of all.</div>
     <p class="nugget">"You are stronger than your impulses. Today, prove it to yourself one more time."</p>
-    <div class="nextprev"><a class="btn ghost" href="#cheatsheet">Back</a><a class="btn primary" href="#welcome">Back to the top ↑</a></div>
+    <div class="nextprev"><a class="btn ghost" href="#pillars">Back</a><a class="btn primary" href="#welcome">Back to the top ↑</a></div>
   </section>
 
   <footer>
@@ -1643,7 +1958,7 @@ table.swaps tr:last-child td{border-bottom:none}
         </button>
         <div class="audio-pick-menu" id="audioPickMenu" hidden role="listbox"></div>
       </div>
-      <small>voz española</small>
+      <div class="audio-voice" id="audioVoiceWrap"></div>
     </div>
     <span id="audioCur" class="audio-time">0:00</span>
     <div id="audioTrack" class="audio-track" onclick="seekAudio(event)"><div id="audioFill" class="audio-fill"></div></div>
@@ -1663,23 +1978,26 @@ const CHAPTERS=[
   {g:"Start"},
   {id:"welcome",ic:"🫒",t:"Welcome"},
   {id:"start",ic:"🔥",t:"Before you begin"},
+  {g:"Mindset"},
   {id:"captain",ic:"🚢",t:"Who's the captain?"},
   {id:"struggles",ic:"🗣️",t:"Sound familiar?"},
   {id:"systems",ic:"🧰",t:"Willpower vs Systems"},
   {id:"honest",ic:"🤝",t:"How you do it"},
-  {g:"Mindset"},
+  {g:"Exercise & Learn"},
   {id:"why",ic:"❤️",t:"Your Why"},
-  {g:"Learn"},
+  {id:"checkin",ic:"✅",t:"Honest check-in"},
   {id:"how",ic:"⚖️",t:"Calories in, out"},
   {g:"Do"},
   {id:"paths",ic:"🛤️",t:"Your path"},
   {id:"plan",ic:"🗺️",t:"45-day plan"},
   {g:"Commit"},
   {id:"contract",ic:"✍️",t:"Your contract"},
-  {g:"Keep going"},
+  {g:"Make it stick"},
   {id:"recipes",ic:"🍳",t:"Recipes"},
   {id:"tips",ic:"💡",t:"Extra tips"},
   {id:"cheatsheet",ic:"📄",t:"Cheat sheet"},
+  {id:"faster",ic:"⚡",t:"Want it faster?"},
+  {id:"pillars",ic:"🧭",t:"The 4 steps"},
   {id:"motivation",ic:"🔥",t:"Power page"},
 ];
 
@@ -1706,6 +2024,23 @@ const RECIPES=[
   {e:"🥜",n:"Small handful of nuts",m:"snack",cal:170,p:6,tags:["quick","no-cook"],img:"assets/img/recipes/nuts.webp"},
   {e:"🍫",n:"85% dark chocolate, 2 squares",m:"snack",cal:110,p:2,tags:["sweet","no-cook"],img:"assets/img/recipes/dark-choc.webp"},
   {e:"🍓",n:"Greek yogurt with berries",m:"snack",cal:140,p:12,tags:["yogurt","sweet","no-cook"],img:"assets/img/recipes/greek-yogurt-berries.webp"},
+  {e:"🍳",n:"Scrambled eggs, paprika & spinach",m:"breakfast",cal:330,p:22,tags:["lowcarb","eggs","quick"],img:"assets/img/recipes/scrambled-eggs-paprika.jpg"},
+  {e:"🥤",n:"Smart protein smoothie",m:"breakfast",cal:300,p:25,tags:["yogurt","quick"],img:"assets/img/recipes/protein-smoothie.jpg"},
+  {e:"🍅",n:"Pan con tomate (Andalusian)",m:"breakfast",cal:280,p:10,tags:["mediterranean","quick"],img:"assets/img/recipes/pan-con-tomate.jpg"},
+  {e:"🥑",n:"Avocado & egg on rye",m:"breakfast",cal:340,p:18,tags:["mediterranean","eggs"],img:"assets/img/recipes/avocado-egg-rye.jpg"},
+  {e:"🥔",n:"Patatas a la vinagre (Melanie's)",m:"lunch",cal:330,p:8,tags:["basque","mediterranean","comfort"],img:"assets/img/recipes/patatas-vinagre.jpg"},
+  {e:"🍳",n:"Spanish tortilla (lighter) + salad",m:"dinner",cal:400,p:20,tags:["mediterranean","comfort","eggs"],img:"assets/img/recipes/spanish-tortilla.jpg"},
+  {e:"🐟",n:"Grilled sardines + tomato salad",m:"dinner",cal:360,p:30,tags:["mediterranean","fish"],img:"assets/img/recipes/sardines-tomato.jpg"},
+  {e:"🫘",n:"Chickpeas & spinach with cod",m:"lunch",cal:470,p:33,tags:["mediterranean","comfort","fish"],img:"assets/img/recipes/chickpeas-spinach-cod.jpg"},
+  {e:"🍅",n:"Gazpacho (Andalusian cold soup)",m:"lunch",cal:180,p:5,tags:["mediterranean","no-cook","quick"],img:"assets/img/recipes/gazpacho.jpg"},
+  {e:"🍗",n:"Pollo al ajillo (garlic chicken)",m:"dinner",cal:420,p:38,tags:["mediterranean","lowcarb","meat"],img:"assets/img/recipes/pollo-al-ajillo.jpg"},
+  {e:"🦑",n:"Squid with garlic & big salad",m:"lunch",cal:380,p:30,tags:["lowcarb","fish"],img:"assets/img/recipes/squid-salad.jpg"},
+  {e:"🥤",n:"Beetroot & carrot juice",m:"juice",cal:130,p:3,tags:["juice","no-cook","sweet"],img:"assets/img/recipes/juice-beet-carrot.jpg"},
+  {e:"🧃",n:"Beetroot, carrot & ginger",m:"juice",cal:135,p:3,tags:["juice","no-cook"],img:"assets/img/recipes/juice-beet-carrot-ginger.jpg"},
+  {e:"🍊",n:"Fresh orange juice",m:"juice",cal:110,p:2,tags:["juice","no-cook","sweet"],img:"assets/img/recipes/juice-orange.jpg"},
+  {e:"🍋",n:"Fresh lemon & water (light)",m:"juice",cal:25,p:0,tags:["juice","no-cook","quick"],img:"assets/img/recipes/juice-lemon.jpg"},
+  {e:"🥬",n:"Green juice (celery, spinach, lemon, ginger)",m:"juice",cal:90,p:4,tags:["juice","no-cook"],img:"assets/img/recipes/juice-green.jpg"},
+  {e:"🍏",n:"Green apple & cucumber juice",m:"juice",cal:110,p:2,tags:["juice","no-cook","sweet"],img:"assets/img/recipes/juice-green-apple.jpg"},
 ];
 
 /* ============ NAV ============ */
@@ -1727,6 +2062,7 @@ function setLang(l){
   document.getElementById('btn-es').classList.toggle('active',l==='es');
   document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.dataset.i18n; if(I18N[l][k])el.textContent=I18N[l][k];});
   localStorage.setItem('gp_lang',l);
+  if(typeof renderQuiz==='function')renderQuiz();
 }
 
 /* (Calculator merged into the Calories In/Out widget above) */
@@ -1827,7 +2163,7 @@ function resetDays(){if(confirm('Clear all marked days?')){DAYS=[]; localStorage
 renderDays();
 
 /* ============ RECIPES ============ */
-const FILTERS=[["all","🍽️ All"],["basque","🍲 Basque classics"],["breakfast","🌅 Breakfast"],["lunch","☀️ Lunch"],["dinner","🌙 Dinner"],["snack","🥜 Snack"],
+const FILTERS=[["all","🍽️ All"],["basque","🍲 Basque classics"],["breakfast","🌅 Breakfast"],["lunch","☀️ Lunch"],["dinner","🌙 Dinner"],["snack","🥜 Snack"],["juice","🥤 Juices"],
   ["mediterranean","🫒 Mediterranean"],["lowcarb","🍳 Low-carb"],["yogurt","🥣 Feel like yogurt"],["eggs","🍳 Feel like eggs"],["fish","🐟 Feel like fish"],["quick","⚡ Quick"],["sweet","🍫 Sweet-tooth"]];
 const rf=document.getElementById('recipeFilters'), rg=document.getElementById('recipeGrid');
 let curFilter='all';
@@ -1845,6 +2181,95 @@ function renderRecipes(){
     d.onclick=open; d.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open();}}; rg.appendChild(d);});
 }
 renderRecipes();
+
+/* ============ HONEST CHECK-IN QUIZ ============ */
+const QUIZ_T = {
+  en: {
+    yes:"Yes", no:"No",
+    q:[
+      "Do you often eat late, after about 19:30, and go to bed on a full belly?",
+      "Do you reach for a little late-night snack on the sofa, even when you are not truly hungry?",
+      "Do cravings hit you now and then and feel almost impossible to ignore?",
+      "The second your stomach growls, do you feel you have to eat, even soon after a full meal?",
+      "Do you keep eating because you still feel hungry, when really it is just appetite, the mouth wanting more?",
+      "Do you drink your calories, a beer, a Kalimotxo or a sugary soft drink, more often than you would like?",
+      "For short trips, do you almost always take the car or the lift instead of walking or the stairs?",
+      "Outside of work, do you move very little on a normal day?"
+    ],
+    commit:"Could you imagine starting small, changing just one or two of these, this week?",
+    res:function(n,started){
+      let msg;
+      if(n===0) msg="Almost nothing? Either you are already dialled in or, be really honest, look again, most of us tick at least a few.";
+      else if(n<=2) msg="A small, easy place to start.";
+      else if(n<=5) msg="Good. Every one is something you can actually change, so pick one or two and start there.";
+      else msg="And that is the best news on this page: that many things, all in your hands, and you win them one at a time.";
+      const head = n===1 ? "1 lever found." : n+" levers found.";
+      const tail = started ? " You already said you can start small, that is the whole game." : " The real question is whether you start small this week. (You can.)";
+      return '<div class="quiz-score">'+n+'</div><div class="quiz-msg"><b>'+head+'</b> '+msg+tail+'</div>';
+    }
+  },
+  es: {
+    yes:"Sí", no:"No",
+    q:[
+      "¿Coméis a menudo tarde, pasadas las 19:30, y os vais a la cama con la barriga llena?",
+      "¿Caéis en un pequeño picoteo nocturno en el sofá, aunque no tengáis hambre de verdad?",
+      "¿Os entran antojos de vez en cuando que parecen casi imposibles de ignorar?",
+      "En cuanto el estómago ruge, ¿sentís que tenéis que comer, aunque sea justo después de una comida llena?",
+      "¿Seguís comiendo porque aún sentís hambre, cuando en realidad es solo apetito, la boca pidiendo más?",
+      "¿Bebéis vuestras calorías, una cerveza, un kalimotxo o un refresco azucarado, más a menudo de lo que querríais?",
+      "Para trayectos cortos, ¿cogéis casi siempre el coche o el ascensor en vez de andar o subir escaleras?",
+      "Fuera del trabajo, ¿os movéis muy poco en un día normal?"
+    ],
+    commit:"¿Os imagináis empezar poco a poco, cambiando solo una o dos de estas, esta semana?",
+    res:function(n,started){
+      let msg;
+      if(n===0) msg="¿Casi nada? O ya lo tenéis muy fino o, siendo sinceros, mirad otra vez, casi todos marcamos al menos unas cuantas.";
+      else if(n<=2) msg="Un punto de partida pequeño y fácil.";
+      else if(n<=5) msg="Bien. Cada una es algo que de verdad podéis cambiar, así que elegid una o dos y empezad por ahí.";
+      else msg="Y esa es la mejor noticia de la página: tantas cosas, y todas en vuestras manos, y las ganáis de una en una.";
+      const head = n===1 ? "1 palanca encontrada." : n+" palancas encontradas.";
+      const tail = started ? " Ya habéis dicho que podéis empezar poco a poco, ese es todo el juego." : " La pregunta de verdad es si empezáis poco a poco esta semana. (Podéis.)";
+      return '<div class="quiz-score">'+n+'</div><div class="quiz-msg"><b>'+head+'</b> '+msg+tail+'</div>';
+    }
+  }
+};
+let quizState = {};
+function renderQuiz(){
+  const box = document.getElementById('quizBox'); if(!box) return;
+  const lang = document.documentElement.dataset.lang==='es'?'es':'en';
+  const t = QUIZ_T[lang];
+  let html='';
+  t.q.forEach((q,i)=>{
+    html+='<div class="quiz-row"><span class="quiz-q">'+q+'</span><div class="quiz-opts" data-i="'+i+'">'+
+      '<button type="button" class="qy" onclick="quizAns('+i+',1)">'+t.yes+'</button>'+
+      '<button type="button" class="qn" onclick="quizAns('+i+',0)">'+t.no+'</button></div></div>';
+  });
+  const ci=t.q.length;
+  html+='<div class="quiz-row commit"><span class="quiz-q">'+t.commit+'</span><div class="quiz-opts" data-i="'+ci+'">'+
+    '<button type="button" class="qy" onclick="quizAns('+ci+',1)">'+t.yes+'</button>'+
+    '<button type="button" class="qn" onclick="quizAns('+ci+',0)">'+t.no+'</button></div></div>';
+  html+='<div class="quiz-result" id="quizResult" hidden></div>';
+  box.innerHTML=html;
+  quizState={};
+}
+function quizAns(i,val){
+  quizState[i]=val;
+  const opts=document.querySelector('.quiz-opts[data-i="'+i+'"]'); if(!opts) return;
+  opts.querySelector('.qy').classList.toggle('on',val===1);
+  opts.querySelector('.qn').classList.toggle('on',val===0);
+  updateQuizResult();
+}
+function updateQuizResult(){
+  const lang=document.documentElement.dataset.lang==='es'?'es':'en';
+  const t=QUIZ_T[lang]; const n=t.q.length;
+  let answered=0, levers=0;
+  for(let i=0;i<n;i++){ if(quizState[i]!==undefined){ answered++; if(quizState[i]===1)levers++; } }
+  const res=document.getElementById('quizResult'); if(!res) return;
+  if(answered<n){ res.hidden=true; return; }
+  res.hidden=false;
+  res.innerHTML=t.res(levers, quizState[n]===1);
+}
+renderQuiz();
 
 /* ============ RECIPE DETAIL MODAL ============ */
 const RDETAIL={
@@ -1870,20 +2295,99 @@ const RDETAIL={
  "Small handful of nuts":{ing:"A small handful of unsalted nuts",c:5,f:14,tip:"A handful, not the whole bag, they are calorie-dense."},
  "85% dark chocolate, 2 squares":{ing:"2 squares of 85% dark chocolate",c:8,f:8,tip:"A pre-decided treat: two squares, sitting down, no guilt."},
  "Greek yogurt with berries":{ing:"Greek yogurt, a handful of berries",c:14,f:4,tip:"Make this your default sweet fix instead of biscuits."},
+ "Scrambled eggs, paprika & spinach":{ing:"3 eggs, spinach, smoked paprika, a little olive oil",c:6,f:22,tip:"Soft-scramble in a sprayed pan; the paprika brings the flavour, not extra oil."},
+ "Smart protein smoothie":{ing:"Plain yogurt or milk, protein powder, berries, a spoon of oats",c:28,f:8,tip:"Pair it with a boiled egg so you actually chew something. Keep it occasional."},
+ "Pan con tomate (Andalusian)":{ing:"Wholegrain bread, grated tomato, garlic, a little olive oil",c:35,f:9,tip:"One slice and an oil drizzle, not a flood, keeps this a light start."},
+ "Avocado & egg on rye":{ing:"Rye bread, avocado, egg, lemon, chilli flakes",c:24,f:18,tip:"A quarter of an avocado is plenty; great fat, but calorie-dense."},
+ "Patatas a la vinagre (Melanie's)":{ing:"Boiled potatoes, cebolleta (spring onion), red and green pepper, vinegar, olive oil",c:42,f:12,tip:"A Basque favourite. Keep the oil to a measured spoon or two and load the peppers and onion."},
+ "Spanish tortilla (lighter) + salad":{ing:"Eggs, a little potato, onion, courgette, olive oil, side salad",c:24,f:18,tip:"Fewer potatoes, more onion and courgette, one measured spoon of oil instead of a flood."},
+ "Grilled sardines + tomato salad":{ing:"Fresh sardines, tomato, onion, olive oil, parsley, lemon",c:8,f:18,tip:"Rich in omega-3 and cheap. Grill them, do not fry them."},
+ "Chickpeas & spinach with cod":{ing:"Chickpeas, spinach, cod, tomato, garlic, smoked paprika",c:38,f:12,tip:"Garbanzos con espinacas plus fish for protein, a whole meal in one pot."},
+ "Gazpacho (Andalusian cold soup)":{ing:"Tomatoes, cucumber, pepper, garlic, olive oil, vinegar",c:14,f:9,tip:"Blend and chill. Almost free calories, full of vegetables, perfect for a hot day."},
+ "Pollo al ajillo (garlic chicken)":{ing:"Chicken, lots of garlic, olive oil, a splash of white wine, parsley",c:4,f:16,tip:"Plenty of garlic, one measured spoon of oil, and a big salad alongside."},
+ "Squid with garlic & big salad":{ing:"Squid or prawns, garlic, parsley, lemon, big salad",c:8,f:10,tip:"Grilled or flash-sauteed, never battered and fried."},
+ "Beetroot & carrot juice":{ing:"Beetroot, carrots, optional half an apple",c:28,f:1,tip:"Juicing drops the fibre, so keep it to one glass, not a jug; the sugars still count."},
+ "Beetroot, carrot & ginger":{ing:"Beetroot, carrots, fresh ginger, lemon",c:28,f:1,tip:"Ginger adds a kick and helps digestion. Still one glass at a time."},
+ "Fresh orange juice":{ing:"3 oranges, juiced",c:26,f:0,tip:"Even better: eat one whole orange instead. Same vitamins, more fibre, less sugar in one hit."},
+ "Fresh lemon & water (light)":{ing:"Lemon, water, optional mint",c:6,f:0,tip:"Almost no calories and very refreshing. Skip the sugar and let the lemon shine."},
+ "Green juice (celery, spinach, lemon, ginger)":{ing:"Celery, spinach, cucumber, lemon, ginger",c:14,f:1,tip:"Low in sugar, high in greens, a genuinely light and fresh option."},
+ "Green apple & cucumber juice":{ing:"Green apples, cucumber, lime",c:26,f:0,tip:"Green apples are tarter and lower in sugar than red. Crisp and clean."},
 };
-const GTWEAKS=[
+const TWEAKS_GENERAL=[
  ["🫒","One extra tablespoon of olive oil","+120 kcal"],
- ["🍬","A teaspoon of sugar (coffee, on top)","+16 kcal"],
+ ["🍬","A teaspoon of sugar in the coffee","+16 kcal"],
  ["🥤","A glass of cola or juice alongside","+140 kcal"],
- ["🍉","A sweet dessert swapped for watermelon","−250 kcal"],
+ ["🍉","Swap a sugary dessert for watermelon","−250 kcal"],
+ ["🥖","An extra slice of white bread","+80 kcal"],
+ ["💧","A big glass of water before you eat","eat less, feel full"],
+ ["🍷","A second glass of wine with dinner","+125 kcal"],
 ];
+const TWEAKS_MEAL={
+ breakfast:[["🍯","Let the fruit sweeten it, skip the honey","−40 kcal"],["🥣","Plain yogurt instead of a flavoured pot","−90 kcal"]],
+ lunch:[["🍚","Half the rice or potato, double the salad","−150 kcal"],["🥗","Make half the plate vegetables","−200 kcal"]],
+ dinner:[["🌙","Finish eating about 3 hours before bed","better sleep + fat-burn"],["🍳","Lean on protein and veg, lighter on bread","stays satisfying"]],
+ snack:[["🥜","A handful of nuts, not the whole bag","saves ~300 kcal"],["🍫","Two squares of dark chocolate, sitting down","a treat, not a binge"]],
+ juice:[["🍊","Eat the whole fruit instead of juicing three","more fibre, less sugar"],["🧃","One glass, not a jug","keeps the sugar in check"]],
+};
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+function tweaksFor(meal){
+  const specific=shuffle(TWEAKS_MEAL[meal]||[]).slice(0,1);
+  const general=shuffle(TWEAKS_GENERAL).slice(0,4-specific.length);
+  return shuffle(specific.concat(general));
+}
+/* Ingredient amounts = the photographable shopping list, one portion. */
+const RITEMS={
+ "Tomato and egg toast":["1 slice wholegrain bread","½ ripe tomato, grated","1–2 eggs","1 tsp olive oil","pinch of salt","optional: thin slice of ham"],
+ "Yogurt power bowl":["200 g plain Greek yogurt","a handful of berries","6–8 walnuts","cinnamon","optional: ½ tsp honey"],
+ "Veggie omelette":["3 eggs","½ pepper, chopped","¼ onion, chopped","handful of spinach","1 tbsp grated cheese","1 tsp olive oil"],
+ "Proper porridge":["40 g whole oats","200 ml milk (or water + a splash of milk)","½ banana or berries","a few nuts","cinnamon"],
+ "Cottage cheese plate":["200 g cottage cheese","1 tomato, sliced","¼ cucumber","drizzle of olive oil","black pepper"],
+ "Grilled fish, salad and beans":["1 white fish fillet (~150 g)","mixed salad (lettuce, tomato, cucumber, pepper, onion)","½ cup white beans","1 tbsp olive oil + vinegar","lemon, garlic, parsley"],
+ "Marmitako-style tuna stew":["150 g fresh tuna, in chunks","1 medium potato","1 pepper","½ onion","1 tomato","1 tsp smoked paprika","1 tbsp olive oil","fish or veg stock"],
+ "Garbanzos with morcilla (Basque)":["1 cup cooked chickpeas","1 small piece morcilla","½ onion","½ red pepper","1 tsp smoked paprika","1 tsp olive oil"],
+ "Chicken and vegetable traybake":["1 chicken breast or 2 thighs","1 courgette","1 pepper","1 onion","garlic + herbs","1 tbsp olive oil"],
+ "Lentil and vegetable stew":["1 cup lentils","1 carrot","1 onion","1 tomato","1 small piece chorizo","garlic, smoked paprika, bay leaf"],
+ "Big tuna and egg salad bowl":["1 tin tuna","2 boiled eggs","lettuce, tomato, cucumber, pepper, onion","a few olives","1 tbsp olive oil + vinegar"],
+ "Bacalao with peppers (light pil-pil)":["1 cod fillet (~150 g)","1 red + 1 green pepper","2 garlic cloves","1 tbsp olive oil","parsley"],
+ "Steak with grilled vegetables":["1 palm-sized lean steak","1 pepper","½ courgette","½ onion","side salad","drizzle of olive oil"],
+ "Vegetable soup with boiled eggs":["mixed veg (leek, courgette, carrot, tomato, onion)","vegetable stock","2 boiled eggs"],
+ "Pan-seared fish with greens":["1 white fish fillet (~150 g)","spinach or chard","1 garlic clove","1 tsp olive oil","lemon"],
+ "Zucchini noodles with prawns":["1 courgette, spiralized","8–10 prawns","1 garlic clove","a little chilli","handful of cherry tomatoes"],
+ "Pisto with a fried egg":["½ courgette","1 pepper","½ onion","1 tomato","1 egg","1 tbsp olive oil"],
+ "Piperrada with egg":["2 peppers","1 onion","1 tomato","1 garlic clove","1–2 eggs","1 tbsp olive oil"],
+ "Boiled eggs (carry-snack)":["2 eggs","pinch of salt"],
+ "Small handful of nuts":["25–30 g unsalted nuts"],
+ "85% dark chocolate, 2 squares":["2 squares of 85% dark chocolate"],
+ "Greek yogurt with berries":["150–200 g Greek yogurt","a handful of berries","optional: cinnamon"],
+ "Scrambled eggs, paprika & spinach":["3 eggs","handful of spinach","pinch of smoked paprika","1 tsp olive oil","side of tomato"],
+ "Smart protein smoothie":["200 g plain yogurt or 250 ml milk","½–1 scoop protein powder","a handful of berries","1 tbsp oats","optional: ½ banana"],
+ "Pan con tomate (Andalusian)":["1 slice rustic wholegrain bread","½ ripe tomato, grated","1 tsp olive oil","1 garlic clove","pinch of salt"],
+ "Avocado & egg on rye":["1 slice rye bread","¼ avocado","1 egg (boiled or poached)","lemon, chilli flakes","pinch of salt"],
+ "Patatas a la vinagre (Melanie's)":["2 medium potatoes, boiled","1 cebolleta (spring onion)","½ red + ½ green pepper","2 tbsp vinegar","1–2 tbsp olive oil","pinch of salt"],
+ "Spanish tortilla (lighter) + salad":["3 eggs","1 small potato","½ onion","½ courgette","1 tbsp olive oil","big side salad"],
+ "Grilled sardines + tomato salad":["4–6 fresh sardines","2 tomatoes","½ onion","1 tbsp olive oil","parsley, lemon"],
+ "Chickpeas & spinach with cod":["1 cup cooked chickpeas","2 handfuls of spinach","1 cod fillet (~150 g)","1 tomato","2 garlic cloves","1 tsp smoked paprika","1 tsp olive oil"],
+ "Gazpacho (Andalusian cold soup)":["4 ripe tomatoes","½ cucumber","½ pepper","1 garlic clove","1 tbsp olive oil","1 tsp vinegar","splash of water"],
+ "Pollo al ajillo (garlic chicken)":["1 chicken breast or thighs, in pieces","4 garlic cloves","1 tbsp olive oil","splash of white wine","parsley"],
+ "Squid with garlic & big salad":["150 g squid or prawns","2 garlic cloves","parsley, lemon","1 tsp olive oil","large mixed salad"],
+ "Beetroot & carrot juice":["1 small beetroot","2 carrots","optional: ½ apple, to sweeten","splash of water"],
+ "Beetroot, carrot & ginger":["1 small beetroot","2 carrots","2 cm fresh ginger","½ lemon"],
+ "Fresh orange juice":["3 oranges, juiced"],
+ "Fresh lemon & water (light)":["1 lemon, juiced","250 ml water","optional: a few mint leaves","optional: ½ tsp honey"],
+ "Green juice (celery, spinach, lemon, ginger)":["2 celery sticks","2 handfuls of spinach","½ cucumber","½ lemon","2 cm ginger"],
+ "Green apple & cucumber juice":["2 green apples","½ cucumber","½ lime","splash of water"],
+};
 function openRecipe(i){
   const r=RECIPES[i]; if(!r) return; const det=RDETAIL[r.n]||{};
   const p=r.p, c=det.c||0, f=det.f||0;
+  const items=RITEMS[r.n]||[];
   const mbar=(label,val,max,cls)=>'<div class="rm-mrow"><span class="rm-mlbl">'+label+'</span>'+
     '<div class="rm-bar"><div class="rm-bar-fill '+cls+'" style="width:'+Math.min(100,val/max*100).toFixed(1)+'%"></div></div>'+
     '<span class="rm-mval">'+val+' g</span></div>';
   const trow=(label,a,b)=>'<tr><td>'+label+'</td><td>'+a+'</td><td>'+b+'</td></tr>';
+  const shop=items.length?('<details class="rm-shop"><summary>🛒 Shopping list · tap to open</summary>'+
+    '<div class="rm-shop-body"><ul>'+items.map(x=>'<li>'+x+'</li>').join('')+'</ul>'+
+    '<p class="rm-shop-note">Everything for one portion. Snap a photo and take it shopping. 📷</p></div></details>'):'';
   document.getElementById('rmCard').innerHTML=
     '<button class="ov-close" onclick="closeRecipe()" aria-label="Close">✕</button>'+
     (r.img?'<div class="rm-photo"><img src="'+r.img+'" alt="'+r.n+'" loading="lazy"></div>':'<div class="rm-emoji">'+r.e+'</div>')+
@@ -1895,8 +2399,9 @@ function openRecipe(i){
       trow('Calories',r.cal+' kcal',(r.cal*2)+' kcal')+trow('Protein',p+' g',(p*2)+' g')+trow('Carbs',c+' g',(c*2)+' g')+trow('Fat',f+' g',(f*2)+' g')+
     '</tbody></table>'+
     '<div class="rm-tweaks"><div class="rm-tweaks-h">Small changes that add up</div>'+
-      GTWEAKS.map(t=>'<div class="rm-tweak"><span>'+t[0]+' '+t[1]+'</span><b>'+t[2]+'</b></div>').join('')+'</div>'+
-    (det.tip?'<div class="callout win rm-tip">💡 <strong>Lighter:</strong> '+det.tip+'</div>':'');
+      tweaksFor(r.m).map(t=>'<div class="rm-tweak"><span>'+t[0]+' '+t[1]+'</span><b>'+t[2]+'</b></div>').join('')+'</div>'+
+    (det.tip?'<div class="callout win rm-tip">💡 <strong>Lighter:</strong> '+det.tip+'</div>':'')+
+    shop;
   const m=document.getElementById('recipeModal'); m.hidden=false; requestAnimationFrame(()=>m.classList.add('show'));
 }
 function closeRecipe(){ const m=document.getElementById('recipeModal'); m.classList.remove('show'); setTimeout(()=>{m.hidden=true;},220); }
@@ -1919,18 +2424,48 @@ function toggleOverlay(){document.getElementById('overlay').classList.toggle('sh
 /* ============ READ-ALOUD AUDIO (Spanish voice) ============ */
 /* Audio chapters: id matches the <section id>, title shows in the player picker, file is the stitched MP3 */
 const AUDIO_CHAPTERS=[
-  {id:'start',     title:'Antes de empezar',                file:'assets/audio/01-antes-de-empezar.mp3'},
-  {id:'captain',   title:'Quién es el capitán',             file:'assets/audio/02-quien-es-el-capitan.mp3'},
-  {id:'struggles', title:'¿Esto te suena?',                 file:'assets/audio/03-esto-te-suena.mp3'},
-  {id:'systems',   title:'Fuerza de voluntad vs. sistemas', file:'assets/audio/04-fuerza-de-voluntad.mp3'},
+  {id:'welcome',   title:'Bienvenida',                      file:'00-welcome.mp3'},
+  {id:'start',     title:'Antes de empezar',                file:'01-antes-de-empezar.mp3'},
+  {id:'captain',   title:'Quién es el capitán',             file:'02-quien-es-el-capitan.mp3'},
+  {id:'struggles', title:'¿Esto te suena?',                 file:'03-esto-te-suena.mp3'},
+  {id:'systems',   title:'Fuerza de voluntad vs. sistemas', file:'04-fuerza-de-voluntad.mp3'},
+  {id:'honest',    title:'Cómo se hace',                    file:'05-como-se-hace.mp3'},
 ];
-const AUDIO=Object.fromEntries(AUDIO_CHAPTERS.map(c=>[c.id,c.file]));
+const AUDIO_VOICES=[
+  {key:'guillermo', label:'Guillermo', has:['welcome','start','captain','struggles','systems','honest']},
+  {key:'dave',      label:'Dave',      has:['welcome','start','captain','struggles','systems','honest']},
+];
+let audioVoice=localStorage.getItem('gp_voice')||'guillermo';
+if(!AUDIO_VOICES.some(v=>v.key===audioVoice)) audioVoice='guillermo';
+let audioCurrentId='welcome';
+function voiceCfg(){ return AUDIO_VOICES.find(v=>v.key===audioVoice)||AUDIO_VOICES[0]; }
+function audioHas(id){ return voiceCfg().has.includes(id); }
+function audioSrc(id){ const c=AUDIO_CHAPTERS.find(x=>x.id===id); return c?('assets/audio/'+audioVoice+'/'+c.file):null; }
 function buildAudioMenu(){
   const menu=document.getElementById('audioPickMenu'); if(!menu) return;
   menu.innerHTML='';
-  AUDIO_CHAPTERS.forEach((c,i)=>{ const b=document.createElement('button'); b.type='button'; b.dataset.id=c.id;
-    b.innerHTML='<span class="num">'+(i+1)+'</span><span>'+c.title+'</span>'; b.onclick=()=>selectAudioChapter(c.id); menu.appendChild(b); });
-  setAudioPickLabel(AUDIO_CHAPTERS[0].id);
+  AUDIO_CHAPTERS.forEach((c,i)=>{ const ok=audioHas(c.id); const b=document.createElement('button'); b.type='button'; b.dataset.id=c.id;
+    b.innerHTML='<span class="num">'+(i+1)+'</span><span>'+c.title+(ok?'':' · pronto')+'</span>';
+    if(!ok) b.classList.add('disabled');
+    b.onclick=()=>{ if(audioHas(c.id)) selectAudioChapter(c.id); };
+    menu.appendChild(b); });
+  setAudioPickLabel(audioCurrentId);
+}
+function buildVoiceToggle(){
+  const wrap=document.getElementById('audioVoiceWrap'); if(!wrap) return;
+  wrap.innerHTML='<span class="vlab">voz</span>';
+  AUDIO_VOICES.forEach(v=>{ const b=document.createElement('button'); b.type='button'; b.dataset.v=v.key; b.textContent=v.label;
+    b.classList.toggle('on', v.key===audioVoice); b.onclick=()=>setAudioVoice(v.key); wrap.appendChild(b); });
+}
+function setAudioVoice(key){
+  if(!AUDIO_VOICES.some(v=>v.key===key) || key===audioVoice) return;
+  audioVoice=key; localStorage.setItem('gp_voice',key);
+  buildVoiceToggle(); buildAudioMenu();
+  let id=audioCurrentId; if(!audioHas(id)) id=voiceCfg().has[0]||'welcome';
+  const wasPlaying=!player.paused, t=player.currentTime, same=(id===audioCurrentId);
+  updateAudioBar(id);
+  if(same && isFinite(t) && t>0){ const seek=()=>{ try{player.currentTime=Math.min(t,(player.duration||t));}catch(e){} player.removeEventListener('loadedmetadata',seek); }; player.addEventListener('loadedmetadata',seek); }
+  if(wasPlaying) player.play().then(()=>setAudioBtn(true)).catch(()=>{});
 }
 function setAudioPickLabel(id){ const c=AUDIO_CHAPTERS.find(x=>x.id===id); const lab=document.getElementById('audioPickLabel'); if(lab&&c)lab.textContent=c.title;
   document.querySelectorAll('#audioPickMenu button').forEach(b=>b.classList.toggle('on', b.dataset.id===id)); }
@@ -1938,9 +2473,10 @@ function toggleAudioMenu(ev){ ev.stopPropagation(); const w=document.getElementB
   const willOpen=m.hidden; m.hidden=!willOpen; w.classList.toggle('open', willOpen); }
 function selectAudioChapter(id){ const m=document.getElementById('audioPickMenu'); m.hidden=true; document.getElementById('audioPickWrap').classList.remove('open'); pickAudio(id); }
 document.addEventListener('click',e=>{ const w=document.getElementById('audioPickWrap'); if(w&&!w.contains(e.target)){ const m=document.getElementById('audioPickMenu'); if(m&&!m.hidden){m.hidden=true; w.classList.remove('open');} } });
-buildAudioMenu();
+buildVoiceToggle(); buildAudioMenu();
 const player=document.getElementById('player');
 function pickAudio(id){
+  if(!audioHas(id)){ const m=AUDIO_VOICES.find(v=>v.has.includes(id)); if(m){ audioVoice=m.key; localStorage.setItem('gp_voice',m.key); buildVoiceToggle(); buildAudioMenu(); } }
   const sec=document.getElementById(id); if(sec) sec.scrollIntoView({behavior:'smooth', block:'start'});
   updateAudioBar(id);
   player.play().then(()=>setAudioBtn(true)).catch(()=>{});
@@ -1950,8 +2486,9 @@ function setAudioBtn(playing){document.getElementById('audioBtn').textContent=pl
 function resetAudioUI(){ document.getElementById('audioFill').style.width='0%'; document.getElementById('audioCur').textContent='0:00'; }
 function updateAudioBar(id){
   const bar=document.getElementById('audiobar');
-  const src=AUDIO[id];
+  const src=audioHas(id)?audioSrc(id):null;
   if(!src){ if(!player.paused)player.pause(); setAudioBtn(false); bar.hidden=true; return; }
+  audioCurrentId=id;
   bar.hidden=false;
   setAudioPickLabel(id);
   const want=new URL(src, location.href).href;
