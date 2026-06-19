@@ -1,89 +1,123 @@
 /* ============================================================================
-   Audio builder — ONE API call per chapter (App-Bau pattern, see App-Bau-Patterns.md)
+   Audio builder — ONE ElevenLabs call per chapter (consistent timbre + seekable).
 
-   WHY one call per chapter (not per-block stitching):
-   - Neural TTS is non-deterministic: separate calls drift in timbre/energy, so
-     stitched blocks sound inconsistent (one block deeper/bassier than the next).
-   - Naive MP3 concatenation has no corrected duration/seek header -> seeking breaks.
-   A single call per chapter is internally consistent AND correctly seekable.
+   Reads the CURRENT Spanish (lang-es) prose straight out of site/index.html, so
+   the audio always matches the latest text. Strips tags, eyebrows, nav buttons,
+   figures, CTA and emojis. One call per chapter, manifest-hashed to skip unchanged,
+   old files backed up once into _backup/<voice>/.
 
-   Chapters here are small (~3k chars) and fit comfortably in one request.
-   For content too large for one call, use ElevenLabs "request stitching"
-   (previous_text / next_text / previous_request_ids) + ffmpeg remux instead.
+   Two voices, switchable in the player. Files go to assets/audio/<voiceFolder>/.
 
-   Only regenerates a chapter when its text (or voice settings) changed (manifest hash).
-   Backs up any existing final file once into _backup/ before overwriting.
-   Run:  node "tools/audio/build-audio.js"
+   Run:
+     node "tools/audio/build-audio.js" --voice guillermo          (all chapters)
+     node "tools/audio/build-audio.js" --voice guillermo --only welcome
+     node "tools/audio/build-audio.js" --voice guillermo --dry    (no API, just preview)
    ============================================================================ */
 const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
 
-const KEY_FILE = 'C:/Users/marte/Documents/Claude/App-Launch/elevenlabs_key.txt';
-const SITE     = 'C:/Users/marte/Documents/Claude/Guillermo Y Pillar/site';
-const AUDIO    = path.join(SITE, 'assets/audio');
-const STATE    = path.join(AUDIO, '_state');   // manifest hashes
-const BACKUP   = path.join(AUDIO, '_backup');
-
-const VOICE = 'QtPMrakdgePQIUwOX7Ut';
+const ROOT  = 'C:/Users/marte/Documents/Claude/Guillermo Y Pillar';
+const SITE  = path.join(ROOT, 'site');
+const HTML  = path.join(SITE, 'index.html');
+const AUDIO = path.join(SITE, 'assets/audio');
+const KEYDIR = 'C:/Users/marte/Documents/Claude/API keys';
 const MODEL = 'eleven_multilingual_v2';
-const SETTINGS = { stability: 0.5, similarity_boost: 0.8, style: 0.0, use_speaker_boost: true, speed: 1.12 };
 
-/* ---- Chapters. `parts` are joined with blank lines and sent in ONE request. ---- */
+const VOICES = {
+  guillermo: { id: 'qUPtETgSYRhCRb2pfOla', folder: 'guillermo',
+    settings: { stability: 0.9, similarity_boost: 0.9, style: 0.4, use_speaker_boost: true, speed: 1.0 } },
+  dave:      { id: 'QtPMrakdgePQIUwOX7Ut', folder: 'dave',
+    settings: { stability: 0.5, similarity_boost: 0.8, style: 0.0, use_speaker_boost: true, speed: 1.12 } },
+};
+
+/* Sections to voice, top down to "How you do it". id = the section's id in index.html. */
 const CHAPTERS = [
-  {
-    id: 'antes-de-empezar',
-    out: '01-antes-de-empezar.mp3',
-    parts: [
-      "Ya lo habéis intentado antes. Lo entiendo. Dentro de un momento os contaré una pequeña historia sobre una tarta de queso al whisky en un restaurante chino, y cinco palabras que os vais a morir de ganas de usar, de esas que no se dicen delante del capataz. Pero antes de esa historia, algo importante. Hola Guillermo y Pilar. Sé perfectamente lo que estaréis pensando ahora mismo: «Madre mía, cuánto para leer. Yo solo quiero la solución, el remedio rápido. No me apetece estudiarme un libro entero». Me parece justo.",
-      "Así que mirad qué fácil os lo pongo: ni siquiera tenéis que leerlo. Las manos ya han levantado bastante por hoy. Por una vez, que trabajen los oídos. Dadle al play y dejad que una voz española de verdad os lo lea todo, en voz alta. Con calma, ladrillo a ladrillo. Mejor aún en el sofá, al lado de Pilar (tu cómplice, y la cocinera que te tiene como a un rey, que es justo por lo que esto es deporte de equipo), media hora como mucho. Eso es todo lo que hace falta. Y Pilar, esto es igual de tuyo. Tú eres el corazón de esta cocina, una auténtica maestra de la cocina española y vasca, la que se asegura de que tu hombre siempre tenga un plato caliente después de un día duro. Eso es amor. Y también os convierte en un equipo, porque Guillermo puede estar fuerte como un toro todo el día, llegar a casa, ver tu famoso ali-oli sonriéndole desde la mesa con 800 calorías por cucharada, y vuelta a empezar la batalla. Más sobre cómo domar esa mayonesa en el capítulo de las calorías escondidas.",
-      "Seguramente ya habéis intentado adelgazar antes. Seguramente más de una vez. A lo mejor aguantasteis unos días, unas semanas, incluso unos meses, perdisteis un par de kilos y os sentíais genial, y entonces la vida se complicó y las viejas costumbres se colaron de nuevo. A veces, sencillamente, cuesta seguir las normas. Y puede que todavía no estéis a gusto con donde estáis. Justo por eso existe esta guía. No empezáis de cero, empezáis con más cabeza. Así que la verdadera pregunta es esta: ¿Vais a dedicar 25 minutos, una sola vez, para cambiar cómo vais a vivir los próximos 30 años?",
-      "No se trata de seguir otra dieta estricta más, con una lista de normas de las que no veis la hora de escapar. Ya conocéis la escena: tarde por la noche, a gustito en el sofá, viendo vuestra serie favorita y mirando fijamente vuestro dulce favorito como si os debiera dinero, con el cerebro a tope buscando el argumento perfecto para justificar por qué hay que comérselo esta noche sí o sí. Porque esa es la trampa: apretáis los dientes, perdéis unos kilos, volvéis a las andadas, lo recuperáis todo, y vuelta a empezar. Perder, ganar, perder, ganar. Agotador, y no se acaba nunca. No os voy a hacer pasar por eso. Voy detrás de algo completamente distinto: el momento en que hace clic. Cuando por fin entendéis el porqué, algo se enciende dentro de vosotros y se queda encendido. No una dieta que aguantar. Una persona en la que os convertís. Esta es la diferencia entre perder peso para un verano, y cambiar para el resto de vuestra vida. Así que dejadme enseñaros dónde empieza todo de verdad: con el capitán de vuestro barco.",
-    ],
-  },
+  { id: 'welcome',   out: '00-welcome.mp3' },
+  { id: 'start',     out: '01-antes-de-empezar.mp3' },
+  { id: 'captain',   out: '02-quien-es-el-capitan.mp3' },
+  { id: 'struggles', out: '03-esto-te-suena.mp3' },
+  { id: 'systems',   out: '04-fuerza-de-voluntad.mp3' },
+  { id: 'honest',    out: '05-como-se-hace.mp3' },
 ];
 
-const KEY = (() => {
-  const raw = fs.readFileSync(KEY_FILE, 'utf8');
-  return (raw.split(/\r?\n/).find(l => l.trim().startsWith('sk_')) || raw).trim();
-})();
-const hashOf = (text) => crypto.createHash('sha1')
-  .update(JSON.stringify({ text, MODEL, VOICE, SETTINGS })).digest('hex');
-
-async function tts(text) {
-  const res = await fetch('https://api.elevenlabs.io/v1/text-to-speech/' + VOICE, {
-    method: 'POST',
-    headers: { 'xi-api-key': KEY, 'Accept': 'audio/mpeg', 'Content-Type': 'application/json' },
-    body: JSON.stringify({ text, model_id: MODEL, voice_settings: SETTINGS }),
-  });
-  if (!res.ok) throw new Error('HTTP ' + res.status + ' ' + (await res.text()).slice(0, 400));
-  return Buffer.from(await res.arrayBuffer());
+function readKey() {
+  const txt = fs.readFileSync(path.join(KEYDIR, 'ElevenLabs.txt'), 'utf8');
+  const m = txt.match(/ELEVENLABS_API_KEY=(.+)/) || txt.match(/(sk_[A-Za-z0-9]+)/);
+  if (!m) throw new Error('ELEVENLABS_API_KEY not found in ElevenLabs.txt');
+  return m[1].trim();
 }
 
-async function buildChapter(ch) {
-  fs.mkdirSync(STATE, { recursive: true });
-  const text = ch.parts.join('\n\n');
-  const h = hashOf(text);
-  const manPath = path.join(STATE, ch.id + '.json');
-  const man = fs.existsSync(manPath) ? JSON.parse(fs.readFileSync(manPath, 'utf8')) : {};
-  const outPath = path.join(AUDIO, ch.out);
+function extractEs(html, id) {
+  const i = html.indexOf('id="' + id + '"');
+  if (i < 0) throw new Error('section not found: ' + id);
+  const esTag = '<div class="lang-es">';
+  const s = html.indexOf(esTag, i);
+  const secEnd = html.indexOf('</section>', s);
+  if (s < 0 || secEnd < 0 || s > secEnd) throw new Error('lang-es not found for ' + id);
+  let b = html.slice(s + esTag.length, secEnd);
+  b = b
+    .replace(/<div class="eyebrow">[\s\S]*?<\/div>/g, ' ')
+    .replace(/<div class="nextprev">[\s\S]*?<\/div>/g, ' ')
+    .replace(/<div class="cta">[\s\S]*?<\/div>/g, ' ')
+    .replace(/<figure[\s\S]*?<\/figure>/g, ' ')
+    .replace(/<svg[\s\S]*?<\/svg>/g, ' ')
+    .replace(/<br\s*\/?>/g, ' ')
+    .replace(/<[^>]+>/g, ' ');
+  b = b.replace(/&amp;/g, 'y').replace(/&lt;/g, '<').replace(/&gt;/g, '>')
+       .replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&nbsp;/g, ' ');
+  b = b.replace(/[\u{1F000}-\u{1FAFF}\u{2600}-\u{27BF}\u{2190}-\u{21FF}\u{2B00}-\u{2BFF}️‍]/gu, '');
+  b = b.replace(/\s+([.,;:!?»])/g, '$1').replace(/\s+/g, ' ').trim();
+  return b;
+}
 
-  if (man.hash === h && fs.existsSync(outPath)) { console.log(`  [${ch.id}] unchanged — skip`); return; }
+const arg = (n, d) => { const i = process.argv.indexOf('--' + n); return i >= 0 ? process.argv[i + 1] : d; };
+const has = (n) => process.argv.includes('--' + n);
 
-  if (fs.existsSync(outPath)) {
-    fs.mkdirSync(BACKUP, { recursive: true });
-    const bak = path.join(BACKUP, ch.out.replace(/\.mp3$/, '.OLD.mp3'));
-    if (!fs.existsSync(bak)) { fs.copyFileSync(outPath, bak); console.log('  backed up old ->', path.basename(bak)); }
-  }
-
-  process.stdout.write(`  [${ch.id}] one call, ${text.length} chars ... `);
-  const buf = await tts(text);
-  fs.writeFileSync(outPath, buf);
-  fs.writeFileSync(manPath, JSON.stringify({ hash: h, chars: text.length, bytes: buf.length }, null, 2));
-  console.log(buf.length + ' bytes -> ' + ch.out);
+async function tts(text, voice, key) {
+  const url = 'https://api.elevenlabs.io/v1/text-to-speech/' + voice.id + '?output_format=mp3_44100_128';
+  const r = await fetch(url, {
+    method: 'POST',
+    headers: { 'xi-api-key': key, 'Accept': 'audio/mpeg', 'Content-Type': 'application/json' },
+    body: JSON.stringify({ text, model_id: MODEL, voice_settings: voice.settings }),
+  });
+  if (!r.ok) throw new Error('HTTP ' + r.status + ' ' + (await r.text()).slice(0, 300));
+  return Buffer.from(await r.arrayBuffer());
 }
 
 (async () => {
-  for (const ch of CHAPTERS) await buildChapter(ch);
+  const voiceName = arg('voice', 'guillermo');
+  const voice = VOICES[voiceName];
+  if (!voice) throw new Error('unknown voice: ' + voiceName + ' (use guillermo|dunkel)');
+  const only = arg('only');
+  const dry = has('dry');
+  const html = fs.readFileSync(HTML, 'utf8');
+  const outDir = path.join(AUDIO, voice.folder);
+  const stateDir = path.join(outDir, '_state');
+  const backupDir = path.join(outDir, '_backup');
+  const key = dry ? null : readKey();
+
+  for (const ch of CHAPTERS) {
+    if (only && ch.id !== only) continue;
+    const text = extractEs(html, ch.id);
+    if (dry) { console.log(`[${ch.id}] ${text.length} chars :: ${text.slice(0, 140)}...`); continue; }
+    fs.mkdirSync(stateDir, { recursive: true });
+    const h = crypto.createHash('sha1').update(JSON.stringify({ text, MODEL, v: voice.id, s: voice.settings })).digest('hex');
+    const manPath = path.join(stateDir, ch.id + '.json');
+    const man = fs.existsSync(manPath) ? JSON.parse(fs.readFileSync(manPath, 'utf8')) : {};
+    const outPath = path.join(outDir, ch.out);
+    if (man.hash === h && fs.existsSync(outPath)) { console.log(`[${ch.id}] unchanged — skip`); continue; }
+    if (fs.existsSync(outPath)) {
+      fs.mkdirSync(backupDir, { recursive: true });
+      const bak = path.join(backupDir, ch.out.replace(/\.mp3$/, '.' + Date.now() + '.mp3'));
+      fs.copyFileSync(outPath, bak);
+    }
+    process.stdout.write(`[${ch.id}] ${voiceName}, ${text.length} chars ... `);
+    const buf = await tts(text, voice, key);
+    fs.mkdirSync(outDir, { recursive: true });
+    fs.writeFileSync(outPath, buf);
+    fs.writeFileSync(manPath, JSON.stringify({ hash: h, chars: text.length, bytes: buf.length }, null, 2));
+    console.log((buf.length / 1024).toFixed(0) + ' KB -> ' + voice.folder + '/' + ch.out);
+  }
   console.log('done.');
 })().catch(e => { console.error('FAILED:', e.message); process.exit(1); });

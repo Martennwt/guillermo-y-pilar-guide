@@ -9,3 +9,8 @@ _proof.*
 _iso*.html
 _c.js
 _check.js
+
+# build artifacts (audio manifests + auto-backups, image batch manifests)
+_backup/
+_state/
+_manifest.json
