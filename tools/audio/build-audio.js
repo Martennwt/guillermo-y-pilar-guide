@@ -28,7 +28,7 @@ const VOICES = {
   guillermo: { id: 'qUPtETgSYRhCRb2pfOla', folder: 'guillermo',
     settings: { stability: 0.9, similarity_boost: 0.9, style: 0.4, use_speaker_boost: true, speed: 1.0 } },
   dave:      { id: 'QtPMrakdgePQIUwOX7Ut', folder: 'dave',
-    settings: { stability: 0.5, similarity_boost: 0.8, style: 0.0, use_speaker_boost: true, speed: 1.12 } },
+    settings: { stability: 0.9, similarity_boost: 0.9, style: 0.4, use_speaker_boost: true, speed: 1.08 } },
 };
 
 /* Sections to voice, top down to "How you do it". id = the section's id in index.html. */
@@ -38,7 +38,10 @@ const CHAPTERS = [
   { id: 'captain',   out: '02-quien-es-el-capitan.mp3' },
   { id: 'struggles', out: '03-esto-te-suena.mp3' },
   { id: 'systems',   out: '04-fuerza-de-voluntad.mp3' },
-  { id: 'honest',    out: '05-como-se-hace.mp3' },
+  { id: 'honest',    out: '05-como-se-hace.mp3', set: { stability: 0.8 } },
+  { id: 'why',       out: '06-vuestro-porque.mp3' },
+  { id: 'insanity',  out: '07-la-locura.mp3' },
+  { id: 'close',     out: '08-sigue-volviendo.mp3' },
 ];
 
 function readKey() {
@@ -60,6 +63,7 @@ function extractEs(html, id) {
     .replace(/<div class="eyebrow">[\s\S]*?<\/div>/g, ' ')
     .replace(/<div class="nextprev">[\s\S]*?<\/div>/g, ' ')
     .replace(/<div class="cta">[\s\S]*?<\/div>/g, ' ')
+    .replace(/<p class="why-dl">[\s\S]*?<\/p>/g, ' ')
     .replace(/<figure[\s\S]*?<\/figure>/g, ' ')
     .replace(/<svg[\s\S]*?<\/svg>/g, ' ')
     .replace(/<br\s*\/?>/g, ' ')
@@ -75,7 +79,7 @@ const arg = (n, d) => { const i = process.argv.indexOf('--' + n); return i >= 0 
 const has = (n) => process.argv.includes('--' + n);
 
 async function tts(text, voice, key) {
-  const url = 'https://api.elevenlabs.io/v1/text-to-speech/' + voice.id + '?output_format=mp3_44100_128';
+  const url = 'https://api.elevenlabs.io/v1/text-to-speech/' + voice.id + '?output_format=mp3_44100_192';
   const r = await fetch(url, {
     method: 'POST',
     headers: { 'xi-api-key': key, 'Accept': 'audio/mpeg', 'Content-Type': 'application/json' },
@@ -100,9 +104,10 @@ async function tts(text, voice, key) {
   for (const ch of CHAPTERS) {
     if (only && ch.id !== only) continue;
     const text = extractEs(html, ch.id);
+    const settings = Object.assign({}, voice.settings, ch.set || {});
     if (dry) { console.log(`[${ch.id}] ${text.length} chars :: ${text.slice(0, 140)}...`); continue; }
     fs.mkdirSync(stateDir, { recursive: true });
-    const h = crypto.createHash('sha1').update(JSON.stringify({ text, MODEL, v: voice.id, s: voice.settings })).digest('hex');
+    const h = crypto.createHash('sha1').update(JSON.stringify({ text, MODEL, v: voice.id, s: settings })).digest('hex');
     const manPath = path.join(stateDir, ch.id + '.json');
     const man = fs.existsSync(manPath) ? JSON.parse(fs.readFileSync(manPath, 'utf8')) : {};
     const outPath = path.join(outDir, ch.out);
@@ -113,7 +118,7 @@ async function tts(text, voice, key) {
       fs.copyFileSync(outPath, bak);
     }
     process.stdout.write(`[${ch.id}] ${voiceName}, ${text.length} chars ... `);
-    const buf = await tts(text, voice, key);
+    const buf = await tts(text, { id: voice.id, settings }, key);
     fs.mkdirSync(outDir, { recursive: true });
     fs.writeFileSync(outPath, buf);
     fs.writeFileSync(manPath, JSON.stringify({ hash: h, chars: text.length, bytes: buf.length }, null, 2));

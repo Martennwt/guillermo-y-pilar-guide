@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Mi gran PORQUÉ — Hoja de trabajo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,500&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FBF6EC; --paper-2:#F4EBD8; --paper-3:#EFE3CC;
+    --ink:#2C2A24; --ink-soft:#5C5647; --ink-faint:#8C8472;
+    --olive:#4B5D34; --olive-deep:#384824; --leaf:#7C9A4B;
+    --terracotta:#C2553B; --terracotta-deep:#A8462E;
+    --honey:#DA9C45; --good-bg:#EAF0DC; --good-line:#C5D69A;
+    --line:rgba(44,42,36,.12); --line-2:rgba(44,42,36,.22);
+    --display:'Fraunces','Cambria','Palatino Linotype',Georgia,serif;
+    --body:'Nunito','Segoe UI',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box; -webkit-print-color-adjust:exact; print-color-adjust:exact}
+  @page{ size:A4; margin:0; }
+  html,body{margin:0; padding:0}
+  body{font-family:var(--body); color:var(--ink); font-size:11pt; line-height:1.5; background:var(--paper)}
+
+  .page{
+    position:relative; width:210mm; min-height:297mm; padding:15mm 16mm 13mm;
+    background:var(--paper);
+    background-image:
+      radial-gradient(900px 460px at 88% -6%, rgba(218,156,69,.12), transparent 60%),
+      radial-gradient(720px 420px at -8% 8%, rgba(124,154,75,.12), transparent 55%);
+    page-break-after:always; overflow:hidden;
+  }
+  .page:last-child{page-break-after:auto}
+
+  .eyebrow{font-family:var(--body); font-weight:800; letter-spacing:.14em; text-transform:uppercase;
+    font-size:8.5pt; color:var(--terracotta); margin-bottom:.35rem}
+  h1{font-family:var(--display); font-weight:900; color:var(--olive-deep); font-size:30pt; line-height:1.05;
+    margin:0 0 .15em}
+  h1 .heart{color:var(--terracotta)}
+  .rule{height:3px; width:84px; background:var(--terracotta); border-radius:3px; margin:.5rem 0 1rem}
+  .quote{font-family:var(--display); font-style:italic; font-weight:600; color:var(--terracotta-deep);
+    font-size:14.5pt; line-height:1.25; margin:0 0 1.1rem}
+  .intro{color:var(--ink-soft); font-size:10.5pt; margin:0 0 1.2rem; max-width:62ch}
+
+  .block{border-radius:14px; padding:.85rem 1.05rem 1rem; margin:0 0 .95rem;
+    background:var(--paper-2); border-left:5px solid var(--honey); box-shadow:0 1px 2px rgba(56,72,36,.05)}
+  .block.win{background:var(--good-bg); border-color:var(--leaf)}
+  .block.key{background:#FBEDE6; border-color:var(--terracotta)}
+  .block h2{font-family:var(--body); font-weight:800; color:var(--olive-deep); font-size:12.5pt; margin:0 0 .2rem}
+  .block .sub{color:var(--ink-soft); font-size:10pt; margin:0 0 .7rem}
+  .block.key h2{color:var(--terracotta-deep)}
+
+  .lines{margin:.2rem 0 0}
+  .line{border-bottom:1.5px dotted var(--line-2); height:2.15em}
+  .line.num{position:relative; padding-left:1.7rem}
+  .line.num::before{content:attr(data-n); position:absolute; left:.1rem; bottom:.18rem;
+    font-family:var(--display); font-weight:700; color:var(--leaf); font-size:11pt}
+  .line.short{height:1.9em}
+
+  .anchor{margin-top:.3rem; border:2.5px solid var(--terracotta); border-radius:14px; background:#fff;
+    padding:.9rem 1rem 1.4rem; min-height:3.4cm; position:relative}
+  .anchor .tag{position:absolute; top:-.7rem; left:1rem; background:var(--terracotta); color:#fff;
+    font-weight:800; font-size:8.5pt; letter-spacing:.08em; text-transform:uppercase; padding:.18rem .6rem; border-radius:20px}
+  .anchor .write{border-bottom:1.5px dotted var(--line-2); height:2.1em; margin-top:1rem}
+
+  .fridge{margin-top:.2rem; border:2.5px dashed var(--olive); border-radius:14px; background:#fff;
+    padding:1.1rem 1.2rem 1.4rem; position:relative}
+  .fridge .scissors{position:absolute; top:-.78rem; left:1rem; background:var(--paper); padding:0 .4rem;
+    font-size:11pt; color:var(--olive)}
+  .fridge .hint{font-size:9pt; color:var(--ink-faint); text-align:right; margin:.1rem 0 .7rem; font-style:italic}
+  .fridge .big{border-bottom:2px solid var(--line-2); height:2.5em; margin-bottom:1.1em}
+  .fridge .magnet{display:flex; gap:.5rem; justify-content:center; margin-top:.4rem}
+  .fridge .magnet span{width:12px; height:12px; border-radius:50%; background:var(--honey); opacity:.7}
+
+  .nugget{font-family:var(--display); font-style:italic; font-size:13pt; color:var(--olive-deep);
+    text-align:center; border-top:2px dotted var(--line-2); border-bottom:2px dotted var(--line-2);
+    padding:.7rem 0; margin:1.2rem 0 .4rem}
+  .foot{display:flex; justify-content:space-between; align-items:center; margin-top:.6rem;
+    font-size:8.5pt; color:var(--ink-faint)}
+  .foot .brand{font-family:var(--display); font-weight:700; color:var(--olive)}
+  .page-num{position:absolute; bottom:8mm; right:16mm; font-size:8.5pt; color:var(--ink-faint)}
+</style>
+</head>
+<body>
+
+<!-- PÁGINA 1 -->
+<section class="page">
+  <div class="eyebrow">La página más importante</div>
+  <h1>Mi gran PORQUÉ <span class="heart">&#10084;</span></h1>
+  <div class="rule"></div>
+  <p class="quote">«Sin un porqué fuerte, ningún plan sobrevive a una mala noche.»</p>
+  <p class="intro">La fuerza de voluntad se agota. Una razón de verdad se recarga sola. Reservad 30 minutos
+    honestos, el móvil lejos, la tele apagada, y rellenad esto a mano. Esta hoja es el motor de todo. Todo
+    lo demás es solo el volante.</p>
+
+  <div class="block win">
+    <h2>&#9203; Ejercicio 1: el porqué en 30 minutos</h2>
+    <p class="sub">Escribid 5 razones por las que queréis esto. Y luego seguid, más allá de las obvias,
+      hasta llegar a la que de verdad os mueve.</p>
+    <div class="lines">
+      <div class="line num" data-n="1"></div>
+      <div class="line num" data-n="2"></div>
+      <div class="line num" data-n="3"></div>
+      <div class="line num" data-n="4"></div>
+      <div class="line num" data-n="5"></div>
+      <div class="line"></div>
+    </div>
+  </div>
+
+  <div class="block">
+    <h2>&#128302; Dentro de un año</h2>
+    <p class="sub">Imaginaos con un peso saludable que de verdad habéis mantenido. ¿Qué es distinto? ¿Cómo
+      os movéis, dormís, os sentís? ¿Qué podéis hacer que hoy os cuesta?</p>
+    <div class="lines">
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+    </div>
+  </div>
+  <div class="page-num">Mi gran PORQUÉ · 1 / 2</div>
+</section>
+
+<!-- PÁGINA 2 -->
+<section class="page">
+  <div class="block key">
+    <h2>&#127919; La ÚNICA razón que más os toca</h2>
+    <p class="sub">De todo lo de arriba, rodead la que más os mueve. Escribidla aquí en grande. Este es
+      vuestro ancla para los momentos débiles.</p>
+    <div class="anchor">
+      <span class="tag">Mi ancla</span>
+      <div class="write"></div>
+      <div class="write"></div>
+    </div>
+  </div>
+
+  <div class="block win">
+    <h2>&#128204; La nota de la nevera</h2>
+    <p class="sub">Escribidla una vez más con vuestras propias palabras. Luego recortad por la línea de
+      puntos y pegadla en la nevera, en un sitio donde la veáis cada día. Leedla cuando os tiente la comida.</p>
+    <div class="fridge">
+      <span class="scissors">&#9986;</span>
+      <p class="hint">recortadme y pegadme en la nevera</p>
+      <div class="big"></div>
+      <div class="big"></div>
+      <div class="magnet"><span></span><span></span><span></span></div>
+    </div>
+  </div>
+
+  <div class="nugget">«El porqué es el motor. Todo lo demás es solo el volante.»</div>
+  <div class="foot">
+    <span class="brand">Comer bien, vivir mejor · para Guillermo y Pilar</span>
+    <span>Hoja «Mi Porqué»</span>
+  </div>
+  <div class="page-num">Mi gran PORQUÉ · 2 / 2</div>
+</section>
+
+</body>
+</html>
