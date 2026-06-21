@@ -2245,32 +2245,32 @@ table.swaps tr:last-child td{border-bottom:none}
 <script>
 /* ============ DATA ============ */
 const CHAPTERS=[
-  {g:"Start"},
-  {id:"welcome",ic:"🫒",t:"Welcome"},
-  {id:"start",ic:"🔥",t:"Before you begin"},
-  {g:"Mindset"},
-  {id:"captain",ic:"🚢",t:"Who's the captain?"},
-  {id:"struggles",ic:"🗣️",t:"Sound familiar?"},
-  {id:"systems",ic:"🧰",t:"Willpower vs Systems"},
-  {id:"honest",ic:"✨",t:"The Magic"},
-  {id:"why",ic:"❤️",t:"Your Why"},
-  {id:"insanity",ic:"🔁",t:"Insanity"},
-  {id:"close",ic:"🏁",t:"Keep Coming Back"},
-  {g:"Exercise & Learn"},
-  {id:"checkin",ic:"✅",t:"Honest check-in"},
-  {id:"how",ic:"⚖️",t:"Calories in, out"},
-  {id:"move",ic:"🏃",t:"Move your body"},
-  {id:"motivation",ic:"🔥",t:"Power page"},
-  {g:"Do"},
-  {id:"plan",ic:"🗺️",t:"45-day plan"},
-  {g:"Commit"},
-  {id:"preparation",ic:"✅",t:"Preparation"},
-  {id:"contract",ic:"✍️",t:"Your contract"},
-  {g:"Make it stick"},
-  {id:"faster",ic:"⚡",t:"Want it faster?"},
-  {id:"cheatsheet",ic:"📄",t:"Cheat sheet"},
-  {id:"pillars",ic:"🧭",t:"The 4 steps"},
-  {id:"recipes",ic:"🍳",t:"Recipes"},
+  {g:"Start", ge:"Inicio"},
+  {id:"welcome",ic:"🫒",t:"Welcome",te:"Bienvenida"},
+  {id:"start",ic:"🔥",t:"Before you begin",te:"Antes de empezar"},
+  {g:"Mindset", ge:"Mentalidad"},
+  {id:"captain",ic:"🚢",t:"Who's the captain?",te:"¿Quién es el capitán?"},
+  {id:"struggles",ic:"🗣️",t:"Sound familiar?",te:"¿Esto te suena?"},
+  {id:"systems",ic:"🧰",t:"Willpower vs Systems",te:"Fuerza de voluntad vs. sistemas"},
+  {id:"honest",ic:"✨",t:"The Magic",te:"La Magia"},
+  {id:"why",ic:"❤️",t:"Your Why",te:"Vuestro porqué"},
+  {id:"insanity",ic:"🔁",t:"Insanity",te:"La Locura"},
+  {id:"close",ic:"🏁",t:"Keep Coming Back",te:"Sigue volviendo"},
+  {g:"Exercise & Learn", ge:"Ejercicio y aprender"},
+  {id:"checkin",ic:"✅",t:"Honest check-in",te:"Chequeo honesto"},
+  {id:"how",ic:"⚖️",t:"Calories in, out",te:"Calorías"},
+  {id:"move",ic:"🏃",t:"Move your body",te:"Mover el cuerpo"},
+  {id:"motivation",ic:"🔥",t:"Power page",te:"Página de poder"},
+  {g:"Do", ge:"Manos a la obra"},
+  {id:"plan",ic:"🗺️",t:"45-day plan",te:"Plan de 45 días"},
+  {g:"Commit", ge:"El compromiso"},
+  {id:"preparation",ic:"✅",t:"Preparation",te:"Preparación"},
+  {id:"contract",ic:"✍️",t:"Your contract",te:"Vuestro contrato"},
+  {g:"Make it stick", ge:"Para que dure"},
+  {id:"faster",ic:"⚡",t:"Want it faster?",te:"¿Lo queréis más rápido?"},
+  {id:"cheatsheet",ic:"📄",t:"Cheat sheet",te:"Chuleta"},
+  {id:"pillars",ic:"🧭",t:"The 4 steps",te:"Los 4 pasos"},
+  {id:"recipes",ic:"🍳",t:"Recipes",te:"Recetas"},
 ];
 
 const RECIPES=[
@@ -2318,12 +2318,16 @@ const RECIPES=[
 /* ============ NAV ============ */
 const rail=document.getElementById('rail'), ovLinks=document.getElementById('overlayLinks');
 CHAPTERS.forEach(c=>{
-  if(c.g){const h=document.createElement('div'); h.className='group'; h.textContent=c.g; rail.appendChild(h);
+  if(c.g){const h=document.createElement('div'); h.className='group'; h.dataset.en=c.g; h.dataset.es=c.ge||c.g; h.textContent=c.g; rail.appendChild(h);
     const h2=h.cloneNode(true); ovLinks.appendChild(h2); return;}
   const a=document.createElement('a'); a.href='#'+c.id; a.dataset.target=c.id;
-  a.innerHTML='<span class="ic">'+c.ic+'</span><span>'+c.t+'</span>'; rail.appendChild(a);
+  const ic=document.createElement('span'); ic.className='ic'; ic.textContent=c.ic;
+  const lab=document.createElement('span'); lab.className='nav-t'; lab.dataset.en=c.t; lab.dataset.es=c.te||c.t; lab.textContent=c.t;
+  a.appendChild(ic); a.appendChild(lab); rail.appendChild(a);
   const a2=a.cloneNode(true); a2.addEventListener('click',toggleOverlay); ovLinks.appendChild(a2);
 });
+function applyNavLang(l){ document.querySelectorAll('#rail [data-en], #overlayLinks [data-en]').forEach(el=>{ el.textContent=el.dataset[l]||el.dataset.en; }); }
+applyNavLang(document.documentElement.dataset.lang||'en');
 
 /* ============ LANGUAGE (architecture ready; ES filled as last step) ============ */
 const I18N={en:{brandsub:"A guide for Guillermo & Pilar", chapters:"Chapters"},
@@ -2333,6 +2337,7 @@ function setLang(l){
   document.getElementById('btn-en').classList.toggle('active',l==='en');
   document.getElementById('btn-es').classList.toggle('active',l==='es');
   document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.dataset.i18n; if(I18N[l][k])el.textContent=I18N[l][k];});
+  if(typeof applyNavLang==='function')applyNavLang(l);
   localStorage.setItem('gp_lang',l);
   if(typeof renderQuiz==='function')renderQuiz();
 }
