@@ -32,7 +32,7 @@
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth; scroll-padding-top:84px}
-body{margin:0; background:var(--paper); color:var(--ink); font-family:var(--body); font-size:15px;
+body{margin:0; background:var(--paper); color:var(--ink); font-family:var(--body); font-size:18px;
   line-height:1.7; -webkit-font-smoothing:antialiased;
   background-image:url("assets/img/bg-hills.svg"),
     radial-gradient(1200px 600px at 85% -5%, rgba(218,156,69,.10), transparent 60%),
@@ -55,8 +55,8 @@ body::after{content:""; position:fixed; right:-140px; bottom:-150px; width:560px
 .in .scrawl{background-size:100% .42em; transition:background-size .8s ease .2s}
 @media (prefers-reduced-motion:reduce){ .scrawl{background-size:100% .42em} }
 h1,h2,h3,h4{font-family:var(--display); font-weight:600; line-height:1.12; color:var(--olive-deep); margin:0 0 .5em}
-h2{font-size:clamp(1.8rem,4vw,2.7rem); letter-spacing:-.01em}
-h3{font-size:1.4rem; color:var(--terracotta-deep)}
+h2{font-size:clamp(1.5rem,3.2vw,2.05rem); letter-spacing:-.01em}
+h3{font-size:1.28rem; color:var(--terracotta-deep)}
 p{margin:0 0 1em}
 a{color:var(--terracotta-deep)}
 strong{color:var(--olive-deep)}
@@ -73,33 +73,40 @@ header.bar{position:sticky; top:0; z-index:70; display:flex; align-items:center;
 .brand .mark{width:34px; height:34px; border-radius:50%; display:grid; place-items:center; background:radial-gradient(circle at 35% 30%,var(--leaf),var(--olive)); color:#fff; font-size:1.05rem; box-shadow:var(--shadow-sm)}
 .brand small{display:block; font-family:var(--body); font-weight:700; font-size:.62rem; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-faint)}
 .bar .spacer{flex:1}
-.langtoggle{display:inline-flex; background:var(--paper-3); border:1px solid var(--line); border-radius:999px; padding:3px}
-.langtoggle button{border:0; background:transparent; font-family:var(--body); font-weight:800; font-size:.82rem; padding:.35rem .8rem; border-radius:999px; cursor:pointer; color:var(--ink-soft)}
-.langtoggle button.active{background:var(--olive); color:#fff; box-shadow:var(--shadow-sm)}
+.langtoggle{display:inline-flex; gap:2px; background:var(--paper-3); border:1px solid var(--line); border-radius:999px; padding:3px}
+.langtoggle button{border:0; background:transparent; padding:.28rem .5rem; border-radius:999px; cursor:pointer; line-height:0}
+.langtoggle .flag{width:1.5rem; height:1.02rem; border-radius:3px; display:block; box-shadow:0 0 0 1px rgba(0,0,0,.12); opacity:.5; filter:grayscale(.45); transition:.15s}
+.langtoggle button.active{background:#fff; box-shadow:var(--shadow-sm)}
+.langtoggle button.active .flag{opacity:1; filter:none}
 .dl-head{display:inline-flex; align-items:center; gap:.3rem; background:var(--olive); color:#fff; text-decoration:none; font-weight:800; font-size:.82rem; padding:.42rem .85rem; border-radius:999px; margin-right:.5rem; white-space:nowrap}
 .dl-head:hover{background:var(--olive-deep)}
-@media(max-width:560px){ .dl-head .dl-head-t{display:none} .dl-head{padding:.42rem .6rem} .menu-btn span{display:none} }
+@media(max-width:560px){ .dl-head .dl-head-t{display:none} .dl-head{padding:.42rem .6rem} .menu-btn span{display:none} .brand small{display:none} .brand{font-size:1rem} .brand .mark{display:none} header.bar{gap:.45rem; padding:.5rem .8rem} }
 .menu-btn{border:1px solid var(--line-2); background:var(--paper); border-radius:999px; cursor:pointer; font-family:var(--body); font-weight:800; font-size:.85rem; color:var(--olive-deep); padding:.45rem .9rem; display:inline-flex; align-items:center; gap:.4rem}
 .menu-btn:hover{background:var(--paper-2)}
 
-.shell{position:relative; z-index:1; max-width:1040px; margin:0 auto; padding:0 clamp(1rem,3vw,2rem) 5rem}
-nav.rail{position:fixed; top:0; left:0; z-index:60; width:min(290px,84vw); height:100vh; overflow:auto; padding:4.7rem .6rem 2rem; background:var(--paper); border-right:1px solid var(--line); box-shadow:var(--shadow-md); transform:translateX(-100%); transition:transform .3s cubic-bezier(.2,.8,.2,1); font-size:.95rem}
+.shell{position:relative; z-index:1; max-width:1200px; margin:0 auto; padding:0 clamp(1rem,3vw,2rem) 5rem}
+nav.rail{position:fixed; top:0; left:0; z-index:60; width:min(280px,84vw); height:100vh; overflow:auto; padding:4rem .55rem 1.4rem; background:var(--paper); border-right:1px solid var(--line); box-shadow:var(--shadow-md); transform:translateX(-100%); transition:transform .3s cubic-bezier(.2,.8,.2,1)}
 body.nav-open nav.rail{transform:translateX(0)}
 #navScrim{position:fixed; inset:0; z-index:55; background:rgba(34,40,22,.14); backdrop-filter:blur(2px); -webkit-backdrop-filter:blur(2px); opacity:0; visibility:hidden; transition:opacity .3s, visibility .3s}
 body.nav-open #navScrim{opacity:1; visibility:visible}
-nav.rail .group{font-family:var(--body); font-weight:800; letter-spacing:.13em; text-transform:uppercase; font-size:.66rem; color:var(--ink-faint); margin:1.3rem .8rem .4rem}
-nav.rail a{display:flex; align-items:center; gap:.55rem; padding:.5rem .8rem; border-radius:12px; text-decoration:none; color:var(--ink-soft); font-weight:700; transition:.15s}
-nav.rail a .ic{width:.42rem; height:.42rem; border-radius:50%; background:currentColor; opacity:.38; flex:0 0 auto; margin:0 .25rem}
-nav.rail a.active .ic{opacity:.85}
+nav.rail .group{font-family:var(--body); font-weight:800; letter-spacing:.13em; text-transform:uppercase; font-size:.64rem; color:var(--ink-faint); margin:.8rem .8rem .2rem}
+nav.rail .group:first-child{margin-top:0}
+nav.rail a{display:flex; align-items:center; gap:.55rem; padding:.32rem .8rem; border-radius:10px; text-decoration:none; color:var(--ink-soft); font-weight:700; font-size:.92rem; transition:.15s}
+nav.rail a .ic{width:1.05rem; height:1.05rem; flex:0 0 auto; border:1.7px solid var(--line-2); border-radius:50%; position:relative; transition:.15s}
+nav.rail a.done .ic{background:var(--leaf); border-color:var(--leaf)}
+nav.rail a.done .ic::after{content:""; position:absolute; left:50%; top:47%; width:.26rem; height:.5rem; border:solid #fff; border-width:0 2px 2px 0; transform:translate(-50%,-58%) rotate(45deg)}
+nav.rail a.active .ic{border-color:rgba(255,255,255,.75)}
+nav.rail a.active.done .ic{background:#fff; border-color:#fff}
+nav.rail a.active.done .ic::after{border-color:var(--olive)}
 nav.rail a:hover{background:var(--paper-2); color:var(--olive-deep)}
 nav.rail a.active{background:var(--olive); color:#fff; box-shadow:var(--shadow-sm)}
 main{min-width:0; padding-top:1.5rem}
 
-section.card{background:var(--paper); border:1px solid var(--line); border-radius:var(--radius-lg); padding:clamp(1.4rem,4vw,3rem); margin:0 0 2rem; box-shadow:var(--shadow-sm); scroll-margin-top:80px}
+section.card{background:var(--paper); border:1px solid var(--line); border-radius:var(--radius-lg); padding:clamp(1.2rem,3vw,2.1rem); margin:0 0 1.5rem; box-shadow:var(--shadow-sm); scroll-margin-top:80px}
 section.card.tint{background:linear-gradient(180deg,var(--paper-2),var(--paper))}
 .lead{font-size:1.18rem; color:var(--ink-soft)}
 
-.callout{border-radius:var(--radius); padding:1.1rem 1.3rem; margin:1.2rem 0; border-left:5px solid var(--honey); background:var(--paper-2); font-size:1.05rem}
+.callout{border-radius:var(--radius); padding:1.1rem 1.3rem; margin:1.2rem 0; border-left:5px solid var(--honey); background:var(--paper-2); font-size:inherit}
 .callout.key{border-color:var(--terracotta); background:#FBEDE6}
 .callout.win{border-color:var(--leaf); background:var(--good-bg)}
 .callout.warn{border-color:var(--eus-red); background:#FBE7E3}
@@ -138,10 +145,10 @@ section.card.tint{background:linear-gradient(180deg,var(--paper-2),var(--paper))
 .btn.ghost:hover{background:var(--paper-2)}
 .nextprev{display:flex; justify-content:space-between; gap:1rem; margin-top:1.6rem; flex-wrap:wrap}
 
-.hero{position:relative; overflow:hidden; border-radius:var(--radius-lg); margin:1.6rem 0 2.2rem; padding:clamp(2rem,6vw,4.5rem) clamp(1.4rem,5vw,3.4rem);
+.hero{position:relative; overflow:hidden; border-radius:var(--radius-lg); margin:1.1rem 0 1.5rem; padding:clamp(1.5rem,4vw,2.7rem) clamp(1.3rem,4vw,2.6rem);
   background:radial-gradient(800px 400px at 80% -20%, rgba(218,156,69,.30), transparent 60%), linear-gradient(155deg,#56693c,#3a4a23); color:#FBF6EC; box-shadow:var(--shadow-md)}
 .hero::after{content:""; position:absolute; left:0; right:0; bottom:0; height:7px; background:linear-gradient(90deg,var(--eus-red) 0 33.3%, #fff 33.3% 66.6%, var(--eus-green) 66.6% 100%); opacity:.95}
-.hero h1{color:#fff; font-size:clamp(2.4rem,7vw,4.4rem); font-weight:900; letter-spacing:-.02em; margin-bottom:.2em}
+.hero h1{color:#fff; font-size:clamp(2rem,5vw,3.1rem); font-weight:900; letter-spacing:-.02em; margin-bottom:.2em}
 .hero .sub{font-size:clamp(1.05rem,2.5vw,1.35rem); max-width:48ch; color:#F0E9D6}
 .hero .for{font-family:var(--display); font-style:italic; font-size:1.3rem; color:var(--honey-soft); margin-bottom:1.4rem}
 .hero .veg{position:absolute; font-size:clamp(4rem,12vw,9rem); opacity:.16; right:4%; bottom:1rem; transform:rotate(-12deg)}
@@ -337,6 +344,12 @@ html[data-lang="es"] .lang-es{display:block}
 #audiobar::before{content:""; position:absolute; left:1.3rem; right:1.3rem; top:0; height:3px; border-radius:0 0 6px 6px;
   background:linear-gradient(90deg,var(--eus-red) 0 33.3%,#fff 33.3% 66.6%,var(--eus-green) 66.6% 100%); opacity:.85}
 #audiobar[hidden]{display:none}
+#audiobar{transition:transform .32s cubic-bezier(.2,.8,.2,1), opacity .28s}
+.ab-toggle{flex:0 0 auto; width:1.7rem; height:1.7rem; border-radius:50%; border:1px solid rgba(255,255,255,.28); background:rgba(255,255,255,.12); color:#fff; cursor:pointer; font-size:.85rem; line-height:1; display:grid; place-items:center; transition:.15s}
+.ab-toggle:hover{background:rgba(255,255,255,.24)}
+body.audio-min #audiobar{transform:translateX(-50%) translateY(175%); opacity:0; pointer-events:none}
+#abShow{position:fixed; left:50%; bottom:max(.9rem,env(safe-area-inset-bottom)); transform:translateX(-50%); z-index:69; display:none; align-items:center; gap:.45rem; background:#3a4a24; color:#fff; border:none; border-radius:999px; padding:.5rem 1.05rem; font-family:var(--body); font-weight:800; font-size:.85rem; cursor:pointer; box-shadow:var(--shadow-md)}
+body.audio-min #abShow{display:inline-flex}
 .audio-btn{width:44px; height:44px; flex:none; border-radius:50%; border:0; cursor:pointer; font-size:1.05rem;
   background:var(--terracotta); color:#fff; display:grid; place-items:center; line-height:1;
   box-shadow:0 3px 11px rgba(168,70,46,.5); transition:transform .15s, background .15s}
@@ -423,7 +436,7 @@ footer{text-align:center; color:var(--ink-faint); font-size:.85rem; padding:2rem
 }
 /* hamburger (☰) is shown on all sizes now and opens the left drawer */
 @media print{
-  header.bar,nav.rail,#navScrim,#progress,#overlay,.menu-btn,.nextprev,.langtoggle,#audiobar{display:none!important}
+  header.bar,nav.rail,#navScrim,#progress,#overlay,.menu-btn,.nextprev,.langtoggle,#audiobar,#abShow{display:none!important}
   body{background:#fff; font-size:12pt} body::before{display:none} body::after{display:none}
   .shell{display:block; max-width:100%; padding:0}
   section.card{box-shadow:none; border:1px solid #ccc; page-break-inside:avoid; margin:0 0 1rem}
@@ -622,8 +635,22 @@ table.swaps tr:last-child td{border-bottom:none}
   <span class="spacer"></span>
   <a class="dl-head" href="assets/audio/audiolibro-es.zip" download="Guillermo-y-Pilar-Audiolibro.zip" title="Descargar el audiolibro (ZIP)">⬇️ <span class="dl-head-t" data-i18n="dlaudio">Audiobook</span></a>
   <div class="langtoggle" role="group" aria-label="Language">
-    <button id="btn-en" class="active" onclick="setLang('en')">EN</button>
-    <button id="btn-es" onclick="setLang('es')">ES</button>
+    <button id="btn-en" class="active" onclick="setLang('en')" aria-label="English" title="English">
+      <svg class="flag" viewBox="0 0 60 30" aria-hidden="true">
+        <clipPath id="ukt"><path d="M0 0v30h60V0z"/></clipPath>
+        <clipPath id="uks"><path d="M30 15h30v15zV15H0v15zM0 0h30V0H0zM60 0v15H30z"/></clipPath>
+        <g clip-path="url(#ukt)">
+          <path d="M0 0v30h60V0z" fill="#012169"/>
+          <path d="M0 0l60 30m0-30L0 30" stroke="#fff" stroke-width="6"/>
+          <path d="M0 0l60 30m0-30L0 30" clip-path="url(#uks)" stroke="#C8102E" stroke-width="4"/>
+          <path d="M30 0v30M0 15h60" stroke="#fff" stroke-width="10"/>
+          <path d="M30 0v30M0 15h60" stroke="#C8102E" stroke-width="6"/>
+        </g>
+      </svg>
+    </button>
+    <button id="btn-es" onclick="setLang('es')" aria-label="Español" title="Español">
+      <svg class="flag" viewBox="0 0 3 2" aria-hidden="true"><rect width="3" height="2" fill="#AA151B"/><rect y="0.5" width="3" height="1" fill="#F1BF00"/></svg>
+    </button>
   </div>
 </header>
 
@@ -1336,11 +1363,11 @@ table.swaps tr:last-child td{border-bottom:none}
 
       <div class="cio-graph">
         <div class="cio-graph-head"><span>Your weight, if you keep this up</span><span class="cio-graph-sub">next 12 weeks</span></div>
-        <svg id="cioSvg" viewBox="0 0 600 200" aria-hidden="true">
-          <line class="cio-base" id="cioBaseLine" x1="0" x2="600" y1="100" y2="100"></line>
+        <svg id="cioSvg" viewBox="0 0 600 96" aria-hidden="true">
+          <line class="cio-base" id="cioBaseLine" x1="0" x2="600" y1="45" y2="45"></line>
           <path class="cio-area" id="cioArea" d=""></path>
           <path class="cio-curve" id="cioCurve" d=""></path>
-          <circle class="cio-end" id="cioEnd" r="6" cx="600" cy="160"></circle>
+          <circle class="cio-end" id="cioEnd" r="5.5" cx="576" cy="70"></circle>
         </svg>
         <div class="cio-graph-foot"><span>today</span><b id="cioEndKg">−6.0 kg</b></div>
       </div>
@@ -2250,8 +2277,10 @@ table.swaps tr:last-child td{border-bottom:none}
       <img id="qrImg" alt="Código QR">
       <a id="qrDl" class="btn primary" href="assets/audio/audiolibro-es.zip" download="Guillermo-y-Pilar-Audiolibro.zip">⬇️ Descargar todo (ZIP)</a>
     </div>
+    <button class="ab-toggle" onclick="toggleAudioBar()" aria-label="Ocultar el reproductor" title="Ocultar">▾</button>
     <audio id="player" preload="metadata"></audio>
   </div>
+  <button id="abShow" onclick="toggleAudioBar()" aria-label="Mostrar el reproductor">🎧 ▴</button>
 </div>
 
 <script>
@@ -2341,6 +2370,12 @@ CHAPTERS.forEach(c=>{
 });
 function applyNavLang(l){ document.querySelectorAll('#rail [data-en], #overlayLinks [data-en]').forEach(el=>{ el.textContent=el.dataset[l]||el.dataset.en; }); }
 applyNavLang(document.documentElement.dataset.lang||'en');
+/* progress: green check for chapters you have read or heard */
+const DONE_KEY='gp_done';
+let doneSet=new Set(JSON.parse(localStorage.getItem(DONE_KEY)||'[]'));
+function applyDone(){ document.querySelectorAll('nav.rail a').forEach(a=>a.classList.toggle('done',doneSet.has(a.dataset.target))); }
+function markDone(id){ if(!id||doneSet.has(id))return; doneSet.add(id); try{localStorage.setItem(DONE_KEY,JSON.stringify([...doneSet]));}catch(e){} applyDone(); }
+applyDone();
 
 /* ============ LANGUAGE (architecture ready; ES filled as last step) ============ */
 const I18N={en:{brandsub:"A guide for Guillermo & Pilar", chapters:"Chapters", dlaudio:"Audiobook"},
@@ -2383,7 +2418,7 @@ function cioDraw(){
     ? ('At <b>'+cioFmt(eat)+'</b> kcal a day you would hold steady, right around your burn.')
     : ('Burning <b>'+cioFmt(burn)+'</b> and eating <b>'+cioFmt(eat)+'</b> a day, you would '+(state==='lose'?'lose':'gain')+' about <b>'+Math.abs(kgWeek).toFixed(2)+' kg a week</b>, roughly <b>'+Math.abs(change).toFixed(1)+' kg in 12 weeks</b>.');
   // weight curve over the next 12 weeks
-  const W=576,H=200, top=CIO.start+12, bot=CIO.start-12;
+  const W=576,H=96, top=CIO.start+12, bot=CIO.start-12;
   const ymap=w=>Math.max(6,Math.min(H-6,(top-w)/(top-bot)*H));
   let d='';
   for(let wk=0; wk<=CIO.WEEKS; wk++){ const x=wk/CIO.WEEKS*W, yy=ymap(CIO.start+kgWeek*wk); d+=(wk?' L':'M')+x.toFixed(1)+' '+yy.toFixed(1); }
@@ -2707,11 +2742,13 @@ const spy=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting){
     document.querySelectorAll('nav.rail a').forEach(a=>a.classList.toggle('active',a.dataset.target===e.target.id));
     updateAudioBar(e.target.id);
+    markDone(e.target.id);
   }});
 },{rootMargin:'-40% 0px -55% 0px'});
 document.querySelectorAll('main section[id]').forEach(s=>spy.observe(s));
 function toggleOverlay(){document.getElementById('overlay').classList.toggle('show');}
 function toggleNav(){document.body.classList.toggle('nav-open');}
+function toggleAudioBar(){document.body.classList.toggle('audio-min');}
 document.addEventListener('keydown',e=>{ if(e.key==='Escape') document.body.classList.remove('nav-open'); });
 
 /* ============ READ-ALOUD AUDIO (Spanish voice) ============ */
@@ -2820,7 +2857,7 @@ player.addEventListener('loadedmetadata',()=>{ document.getElementById('audioDur
 player.addEventListener('timeupdate',()=>{ const d=player.duration||0;
   document.getElementById('audioFill').style.width=(d?player.currentTime/d*100:0)+'%';
   document.getElementById('audioCur').textContent=fmtTime(player.currentTime); });
-player.addEventListener('ended',()=>{ setAudioBtn(false); if(autoNext){ const n=nextChapterId(audioCurrentId); if(n) selectAudioChapter(n); } });
+player.addEventListener('ended',()=>{ setAudioBtn(false); markDone(audioCurrentId); if(autoNext){ const n=nextChapterId(audioCurrentId); if(n) selectAudioChapter(n); } });
 
 /* ============ SCROLL REVEAL ============ */
 if(window.matchMedia && matchMedia('(prefers-reduced-motion: no-preference)').matches){
