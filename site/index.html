@@ -76,6 +76,9 @@ header.bar{position:sticky; top:0; z-index:50; display:flex; align-items:center;
 .langtoggle{display:inline-flex; background:var(--paper-3); border:1px solid var(--line); border-radius:999px; padding:3px}
 .langtoggle button{border:0; background:transparent; font-family:var(--body); font-weight:800; font-size:.82rem; padding:.35rem .8rem; border-radius:999px; cursor:pointer; color:var(--ink-soft)}
 .langtoggle button.active{background:var(--olive); color:#fff; box-shadow:var(--shadow-sm)}
+.dl-head{display:inline-flex; align-items:center; gap:.3rem; background:var(--olive); color:#fff; text-decoration:none; font-weight:800; font-size:.82rem; padding:.42rem .85rem; border-radius:999px; margin-right:.5rem; white-space:nowrap}
+.dl-head:hover{background:var(--olive-deep)}
+@media(max-width:560px){ .dl-head .dl-head-t{display:none} .dl-head{padding:.42rem .6rem} }
 .menu-btn{border:1px solid var(--line-2); background:var(--paper); border-radius:999px; cursor:pointer; font-family:var(--body); font-weight:800; font-size:.85rem; color:var(--olive-deep); padding:.45rem .9rem; display:inline-flex; align-items:center; gap:.4rem}
 .menu-btn:hover{background:var(--paper-2)}
 
@@ -613,6 +616,7 @@ table.swaps tr:last-child td{border-bottom:none}
   </a>
   <span class="spacer"></span>
   <button class="menu-btn" onclick="toggleOverlay()">☰ <span data-i18n="chapters">Chapters</span></button>
+  <a class="dl-head" href="assets/audio/audiolibro-es.zip" download="Guillermo-y-Pilar-Audiolibro.zip" title="Descargar el audiolibro (ZIP)">⬇️ <span class="dl-head-t" data-i18n="dlaudio">Audiobook</span></a>
   <div class="langtoggle" role="group" aria-label="Language">
     <button id="btn-en" class="active" onclick="setLang('en')">EN</button>
     <button id="btn-es" onclick="setLang('es')">ES</button>
@@ -2333,8 +2337,8 @@ function applyNavLang(l){ document.querySelectorAll('#rail [data-en], #overlayLi
 applyNavLang(document.documentElement.dataset.lang||'en');
 
 /* ============ LANGUAGE (architecture ready; ES filled as last step) ============ */
-const I18N={en:{brandsub:"A guide for Guillermo & Pilar", chapters:"Chapters"},
-  es:{brandsub:"Una guía para Guillermo y Pilar", chapters:"Capítulos"}};
+const I18N={en:{brandsub:"A guide for Guillermo & Pilar", chapters:"Chapters", dlaudio:"Audiobook"},
+  es:{brandsub:"Una guía para Guillermo y Pilar", chapters:"Capítulos", dlaudio:"Audiolibro"}};
 function setLang(l){
   document.documentElement.dataset.lang=l;
   document.getElementById('btn-en').classList.toggle('active',l==='en');
