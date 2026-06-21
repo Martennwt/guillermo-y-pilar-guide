@@ -2376,6 +2376,10 @@ let doneSet=new Set(JSON.parse(localStorage.getItem(DONE_KEY)||'[]'));
 function applyDone(){ document.querySelectorAll('nav.rail a').forEach(a=>a.classList.toggle('done',doneSet.has(a.dataset.target))); }
 function markDone(id){ if(!id||doneSet.has(id))return; doneSet.add(id); try{localStorage.setItem(DONE_KEY,JSON.stringify([...doneSet]));}catch(e){} applyDone(); }
 applyDone();
+/* mark a chapter green ONLY on its "next section" CTA click (not on scroll) */
+document.querySelectorAll('.nextprev .btn.primary, .hero .cta .btn.primary').forEach(b=>{
+  b.addEventListener('click',()=>{ const s=b.closest('section[id]'); if(s) markDone(s.id); });
+});
 
 /* ============ LANGUAGE (architecture ready; ES filled as last step) ============ */
 const I18N={en:{brandsub:"A guide for Guillermo & Pilar", chapters:"Chapters", dlaudio:"Audiobook"},
@@ -2403,7 +2407,7 @@ function cioDraw(){
   const kgWeek=diff*7/CIO.KPK, change=kgWeek*CIO.WEEKS;          // negative = weight lost
   const state= diff<-40?'lose': diff>40?'gain':'hold';
   cioEl('cio').dataset.state=state;
-  const scale=Math.max(3600,burn,eat);
+  const scale=Math.max(burn, eat, (+cioEl('cioEat').max||3600))*1.05;
   cioEl('cioOut').style.width=(burn/scale*100)+'%';
   cioEl('cioIn').style.width=(eat/scale*100)+'%';
   cioEl('cioOutNum').textContent=cioFmt(burn);
@@ -2449,7 +2453,7 @@ function cioRecalc(){
   CIO.base=cioBMR()*act;
   const burn=Math.round(CIO.base+cioBonus());
   cioEl('cioBurn').value=burn;
-  const e=cioEl('cioEat'); e.max=Math.max(3600, burn+800);
+  const e=cioEl('cioEat'); e.max=Math.max(4200, burn+1300);
   if(!CIO._touchedEat) e.value=Math.max(+e.min, burn-500);
   cioEl('cioBurnNote').textContent='estimated from your numbers, edit any field above';
   cioDraw(); cioSave();
@@ -2742,7 +2746,6 @@ const spy=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting){
     document.querySelectorAll('nav.rail a').forEach(a=>a.classList.toggle('active',a.dataset.target===e.target.id));
     updateAudioBar(e.target.id);
-    markDone(e.target.id);
   }});
 },{rootMargin:'-40% 0px -55% 0px'});
 document.querySelectorAll('main section[id]').forEach(s=>spy.observe(s));
