@@ -45,11 +45,17 @@ body::after{content:""; position:fixed; right:-140px; bottom:-150px; width:560px
   background:url("assets/img/eguzkilore.png") no-repeat center/contain; animation:eguzspin 170s linear infinite}
 @keyframes eguzspin{to{transform:rotate(360deg)}}
 #hills{position:fixed; left:-30px; bottom:0; width:600px; max-width:70vw; height:320px; pointer-events:none; z-index:0;
-  background:url("assets/img/bg-hills.svg") left bottom/100% auto no-repeat; will-change:transform}
-@media(prefers-reduced-motion:reduce){ body::after{animation:none} }
+  background:url("assets/img/bg-hills.svg") left bottom/100% auto no-repeat; will-change:transform; animation:hillsway 19s ease-in-out infinite}
+@keyframes hillsway{0%,100%{transform:translateX(-9px)}50%{transform:translateX(9px)}}
+@media(prefers-reduced-motion:reduce){ body::after,#hills{animation:none} }
 /* tasteful hover lifts */
 .recipe,.minicard,.path,.affirm,.badge{transition:transform .18s ease, box-shadow .18s ease}
 .recipe:hover,.minicard:hover,.path:hover{transform:translateY(-3px); box-shadow:var(--shadow-md)}
+main section.card{position:relative; transition:opacity .65s cubic-bezier(.22,.9,.3,1), transform .65s cubic-bezier(.22,.9,.3,1), box-shadow .3s ease}
+main section.card::after{content:""; position:absolute; inset:0; border-radius:inherit; pointer-events:none; opacity:0; transition:opacity .35s; background:radial-gradient(440px 440px at var(--cx,50%) var(--cy,45%), rgba(255,255,255,.28), transparent 55%); z-index:4}
+main section.card:hover::after{opacity:1}
+main section.card:hover{box-shadow:0 26px 64px rgba(56,72,36,.2)}
+@media(prefers-reduced-motion:reduce){ main section.card{transition:none} main section.card::after{display:none} }
 .affirm:hover{transform:translateY(-2px) rotate(-.4deg); box-shadow:var(--shadow-md)}
 .badge:hover{transform:translateY(-2px) scale(1.03)}
 /* hand-drawn scrawl underline that draws itself in on reveal */
@@ -72,7 +78,7 @@ em{color:var(--ink-soft)}
 header.bar{position:sticky; top:0; z-index:70; display:flex; align-items:center; gap:1rem;
   padding:.7rem clamp(1rem,3vw,2rem); background:rgba(251,246,236,.86); backdrop-filter:blur(10px); border-bottom:1px solid var(--line)}
 .brand{display:flex; align-items:center; gap:.6rem; font-family:var(--display); font-weight:900; color:var(--olive-deep); font-size:1.15rem; letter-spacing:-.01em; text-decoration:none}
-.brand .mark{width:34px; height:34px; border-radius:50%; display:grid; place-items:center; background:radial-gradient(circle at 35% 30%,var(--leaf),var(--olive)); color:#fff; font-size:1.05rem; box-shadow:var(--shadow-sm)}
+.brand .mark{width:36px; height:36px; border-radius:50%; background:url("assets/img/logo.png") center/126% no-repeat #F2ECD6; box-shadow:var(--shadow-sm); border:1px solid var(--line)}
 .brand small{display:block; font-family:var(--body); font-weight:700; font-size:.62rem; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-faint)}
 .bar .spacer{flex:1}
 .langtoggle{display:inline-flex; gap:2px; background:var(--paper-3); border:1px solid var(--line); border-radius:999px; padding:3px}
@@ -134,7 +140,7 @@ section.card.tint{background:linear-gradient(180deg,var(--paper-2),var(--paper))
 .v-a{display:block; margin-top:.2rem; font-size:.83rem; color:var(--terracotta-deep); font-weight:700}
 /* gentle scroll reveal */
 @media (prefers-reduced-motion: no-preference){
-  .reveal{opacity:0; transform:translateY(18px); transition:opacity .55s ease, transform .55s ease}
+  .reveal{opacity:0; transform:translateY(34px); transition:opacity .65s cubic-bezier(.22,.9,.3,1), transform .65s cubic-bezier(.22,.9,.3,1)}
   .reveal.in{opacity:1; transform:none}
 }
 /* real photos with a slow ken-burns motion */
@@ -165,7 +171,7 @@ section.card.tint{background:linear-gradient(180deg,var(--paper-2),var(--paper))
 
 /* ---- Cover ---- */
 .hero-stage{margin:1.4rem 0 0}
-.hero::after{content:""; position:absolute; inset:0; pointer-events:none; border-radius:inherit; background:radial-gradient(460px 460px at var(--mx,50%) var(--my,0%), rgba(255,255,255,.20), transparent 62%); opacity:0; transition:opacity .4s; mix-blend-mode:soft-light}
+.hero::after{content:""; position:absolute; inset:0; pointer-events:none; border-radius:inherit; background:radial-gradient(440px 440px at var(--mx,50%) var(--my,30%), rgba(255,249,236,.55), rgba(218,156,69,.10) 38%, transparent 62%); opacity:0; transition:opacity .35s; mix-blend-mode:normal}
 .hero:hover::after{opacity:1}
 /* Cover: The Postcard, warm cream */
 .hero.v3{background:radial-gradient(620px 480px at 50% 125%, rgba(194,85,59,.16), transparent 60%), linear-gradient(180deg,#FBF6EC,#F1E5CD); color:var(--ink); border:1px solid var(--line)}
@@ -638,7 +644,7 @@ table.swaps tr:last-child td{border-bottom:none}
 <header class="bar">
   <button class="menu-btn" onclick="toggleNav()" aria-label="Menú">☰ <span data-i18n="chapters">Chapters</span></button>
   <a class="brand" href="#welcome">
-    <span class="mark">🫒</span>
+    <span class="mark" aria-hidden="true"></span>
     <span><span data-i18n="brandtitle">Built to Last</span><small data-i18n="brandsub">A guide for Guillermo &amp; Pilar</small></span>
   </a>
   <span class="spacer"></span>
@@ -2759,7 +2765,6 @@ const reduceMotion=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduc
 window.addEventListener('scroll',()=>{
   const h=document.documentElement; const pct=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;
   prog.style.width=pct+'%';
-  if(hills&&!reduceMotion){ hills.style.transform='translate3d('+(h.scrollTop*0.03).toFixed(1)+'px,'+(h.scrollTop*-0.05).toFixed(1)+'px,0)'; }
 },{passive:true});
 const spy=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting){
@@ -2887,8 +2892,13 @@ player.addEventListener('ended',()=>{ setAudioBtn(false); markDone(audioCurrentI
 if(window.matchMedia && matchMedia('(prefers-reduced-motion: no-preference)').matches){
   const rev=document.querySelectorAll('main section.card, .hero-stage');
   rev.forEach(el=>el.classList.add('reveal'));
-  const rio=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in'); rio.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px'});
+  const rio=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in'); rio.unobserve(e.target);}});},{rootMargin:'0px 0px -14% 0px'});
   rev.forEach(el=>rio.observe(el));
+  document.querySelectorAll('main section.card').forEach(card=>{
+    card.addEventListener('mousemove',e=>{ const r=card.getBoundingClientRect();
+      card.style.setProperty('--cx',((e.clientX-r.left)/r.width*100).toFixed(1)+'%');
+      card.style.setProperty('--cy',((e.clientY-r.top)/r.height*100).toFixed(1)+'%'); });
+  });
 }
 
 /* ============ HERO CURSOR SPOTLIGHT ============ */
