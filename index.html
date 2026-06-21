@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex,nofollow">
-<title>Eat Well, Live Better · Guillermo &amp; Pilar</title>
+<title>Built to Last · Guillermo &amp; Pilar</title>
 <meta name="description" content="A straight, honest guide to taking back control of your body, for Guillermo and Pilar.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,8 +18,8 @@
 :root{
   --paper:#FBF6EC; --paper-2:#F4EBD8; --paper-3:#EFE3CC;
   --ink:#2C2A24; --ink-soft:#5C5647; --ink-faint:#8C8472;
-  --olive:#4B5D34; --olive-deep:#384824; --leaf:#7C9A4B;
-  --terracotta:#C2553B; --terracotta-deep:#A8462E;
+  --olive:#3F5430; --olive-deep:#2D3D1F; --leaf:#6E9241; --check:#1F8A4C;
+  --terracotta:#BE4F34; --terracotta-deep:#A2422A;
   --honey:#DA9C45; --honey-soft:#F0D9A8;
   --industrial-bg:#E7E2D6; --good-bg:#EAF0DC; --good-line:#C5D69A;
   --eus-red:#D52B1E; --eus-green:#009B48;
@@ -42,9 +42,11 @@ body{margin:0; background:var(--paper); color:var(--ink); font-family:var(--body
 body::before{content:""; position:fixed; inset:0; pointer-events:none; z-index:0; opacity:.5;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.035'/%3E%3C/svg%3E");}
 body::after{content:""; position:fixed; right:-140px; bottom:-150px; width:560px; height:560px; pointer-events:none; z-index:0; opacity:.045;
-  background:url("assets/img/eguzkilore.png") no-repeat center/contain;}
+  background:url("assets/img/eguzkilore.png") no-repeat center/contain; animation:eguzspin 170s linear infinite}
+@keyframes eguzspin{to{transform:rotate(360deg)}}
 #hills{position:fixed; left:-30px; bottom:0; width:600px; max-width:70vw; height:320px; pointer-events:none; z-index:0;
   background:url("assets/img/bg-hills.svg") left bottom/100% auto no-repeat; will-change:transform}
+@media(prefers-reduced-motion:reduce){ body::after{animation:none} }
 /* tasteful hover lifts */
 .recipe,.minicard,.path,.affirm,.badge{transition:transform .18s ease, box-shadow .18s ease}
 .recipe:hover,.minicard:hover,.path:hover{transform:translateY(-3px); box-shadow:var(--shadow-md)}
@@ -99,13 +101,13 @@ nav.rail .group{font-family:var(--body); font-weight:800; letter-spacing:.13em; 
 nav.rail .group:first-child{margin-top:0}
 nav.rail a{display:flex; align-items:center; gap:.55rem; padding:.32rem .8rem; border-radius:10px; text-decoration:none; color:var(--ink-soft); font-weight:700; font-size:.92rem; transition:.15s}
 nav.rail a .ic{width:1.05rem; height:1.05rem; flex:0 0 auto; border:1.7px solid var(--line-2); border-radius:50%; position:relative; transition:.15s}
-nav.rail a.done .ic{background:var(--leaf); border-color:var(--leaf)}
+nav.rail a.done .ic{background:var(--check); border-color:var(--check)}
 nav.rail a.done .ic::after{content:""; position:absolute; left:50%; top:47%; width:.26rem; height:.5rem; border:solid #fff; border-width:0 2px 2px 0; transform:translate(-50%,-58%) rotate(45deg)}
 nav.rail a.active .ic{border-color:rgba(255,255,255,.75)}
 nav.rail a.active.done .ic{background:#fff; border-color:#fff}
 nav.rail a.active.done .ic::after{border-color:var(--olive)}
 nav.rail a:hover{background:var(--paper-2); color:var(--olive-deep)}
-nav.rail a.active{background:var(--olive); color:#fff; box-shadow:var(--shadow-sm)}
+nav.rail a.active{background:var(--olive); color:#fff; box-shadow:inset 3px 0 0 var(--honey), var(--shadow-sm)}
 main{min-width:0; padding-top:1.5rem}
 
 section.card{background:var(--paper); border:1px solid var(--line); border-radius:var(--radius-lg); padding:clamp(1.2rem,3vw,2.1rem); margin:0 0 1.5rem; box-shadow:var(--shadow-sm); scroll-margin-top:80px}
@@ -163,7 +165,7 @@ section.card.tint{background:linear-gradient(180deg,var(--paper-2),var(--paper))
 
 /* ---- Cover ---- */
 .hero-stage{margin:1.4rem 0 0}
-.hero::after{content:""; position:absolute; inset:0; pointer-events:none; border-radius:inherit; background:radial-gradient(300px 300px at var(--mx,50%) var(--my,0%), rgba(255,255,255,.13), transparent 60%); opacity:0; transition:opacity .4s; mix-blend-mode:soft-light}
+.hero::after{content:""; position:absolute; inset:0; pointer-events:none; border-radius:inherit; background:radial-gradient(460px 460px at var(--mx,50%) var(--my,0%), rgba(255,255,255,.20), transparent 62%); opacity:0; transition:opacity .4s; mix-blend-mode:soft-light}
 .hero:hover::after{opacity:1}
 /* Cover: The Postcard, warm cream */
 .hero.v3{background:radial-gradient(620px 480px at 50% 125%, rgba(194,85,59,.16), transparent 60%), linear-gradient(180deg,#FBF6EC,#F1E5CD); color:var(--ink); border:1px solid var(--line)}
@@ -637,7 +639,7 @@ table.swaps tr:last-child td{border-bottom:none}
   <button class="menu-btn" onclick="toggleNav()" aria-label="Menú">☰ <span data-i18n="chapters">Chapters</span></button>
   <a class="brand" href="#welcome">
     <span class="mark">🫒</span>
-    <span>Eat Well, Live Better<small data-i18n="brandsub">A guide for Guillermo &amp; Pilar</small></span>
+    <span><span data-i18n="brandtitle">Built to Last</span><small data-i18n="brandsub">A guide for Guillermo &amp; Pilar</small></span>
   </a>
   <span class="spacer"></span>
   <div class="dl-wrap">
@@ -2396,8 +2398,8 @@ document.querySelectorAll('.nextprev .btn.primary, .hero .cta .btn.primary').for
 });
 
 /* ============ LANGUAGE (architecture ready; ES filled as last step) ============ */
-const I18N={en:{brandsub:"A guide for Guillermo & Pilar", chapters:"Chapters", dlaudio:"Audiobook", audiopop:"Scan to open the player, or download all the audio:", dlall:"⬇️ Download all (ZIP)"},
-  es:{brandsub:"Una guía para Guillermo y Pilar", chapters:"Capítulos", dlaudio:"Audiolibro", audiopop:"Escanéalo para abrir el reproductor, o descárgalo todo:", dlall:"⬇️ Descargar todo (ZIP)"}};
+const I18N={en:{brandtitle:"Built to Last", brandsub:"A guide for Guillermo & Pilar", chapters:"Chapters", dlaudio:"Audiobook", audiopop:"Scan to open the player, or download all the audio:", dlall:"⬇️ Download all (ZIP)"},
+  es:{brandtitle:"Hechos para durar", brandsub:"Una guía para Guillermo y Pilar", chapters:"Capítulos", dlaudio:"Audiolibro", audiopop:"Escanéalo para abrir el reproductor, o descárgalo todo:", dlall:"⬇️ Descargar todo (ZIP)"}};
 function setLang(l){
   document.documentElement.dataset.lang=l;
   document.getElementById('btn-en').classList.toggle('active',l==='en');
