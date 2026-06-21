@@ -2234,9 +2234,9 @@ table.swaps tr:last-child td{border-bottom:none}
     <div id="audioTrack" class="audio-track" onclick="seekAudio(event)"><div id="audioFill" class="audio-fill"></div></div>
     <span id="audioDur" class="audio-time">0:00</span>
     <div id="qrPop" hidden>
-      <p>Escanéalo con el móvil para escuchar o descargar este capítulo.</p>
+      <p>Escanéalo con el móvil: se abre el reproductor con todos los capítulos. 🎧</p>
       <img id="qrImg" alt="Código QR">
-      <a id="qrDl" class="btn primary" download>Descargar MP3</a>
+      <a id="qrDl" class="btn primary" download>Descargar este capítulo</a>
     </div>
     <audio id="player" preload="metadata"></audio>
   </div>
@@ -2788,9 +2788,9 @@ function stopAudio(){ player.pause(); player.currentTime=0; setAudioBtn(false); 
 function toggleQR(){
   const pop=document.getElementById('qrPop');
   if(pop.hidden){
-    const url=player.src;
-    document.getElementById('qrImg').src='https://api.qrserver.com/v1/create-qr-code/?size=220x220&margin=10&data='+encodeURIComponent(url);
-    document.getElementById('qrDl').href=url;
+    const url=SITE_URL+'player.html';
+    document.getElementById('qrImg').src='https://api.qrserver.com/v1/create-qr-code/?size=320x320&margin=12&ecc=L&data='+encodeURIComponent(url);
+    document.getElementById('qrDl').href=player.src;
     pop.hidden=false;
   } else { pop.hidden=true; }
 }
