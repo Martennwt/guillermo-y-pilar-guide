@@ -34,17 +34,17 @@
 html{scroll-behavior:smooth; scroll-padding-top:84px}
 body{margin:0; background:var(--paper); color:var(--ink); font-family:var(--body); font-size:18px;
   line-height:1.7; -webkit-font-smoothing:antialiased;
-  background-image:url("assets/img/bg-hills.svg"),
-    radial-gradient(1200px 600px at 85% -5%, rgba(218,156,69,.10), transparent 60%),
-    radial-gradient(900px 500px at -10% 10%, rgba(124,154,75,.10), transparent 55%);
-  background-repeat:no-repeat, no-repeat, no-repeat;
-  background-position:left -30px bottom, 0 0, 0 0;
-  background-size:580px auto, auto, auto;
-  background-attachment:fixed;}
+  background-image:
+    radial-gradient(1300px 640px at 88% -6%, rgba(218,156,69,.13), transparent 60%),
+    radial-gradient(1000px 560px at -12% 6%, rgba(124,154,75,.13), transparent 55%),
+    radial-gradient(900px 700px at 50% 120%, rgba(75,93,52,.07), transparent 60%);
+  background-repeat:no-repeat; background-attachment:fixed;}
 body::before{content:""; position:fixed; inset:0; pointer-events:none; z-index:0; opacity:.5;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.035'/%3E%3C/svg%3E");}
 body::after{content:""; position:fixed; right:-140px; bottom:-150px; width:560px; height:560px; pointer-events:none; z-index:0; opacity:.045;
   background:url("assets/img/eguzkilore.png") no-repeat center/contain;}
+#hills{position:fixed; left:-30px; bottom:0; width:600px; max-width:70vw; height:320px; pointer-events:none; z-index:0;
+  background:url("assets/img/bg-hills.svg") left bottom/100% auto no-repeat; will-change:transform}
 /* tasteful hover lifts */
 .recipe,.minicard,.path,.affirm,.badge{transition:transform .18s ease, box-shadow .18s ease}
 .recipe:hover,.minicard:hover,.path:hover{transform:translateY(-3px); box-shadow:var(--shadow-md)}
@@ -631,6 +631,7 @@ table.swaps tr:last-child td{border-bottom:none}
 </head>
 <body>
 <div id="progress"></div>
+<div id="hills" aria-hidden="true"></div>
 
 <header class="bar">
   <button class="menu-btn" onclick="toggleNav()" aria-label="Menú">☰ <span data-i18n="chapters">Chapters</span></button>
@@ -2384,7 +2385,7 @@ CHAPTERS.forEach(c=>{
 function applyNavLang(l){ document.querySelectorAll('#rail [data-en], #overlayLinks [data-en]').forEach(el=>{ el.textContent=el.dataset[l]||el.dataset.en; }); }
 applyNavLang(document.documentElement.dataset.lang||'en');
 /* progress: green check for chapters you have read or heard */
-const DONE_KEY='gp_done';
+const DONE_KEY='gp_done2';
 let doneSet=new Set(JSON.parse(localStorage.getItem(DONE_KEY)||'[]'));
 function applyDone(){ document.querySelectorAll('nav.rail a').forEach(a=>a.classList.toggle('done',doneSet.has(a.dataset.target))); }
 function markDone(id){ if(!id||doneSet.has(id))return; doneSet.add(id); try{localStorage.setItem(DONE_KEY,JSON.stringify([...doneSet]));}catch(e){} applyDone(); }
@@ -2751,9 +2752,12 @@ function closeRecipe(){ const m=document.getElementById('recipeModal'); m.classL
 
 /* ============ PROGRESS, SCROLLSPY, OVERLAY ============ */
 const prog=document.getElementById('progress');
+const hills=document.getElementById('hills');
+const reduceMotion=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
 window.addEventListener('scroll',()=>{
   const h=document.documentElement; const pct=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;
   prog.style.width=pct+'%';
+  if(hills&&!reduceMotion){ hills.style.transform='translate3d('+(h.scrollTop*0.03).toFixed(1)+'px,'+(h.scrollTop*-0.05).toFixed(1)+'px,0)'; }
 },{passive:true});
 const spy=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting){
