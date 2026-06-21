@@ -32,7 +32,7 @@
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth; scroll-padding-top:84px}
-body{margin:0; background:var(--paper); color:var(--ink); font-family:var(--body); font-size:18px;
+body{margin:0; background:var(--paper); color:var(--ink); font-family:var(--body); font-size:15px;
   line-height:1.7; -webkit-font-smoothing:antialiased;
   background-image:url("assets/img/bg-hills.svg"),
     radial-gradient(1200px 600px at 85% -5%, rgba(218,156,69,.10), transparent 60%),
@@ -67,7 +67,7 @@ em{color:var(--ink-soft)}
 .eus-ribbon{height:6px; border-radius:999px; background:linear-gradient(90deg,var(--eus-red) 0 33.3%, #fff 33.3% 66.6%, var(--eus-green) 66.6% 100%); opacity:.9; margin:0 0 1.2rem}
 #progress{position:fixed; top:0; left:0; height:4px; width:0%; z-index:60; background:linear-gradient(90deg,var(--eus-green),var(--honey),var(--eus-red))}
 
-header.bar{position:sticky; top:0; z-index:50; display:flex; align-items:center; gap:1rem;
+header.bar{position:sticky; top:0; z-index:70; display:flex; align-items:center; gap:1rem;
   padding:.7rem clamp(1rem,3vw,2rem); background:rgba(251,246,236,.86); backdrop-filter:blur(10px); border-bottom:1px solid var(--line)}
 .brand{display:flex; align-items:center; gap:.6rem; font-family:var(--display); font-weight:900; color:var(--olive-deep); font-size:1.15rem; letter-spacing:-.01em; text-decoration:none}
 .brand .mark{width:34px; height:34px; border-radius:50%; display:grid; place-items:center; background:radial-gradient(circle at 35% 30%,var(--leaf),var(--olive)); color:#fff; font-size:1.05rem; box-shadow:var(--shadow-sm)}
@@ -78,15 +78,19 @@ header.bar{position:sticky; top:0; z-index:50; display:flex; align-items:center;
 .langtoggle button.active{background:var(--olive); color:#fff; box-shadow:var(--shadow-sm)}
 .dl-head{display:inline-flex; align-items:center; gap:.3rem; background:var(--olive); color:#fff; text-decoration:none; font-weight:800; font-size:.82rem; padding:.42rem .85rem; border-radius:999px; margin-right:.5rem; white-space:nowrap}
 .dl-head:hover{background:var(--olive-deep)}
-@media(max-width:560px){ .dl-head .dl-head-t{display:none} .dl-head{padding:.42rem .6rem} }
+@media(max-width:560px){ .dl-head .dl-head-t{display:none} .dl-head{padding:.42rem .6rem} .menu-btn span{display:none} }
 .menu-btn{border:1px solid var(--line-2); background:var(--paper); border-radius:999px; cursor:pointer; font-family:var(--body); font-weight:800; font-size:.85rem; color:var(--olive-deep); padding:.45rem .9rem; display:inline-flex; align-items:center; gap:.4rem}
 .menu-btn:hover{background:var(--paper-2)}
 
-.shell{position:relative; z-index:1; display:grid; grid-template-columns:248px minmax(0,1fr); gap:clamp(1rem,3vw,2.4rem); max-width:1280px; margin:0 auto; padding:0 clamp(1rem,3vw,2rem) 5rem}
-nav.rail{position:sticky; top:74px; align-self:start; height:calc(100vh - 90px); overflow:auto; padding:1.4rem .4rem 2rem; font-size:.95rem}
+.shell{position:relative; z-index:1; max-width:1040px; margin:0 auto; padding:0 clamp(1rem,3vw,2rem) 5rem}
+nav.rail{position:fixed; top:0; left:0; z-index:60; width:min(290px,84vw); height:100vh; overflow:auto; padding:4.7rem .6rem 2rem; background:var(--paper); border-right:1px solid var(--line); box-shadow:var(--shadow-md); transform:translateX(-100%); transition:transform .3s cubic-bezier(.2,.8,.2,1); font-size:.95rem}
+body.nav-open nav.rail{transform:translateX(0)}
+#navScrim{position:fixed; inset:0; z-index:55; background:rgba(34,40,22,.38); backdrop-filter:blur(4px); -webkit-backdrop-filter:blur(4px); opacity:0; visibility:hidden; transition:opacity .3s, visibility .3s}
+body.nav-open #navScrim{opacity:1; visibility:visible}
 nav.rail .group{font-family:var(--body); font-weight:800; letter-spacing:.13em; text-transform:uppercase; font-size:.66rem; color:var(--ink-faint); margin:1.3rem .8rem .4rem}
 nav.rail a{display:flex; align-items:center; gap:.55rem; padding:.5rem .8rem; border-radius:12px; text-decoration:none; color:var(--ink-soft); font-weight:700; transition:.15s}
-nav.rail a .ic{width:1.3em; text-align:center}
+nav.rail a .ic{width:.42rem; height:.42rem; border-radius:50%; background:currentColor; opacity:.38; flex:0 0 auto; margin:0 .25rem}
+nav.rail a.active .ic{opacity:.85}
 nav.rail a:hover{background:var(--paper-2); color:var(--olive-deep)}
 nav.rail a.active{background:var(--olive); color:#fff; box-shadow:var(--shadow-sm)}
 main{min-width:0; padding-top:1.5rem}
@@ -402,9 +406,11 @@ footer .foot-qr .dl-zip:hover{background:var(--olive-deep)}
 #overlayLinks .group{grid-column:1/-1; font-family:var(--body); font-weight:800; font-size:.66rem; letter-spacing:.14em; text-transform:uppercase; color:var(--terracotta); margin:.85rem 0 .15rem; padding-left:.15rem}
 #overlayLinks .group:first-child{margin-top:0}
 #overlay a{display:flex; align-items:center; gap:.7rem; padding:.5rem .65rem; border-radius:12px; text-decoration:none; color:var(--ink); font-weight:700; font-size:.95rem; border:1px solid transparent; transition:transform .15s, background .15s, border-color .15s}
-#overlay a .ic{width:1.9rem; height:1.9rem; flex:none; display:grid; place-items:center; background:var(--paper-2); border:1px solid var(--line); border-radius:9px; font-size:1rem; transition:.15s}
+#overlay a .ic{width:1.9rem; height:1.9rem; flex:none; display:grid; place-items:center; background:var(--paper-2); border:1px solid var(--line); border-radius:9px; transition:.15s}
+#overlay a .ic::before{content:""; width:.5rem; height:.5rem; border-radius:50%; background:var(--olive); opacity:.5}
 #overlay a:hover{background:var(--paper-2); border-color:var(--line); transform:translateX(3px)}
 #overlay a:hover .ic{background:var(--olive); border-color:var(--olive); transform:scale(1.06)}
+#overlay a:hover .ic::before{background:#fff; opacity:.95}
 .ov-close{position:absolute; top:1rem; right:1rem; z-index:2; border:1.5px solid var(--line-2); background:var(--paper); color:var(--olive-deep); border-radius:50%; width:2.1rem; height:2.1rem; cursor:pointer; font-size:1rem; display:grid; place-items:center; transition:.18s}
 .ov-close:hover{background:var(--terracotta); color:#fff; border-color:var(--terracotta); transform:rotate(90deg)}
 @media(max-width:560px){ #overlayLinks{grid-template-columns:1fr} }
@@ -412,14 +418,12 @@ footer .foot-qr .dl-zip:hover{background:var(--olive-deep)}
 footer{text-align:center; color:var(--ink-faint); font-size:.85rem; padding:2rem 1rem 4rem; position:relative; z-index:1}
 
 @media(max-width:880px){
-  .shell{grid-template-columns:1fr}
-  nav.rail{display:none}
   .grid2,.formgrid,.contract .sign{grid-template-columns:1fr}
   .days{grid-template-columns:repeat(10,1fr)}
 }
-@media(min-width:881px){ .menu-btn{display:none} }
+/* hamburger (☰) is shown on all sizes now and opens the left drawer */
 @media print{
-  header.bar,nav.rail,#progress,#overlay,.menu-btn,.nextprev,.langtoggle,#audiobar{display:none!important}
+  header.bar,nav.rail,#navScrim,#progress,#overlay,.menu-btn,.nextprev,.langtoggle,#audiobar{display:none!important}
   body{background:#fff; font-size:12pt} body::before{display:none} body::after{display:none}
   .shell{display:block; max-width:100%; padding:0}
   section.card{box-shadow:none; border:1px solid #ccc; page-break-inside:avoid; margin:0 0 1rem}
@@ -610,12 +614,12 @@ table.swaps tr:last-child td{border-bottom:none}
 <div id="progress"></div>
 
 <header class="bar">
+  <button class="menu-btn" onclick="toggleNav()" aria-label="Menú">☰ <span data-i18n="chapters">Chapters</span></button>
   <a class="brand" href="#welcome">
     <span class="mark">🫒</span>
     <span>Eat Well, Live Better<small data-i18n="brandsub">A guide for Guillermo &amp; Pilar</small></span>
   </a>
   <span class="spacer"></span>
-  <button class="menu-btn" onclick="toggleOverlay()">☰ <span data-i18n="chapters">Chapters</span></button>
   <a class="dl-head" href="assets/audio/audiolibro-es.zip" download="Guillermo-y-Pilar-Audiolibro.zip" title="Descargar el audiolibro (ZIP)">⬇️ <span class="dl-head-t" data-i18n="dlaudio">Audiobook</span></a>
   <div class="langtoggle" role="group" aria-label="Language">
     <button id="btn-en" class="active" onclick="setLang('en')">EN</button>
@@ -636,6 +640,7 @@ table.swaps tr:last-child td{border-bottom:none}
   <div class="rm-card" id="rmCard"></div>
 </div>
 
+<div id="navScrim" onclick="toggleNav()" aria-hidden="true"></div>
 <div class="shell">
   <nav class="rail" id="rail"></nav>
   <main>
@@ -2328,9 +2333,10 @@ CHAPTERS.forEach(c=>{
   if(c.g){const h=document.createElement('div'); h.className='group'; h.dataset.en=c.g; h.dataset.es=c.ge||c.g; h.textContent=c.g; rail.appendChild(h);
     const h2=h.cloneNode(true); ovLinks.appendChild(h2); return;}
   const a=document.createElement('a'); a.href='#'+c.id; a.dataset.target=c.id;
-  const ic=document.createElement('span'); ic.className='ic'; ic.textContent=c.ic;
+  const ic=document.createElement('span'); ic.className='ic';
   const lab=document.createElement('span'); lab.className='nav-t'; lab.dataset.en=c.t; lab.dataset.es=c.te||c.t; lab.textContent=c.t;
   a.appendChild(ic); a.appendChild(lab); rail.appendChild(a);
+  a.addEventListener('click',()=>document.body.classList.remove('nav-open'));
   const a2=a.cloneNode(true); a2.addEventListener('click',toggleOverlay); ovLinks.appendChild(a2);
 });
 function applyNavLang(l){ document.querySelectorAll('#rail [data-en], #overlayLinks [data-en]').forEach(el=>{ el.textContent=el.dataset[l]||el.dataset.en; }); }
@@ -2705,6 +2711,8 @@ const spy=new IntersectionObserver(entries=>{
 },{rootMargin:'-40% 0px -55% 0px'});
 document.querySelectorAll('main section[id]').forEach(s=>spy.observe(s));
 function toggleOverlay(){document.getElementById('overlay').classList.toggle('show');}
+function toggleNav(){document.body.classList.toggle('nav-open');}
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') document.body.classList.remove('nav-open'); });
 
 /* ============ READ-ALOUD AUDIO (Spanish voice) ============ */
 /* Audio chapters: id matches the <section id>, title shows in the player picker, file is the stitched MP3 */
