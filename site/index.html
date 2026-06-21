@@ -65,7 +65,7 @@ em{color:var(--ink-soft)}
   font-size:.74rem; color:var(--terracotta); margin-bottom:.6rem; display:flex; align-items:center; gap:.55rem}
 .ikurrina{width:30px; height:20px; border-radius:3px; box-shadow:0 1px 3px rgba(0,0,0,.25); flex:none}
 .eus-ribbon{height:6px; border-radius:999px; background:linear-gradient(90deg,var(--eus-red) 0 33.3%, #fff 33.3% 66.6%, var(--eus-green) 66.6% 100%); opacity:.9; margin:0 0 1.2rem}
-#progress{position:fixed; top:0; left:0; height:4px; width:0%; z-index:60; background:linear-gradient(90deg,var(--eus-green),var(--honey),var(--eus-red))}
+#progress{position:fixed; top:0; left:0; height:6px; width:0%; z-index:90; background:linear-gradient(90deg,var(--eus-red),var(--honey),var(--eus-green)); box-shadow:0 1px 4px rgba(0,0,0,.14); transition:width .08s linear}
 
 header.bar{position:sticky; top:0; z-index:70; display:flex; align-items:center; gap:1rem;
   padding:.7rem clamp(1rem,3vw,2rem); background:rgba(251,246,236,.86); backdrop-filter:blur(10px); border-bottom:1px solid var(--line)}
@@ -80,6 +80,12 @@ header.bar{position:sticky; top:0; z-index:70; display:flex; align-items:center;
 .langtoggle button.active .flag{opacity:1; filter:none}
 .dl-head{display:inline-flex; align-items:center; gap:.3rem; background:var(--olive); color:#fff; text-decoration:none; font-weight:800; font-size:.82rem; padding:.42rem .85rem; border-radius:999px; margin-right:.5rem; white-space:nowrap}
 .dl-head:hover{background:var(--olive-deep)}
+.dl-wrap{position:relative; display:inline-flex}
+#audioPop{position:absolute; top:calc(100% + .55rem); right:0; z-index:80; width:228px; background:#fff; border:1px solid var(--line); border-radius:14px; box-shadow:var(--shadow-md); padding:.9rem; text-align:center}
+#audioPop[hidden]{display:none}
+#audioPop p{font-size:.82rem; color:var(--ink-soft); font-weight:700; margin:0 0 .55rem; line-height:1.35}
+#audioPop img{width:150px; height:150px; background:#fff; border-radius:8px; display:block; margin:0 auto .6rem; image-rendering:pixelated}
+#audioPop .btn{display:block; font-size:.82rem; padding:.5rem .8rem}
 @media(max-width:560px){ .dl-head .dl-head-t{display:none} .dl-head{padding:.42rem .6rem} .menu-btn span{display:none} .brand small{display:none} .brand{font-size:1rem} .brand .mark{display:none} header.bar{gap:.45rem; padding:.5rem .8rem} }
 .menu-btn{border:1px solid var(--line-2); background:var(--paper); border-radius:999px; cursor:pointer; font-family:var(--body); font-weight:800; font-size:.85rem; color:var(--olive-deep); padding:.45rem .9rem; display:inline-flex; align-items:center; gap:.4rem}
 .menu-btn:hover{background:var(--paper-2)}
@@ -633,7 +639,14 @@ table.swaps tr:last-child td{border-bottom:none}
     <span>Eat Well, Live Better<small data-i18n="brandsub">A guide for Guillermo &amp; Pilar</small></span>
   </a>
   <span class="spacer"></span>
-  <a class="dl-head" href="assets/audio/audiolibro-es.zip" download="Guillermo-y-Pilar-Audiolibro.zip" title="Descargar el audiolibro (ZIP)">⬇️ <span class="dl-head-t" data-i18n="dlaudio">Audiobook</span></a>
+  <div class="dl-wrap">
+    <button class="dl-head" onclick="toggleAudioPop(event)" aria-haspopup="true" aria-label="Audiolibro">🎧 <span class="dl-head-t" data-i18n="dlaudio">Audiobook</span></button>
+    <div id="audioPop" hidden>
+      <p data-i18n="audiopop">Scan to open the player, or download all the audio:</p>
+      <img src="assets/img/qr-audiolibro.png" alt="QR" width="150" height="150">
+      <a class="btn primary" href="assets/audio/audiolibro-es.zip" download="Guillermo-y-Pilar-Audiolibro.zip" data-i18n="dlall">⬇️ Download all (ZIP)</a>
+    </div>
+  </div>
   <div class="langtoggle" role="group" aria-label="Language">
     <button id="btn-en" class="active" onclick="setLang('en')" aria-label="English" title="English">
       <svg class="flag" viewBox="0 0 60 30" aria-hidden="true">
@@ -2382,8 +2395,8 @@ document.querySelectorAll('.nextprev .btn.primary, .hero .cta .btn.primary').for
 });
 
 /* ============ LANGUAGE (architecture ready; ES filled as last step) ============ */
-const I18N={en:{brandsub:"A guide for Guillermo & Pilar", chapters:"Chapters", dlaudio:"Audiobook"},
-  es:{brandsub:"Una guía para Guillermo y Pilar", chapters:"Capítulos", dlaudio:"Audiolibro"}};
+const I18N={en:{brandsub:"A guide for Guillermo & Pilar", chapters:"Chapters", dlaudio:"Audiobook", audiopop:"Scan to open the player, or download all the audio:", dlall:"⬇️ Download all (ZIP)"},
+  es:{brandsub:"Una guía para Guillermo y Pilar", chapters:"Capítulos", dlaudio:"Audiolibro", audiopop:"Escanéalo para abrir el reproductor, o descárgalo todo:", dlall:"⬇️ Descargar todo (ZIP)"}};
 function setLang(l){
   document.documentElement.dataset.lang=l;
   document.getElementById('btn-en').classList.toggle('active',l==='en');
@@ -2752,6 +2765,7 @@ document.querySelectorAll('main section[id]').forEach(s=>spy.observe(s));
 function toggleOverlay(){document.getElementById('overlay').classList.toggle('show');}
 function toggleNav(){document.body.classList.toggle('nav-open');}
 function toggleAudioBar(){document.body.classList.toggle('audio-min');}
+function toggleAudioPop(ev){ ev.stopPropagation(); const p=document.getElementById('audioPop'); if(p) p.hidden=!p.hidden; }
 document.addEventListener('keydown',e=>{ if(e.key==='Escape') document.body.classList.remove('nav-open'); });
 
 /* ============ READ-ALOUD AUDIO (Spanish voice) ============ */
@@ -2818,7 +2832,8 @@ function toggleAudioMenu(ev){ ev.stopPropagation(); const w=document.getElementB
   const willOpen=m.hidden; m.hidden=!willOpen; w.classList.toggle('open', willOpen); }
 function selectAudioChapter(id){ const m=document.getElementById('audioPickMenu'); m.hidden=true; document.getElementById('audioPickWrap').classList.remove('open'); pickAudio(id); }
 document.addEventListener('click',e=>{ const w=document.getElementById('audioPickWrap'); if(w&&!w.contains(e.target)){ const m=document.getElementById('audioPickMenu'); if(m&&!m.hidden){m.hidden=true; w.classList.remove('open');} }
-  const pop=document.getElementById('qrPop'); if(pop&&!pop.hidden){ const btn=document.getElementById('qrBtn'); if(!pop.contains(e.target) && (!btn||!btn.contains(e.target))) pop.hidden=true; } });
+  const pop=document.getElementById('qrPop'); if(pop&&!pop.hidden){ const btn=document.getElementById('qrBtn'); if(!pop.contains(e.target) && (!btn||!btn.contains(e.target))) pop.hidden=true; }
+  const ap=document.getElementById('audioPop'); if(ap&&!ap.hidden && !e.target.closest('.dl-wrap')) ap.hidden=true; });
 buildVoiceToggle(); buildAudioMenu();
 const player=document.getElementById('player');
 function pickAudio(id){
