@@ -603,24 +603,6 @@ table.swaps tr:last-child td{border-bottom:none}
 .cio-nums .stat{padding:.55rem .4rem}
 .cio-nums .stat b{font-size:1.4rem}
 .cio-summary{margin-top:.6rem}
-/* ===== The journey: 4 steps ===== */
-.journey{margin:1.7rem 0 .4rem; display:grid; gap:1rem}
-.jstep{position:relative; background:var(--paper); border:1px solid var(--line); border-left:6px solid var(--c);
-  border-radius:var(--radius-lg); padding:1.4rem 1.55rem 1.5rem; box-shadow:var(--shadow-sm)}
-.jstep.s1{--c:var(--honey)} .jstep.s2{--c:var(--terracotta)} .jstep.s3{--c:var(--eus-red)} .jstep.s4{--c:var(--leaf)}
-.jhead{display:flex; align-items:center; gap:.85rem; margin-bottom:.55rem}
-.jnum{flex:none; width:2.7rem; height:2.7rem; border-radius:50%; background:var(--c); color:#fff;
-  display:grid; place-items:center; font-family:var(--display); font-weight:900; font-size:1.4rem; line-height:1; box-shadow:var(--shadow-sm)}
-.jtitle{margin:0; font-family:var(--display); font-weight:600; line-height:1.12; font-size:clamp(1.35rem,3.6vw,1.8rem); color:var(--olive-deep)}
-.jtitle .je{margin-right:.3rem}
-.jessence{font-weight:800; color:var(--terracotta-deep); font-size:1.05rem; margin:0 0 .7rem}
-.jstep p{margin:0 0 .8rem} .jstep p:last-child{margin-bottom:0}
-.jkey{margin:.9rem 0 0; font-weight:700; background:var(--paper-2); border:1px solid var(--line); border-left:3px solid var(--c); border-radius:12px; padding:.6rem .9rem; font-size:.97rem}
-.jkey b{color:var(--olive-deep)}
-.jflow{display:flex; flex-wrap:wrap; gap:.45rem; align-items:center; justify-content:center; margin:1.3rem 0 .2rem; font-weight:800; font-size:.92rem; color:var(--ink-soft)}
-.jflow b{background:var(--paper-2); border:1px solid var(--line); border-radius:999px; padding:.32rem .85rem; color:var(--olive-deep)}
-.jflow i{color:var(--honey); font-style:normal; font-weight:900}
-@media(max-width:520px){ .jhead{gap:.6rem} .jnum{width:2.3rem; height:2.3rem; font-size:1.2rem} .jstep{padding:1.2rem 1.15rem 1.25rem} }
 /* ===== Honest check-in quiz ===== */
 .quiz{display:grid; gap:.5rem; margin:1.3rem 0 .4rem}
 .quiz-row{display:flex; align-items:center; justify-content:space-between; gap:1rem; background:var(--paper); border:1px solid var(--line); border-radius:14px; padding:.7rem .55rem .7rem .95rem}
@@ -1385,11 +1367,11 @@ table.swaps tr:last-child td{border-bottom:none}
 
       <div class="cio-graph">
         <div class="cio-graph-head"><span>Your weight, if you keep this up</span><span class="cio-graph-sub">next 12 weeks</span></div>
-        <svg id="cioSvg" viewBox="0 0 600 96" aria-hidden="true">
-          <line class="cio-base" id="cioBaseLine" x1="0" x2="600" y1="45" y2="45"></line>
+        <svg id="cioSvg" viewBox="0 0 600 120" aria-hidden="true">
+          <line class="cio-base" id="cioBaseLine" x1="0" x2="600" y1="60" y2="60"></line>
           <path class="cio-area" id="cioArea" d=""></path>
           <path class="cio-curve" id="cioCurve" d=""></path>
-          <circle class="cio-end" id="cioEnd" r="5.5" cx="576" cy="70"></circle>
+          <circle class="cio-end" id="cioEnd" r="5.5" cx="576" cy="60"></circle>
         </svg>
         <div class="cio-graph-foot"><span>today</span><b id="cioEndKg">−6.0 kg</b></div>
       </div>
@@ -1982,7 +1964,7 @@ table.swaps tr:last-child td{border-bottom:none}
       <li><strong>Tomad una manzana:</strong> fibra, dulzor y agua, el aperitivo de la naturaleza.</li>
     </ul>
     <p class="nugget">«La velocidad ayuda, pero es la mentalidad la que lo hace quedarse. Usad los aceleradores, mantened el fundamento.»</p>
-    <div class="nextprev"><a class="btn ghost" href="#contract">Atrás</a><a class="btn primary" href="#cheatsheet">Siguiente: Los 4 pasos</a></div>
+    <div class="nextprev"><a class="btn ghost" href="#contract">Atrás</a><a class="btn primary" href="#cheatsheet">Siguiente: Chuleta</a></div>
     </div>
   </section>
 
@@ -2108,144 +2090,7 @@ table.swaps tr:last-child td{border-bottom:none}
       </div>
     </div>
 
-    <div class="nextprev"><a class="btn ghost" href="#faster">Back</a><a class="btn primary" href="#pillars">Next: The 4 steps</a></div>
-  </section>
-
-  <!-- THE 4 STEPS (recap of the whole journey, near the end) -->
-  <section class="card tint" id="pillars">
-    <div class="lang-en">
-    <div class="eyebrow">The whole journey on one page</div>
-    <h2>The 4 Steps, in Order 🧭</h2>
-    <p class="lead">Everything in this guide comes down to four steps, and the order matters. Three of them
-      happen inside your head. Only the last one is about food. Win the first three, and the food almost
-      takes care of itself.</p>
-
-    <div class="journey">
-      <div class="jstep s1">
-        <div class="jhead"><div class="jnum">1</div>
-          <h3 class="jtitle"><span class="je">🧠</span>Understand it</h3></div>
-        <p class="jessence">First you see how it really works, so the rules finally make sense.</p>
-        <p>This is not another diet with a list of rules to obey blindly. It is a real understanding of your
-          own body and brain. You learn that your hunger is running on a broken timetable, that a craving is
-          not an emergency but a wave that rises, peaks, and breaks in a few minutes, and that calories in
-          versus calories out is simply how the body works, no magic required.</p>
-        <p>Why bother? Because rules you do not understand collapse on the first hard evening. Understand the
-          <em>why</em> just once, and it stays with you for good.</p>
-        <div class="jkey"><b>The point:</b> knowledge that survives a bad night beats motivation that does not.</div>
-      </div>
-
-      <div class="jstep s2">
-        <div class="jhead"><div class="jnum">2</div>
-          <h3 class="jtitle"><span class="je">🚢</span>Shift your thinking</h3></div>
-        <p class="jessence">Then something clicks, and you stop fighting food with gritted teeth.</p>
-        <p>This is the moment that changes everything. You take back the wheel and become the captain of your
-          own ship again. You stop leaning on willpower, that small bucket of water that is empty by evening,
-          and you build simple systems instead, so the right choice is half made before the craving even shows
-          up. The stronger version of you grows every single time you keep your word.</p>
-        <p>It stops being <em>"can I follow diet A or diet B?"</em> and becomes <em>"I understand this now, and
-          I am the one in control."</em> It is not a diet you survive. It is who you become.</p>
-        <div class="jkey"><b>The point:</b> you do not beat a craving with force, you outlast it with a system.</div>
-      </div>
-
-      <div class="jstep s3">
-        <div class="jhead"><div class="jnum">3</div>
-          <h3 class="jtitle"><span class="je">❤️</span>Sign your contract</h3></div>
-        <p class="jessence">Then you lock it in, because change only lasts when the heart truly wants it.</p>
-        <p>This is why the <a href="#why">WHY</a> page is the most important one in the whole guide. Willpower
-          runs out, but a real reason refuels itself. So you find your deep why, the grandchildren, your heart,
-          the years you want with your family, you write it down by hand, and you sign a contract with yourself.
-          Stick it on the fridge, where you see it every single day.</p>
-        <p>And here is the honest part: change needs time, and it will come, but only when you want it with your
-          whole heart. You will slip, everyone does. The slip is not what beats you. Giving up after it is. So
-          you get up one more time than you go down, again and again, because that getting back up is the muscle,
-          and every time it grows stronger.</p>
-        <div class="jkey"><b>The point:</b> a why on paper, and a promise to never quit, outlast any bad week.</div>
-      </div>
-
-      <div class="jstep s4">
-        <div class="jhead"><div class="jnum">4</div>
-          <h3 class="jtitle"><span class="je">🍳</span>Then the food and the recipes</h3></div>
-        <p class="jessence">And only now does food come, and by now it is the easy part.</p>
-        <p>With the mind right, the food almost takes care of itself. Now you pick your path, Mediterranean or
-          lower-carb and higher-protein, fix your daily rhythm, do a calm shop with a list, and cook real food
-          you actually love. This is where Pilar's kitchen turns from a danger zone into your biggest advantage.</p>
-        <p>The plan and every recipe are waiting just below. But you arrive there as a different
-          person: not someone hunting for the next miracle diet, someone who already understands the game.</p>
-        <div class="jkey"><b>The point:</b> fix the mind first, and the plate becomes the easy, enjoyable part.</div>
-      </div>
-    </div>
-
-    <div class="jflow"><b>🧠 Understand</b> <i>→</i> <b>🚢 Shift</b> <i>→</i> <b>❤️ Commit</b> <i>→</i> <b>🍳 Eat</b></div>
-    <p class="nugget">"Win the three fights in your head, and the fourth one, the food, barely puts up a fight."</p>
-    <div class="nextprev"><a class="btn ghost" href="#cheatsheet">Back</a><a class="btn primary" href="#recipes">Next: Recipes</a></div>
-    </div>
-    <div class="lang-es">
-    <div class="eyebrow">Todo el camino en una sola página</div>
-    <h2>Los 4 Pasos, en Orden 🧭</h2>
-    <p class="lead">Todo lo que hay en esta guía se reduce a cuatro pasos, y el orden importa. Tres de ellos
-      ocurren dentro de vuestra cabeza. Solo el último va de comida. Ganad los tres primeros, y la comida casi
-      se resuelve sola.</p>
-
-    <div class="journey">
-      <div class="jstep s1">
-        <div class="jhead"><div class="jnum">1</div>
-          <h3 class="jtitle"><span class="je">🧠</span>Entenderlo</h3></div>
-        <p class="jessence">Primero veis cómo funciona de verdad, y así las normas por fin tienen sentido.</p>
-        <p>Esto no es otra dieta con una lista de normas que obedecer a ciegas. Es entender de verdad vuestro
-          propio cuerpo y cerebro. Aprendéis que vuestra hambre funciona con un horario estropeado, que un antojo
-          no es una emergencia sino una ola que sube, llega a su punto más alto y rompe en unos minutos, y que las
-          calorías que entran frente a las que salen es, sencillamente, cómo funciona el cuerpo, sin ninguna magia.</p>
-        <p>¿Para qué? Porque las normas que no entendéis se derrumban a la primera noche difícil. Entended el
-          <em>porqué</em> una sola vez, y se queda con vosotros para siempre.</p>
-        <div class="jkey"><b>La clave:</b> el conocimiento que sobrevive a una mala noche gana a la motivación que no.</div>
-      </div>
-
-      <div class="jstep s2">
-        <div class="jhead"><div class="jnum">2</div>
-          <h3 class="jtitle"><span class="je">🚢</span>Cambiar la forma de pensar</h3></div>
-        <p class="jessence">Luego algo hace clic, y dejáis de pelear con la comida apretando los dientes.</p>
-        <p>Este es el momento que lo cambia todo. Recuperáis el timón y volvéis a ser el capitán de vuestro propio
-          barco. Dejáis de depender de la fuerza de voluntad, ese cubo pequeño de agua que para la noche está vacío,
-          y construís en su lugar sistemas sencillos, para que la decisión correcta esté medio tomada antes incluso
-          de que aparezca el antojo. La versión fuerte de vosotros crece cada vez que cumplís vuestra palabra.</p>
-        <p>Deja de ser <em>«¿puedo seguir la dieta A o la B?»</em> y se convierte en <em>«ahora entiendo esto, y el
-          control lo tengo yo».</em> No es una dieta que aguantar. Es la persona en la que os convertís.</p>
-        <div class="jkey"><b>La clave:</b> a un antojo no lo vencéis a la fuerza, lo aguantáis con un sistema.</div>
-      </div>
-
-      <div class="jstep s3">
-        <div class="jhead"><div class="jnum">3</div>
-          <h3 class="jtitle"><span class="je">❤️</span>Firmar vuestro contrato</h3></div>
-        <p class="jessence">Luego lo dejáis bien atado, porque el cambio solo dura cuando el corazón lo quiere de verdad.</p>
-        <p>Por eso la página del <a href="#why">PORQUÉ</a> es la más importante de toda la guía. La fuerza de voluntad
-          se agota, pero una razón de verdad se recarga sola. Así que encontráis vuestro porqué profundo, los nietos,
-          vuestro corazón, los años que queréis con vuestra familia, lo escribís a mano y firmáis un contrato con
-          vosotros mismos. Pegadlo en la nevera, donde lo veáis cada día.</p>
-        <p>Y aquí va la parte honesta: el cambio necesita tiempo, y llegará, pero solo cuando lo queráis con todo el
-          corazón. Vais a tropezar, todos lo hacemos. El tropiezo no es lo que os derrota. Rendirse después, sí. Así
-          que os levantáis una vez más de las que caéis, una y otra vez, porque ese levantarse es el músculo, y cada
-          vez se hace más fuerte.</p>
-        <div class="jkey"><b>La clave:</b> un porqué en papel, y la promesa de no rendirse, aguantan más que cualquier mala semana.</div>
-      </div>
-
-      <div class="jstep s4">
-        <div class="jhead"><div class="jnum">4</div>
-          <h3 class="jtitle"><span class="je">🍳</span>Y entonces, la comida y las recetas</h3></div>
-        <p class="jessence">Y solo ahora llega la comida, y a estas alturas es la parte fácil.</p>
-        <p>Con la mente en su sitio, la comida casi se resuelve sola. Ahora elegís vuestro camino, mediterráneo o más
-          bajo en carbohidratos y más alto en proteína, arregláis vuestro horario diario, hacéis una compra tranquila
-          y con lista, y cocináis comida de verdad que de verdad os gusta. Aquí es donde la cocina de Pilar pasa de
-          zona de peligro a vuestra mayor ventaja.</p>
-        <p>El plan y todas las recetas os esperan justo aquí abajo. Pero llegáis a ello siendo otra
-          persona: no alguien a la caza de la próxima dieta milagro, sino alguien que ya entiende el juego.</p>
-        <div class="jkey"><b>La clave:</b> arreglad primero la mente, y el plato se convierte en la parte fácil y disfrutona.</div>
-      </div>
-    </div>
-
-    <div class="jflow"><b>🧠 Entender</b> <i>→</i> <b>🚢 Cambiar</b> <i>→</i> <b>❤️ Comprometerse</b> <i>→</i> <b>🍳 Comer</b></div>
-    <p class="nugget">«Ganad las tres batallas de la cabeza, y la cuarta, la comida, apenas opondrá resistencia.»</p>
-    <div class="nextprev"><a class="btn ghost" href="#cheatsheet">Atrás</a><a class="btn primary" href="#recipes">Siguiente: Vuestra página de poder</a></div>
-    </div>
+    <div class="nextprev"><a class="btn ghost" href="#faster">Back</a><a class="btn primary" href="#recipes">Next: Recipes</a></div>
   </section>
 
   <!-- RECIPES -->
@@ -2257,7 +2102,7 @@ table.swaps tr:last-child td{border-bottom:none}
     <div class="filters" id="recipeFilters"></div>
     <div class="recipes" id="recipeGrid"></div>
     <p class="hint">And when you need heart instead of a recipe, go back and read <a href="#close">Keep Coming Back</a> again. That is the one that keeps you going.</p>
-    <div class="nextprev"><a class="btn ghost" href="#pillars">Back</a><a class="btn primary" href="#welcome">Back to the top ↑</a></div>
+    <div class="nextprev"><a class="btn ghost" href="#cheatsheet">Back</a><a class="btn primary" href="#welcome">Back to the top ↑</a></div>
   </section>
 
   <footer>
@@ -2332,7 +2177,6 @@ const CHAPTERS=[
   {g:"Make it stick", ge:"Para que dure"},
   {id:"faster",ic:"⚡",t:"Want it faster?",te:"¿Lo queréis más rápido?"},
   {id:"cheatsheet",ic:"📄",t:"Cheat sheet",te:"Chuleta"},
-  {id:"pillars",ic:"🧭",t:"The 4 steps",te:"Los 4 pasos"},
   {id:"recipes",ic:"🍳",t:"Recipes",te:"Recetas"},
 ];
 
@@ -2443,9 +2287,12 @@ function cioDraw(){
   cioEl('cioSummary').innerHTML= state==='hold'
     ? ('At <b>'+cioFmt(eat)+'</b> kcal a day you would hold steady, right around your burn.')
     : ('Burning <b>'+cioFmt(burn)+'</b> and eating <b>'+cioFmt(eat)+'</b> a day, you would '+(state==='lose'?'lose':'gain')+' about <b>'+Math.abs(kgWeek).toFixed(2)+' kg a week</b>, roughly <b>'+Math.abs(change).toFixed(1)+' kg in 12 weeks</b>.');
-  // weight curve over the next 12 weeks
-  const W=576,H=96, top=CIO.start+12, bot=CIO.start-12;
-  const ymap=w=>Math.max(6,Math.min(H-6,(top-w)/(top-bot)*H));
+  // weight curve over the next 12 weeks (vertical scale adapts so the line never clips)
+  const W=576,H=120;
+  const vis=Math.max(Math.abs(change)*1.35, 4);   // kg shown top-to-bottom, with headroom
+  const mid=CIO.start+change/2;                    // centre the curve in the box
+  const top=mid+vis/2, bot=mid-vis/2;
+  const ymap=w=>Math.max(8,Math.min(H-8,(top-w)/(top-bot)*H));
   let d='';
   for(let wk=0; wk<=CIO.WEEKS; wk++){ const x=wk/CIO.WEEKS*W, yy=ymap(CIO.start+kgWeek*wk); d+=(wk?' L':'M')+x.toFixed(1)+' '+yy.toFixed(1); }
   cioEl('cioCurve').setAttribute('d',d);
