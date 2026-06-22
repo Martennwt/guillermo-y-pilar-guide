@@ -147,6 +147,15 @@ section.card.tint{background:linear-gradient(180deg,var(--paper-2),var(--paper))
 .photo{position:relative; margin:1.2rem 0; border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow-sm)}
 .photo img{display:block; width:100%; height:clamp(180px,30vw,300px); object-fit:cover}
 .photo figcaption{position:absolute; right:8px; bottom:6px; font-size:.6rem; color:#fff; background:rgba(0,0,0,.4); padding:2px 8px; border-radius:999px; font-weight:700; letter-spacing:.03em}
+/* compact side-by-side: photo left, text + list right */
+.mglass{display:grid; grid-template-columns:clamp(170px,32%,280px) 1fr; gap:1.1rem; align-items:stretch; margin:1.2rem 0}
+.mglass .photo{margin:0; height:100%}
+.mglass .photo img{height:100%; min-height:220px}
+.mglass-body{min-width:0}
+.mglass-body>:first-child{margin-top:0}
+.mglass-body .quotes-list{margin:.6rem 0 0}
+.mglass-body .quotes-list li{padding:.5rem .85rem; margin:.45rem 0; font-size:.95rem}
+@media(max-width:560px){ .mglass{grid-template-columns:1fr} .mglass .photo img{height:clamp(180px,42vw,260px); min-height:0} }
 @media (prefers-reduced-motion: no-preference){
   .photo.kenburns img{animation:kenburns 32s ease-in-out infinite alternate; will-change:transform}
 }
@@ -508,10 +517,6 @@ table.swaps th.good{background:#e3ead2; color:#4a5a22; border-radius:0 10px 0 0}
 table.swaps td{padding:.5rem .7rem; border-bottom:1px solid var(--line); vertical-align:top}
 table.swaps td.bad{width:46%; color:#7a3a2c}
 table.swaps tr:last-child td{border-bottom:none}
-.tips6{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:.8rem; margin:1rem 0 0}
-.tipcard{background:var(--paper-2); border:1px solid var(--line); border-radius:14px; padding:.9rem 1rem}
-.tipcard h3{margin:0 0 .3rem; font-size:1.02rem}
-.tipcard p{margin:0; font-size:.93rem}
 .foodgrid{display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:.9rem; margin:.7rem 0 1.4rem}
 .fooditem{margin:0; text-align:center}
 .fooditem .pic{position:relative; border-radius:14px; overflow:hidden; border:1px solid var(--line)}
@@ -1864,30 +1869,27 @@ table.swaps tr:last-child td{border-bottom:none}
           little smart carb. Protein keeps you full for hours and protects your muscle while the fat comes
           off.</p></div>
     </div>
-    <ul class="quotes-list">
-      <li><strong>Protein at every meal.</strong> A palm or two per plate quietly switches the hunger off.</li>
-      <li><strong>Half the plate vegetables.</strong> High volume, low calories: eat more, weigh less.</li>
-      <li><strong>Cut the liquid calories.</strong> Sugary drinks, juice, beer and wine do not fill you, but they pile up fast.</li>
-      <li><strong>Protect your sleep.</strong> A bad night makes the next day hungrier. That is biology, not weakness.</li>
-    </ul>
-
     <h3>Beat the hunger 🥄</h3>
-    <figure class="photo">
-      <img style="height:auto" src="assets/img/morning-glass.jpg" alt="A glass of lemon water with the morning-drink ingredients beside it" loading="lazy">
-      <figcaption>The morning glass, on an empty stomach 🍋</figcaption>
-    </figure>
-    <p><strong>The morning glass.</strong> First thing, on an empty stomach: a glass of water with half a
-      lemon, a splash of vinegar, a pinch of salt, a little cayenne pepper and a small pinch of cinnamon.
-      Leave out whatever you do not like, but get a small glass of it into you to start the day. Here is
-      what each part is quietly doing:</p>
-    <ul class="quotes-list">
-      <li><strong>🥛 Water first.</strong> You wake up dehydrated, and thirst is constantly mistaken for hunger. A big glass on its own already takes the edge off.</li>
-      <li><strong>🍋 Lemon.</strong> Vitamin C and a fresh taste that makes plain water easy to drink, so you actually keep the habit.</li>
-      <li><strong>🍶 Vinegar.</strong> A little (apple-cider is nice) can soften the blood-sugar spike from your next meal and nudge fullness up a notch.</li>
-      <li><strong>🧂 A pinch of salt.</strong> A few electrolytes, which matter most on a 16:8 morning, and it helps the water actually absorb.</li>
-      <li><strong>🌶️ Cayenne.</strong> The capsaicin gives a small, real bump to metabolism and tends to take the sharp edge off the appetite.</li>
-      <li><strong>🍂 Cinnamon.</strong> Helps steady blood sugar and adds a touch of natural sweetness, so the brain feels treated without a gram of sugar.</li>
-    </ul>
+    <div class="mglass">
+      <figure class="photo">
+        <img src="assets/img/morning-glass.jpg" alt="A glass of lemon water with the morning-drink ingredients beside it" loading="lazy">
+        <figcaption>The morning glass, on an empty stomach 🍋</figcaption>
+      </figure>
+      <div class="mglass-body">
+        <p><strong>The morning glass.</strong> First thing, on an empty stomach: a glass of water with half a
+          lemon, a splash of vinegar, a pinch of salt, a little cayenne pepper and a small pinch of cinnamon.
+          Leave out whatever you do not like, but get a small glass of it into you to start the day. Here is
+          what each part is quietly doing:</p>
+        <ul class="quotes-list">
+          <li><strong>🥛 Water first.</strong> You wake up dehydrated, and thirst is constantly mistaken for hunger. A big glass on its own already takes the edge off.</li>
+          <li><strong>🍋 Lemon.</strong> Vitamin C and a fresh taste that makes plain water easy to drink, so you actually keep the habit.</li>
+          <li><strong>🍶 Vinegar.</strong> A little (apple-cider is nice) can soften the blood-sugar spike from your next meal and nudge fullness up a notch.</li>
+          <li><strong>🧂 A pinch of salt.</strong> A few electrolytes, which matter most on a 16:8 morning, and it helps the water actually absorb.</li>
+          <li><strong>🌶️ Cayenne.</strong> The capsaicin gives a small, real bump to metabolism and tends to take the sharp edge off the appetite.</li>
+          <li><strong>🍂 Cinnamon.</strong> Helps steady blood sugar and adds a touch of natural sweetness, so the brain feels treated without a gram of sugar.</li>
+        </ul>
+      </div>
+    </div>
     <div class="callout"><strong>Why it works:</strong> none of these is a magic pill, the honest truth is each one is just a small nudge. But stacked together, on an empty stomach and for almost zero calories, they hydrate you, steady your blood sugar and quietly turn the morning hunger down. A tiny ritual that starts the day on your terms.</div>
     <ul class="quotes-list">
       <li><strong>Hungry? Make a tea first.</strong> Thirst and habit love to dress up as hunger. The tea buys ten minutes, and the urge usually passes.</li>
@@ -1932,30 +1934,27 @@ table.swaps tr:last-child td{border-bottom:none}
           solo un poco de carbohidrato inteligente. La proteína os mantiene llenos durante horas y protege
           el músculo mientras se va la grasa.</p></div>
     </div>
-    <ul class="quotes-list">
-      <li><strong>Proteína en cada comida.</strong> Una palma o dos por plato apagan el hambre sin ruido.</li>
-      <li><strong>Medio plato de verdura.</strong> Mucho volumen, pocas calorías: coméis más y pesáis menos.</li>
-      <li><strong>Fuera las calorías líquidas.</strong> Refrescos, zumos, cerveza y vino no llenan, pero suman rapidísimo.</li>
-      <li><strong>Cuidad el sueño.</strong> Una mala noche hace que el día siguiente tengáis más hambre. Es biología, no debilidad.</li>
-    </ul>
-
     <h3>Ganarle al hambre 🥄</h3>
-    <figure class="photo">
-      <img style="height:auto" src="assets/img/morning-glass.jpg" alt="Un vaso de agua con limón y los ingredientes de la bebida de la mañana al lado" loading="lazy">
-      <figcaption>El vaso de la mañana, en ayunas 🍋</figcaption>
-    </figure>
-    <p><strong>El vaso de la mañana.</strong> Lo primero, en ayunas: un vaso de agua con medio limón, un
-      chorrito de vinagre, una pizca de sal, un poco de cayena y una pizca pequeña de canela. Dejad fuera lo
-      que no os guste, pero meteos un vasito para empezar el día. Esto es lo que hace cada parte, sin hacer
-      ruido:</p>
-    <ul class="quotes-list">
-      <li><strong>🥛 Primero el agua.</strong> Os despertáis deshidratados, y la sed se confunde constantemente con hambre. Un buen vaso ya quita el filo él solo.</li>
-      <li><strong>🍋 Limón.</strong> Vitamina C y un sabor fresco que hace fácil beber agua, así de verdad mantenéis el hábito.</li>
-      <li><strong>🍶 Vinagre.</strong> Un poco (el de manzana va bien) puede suavizar el pico de azúcar de la siguiente comida y subir un punto la saciedad.</li>
-      <li><strong>🧂 Una pizca de sal.</strong> Unos electrolitos, que importan sobre todo en una mañana de 16:8, y ayudan a que el agua se absorba de verdad.</li>
-      <li><strong>🌶️ Cayena.</strong> La capsaicina da un pequeño empujón real al metabolismo y suele quitarle el filo al apetito.</li>
-      <li><strong>🍂 Canela.</strong> Ayuda a estabilizar el azúcar en sangre y aporta un toque de dulzor natural, así el cerebro se siente premiado sin un gramo de azúcar.</li>
-    </ul>
+    <div class="mglass">
+      <figure class="photo">
+        <img src="assets/img/morning-glass.jpg" alt="Un vaso de agua con limón y los ingredientes de la bebida de la mañana al lado" loading="lazy">
+        <figcaption>El vaso de la mañana, en ayunas 🍋</figcaption>
+      </figure>
+      <div class="mglass-body">
+        <p><strong>El vaso de la mañana.</strong> Lo primero, en ayunas: un vaso de agua con medio limón, un
+          chorrito de vinagre, una pizca de sal, un poco de cayena y una pizca pequeña de canela. Dejad fuera lo
+          que no os guste, pero meteos un vasito para empezar el día. Esto es lo que hace cada parte, sin hacer
+          ruido:</p>
+        <ul class="quotes-list">
+          <li><strong>🥛 Primero el agua.</strong> Os despertáis deshidratados, y la sed se confunde constantemente con hambre. Un buen vaso ya quita el filo él solo.</li>
+          <li><strong>🍋 Limón.</strong> Vitamina C y un sabor fresco que hace fácil beber agua, así de verdad mantenéis el hábito.</li>
+          <li><strong>🍶 Vinagre.</strong> Un poco (el de manzana va bien) puede suavizar el pico de azúcar de la siguiente comida y subir un punto la saciedad.</li>
+          <li><strong>🧂 Una pizca de sal.</strong> Unos electrolitos, que importan sobre todo en una mañana de 16:8, y ayudan a que el agua se absorba de verdad.</li>
+          <li><strong>🌶️ Cayena.</strong> La capsaicina da un pequeño empujón real al metabolismo y suele quitarle el filo al apetito.</li>
+          <li><strong>🍂 Canela.</strong> Ayuda a estabilizar el azúcar en sangre y aporta un toque de dulzor natural, así el cerebro se siente premiado sin un gramo de azúcar.</li>
+        </ul>
+      </div>
+    </div>
     <div class="callout"><strong>Por qué funciona:</strong> ninguno es una pastilla mágica, la verdad honesta es que cada uno es solo un pequeño empujón. Pero juntos, en ayunas y con casi cero calorías, os hidratan, estabilizan el azúcar y bajan sin ruido el hambre de la mañana. Un pequeño ritual para empezar el día en vuestros términos.</div>
     <ul class="quotes-list">
       <li><strong>¿Hambre? Haceos primero un té.</strong> La sed y la costumbre se disfrazan de hambre. El té os da diez minutos, y las ganas suelen pasar.</li>
@@ -2045,48 +2044,6 @@ table.swaps tr:last-child td{border-bottom:none}
         <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/beans.webp" alt="Beans, lentils and chickpeas" loading="lazy"></div><span class="lbl">Beans &amp; lentils</span></figure>
         <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/fruit.webp" alt="Seasonal fruit" loading="lazy"></div><span class="lbl">Fruit</span></figure>
         <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/yogurt.webp" alt="Plain yogurt with berries and nuts" loading="lazy"></div><span class="lbl">Plain yogurt &amp; nuts</span></figure>
-      </div>
-    </div>
-
-    <div class="sheet-page">
-      <h3>The six that quietly decide it 🔑</h3>
-      <p class="hint">The big diet stuff gets all the attention. These six decide whether it actually sticks.</p>
-      <div class="tips6">
-        <div class="tipcard"><h3>😴 Sleep</h3><p>Short sleep raises your hunger hormone and your cravings
-          the very next day. Guard it like part of the plan, because it is.</p></div>
-        <div class="tipcard"><h3>😤 Stress and feelings</h3><p>A lot of eating is mood, not hunger. Run the
-          <strong>HALT</strong> check: am I Hungry, Angry, Lonely, or Tired? If it is a feeling, food won't
-          fix it. Walk, breathe, or call someone.</p></div>
-        <div class="tipcard"><h3>🚶 Move more, all day</h3><p>You cannot out-train a fork, but daily
-          movement counts: a walk after meals, the stairs, parking further off. More steps than yesterday.</p></div>
-        <div class="tipcard"><h3>💪 Keep your muscle</h3><p>Lose fat, not muscle. Enough protein plus using
-          your muscles a little protects your metabolism and keeps you strong as the years go.</p></div>
-        <div class="tipcard"><h3>⏳ Be patient</h3><p>The scale does not drop in a straight line. Some weeks
-          it sticks, then it moves. That is not failure, judge by the month, not the morning.</p></div>
-        <div class="tipcard"><h3>📏 Track it right</h3><p>Weigh once a week, same morning. Better still,
-          watch how your belt sits and how your clothes fit. That is the real progress.</p></div>
-      </div>
-      <div class="callout win"><strong>Tiny tweaks that punch above their weight:</strong> eat at the table
-        with no screen, use a slightly smaller plate, and wait two minutes before going back for seconds.
-        The craving for "more" usually passes.</div>
-      <p class="nugget">"Keep these pages on the fridge. On a hard day you don't need motivation, you just
-        need to glance at the plan and follow it."</p>
-    </div>
-
-    <div class="sheet-page">
-      <h3>Three bonus extras 🎁</h3>
-      <p class="hint">A bit more science, and two tactics worth keeping.</p>
-      <div class="tips6">
-        <div class="tipcard"><h3>🧪 Why "protein first" works</h3><p>Hunger is partly hormones. Protein lowers
-          ghrelin, the hunger hormone, more than carbs or fat do, and keeps it down longer, while raising
-          your "I am full" signals. More protein means less hunger and fewer cravings, naturally.</p></div>
-        <div class="tipcard"><h3>💶 Budget your day like money</h3><p>You have a calorie budget each day, so
-          spend it where it is worth it. Big dinner planned? Keep breakfast and lunch lighter and arrive
-          with room to enjoy it, guilt-free. Over the week it balances out.</p></div>
-        <div class="tipcard"><h3>⏸️ Break a craving in the moment</h3><p>Name it: "this is a craving, not real
-          hunger." Drink water and wait 10 minutes, cravings come in waves and break. Keep your hands busy:
-          walk, make tea, brush your teeth. Still want it? A small, pre-decided portion, sitting down, no
-          guilt.</p></div>
       </div>
     </div>
 
