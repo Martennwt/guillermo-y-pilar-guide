@@ -105,6 +105,35 @@ header.bar{position:sticky; top:0; z-index:70; display:flex; align-items:center;
 .menu-btn{border:1px solid var(--line-2); background:var(--paper); border-radius:999px; cursor:pointer; font-family:var(--body); font-weight:800; font-size:.85rem; color:var(--olive-deep); padding:.45rem .9rem; display:inline-flex; align-items:center; gap:.4rem}
 .menu-btn:hover{background:var(--paper-2)}
 
+/* ===== stop the horizontal wobble on mobile ===== */
+html,body{overflow-x:hidden}
+body{max-width:100%}
+/* ===== phones: bigger menu button, smaller + more centred brand ===== */
+@media(max-width:560px){
+  .menu-btn{font-size:1.35rem; padding:.32rem .7rem; line-height:1}
+  .brand{flex:1; justify-content:center; min-width:0; font-size:.9rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+  .bar .spacer{display:none}
+  header.bar{gap:.35rem}
+}
+/* ===== back-to-top button ===== */
+#toTop{position:fixed; right:1rem; bottom:max(1rem,env(safe-area-inset-bottom)); z-index:68; width:46px; height:46px; border-radius:50%; border:none; background:var(--olive); color:#fff; font-size:1.35rem; line-height:1; cursor:pointer; box-shadow:var(--shadow-md); display:none; align-items:center; justify-content:center; opacity:0; transform:translateY(8px); transition:opacity .25s,transform .25s,background .15s}
+#toTop.show{display:inline-flex; opacity:1; transform:none}
+#toTop:hover{background:var(--olive-deep)}
+@media(max-width:560px){ #toTop{bottom:calc(env(safe-area-inset-bottom, 0px) + 4.6rem)} }  /* clear the centred player pill */
+/* ===== first-visit intro overlay ===== */
+#intro{position:fixed; inset:0; z-index:120; display:none; align-items:center; justify-content:center; padding:1.2rem; background:rgba(34,40,22,.45); backdrop-filter:blur(5px); -webkit-backdrop-filter:blur(5px)}
+#intro.show{display:flex}
+.intro-card{max-width:440px; width:100%; max-height:90vh; overflow:auto; background:var(--paper); border:1px solid var(--line-2); border-radius:20px; box-shadow:var(--shadow-md); padding:1.4rem 1.5rem; animation:introRise .35s ease}
+@keyframes introRise{from{opacity:0; transform:translateY(14px)}to{opacity:1; transform:none}}
+.intro-card h3{font-family:var(--display); color:var(--olive-deep); font-size:1.45rem; margin:0 0 .15rem}
+.intro-card .intro-sub{color:var(--ink-soft); font-size:.9rem; margin:0 0 1rem}
+.intro-card ul{list-style:none; padding:0; margin:0 0 1.1rem}
+.intro-card li{display:flex; gap:.7rem; align-items:flex-start; padding:.45rem 0; border-bottom:1px solid var(--line); font-size:.93rem; line-height:1.4}
+.intro-card li:last-child{border-bottom:none}
+.intro-card li .ic{flex:none; font-size:1.2rem; width:1.7rem; text-align:center}
+.intro-card .btn{width:100%; justify-content:center}
+@media print{ #toTop,#intro{display:none!important} }
+
 .shell{position:relative; z-index:1; max-width:1200px; margin:0 auto; padding:0 clamp(1rem,3vw,2rem) 5rem}
 nav.rail{position:fixed; top:0; left:0; z-index:60; width:min(280px,84vw); height:100vh; overflow:auto; padding:4rem .55rem 1.4rem; background:var(--paper); border-right:1px solid var(--line); box-shadow:var(--shadow-md); transform:translateX(-100%); transition:transform .3s cubic-bezier(.2,.8,.2,1)}
 body.nav-open nav.rail{transform:translateX(0)}
@@ -2691,6 +2720,40 @@ table.swaps tr:last-child td{border-bottom:none}
 
 </div>
 
+<button id="toTop" onclick="scrollToTop()" aria-label="Volver arriba" title="Volver arriba ↑">↑</button>
+
+<!-- first-visit quick tour -->
+<div id="intro">
+  <div class="intro-card">
+    <div class="lang-en">
+      <h3>Welcome 👋</h3>
+      <p class="intro-sub">A ten-second tour, so you know your way around.</p>
+      <ul>
+        <li><span class="ic">☰</span><span><strong>Top left:</strong> open the chapters menu to jump anywhere.</span></li>
+        <li><span class="ic">🌐</span><span><strong>Top right:</strong> switch language with the two flags.</span></li>
+        <li><span class="ic">🎧</span><span><strong>Audiobook:</strong> listen to the whole guide, or download it.</span></li>
+        <li><span class="ic">🖨️</span><span><strong>Worksheets:</strong> download the printable PDFs.</span></li>
+        <li><span class="ic">▾</span><span><strong>The player:</strong> tap its little arrow to fold it away for more space.</span></li>
+        <li><span class="ic">↑</span><span><strong>Bottom corner:</strong> the round button jumps you back to the top.</span></li>
+      </ul>
+      <button class="btn primary" onclick="closeIntro()">Got it, let's go</button>
+    </div>
+    <div class="lang-es">
+      <h3>Bienvenidos 👋</h3>
+      <p class="intro-sub">Un vistazo de diez segundos, para que sepáis moveros.</p>
+      <ul>
+        <li><span class="ic">☰</span><span><strong>Arriba a la izquierda:</strong> abrid el menú de capítulos para ir a cualquier parte.</span></li>
+        <li><span class="ic">🌐</span><span><strong>Arriba a la derecha:</strong> cambiad el idioma con las dos banderas.</span></li>
+        <li><span class="ic">🎧</span><span><strong>Audiolibro:</strong> escuchad la guía entera, o descargadla.</span></li>
+        <li><span class="ic">🖨️</span><span><strong>Hojas:</strong> descargad los PDF para imprimir.</span></li>
+        <li><span class="ic">▾</span><span><strong>El reproductor:</strong> tocad su flechita para plegarlo y tener más espacio.</span></li>
+        <li><span class="ic">↑</span><span><strong>Esquina de abajo:</strong> el botón redondo os lleva arriba del todo.</span></li>
+      </ul>
+      <button class="btn primary" onclick="closeIntro()">Entendido, vamos</button>
+    </div>
+  </div>
+</div>
+
 <script>
 /* ============ DATA ============ */
 const CHAPTERS=[
@@ -3536,6 +3599,25 @@ try{ const _n=localStorage.getItem('gp_wsname'); if(_n!=null){ const _w=document
 /* ============ RESTORE SAVED STATE ============ */
 (function restore(){
   const lang=localStorage.getItem('gp_lang'); if(lang)setLang(lang);
+})();
+
+/* ============ BACK TO TOP ============ */
+function scrollToTop(){ window.scrollTo({top:0, behavior:'smooth'}); }
+(function toTopInit(){
+  const b=document.getElementById('toTop'); if(!b) return;
+  const onScroll=()=>{ b.classList.toggle('show', window.scrollY>500); };
+  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+})();
+
+/* ============ FIRST-VISIT QUICK TOUR ============ */
+function closeIntro(){ const i=document.getElementById('intro'); if(i)i.classList.remove('show'); try{localStorage.setItem('gp_intro1','1');}catch(e){} }
+(function introInit(){
+  let seen=null; try{ seen=localStorage.getItem('gp_intro1'); }catch(e){}
+  if(seen) return;
+  const i=document.getElementById('intro'); if(!i) return;
+  i.classList.add('show');
+  i.addEventListener('click', e=>{ if(e.target===i) closeIntro(); });
+  document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeIntro(); });
 })();
 </script>
 </body>
