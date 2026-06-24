@@ -3573,30 +3573,54 @@ function fillCalorieSheet(){
   const act=WS_ACT[cioEl('cioAct').value]||['·','·'];
   setL('wc-act', act[0], act[1]);
 }
-let _wsBound=false;
-function bindWsCleanup(){
-  if(_wsBound) return;
-  window.addEventListener('afterprint', wsCleanup);
-  try{ const mq=window.matchMedia('print'); if(mq.addEventListener){mq.addEventListener('change',e=>{ if(!e.matches) wsCleanup(); });} else if(mq.addListener){mq.addListener(e=>{ if(!e.matches) wsCleanup(); });} }catch(e){}
-  _wsBound=true;
+/* ===== WORKSHEET PRINTING — isolated iframe, identical on desktop & mobile =====
+   The old way (toggle a body class, then window.print()) printed the WHOLE guide on
+   mobile — iOS Safari ignored the print-isolation and produced ~41 pages instead of 9.
+   Now we render ONLY the worksheets into a hidden standalone document and print that,
+   so nothing from the guide can leak into the print. */
+function wsPrintHead(){
+  // reuse the page's own fonts + styles so the sheets look identical inside the frame
+  let h='<base href="'+document.baseURI+'">';
+  document.querySelectorAll('link[rel="stylesheet"],link[rel="preconnect"],style').forEach(n=>{ h+=n.outerHTML; });
+  return h;
 }
-function wsCleanup(){ document.body.classList.remove('ws-print','ws-print-all'); document.querySelectorAll('#worksheets .ws.active').forEach(el=>el.classList.remove('active')); }
-function printWorksheet(id){
-  const ws=document.getElementById(id); if(!ws) return;
-  if(id==='ws-calc') fillCalorieSheet();
+function wsPrint(mode, id){
+  fillCalorieSheet();                                   // keep the calorie sheet's numbers current
+  const src=document.getElementById('worksheets'); if(!src) return;
+  const clone=src.cloneNode(true);
+  clone.removeAttribute('aria-hidden');
+  clone.querySelectorAll('.ws.active').forEach(el=>el.classList.remove('active'));
+  if(mode==='one'){ const t=clone.querySelector('#'+id); if(!t) return; t.classList.add('active'); }
+  const lang=document.documentElement.getAttribute('data-lang')||'en';   // keep EN/ES — don't print both
+  const title=(lang==='es')?'Hechos para durar — Hojas':'Built to Last — Worksheets';
+  const bodyCls=(mode==='one')?'ws-print':'ws-print-all';
+  const html='<!doctype html><html lang="'+lang+'" data-lang="'+lang+'"><head><meta charset="utf-8"><title>'+title+'</title>'+wsPrintHead()+'</head><body class="'+bodyCls+'">'+clone.outerHTML+'</body></html>';
+  const old=document.getElementById('wsPrintFrame'); if(old) old.remove();
+  const ifr=document.createElement('iframe');
+  ifr.id='wsPrintFrame'; ifr.setAttribute('aria-hidden','true');
+  ifr.style.cssText='position:fixed; left:-9999px; top:0; width:210mm; height:297mm; border:0;';
+  ifr.onload=function(){
+    const w=ifr.contentWindow, d=w.document;
+    const fire=function(){ try{ w.focus(); w.print(); }catch(e){ wsPrintFallback(mode,id); } };
+    try{ w.onafterprint=function(){ setTimeout(function(){ ifr.remove(); }, 200); }; }catch(e){}
+    setTimeout(function(){ if(document.getElementById('wsPrintFrame')===ifr) ifr.remove(); }, 60000); // last-resort cleanup
+    if(d.fonts && d.fonts.ready && d.fonts.ready.then){ d.fonts.ready.then(function(){ setTimeout(fire,120); }); }
+    else { setTimeout(fire, 400); }
+  };
+  document.body.appendChild(ifr);
+  ifr.srcdoc=html;
+}
+/* fallback, only used if iframe printing throws: the original in-place method */
+function wsPrintFallback(mode, id){
   document.querySelectorAll('#worksheets .ws.active').forEach(el=>el.classList.remove('active'));
-  ws.classList.add('active');
-  document.body.classList.add('ws-print');
-  bindWsCleanup();
-  requestAnimationFrame(()=>{ try{ window.print(); }catch(e){ wsCleanup(); } });
+  if(mode==='one'){ const t=document.getElementById(id); if(t) t.classList.add('active'); }
+  document.body.classList.add(mode==='one'?'ws-print':'ws-print-all');
+  const clean=function(){ document.body.classList.remove('ws-print','ws-print-all'); window.removeEventListener('afterprint',clean); };
+  window.addEventListener('afterprint',clean);
+  requestAnimationFrame(function(){ try{ window.print(); }catch(e){ clean(); } });
 }
-function printAllWorksheets(){
-  closePdfPop(); fillCalorieSheet();
-  document.querySelectorAll('#worksheets .ws.active').forEach(el=>el.classList.remove('active'));
-  document.body.classList.add('ws-print-all');
-  bindWsCleanup();
-  requestAnimationFrame(()=>{ try{ window.print(); }catch(e){ wsCleanup(); } });
-}
+function printWorksheet(id){ wsPrint('one', id); }
+function printAllWorksheets(){ closePdfPop(); wsPrint('all'); }
 function togglePdfPop(ev){ if(ev) ev.stopPropagation(); const p=document.getElementById('pdfPop'); if(!p) return; const a=document.getElementById('audioPop'); if(a)a.hidden=true; p.hidden=!p.hidden; }
 function closePdfPop(){ const p=document.getElementById('pdfPop'); if(p)p.hidden=true; }
 buildCheckinSheet(); buildWsGrid();
