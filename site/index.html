@@ -105,9 +105,8 @@ header.bar{position:sticky; top:0; z-index:70; display:flex; align-items:center;
 .menu-btn{border:1px solid var(--line-2); background:var(--paper); border-radius:999px; cursor:pointer; font-family:var(--body); font-weight:800; font-size:.85rem; color:var(--olive-deep); padding:.45rem .9rem; display:inline-flex; align-items:center; gap:.4rem}
 .menu-btn:hover{background:var(--paper-2)}
 
-/* ===== stop the horizontal wobble on mobile ===== */
-html,body{overflow-x:hidden}
-body{max-width:100%}
+/* ===== stop the horizontal wobble on mobile (screen only, never touch print) ===== */
+@media screen{ html,body{overflow-x:hidden} body{max-width:100%} }
 /* ===== phones: bigger menu button, smaller + more centred brand ===== */
 @media(max-width:560px){
   .menu-btn{font-size:1.35rem; padding:.32rem .7rem; line-height:1}
@@ -775,8 +774,13 @@ table.swaps tr:last-child td{border-bottom:none}
   #worksheets #ws-mindset .ws-audio,
   #worksheets .ws-qrow{break-inside:avoid}
   html, body.ws-print, body.ws-print-all{margin:0!important; padding:0!important}
-  #worksheets .ws{max-width:none; margin:0; padding:14mm 13mm}     /* text sheets keep margins */
-  #worksheets .ws-cover{max-width:none; margin:0; padding:0}        /* cover bleeds to the edge */
+  /* Pin the print canvas to a true A4 width. Without this, phones lay the sheets
+     out at the narrow device viewport, the text wraps far more, and the booklet
+     ballooned (~41 pages on mobile vs 9 on desktop). */
+  body.ws-print, body.ws-print-all{width:210mm!important; min-width:210mm!important; max-width:210mm!important}
+  body.ws-print #worksheets, body.ws-print-all #worksheets{width:210mm}
+  #worksheets .ws{width:210mm; max-width:210mm; box-sizing:border-box; margin:0; padding:14mm 13mm}   /* text sheets keep margins */
+  #worksheets .ws-cover{width:210mm; max-width:210mm; box-sizing:border-box; margin:0; padding:0}      /* cover bleeds to the edge */
   @page{size:A4; margin:0}
 }
 </style>
