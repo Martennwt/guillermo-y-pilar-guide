@@ -783,6 +783,7 @@ table.swaps tr:last-child td{border-bottom:none}
   body.ws-print #worksheets, body.ws-print-all #worksheets{width:210mm}
   #worksheets .ws{width:210mm; max-width:210mm; box-sizing:border-box; margin:0; padding:14mm 13mm}   /* text sheets keep margins */
   #worksheets .ws-cover{width:210mm; max-width:210mm; box-sizing:border-box; margin:0; padding:0}      /* cover bleeds to the edge */
+  #worksheets #ws-contract{zoom:.86}   /* the contract is content-heavy: shrink a touch so it never spills onto a near-empty 2nd page */
   @page{size:A4; margin:0}
 }
 </style>
