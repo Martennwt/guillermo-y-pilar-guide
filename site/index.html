@@ -1559,8 +1559,8 @@ table.swaps tr:last-child td{border-bottom:none}
         <label for="wsName"><span class="lang-en">Name for this sheet</span><span class="lang-es">Nombre para esta hoja</span></label>
         <input id="wsName" type="text" maxlength="30" autocomplete="off" placeholder="Guillermo / Pilar" oninput="wsSaveName()">
       </div>
-      <button class="btn primary cio-save-btn" onclick="printWorksheet('ws-calc')"><span aria-hidden="true">📄</span> <span class="lang-en">Save this as a PDF</span><span class="lang-es">Guardar esto como PDF</span></button>
-      <p class="hint"><span class="lang-en">Set the numbers above, type the name, then save. Do it once for each of you. In the print box, pick "Save as PDF".</span><span class="lang-es">Ajustad los números de arriba, escribid el nombre, y guardad. Hacedlo una vez para cada uno. En la ventana de impresión, elegid «Guardar como PDF».</span></p>
+      <button class="btn primary cio-save-btn" onclick="printWorksheet('ws-calc')"><span aria-hidden="true">⬇️</span> <span class="lang-en">Download the calorie sheet</span><span class="lang-es">Descargar la hoja de calorías</span></button>
+      <p class="hint"><span class="lang-en">The calculator works out your numbers right here on the screen. The sheet downloads blank, so write your name and those numbers on it by hand. Do one for each of you.</span><span class="lang-es">La calculadora saca vuestros números aquí mismo en la pantalla. La hoja se descarga en blanco, así que escribid a mano vuestro nombre y esos números. Haced una para cada uno.</span></p>
     </div>
 
     <p>Think of your body like a wood stove. The food you eat is the wood you feed in. The fire is your
@@ -2339,17 +2339,16 @@ table.swaps tr:last-child td{border-bottom:none}
     <div class="lang-en">
     <div class="eyebrow">Print it, put it on the fridge</div>
     <h2>Print worksheets 🖨️</h2>
-    <p class="lead">Everything Guillermo and Pilar can hold in their hands, on paper. Each one opens your
-      print window: choose <strong>"Save as PDF"</strong> to keep the file, or print it straight away.
-      The language follows this page, so switch the flag up top to get them in English or Spanish.</p>
+    <p class="lead">Everything Guillermo and Pilar can hold in their hands, on paper. Each button
+      <strong>downloads a ready PDF</strong>, straight to your phone or computer. The language follows
+      this page, so switch the flag up top to get them in English or Spanish.</p>
     </div>
     <div class="lang-es">
     <div class="eyebrow">Imprimidlo, pegadlo en la nevera</div>
     <h2>Hojas para imprimir 🖨️</h2>
-    <p class="lead">Todo lo que Guillermo y Pilar pueden tener en la mano, en papel. Cada una abre la
-      ventana de impresión: elegid <strong>«Guardar como PDF»</strong> para quedaros el archivo, o
-      imprimidla directamente. El idioma sigue a esta página, así que cambiad la bandera de arriba para
-      tenerlas en español o en inglés.</p>
+    <p class="lead">Todo lo que Guillermo y Pilar pueden tener en la mano, en papel. Cada botón
+      <strong>descarga un PDF listo</strong>, directo al móvil o al ordenador. El idioma sigue a esta
+      página, así que cambiad la bandera de arriba para tenerlas en español o en inglés.</p>
     </div>
 
     <div class="ws-all-row">
@@ -2367,7 +2366,7 @@ table.swaps tr:last-child td{border-bottom:none}
       <button class="btn ghost" onclick="printWorksheet('ws-power')">🔥 <span class="lang-en">Power page</span><span class="lang-es">Página de poder</span></button>
     </div>
 
-    <div class="callout"><span class="lang-en">⚖️ <strong>The calorie sheet is personal.</strong> Make it up at the calculator above: set one person's numbers, type their name, and save. Then do the other. Each printed sheet carries the name, so Guillermo's and Pilar's never get mixed up.</span><span class="lang-es">⚖️ <strong>La hoja de calorías es personal.</strong> Hacedla en la calculadora de arriba: poned los números de uno, escribid su nombre, y guardad. Luego el otro. Cada hoja impresa lleva el nombre, así que la de Guillermo y la de Pilar nunca se mezclan.</span></div>
+    <div class="callout"><span class="lang-en">⚖️ <strong>The calorie sheet is personal.</strong> The calculator above works out your numbers on the screen; the sheet itself downloads blank, so write your name and those numbers on it. Do one each, and Guillermo's and Pilar's never get mixed up.</span><span class="lang-es">⚖️ <strong>La hoja de calorías es personal.</strong> La calculadora de arriba saca vuestros números en la pantalla; la hoja se descarga en blanco, así que escribid en ella vuestro nombre y esos números. Haced una cada uno, y la de Guillermo y la de Pilar nunca se mezclan.</span></div>
 
     <div class="nextprev"><a class="btn ghost" href="#recipes"><span class="lang-en">Back</span><span class="lang-es">Atrás</span></a><a class="btn primary" href="#welcome"><span class="lang-en">Back to the top ↑</span><span class="lang-es">Volver arriba ↑</span></a></div>
   </section>
@@ -3573,54 +3572,32 @@ function fillCalorieSheet(){
   const act=WS_ACT[cioEl('cioAct').value]||['·','·'];
   setL('wc-act', act[0], act[1]);
 }
-/* ===== WORKSHEET PRINTING — isolated iframe, identical on desktop & mobile =====
-   The old way (toggle a body class, then window.print()) printed the WHOLE guide on
-   mobile — iOS Safari ignored the print-isolation and produced ~41 pages instead of 9.
-   Now we render ONLY the worksheets into a hidden standalone document and print that,
-   so nothing from the guide can leak into the print. */
-function wsPrintHead(){
-  // reuse the page's own fonts + styles so the sheets look identical inside the frame
-  let h='<base href="'+document.baseURI+'">';
-  document.querySelectorAll('link[rel="stylesheet"],link[rel="preconnect"],style').forEach(n=>{ h+=n.outerHTML; });
-  return h;
+/* ===== WORKSHEET DOWNLOADS — real PDF files, identical on every device =====
+   We pre-render the worksheets to actual PDFs (tools/gen-worksheet-pdfs.js, output in
+   assets/worksheets/) and simply download them. Browser "print to PDF" was hopeless on
+   mobile: it printed the whole guide or left the page blank. A file just downloads. */
+const WS_DL={
+  'ws-cover':       {es:'Portada',                  en:'Cover'},
+  'ws-checkin':     {es:'Chequeo-honesto',          en:'Honest-check-in'},
+  'ws-calc':        {es:'Hoja-de-calorias',         en:'Calorie-sheet'},
+  'ws-mindset':     {es:'Mentalidad',               en:'Mindset'},
+  'ws-plan':        {es:'Plan-de-45-dias',          en:'45-day-plan'},
+  'ws-contract':    {es:'Contrato',                 en:'Contract'},
+  'ws-power':       {es:'Pagina-de-poder',          en:'Power-page'},
+  'worksheets-all': {es:'Hojas-Guillermo-y-Pilar',  en:'Worksheets-Guillermo-and-Pilar'}
+};
+function dlWorksheet(id){
+  closePdfPop();
+  const lang=(document.documentElement.getAttribute('data-lang')==='es')?'es':'en';
+  const a=document.createElement('a');
+  a.href='assets/worksheets/'+id+'-'+lang+'.pdf';
+  a.download=((WS_DL[id]&&WS_DL[id][lang])||id)+'.pdf';
+  a.rel='noopener';
+  document.body.appendChild(a); a.click(); setTimeout(function(){ a.remove(); }, 0);
 }
-function wsPrint(mode, id){
-  fillCalorieSheet();                                   // keep the calorie sheet's numbers current
-  const src=document.getElementById('worksheets'); if(!src) return;
-  const clone=src.cloneNode(true);
-  clone.removeAttribute('aria-hidden');
-  clone.querySelectorAll('.ws.active').forEach(el=>el.classList.remove('active'));
-  if(mode==='one'){ const t=clone.querySelector('#'+id); if(!t) return; t.classList.add('active'); }
-  const lang=document.documentElement.getAttribute('data-lang')||'en';   // keep EN/ES — don't print both
-  const title=(lang==='es')?'Hechos para durar — Hojas':'Built to Last — Worksheets';
-  const bodyCls=(mode==='one')?'ws-print':'ws-print-all';
-  const html='<!doctype html><html lang="'+lang+'" data-lang="'+lang+'"><head><meta charset="utf-8"><title>'+title+'</title>'+wsPrintHead()+'</head><body class="'+bodyCls+'">'+clone.outerHTML+'</body></html>';
-  const old=document.getElementById('wsPrintFrame'); if(old) old.remove();
-  const ifr=document.createElement('iframe');
-  ifr.id='wsPrintFrame'; ifr.setAttribute('aria-hidden','true');
-  ifr.style.cssText='position:fixed; left:-9999px; top:0; width:210mm; height:297mm; border:0;';
-  ifr.onload=function(){
-    const w=ifr.contentWindow, d=w.document;
-    const fire=function(){ try{ w.focus(); w.print(); }catch(e){ wsPrintFallback(mode,id); } };
-    try{ w.onafterprint=function(){ setTimeout(function(){ ifr.remove(); }, 200); }; }catch(e){}
-    setTimeout(function(){ if(document.getElementById('wsPrintFrame')===ifr) ifr.remove(); }, 60000); // last-resort cleanup
-    if(d.fonts && d.fonts.ready && d.fonts.ready.then){ d.fonts.ready.then(function(){ setTimeout(fire,120); }); }
-    else { setTimeout(fire, 400); }
-  };
-  document.body.appendChild(ifr);
-  ifr.srcdoc=html;
-}
-/* fallback, only used if iframe printing throws: the original in-place method */
-function wsPrintFallback(mode, id){
-  document.querySelectorAll('#worksheets .ws.active').forEach(el=>el.classList.remove('active'));
-  if(mode==='one'){ const t=document.getElementById(id); if(t) t.classList.add('active'); }
-  document.body.classList.add(mode==='one'?'ws-print':'ws-print-all');
-  const clean=function(){ document.body.classList.remove('ws-print','ws-print-all'); window.removeEventListener('afterprint',clean); };
-  window.addEventListener('afterprint',clean);
-  requestAnimationFrame(function(){ try{ window.print(); }catch(e){ clean(); } });
-}
-function printWorksheet(id){ wsPrint('one', id); }
-function printAllWorksheets(){ closePdfPop(); wsPrint('all'); }
+/* the buttons still call these names */
+function printWorksheet(id){ dlWorksheet(id); }
+function printAllWorksheets(){ dlWorksheet('worksheets-all'); }
 function togglePdfPop(ev){ if(ev) ev.stopPropagation(); const p=document.getElementById('pdfPop'); if(!p) return; const a=document.getElementById('audioPop'); if(a)a.hidden=true; p.hidden=!p.hidden; }
 function closePdfPop(){ const p=document.getElementById('pdfPop'); if(p)p.hidden=true; }
 buildCheckinSheet(); buildWsGrid();
