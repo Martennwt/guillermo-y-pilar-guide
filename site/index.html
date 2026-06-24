@@ -105,8 +105,10 @@ header.bar{position:sticky; top:0; z-index:70; display:flex; align-items:center;
 .menu-btn{border:1px solid var(--line-2); background:var(--paper); border-radius:999px; cursor:pointer; font-family:var(--body); font-weight:800; font-size:.85rem; color:var(--olive-deep); padding:.45rem .9rem; display:inline-flex; align-items:center; gap:.4rem}
 .menu-btn:hover{background:var(--paper-2)}
 
-/* ===== stop the horizontal wobble on mobile (screen only, never touch print) ===== */
-@media screen{ html,body{overflow-x:hidden} body{max-width:100%} }
+/* ===== stop the horizontal wobble on mobile (screen only, never touch print) =====
+   NB: must be overflow-x:CLIP, not hidden — hidden makes body a scroll container
+   and breaks the sticky header; clip trims the overflow without that side effect. */
+@media screen{ html,body{overflow-x:clip} body{max-width:100%} }
 /* ===== phones: bigger menu button, smaller + more centred brand ===== */
 @media(max-width:560px){
   .menu-btn{font-size:1.35rem; padding:.32rem .7rem; line-height:1}
@@ -115,10 +117,10 @@ header.bar{position:sticky; top:0; z-index:70; display:flex; align-items:center;
   header.bar{gap:.35rem}
 }
 /* ===== back-to-top button ===== */
-#toTop{position:fixed; right:1rem; bottom:max(1rem,env(safe-area-inset-bottom)); z-index:68; width:46px; height:46px; border-radius:50%; border:none; background:var(--olive); color:#fff; font-size:1.35rem; line-height:1; cursor:pointer; box-shadow:var(--shadow-md); display:none; align-items:center; justify-content:center; opacity:0; transform:translateY(8px); transition:opacity .25s,transform .25s,background .15s}
-#toTop.show{display:inline-flex; opacity:1; transform:none}
-#toTop:hover{background:var(--olive-deep)}
-@media(max-width:560px){ #toTop{bottom:calc(env(safe-area-inset-bottom, 0px) + 4.6rem)} }  /* clear the centred player pill */
+#toTop{position:fixed; right:1rem; bottom:max(1rem,env(safe-area-inset-bottom)); z-index:68; width:40px; height:40px; border-radius:50%; border:none; background:rgba(63,84,48,.68); -webkit-backdrop-filter:blur(2px); backdrop-filter:blur(2px); color:#fff; font-size:1.1rem; line-height:1; cursor:pointer; box-shadow:0 3px 12px rgba(56,72,36,.18); display:none; align-items:center; justify-content:center; opacity:0; transform:translateY(8px); transition:opacity .25s,transform .25s,background .15s}
+#toTop.show{display:inline-flex; opacity:.9; transform:none}      /* a touch recessed: the player matters more */
+#toTop:hover{background:var(--olive); opacity:1}
+@media(max-width:560px){ #toTop{bottom:calc(env(safe-area-inset-bottom, 0px) + 5.6rem)} }  /* sit a bit higher, clear of the centred player pill */
 /* ===== first-visit intro overlay ===== */
 #intro{position:fixed; inset:0; z-index:120; display:none; align-items:center; justify-content:center; padding:1.2rem; background:rgba(34,40,22,.45); backdrop-filter:blur(5px); -webkit-backdrop-filter:blur(5px)}
 #intro.show{display:flex}
