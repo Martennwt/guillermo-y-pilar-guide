@@ -1,3 +1,5 @@
 # deliverables / local artifacts, not part of the hosted site
 /Guillermo-y-Pilar-Audio-ES.zip
 *.bak
+# audio build backups (kept locally, not shipped)
+site/assets/audio/**/_backup/
