@@ -73,6 +73,7 @@ em{color:var(--ink-soft)}
   font-size:.74rem; color:var(--terracotta); margin-bottom:.6rem; display:flex; align-items:center; gap:.55rem}
 .ikurrina{width:30px; height:20px; border-radius:3px; box-shadow:0 1px 3px rgba(0,0,0,.25); flex:none}
 .eus-ribbon{height:6px; border-radius:999px; background:linear-gradient(90deg,var(--eus-red) 0 33.3%, #fff 33.3% 66.6%, var(--eus-green) 66.6% 100%); opacity:.9; margin:0 0 1.2rem}
+.es-ribbon{height:6px; border-radius:999px; background:linear-gradient(90deg,#AA151B 0 25%, #F1BF00 25% 75%, #AA151B 75% 100%); opacity:.95; margin:0 0 1.2rem}
 #progress{position:fixed; top:0; left:0; height:6px; width:0%; z-index:90; background:linear-gradient(90deg,var(--eus-red),var(--honey),var(--eus-green)); box-shadow:0 1px 4px rgba(0,0,0,.14); transition:width .08s linear}
 
 header.bar{position:sticky; top:0; z-index:70; display:flex; align-items:center; gap:1rem;
@@ -94,6 +95,12 @@ header.bar{position:sticky; top:0; z-index:70; display:flex; align-items:center;
 #audioPop p{font-size:.82rem; color:var(--ink-soft); font-weight:700; margin:0 0 .55rem; line-height:1.35}
 #audioPop img{width:150px; height:150px; background:#fff; border-radius:8px; display:block; margin:0 auto .6rem; image-rendering:pixelated}
 #audioPop .btn{display:block; font-size:.82rem; padding:.5rem .8rem}
+.dl-head.pdf{background:var(--terracotta)}
+.dl-head.pdf:hover{background:var(--terracotta-deep)}
+#pdfPop{position:absolute; top:calc(100% + .55rem); right:0; z-index:80; width:232px; background:#fff; border:1px solid var(--line); border-radius:14px; box-shadow:var(--shadow-md); padding:.9rem; text-align:center}
+#pdfPop[hidden]{display:none}
+#pdfPop p{font-size:.82rem; color:var(--ink-soft); font-weight:700; margin:0 0 .55rem; line-height:1.35}
+#pdfPop .btn{display:block; font-size:.82rem; padding:.5rem .8rem; margin-top:.45rem}
 @media(max-width:560px){ .dl-head .dl-head-t{display:none} .dl-head{padding:.42rem .6rem} .menu-btn span{display:none} .brand small{display:none} .brand{font-size:1rem} .brand .mark{display:none} header.bar{gap:.45rem; padding:.5rem .8rem} }
 .menu-btn{border:1px solid var(--line-2); background:var(--paper); border-radius:999px; cursor:pointer; font-family:var(--body); font-weight:800; font-size:.85rem; color:var(--olive-deep); padding:.45rem .9rem; display:inline-flex; align-items:center; gap:.4rem}
 .menu-btn:hover{background:var(--paper-2)}
@@ -420,11 +427,11 @@ body.audio-min #abShow{display:inline-flex}
 #audioPickMenu .audio-autonext{display:flex; justify-content:space-between; align-items:center; gap:.6rem; border-bottom:1px solid var(--line); font-weight:700; color:var(--olive-deep)}
 #audioPickMenu .audio-autonext .sw{font-size:.7rem; font-weight:800; padding:.08rem .5rem; border-radius:999px; background:var(--leaf); color:#fff; letter-spacing:.03em}
 #audioPickMenu .audio-autonext.off .sw{background:var(--ink-faint)}
-footer .foot-qr{display:flex; align-items:center; gap:1rem; justify-content:center; max-width:470px; margin:0 auto 1.2rem; text-align:left; background:var(--paper-2); border:1px solid var(--line); border-radius:14px; padding:.9rem 1.1rem}
-footer .foot-qr img{width:190px; height:190px; flex:0 0 auto; background:#fff; border-radius:8px; padding:8px; image-rendering:pixelated}
+footer .foot-qr{display:flex; align-items:center; gap:1rem; justify-content:center; max-width:520px; margin:0 auto 1.2rem; text-align:left; background:var(--paper-2); border:1px solid var(--line); border-radius:14px; padding:.9rem 1.1rem}
+footer .foot-qr img{width:160px; height:160px; flex:0 0 auto; background:#fff; border-radius:8px; padding:8px; image-rendering:pixelated}
 footer .foot-qr strong{display:block; color:var(--olive-deep); font-size:.96rem; margin-bottom:.2rem}
 footer .foot-qr span{font-size:.83rem; color:var(--ink-soft); line-height:1.4}
-footer .foot-qr .dl-zip{display:inline-block; margin-top:.55rem; background:var(--olive); color:#fff; text-decoration:none; font-weight:800; font-size:.82rem; padding:.45rem .95rem; border-radius:999px}
+footer .foot-qr .dl-zip{display:inline-block; margin-top:.55rem; background:var(--olive); color:#fff; text-decoration:none; font-weight:800; font-size:.82rem; padding:.45rem .95rem; border-radius:999px; white-space:nowrap}
 footer .foot-qr .dl-zip:hover{background:var(--olive-deep)}
 @media(max-width:480px){ footer .foot-qr{flex-direction:column; text-align:center} }
 
@@ -471,7 +478,7 @@ footer{text-align:center; color:var(--ink-faint); font-size:.85rem; padding:2rem
   #cheatsheet .sheet-page:last-child{page-break-after:auto}
   /* power page: compress everything onto a single printed page (creed is the priority) */
   #motivation{font-size:10pt; page-break-inside:avoid; page-break-before:always}
-  #motivation .eus-ribbon{margin:0 0 .35rem}
+  #motivation .es-ribbon{margin:0 0 .35rem}
   #motivation .lead{display:none}
   #motivation .hint{display:none}
   #motivation .mky{display:none}
@@ -622,6 +629,127 @@ table.swaps tr:last-child td{border-bottom:none}
 .quiz-msg{font-size:.97rem; color:var(--ink); line-height:1.5}
 .quiz-msg b{color:var(--olive-deep)}
 @media(max-width:540px){ .quiz-row{flex-direction:column; align-items:stretch; gap:.55rem} .quiz-opts{justify-content:flex-end} }
+
+/* ===== printables section (on screen) ===== */
+#printables .ws-name{display:flex; flex-direction:column; gap:.35rem; max-width:460px; margin:1.3rem 0}
+#printables .ws-name label{font-weight:800; color:var(--olive-deep)}
+#printables .ws-name input{font-family:var(--body); font-size:1rem; padding:.6rem .85rem; border:1.5px solid var(--line-2); border-radius:12px; background:var(--paper); color:var(--ink)}
+#printables .ws-name .hint{font-size:.82rem}
+#printables .ws-buttons{display:flex; flex-wrap:wrap; gap:.5rem; margin:1rem 0}
+#printables .ws-buttons .btn{justify-content:flex-start; padding:.45rem .8rem; font-size:.84rem; font-weight:700; border-radius:11px; gap:.4rem; line-height:1.15; white-space:nowrap}
+#printables .ws-all-row{display:flex; flex-wrap:wrap; align-items:center; gap:.8rem; margin:1.3rem 0 .4rem}
+#printables .ws-all-btn{font-size:1.05rem}
+#printables .ws-all-row .hint{flex:1; min-width:220px; margin:0}
+/* save-to-PDF row under the calculator */
+.cio-save{display:flex; flex-wrap:wrap; align-items:flex-end; gap:.7rem; margin:1rem 0 .4rem; padding:.9rem 1rem; background:var(--paper-2); border:1px solid var(--line); border-radius:14px}
+.cio-save-field{display:flex; flex-direction:column; gap:.3rem; flex:1; min-width:160px}
+.cio-save-field label{font-weight:800; color:var(--olive-deep); font-size:.9rem}
+.cio-save-field input{font-family:var(--body); font-size:1rem; padding:.55rem .8rem; border:1.5px solid var(--line-2); border-radius:12px; background:var(--paper); color:var(--ink)}
+.cio-save-btn{white-space:nowrap}
+.cio-save .hint{flex-basis:100%; margin:0; font-size:.8rem}
+
+/* ===== printable worksheets (hidden on screen, shown one-at-a-time in print) ===== */
+#worksheets{display:none}
+.ws{color:#231D19; font-family:var(--body); line-height:1.42; max-width:185mm; margin:0 auto}
+.ws .ws-title{font-family:var(--display); font-size:21pt; margin:0 0 .35rem; color:var(--olive-deep)}
+.ws .ws-lead{font-size:11.5pt; margin:0 0 .8rem; color:#3a3330}
+.ws-p{font-size:11pt; margin:.5rem 0; line-height:1.45}
+.ws h3{font-family:var(--display); margin:.7rem 0 .3rem; color:var(--olive-deep); font-size:13pt}
+.ws-block{margin:.9rem 0}
+.ws-hint{font-size:9pt; color:#6b6256}
+/* simple checkbox list (winning day) */
+.ws-check{list-style:none; padding:0; margin:.4rem 0}
+.ws-check li{position:relative; padding:.34rem 0 .34rem 1.9rem; border-bottom:1px solid #e7ded0; font-size:11.5pt}
+.ws-check li::before{content:""; position:absolute; left:0; top:.34rem; width:1.05rem; height:1.05rem; border:1.7px solid #6b7b53; border-radius:4px}
+/* yes/no question list (honest check-in) */
+.ws-qlist{list-style:decimal; padding-left:1.4rem; margin:.4rem 0}
+.ws-qlist li{padding:.3rem 0; border-bottom:1px solid #e7ded0; font-size:11pt}
+.ws-qrow{display:flex; align-items:flex-start; gap:.7rem}
+.ws-qrow .ws-q{flex:1}
+.ws-yn{display:inline-flex; align-items:center; gap:.3rem; white-space:nowrap; font-weight:700; color:#5a6b46}
+.ws-box{display:inline-block; width:1rem; height:1rem; border:1.7px solid #6b7b53; border-radius:3px; flex:none}
+.ws-commit{display:flex; align-items:center; gap:.55rem; margin:.9rem 0 0; font-weight:800; background:var(--paper-2); border:1px solid var(--line); border-radius:10px; padding:.6rem .85rem; font-size:11pt}
+/* calorie sheet */
+.ws-kv{border-collapse:collapse; margin:.5rem 0}
+.ws-kv td{padding:.25rem 1rem .25rem 0; font-size:11.5pt}
+.ws-kv td:first-child{color:#6b6256; font-weight:700}
+.ws-big{display:flex; flex-direction:column; align-items:center; text-align:center; background:#eef2e6; border:2px solid var(--olive); border-radius:14px; padding:.85rem; margin:.85rem 0}
+.ws-big-lbl{font-size:10pt; color:#5a6b46; font-weight:700}
+.ws-big-num{font-family:var(--display); font-size:27pt; font-weight:800; color:var(--olive-deep); line-height:1.1}
+.ws-band{background:#f6e6dd; border-left:4px solid var(--terracotta); padding:.6rem .85rem; border-radius:8px; margin:.6rem 0; font-size:11.5pt}
+.ws-note{font-size:10.5pt; margin:.5rem 0}
+.ws-note p{margin:.4rem 0}
+.ws-fill-row,.ws-sign-row{display:flex; gap:1.6rem; margin-top:1.1rem; font-size:11pt; flex-wrap:wrap}
+/* power page */
+.ws-aff-cols{display:grid; grid-template-columns:1fr 1fr; gap:1.1rem; margin:.6rem 0}
+.ws-aff{list-style:none; padding:0; margin:.3rem 0}
+.ws-aff li{padding:.32rem .55rem; margin:.32rem 0; background:#f4ecdd; border-radius:8px; font-size:10pt; border-left:3px solid var(--honey)}
+.ws-aff li::before{content:"\2605  "; color:var(--honey)}
+.ws-callout{background:#eaf1e2; border:1.5px solid var(--olive); border-radius:12px; padding:.7rem .9rem; margin:.8rem 0; font-size:11.5pt}
+/* mindset finale */
+.ws-mindset .ws-lead{font-size:12pt; margin-bottom:1rem}
+.ws-truth{margin:1rem 0; padding-left:1.1rem; border-left:3px solid var(--honey)}
+.ws-truth b{font-family:var(--display); font-size:14.5pt; color:var(--olive-deep)}
+.ws-truth p{font-size:11.4pt; margin:.32rem 0 0; line-height:1.62}
+.ws-finale{margin:1rem 0 0; font-family:var(--display); font-size:14.5pt; font-weight:800; color:var(--terracotta-deep); text-align:center; line-height:1.32}
+.ws-audio{display:flex; align-items:center; gap:1rem; margin:1.1rem 0 0; padding:.85rem 1rem; background:#eef2e6; border:1.5px solid var(--olive); border-radius:14px}
+.ws-audio img{width:32mm; height:32mm; flex:0 0 auto; background:#fff; padding:3mm; border-radius:8px; image-rendering:pixelated}
+.ws-audio b{font-family:var(--display); font-size:13pt; color:var(--olive-deep); display:block; margin-bottom:.2rem}
+.ws-audio p{font-size:10.5pt; margin:0; line-height:1.42}
+/* 45-day grid + weight table */
+.ws-grid{display:grid; grid-template-columns:repeat(15,1fr); gap:4px; margin:.5rem 0}
+.ws-cell{aspect-ratio:1; border:1.4px solid #b9ad95; border-radius:5px; display:flex; align-items:center; justify-content:center; font-size:8pt; color:#7a7060}
+.ws-cell.s1{background:#eaf1e2} .ws-cell.s2{background:#fbf0d8} .ws-cell.s3{background:#f6e6dd}
+.ws-wtable{width:100%; border-collapse:collapse; margin:.5rem 0; font-size:11pt}
+.ws-wtable th,.ws-wtable td{border:1px solid #c9bfa9; padding:.5rem .6rem; text-align:left; height:1.5rem}
+.ws-wtable th{background:#eef2e6; font-family:var(--display)}
+.ws-wtable .wstart td{background:#eaf1e2}
+.ws-wtable .wmile td{background:#fbf0d8}
+.ws-wtable .wend td{background:#f6e6dd}
+/* cover (mountain-band design) */
+.ws-cover{position:relative; width:210mm; height:297mm; padding:0; margin:0; max-width:none; overflow:hidden; background:var(--paper)}
+.wc2-head{position:absolute; top:20mm; left:22mm; right:22mm; display:flex; align-items:center; justify-content:space-between}
+.wc2-place{display:flex; align-items:center; gap:10px; font-family:var(--display); font-weight:600; letter-spacing:.15em; text-transform:uppercase; color:var(--olive-deep); font-size:12pt}
+.wc2-stamp{width:30mm; opacity:.5; mix-blend-mode:multiply}
+.wc2-mid{position:absolute; top:80mm; left:22mm; right:22mm; text-align:center}
+.wc2-logo{width:34mm; margin-bottom:7mm}
+.ws-cover h1{font-family:var(--display); font-size:58pt; color:var(--ink); line-height:.98; font-weight:900; margin:0}
+.wc2-sub{font-size:19pt; color:var(--olive); font-weight:700; margin-top:7mm}
+.wc2-band{position:absolute; left:0; right:0; bottom:0; height:122mm; background:var(--olive-deep); color:#fff; clip-path:polygon(0 26%,14% 12%,28% 24%,42% 8%,56% 22%,72% 11%,86% 23%,100% 10%,100% 100%,0 100%); display:flex; align-items:center; justify-content:center; padding-bottom:14mm}
+.wc2-qrcard{display:flex; align-items:center; gap:6mm; background:rgba(255,255,255,.10); border:1px solid rgba(255,255,255,.25); border-radius:16px; padding:6mm 8mm}
+.wc2-qr{width:34mm; background:#fff; padding:3mm; border-radius:8px; image-rendering:pixelated}
+.wc2-t{display:flex; flex-direction:column; text-align:left}
+.wc2-t strong{font-size:14pt; font-family:var(--display); color:#fff}
+.wc2-t span{font-size:11pt; color:#E7E2D2}
+.wc2-tricolor{position:absolute; left:0; right:0; bottom:0; height:7px; background:linear-gradient(90deg,var(--eus-red) 0 33.3%,#fff 33.3% 66.6%,var(--eus-green) 66.6%); z-index:3}
+
+/* ===== print isolation: one worksheet, or all of them as a booklet ===== */
+@media print{
+  #worksheets{display:none}                                   /* normal Ctrl+P unaffected */
+  body.ws-print, body.ws-print-all{background:#fff; margin:0; padding:0}
+  body.ws-print .shell, body.ws-print #hills,
+  body.ws-print-all .shell, body.ws-print-all #hills{display:none!important}   /* hide guide + bg decor */
+  body.ws-print #worksheets, body.ws-print-all #worksheets{display:block!important; margin:0; padding:0}
+  /* single-sheet mode: only the chosen sheet */
+  body.ws-print #worksheets .ws{display:none!important}
+  body.ws-print #worksheets .ws.active{display:block!important}
+  /* all-in-one mode: every sheet, one per page */
+  body.ws-print-all #worksheets .ws{display:block!important}
+  body.ws-print-all #worksheets .ws + .ws{page-break-before:always}
+  #worksheets .ws, #worksheets .ws *{-webkit-print-color-adjust:exact; print-color-adjust:exact}
+  #worksheets #ws-power .creed,
+  #worksheets #ws-power .ws-aff-cols > div,
+  #worksheets #ws-plan .ws-wtable,
+  #worksheets #ws-plan .ws-grid,
+  #worksheets #ws-contract .contract,
+  #worksheets #ws-mindset .ws-truth,
+  #worksheets #ws-mindset .ws-audio,
+  #worksheets .ws-qrow{break-inside:avoid}
+  html, body.ws-print, body.ws-print-all{margin:0!important; padding:0!important}
+  #worksheets .ws{max-width:none; margin:0; padding:14mm 13mm}     /* text sheets keep margins */
+  #worksheets .ws-cover{max-width:none; margin:0; padding:0}        /* cover bleeds to the edge */
+  @page{size:A4; margin:0}
+}
 </style>
 </head>
 <body>
@@ -643,6 +771,7 @@ table.swaps tr:last-child td{border-bottom:none}
       <a class="btn primary" href="assets/audio/audiolibro-es.zip" download="Guillermo-y-Pilar-Audiolibro.zip" data-i18n="dlall">⬇️ Download all (ZIP)</a>
     </div>
   </div>
+  <a class="dl-head pdf" href="#printables" aria-label="PDF"><span aria-hidden="true">📄</span> <span class="dl-head-t" data-i18n="dlpdf">Worksheets</span></a>
   <div class="langtoggle" role="group" aria-label="Language">
     <button id="btn-en" class="active" onclick="setLang('en')" aria-label="English" title="English">
       <svg class="flag" viewBox="0 0 60 30" aria-hidden="true">
@@ -1390,6 +1519,15 @@ table.swaps tr:last-child td{border-bottom:none}
       <p class="cio-summary" id="cioSummary"></p>
     </div>
 
+    <div class="cio-save">
+      <div class="cio-save-field">
+        <label for="wsName"><span class="lang-en">Name for this sheet</span><span class="lang-es">Nombre para esta hoja</span></label>
+        <input id="wsName" type="text" maxlength="30" autocomplete="off" placeholder="Guillermo / Pilar" oninput="wsSaveName()">
+      </div>
+      <button class="btn primary cio-save-btn" onclick="printWorksheet('ws-calc')"><span aria-hidden="true">📄</span> <span class="lang-en">Save this as a PDF</span><span class="lang-es">Guardar esto como PDF</span></button>
+      <p class="hint"><span class="lang-en">Set the numbers above, type the name, then save. Do it once for each of you. In the print box, pick "Save as PDF".</span><span class="lang-es">Ajustad los números de arriba, escribid el nombre, y guardad. Hacedlo una vez para cada uno. En la ventana de impresión, elegid «Guardar como PDF».</span></p>
+    </div>
+
     <p>Think of your body like a wood stove. The food you eat is the wood you feed in. The fire is your
       body burning it all day. Feed it a little <strong>less</strong> than it burns, and it reaches into
       the woodpile you already carry, your fat, to cover the gap. A small daily gap of about <strong>500
@@ -1506,7 +1644,7 @@ table.swaps tr:last-child td{border-bottom:none}
 
   <!-- MOTIVATION / POWER PAGE -->
   <section class="card" id="motivation">
-    <div class="eus-ribbon" style="max-width:130px"></div>
+    <div class="es-ribbon" style="max-width:130px"></div>
     <div class="eyebrow">Read this whenever you need it</div>
     <h2>Your Power Page 🔥</h2>
     <p class="lead">When the evening is hard, when the craving is loud, when you forgot why you started,
@@ -1622,7 +1760,7 @@ table.swaps tr:last-child td{border-bottom:none}
       <table class="wtable">
         <thead><tr><th>Checkpoint</th><th>Date</th><th>Weight (kg)</th><th>Lost so far</th></tr></thead>
         <tbody>
-          <tr class="wstart"><td>Start · Day 1</td><td></td><td></td><td>—</td></tr>
+          <tr class="wstart"><td>Start · Day 1</td><td></td><td></td><td>·</td></tr>
           <tr><td>Day 7</td><td></td><td></td><td></td></tr>
           <tr class="wmile"><td>Day 15 🌱</td><td></td><td></td><td></td></tr>
           <tr><td>Day 22</td><td></td><td></td><td></td></tr>
@@ -1969,6 +2107,7 @@ table.swaps tr:last-child td{border-bottom:none}
 
   <!-- CHEAT SHEET (print-first, fits 3 to 4 pages) -->
   <section class="card tint" id="cheatsheet">
+    <div class="lang-en">
     <div class="eyebrow">The whole guide on the fridge door</div>
     <h2>The Cheat Sheet 📄</h2>
     <p class="lead">If you forget everything else, keep these pages. The whole guide squeezed down to what
@@ -2048,22 +2187,158 @@ table.swaps tr:last-child td{border-bottom:none}
     </div>
 
     <div class="nextprev"><a class="btn ghost" href="#faster">Back</a><a class="btn primary" href="#recipes">Next: Recipes</a></div>
+    </div>
+
+    <div class="lang-es">
+    <div class="eyebrow">Toda la guía en la puerta de la nevera</div>
+    <h2>La chuleta 📄</h2>
+    <p class="lead">Si os olvidáis de todo lo demás, guardad estas páginas. Toda la guía reducida a lo que
+      podéis mirar de un vistazo en un día difícil. Imprimidla, pegadla en la nevera y seguidla.</p>
+
+    <div class="sheet-page">
+      <h3>Las 7 palancas más grandes 🎯</h3>
+      <p class="hint">No las siete más fáciles, las que más rinden por el esfuerzo. Haced sobre todo estas
+        y el resto se cuida solo.</p>
+      <ol class="levers">
+        <li><strong>Dejad de beber vuestras calorías.</strong> Cola, zumos, café azucarado, casi todo el
+          alcohol. La victoria más rápida y más grande que existe, y casi ni la notáis. Una lata de cola es
+          casi un tercio del azúcar de un día, fuera en dos minutos.</li>
+        <li><strong>Proteína y verdura primero, en cada comida.</strong> Medio plato de verdura, una palma
+          de proteína, y luego una guarnición más pequeña de pan, arroz o patata. Llenos con menos calorías.
+          Esta es la palanca que hace el hambre llevadera.</li>
+        <li><strong>No tengáis en casa la comida que os tienta.</strong> A las diez de la noche en el sofá
+          no le ganáis a las galletas, las ganáis el sábado en la tienda. Si no está, no os la coméis.</li>
+        <li><strong>Cerrad la cocina después de cenar.</strong> La última comida unas 3 horas antes de
+          dormir, luego agua o infusión, lavaos los dientes y listo. El sofá de la noche es donde mueren
+          callados casi todos los planes.</li>
+        <li><strong>Moveos cada día.</strong> No el gimnasio, solo movimiento: un paseo después de cenar,
+          las escaleras, aparcar más lejos. Los pasos suman calorías de verdad y bajan los antojos.</li>
+        <li><strong>Cuidad el sueño.</strong> Una mala noche y al día siguiente vuestras hormonas del hambre
+          suben el volumen. Dormir bien es una herramienta para adelgazar, tratadla como tal.</li>
+        <li><strong>Medid las grasas.</strong> El aceite con cuchara o en espray, nunca a chorro libre. Una
+          cucharada de aceite de oliva son unas 120 kcal. Es fácil ahogar una comida sana sin daros cuenta.</li>
+      </ol>
+      <p class="nugget">«No va de fuerza de voluntad. Va de montarlo todo para que apenas necesitéis ninguna.»</p>
+    </div>
+
+    <div class="sheet-page">
+      <h3>Evitad esto, haced esto en su lugar 🔁</h3>
+      <p class="hint">Los típicos tropiezos, y el cambio sencillo para cada uno. Leed la izquierda, haced la derecha.</p>
+      <table class="swaps">
+        <thead><tr><th class="bad">❌ Evitad esto</th><th class="good">✅ Haced esto en su lugar</th></tr></thead>
+        <tbody>
+          <tr><td class="bad">Cola, zumos, bebidas energéticas</td><td>Agua con gas y limón; café o té, sin azúcar</td></tr>
+          <tr><td class="bad">Un chorro libre de aceite en la sartén</td><td>Medidlo: una cuchara, o un espray (1 cda ≈ 120 kcal)</td></tr>
+          <tr><td class="bad">Comer delante de la tele</td><td>Comed en la mesa, en un plato; saltaos el segundo plato automático</td></tr>
+          <tr><td class="bad">Una montaña de pan blanco o arroz</td><td>Medio plato de verdura primero, una guarnición más pequeña de carbohidratos</td></tr>
+          <tr><td class="bad">Ir a comprar con hambre y sin lista</td><td>Comed antes, comprad por los bordes de la tienda, ceñíos a la lista</td></tr>
+          <tr><td class="bad">«Solo una» de la bolsa grande</td><td>Comprad raciones individuales, y dejadlo fuera de casa</td></tr>
+          <tr><td class="bad">Picar todo el día</td><td>2 o 3 comidas de verdad; dejad que el cuerpo queme su propia grasa entre medias</td></tr>
+          <tr><td class="bad">Salchichas, beicon, chorizo a diario</td><td>Pescado, huevos, pollo; el embutido como capricho de vez en cuando</td></tr>
+          <tr><td class="bad">La excursión nocturna a la despensa</td><td>Cocina cerrada, agua o infusión, dientes lavados, capricho decidido de antemano</td></tr>
+          <tr><td class="bad">Un desayuno de bollería</td><td>Huevos o yogur, para llegar llenos hasta la comida</td></tr>
+          <tr><td class="bad">Pasar toda la tarde sentados</td><td>Un paseo de 10 minutos después de cenar</td></tr>
+          <tr><td class="bad">«La he liado, empiezo el lunes»</td><td>La siguiente comida, de vuelta a lo normal. Un resbalón no es un derrumbe</td></tr>
+          <tr><td class="bad">Pesaros a diario y entrar en pánico</td><td>Pesaos una vez por semana a la misma hora, juzgad por la tendencia</td></tr>
+          <tr><td class="bad">Comer porque estáis estresados</td><td>Haced primero el chequeo HALT, luego andad, respirad o llamad a alguien</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="sheet-page">
+      <h3>Qué cae en la cesta 🧺</h3>
+      <p class="hint">Ganad la compra y apenas peleáis en casa. Una imagen se recuerda mejor que una regla,
+        así que aquí está: las que dejar atrás, y las que cargar.</p>
+      <h4 class="foodhead">❌ Dejadlo en la estantería (o compradlo poco, en ración individual)</h4>
+      <div class="foodgrid avoid">
+        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/cola.webp" alt="Bebidas azucaradas como la cola" loading="lazy"></div><span class="lbl">Bebidas azucaradas</span></figure>
+        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/sweets.webp" alt="Dulces, chocolate y bollería" loading="lazy"></div><span class="lbl">Dulces y bollería</span></figure>
+        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/chips.webp" alt="Patatas fritas y frituras" loading="lazy"></div><span class="lbl">Patatas fritas y frituras</span></figure>
+        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/meat.webp" alt="Embutido y carne procesada" loading="lazy"></div><span class="lbl">Embutido, a diario</span></figure>
+        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/white.webp" alt="Pan blanco y cereales azucarados" loading="lazy"></div><span class="lbl">Pan blanco y cereales azucarados</span></figure>
+        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/ready.webp" alt="Platos precocinados y fideos instantáneos" loading="lazy"></div><span class="lbl">Precocinados y fideos instantáneos</span></figure>
+      </div>
+      <h4 class="foodhead">✅ Llenad el carro con esto</h4>
+      <div class="foodgrid good">
+        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/veg.webp" alt="Verdura fresca y ensalada" loading="lazy"></div><span class="lbl">Verdura y ensalada</span></figure>
+        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/fish.webp" alt="Pescado fresco y en conserva" loading="lazy"></div><span class="lbl">Pescado y marisco</span></figure>
+        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/eggs.webp" alt="Huevos frescos" loading="lazy"></div><span class="lbl">Huevos</span></figure>
+        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/beans.webp" alt="Alubias, lentejas y garbanzos" loading="lazy"></div><span class="lbl">Legumbres y lentejas</span></figure>
+        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/fruit.webp" alt="Fruta de temporada" loading="lazy"></div><span class="lbl">Fruta</span></figure>
+        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/yogurt.webp" alt="Yogur natural con frutos rojos y frutos secos" loading="lazy"></div><span class="lbl">Yogur natural y frutos secos</span></figure>
+      </div>
+    </div>
+
+    <div class="nextprev"><a class="btn ghost" href="#faster">Atrás</a><a class="btn primary" href="#recipes">Siguiente: Recetas</a></div>
+    </div>
   </section>
 
   <!-- RECIPES -->
   <section class="card" id="recipes">
+    <div class="lang-en">
     <div class="eyebrow">Pick by mood</div>
     <h2>Recipes 🍳</h2>
     <p class="lead">Simple, filling, Basque and Mediterranean friendly. "Today I feel like..." then tap a
       filter.</p>
+    </div>
+    <div class="lang-es">
+    <div class="eyebrow">Elegid según el ánimo</div>
+    <h2>Recetas 🍳</h2>
+    <p class="lead">Sencillas, que llenan, vascas y mediterráneas. «Hoy me apetece...» y tocáis un
+      filtro.</p>
+    </div>
     <div class="filters" id="recipeFilters"></div>
     <div class="recipes" id="recipeGrid"></div>
+    <div class="lang-en">
     <p class="hint">And when you need heart instead of a recipe, go back and read <a href="#close">Keep Coming Back</a> again. That is the one that keeps you going.</p>
     <div class="nextprev"><a class="btn ghost" href="#cheatsheet">Back</a><a class="btn primary" href="#welcome">Back to the top ↑</a></div>
+    </div>
+    <div class="lang-es">
+    <p class="hint">Y cuando necesitéis ánimo en vez de una receta, volved a leer <a href="#close">Sigue volviendo</a>. Esa es la que os mantiene en marcha.</p>
+    <div class="nextprev"><a class="btn ghost" href="#cheatsheet">Atrás</a><a class="btn primary" href="#welcome">Volver arriba ↑</a></div>
+    </div>
+  </section>
+
+  <!-- PRINTABLES -->
+  <section class="card tint" id="printables">
+    <div class="lang-en">
+    <div class="eyebrow">Print it, put it on the fridge</div>
+    <h2>Print worksheets 🖨️</h2>
+    <p class="lead">Everything Guillermo and Pilar can hold in their hands, on paper. Each one opens your
+      print window: choose <strong>"Save as PDF"</strong> to keep the file, or print it straight away.
+      The language follows this page, so switch the flag up top to get them in English or Spanish.</p>
+    </div>
+    <div class="lang-es">
+    <div class="eyebrow">Imprimidlo, pegadlo en la nevera</div>
+    <h2>Hojas para imprimir 🖨️</h2>
+    <p class="lead">Todo lo que Guillermo y Pilar pueden tener en la mano, en papel. Cada una abre la
+      ventana de impresión: elegid <strong>«Guardar como PDF»</strong> para quedaros el archivo, o
+      imprimidla directamente. El idioma sigue a esta página, así que cambiad la bandera de arriba para
+      tenerlas en español o en inglés.</p>
+    </div>
+
+    <div class="ws-all-row">
+      <button class="btn primary ws-all-btn" onclick="printAllWorksheets()"><span aria-hidden="true">⬇️</span> <span class="lang-en">All in one PDF (with cover)</span><span class="lang-es">Todas en un PDF (con portada)</span></button>
+      <p class="hint"><span class="lang-en">Get the whole booklet at once, cover first, or pick a single sheet below.</span><span class="lang-es">Sacad el cuadernillo entero de una vez, con la portada delante, o elegid una hoja abajo.</span></p>
+    </div>
+
+    <div class="ws-buttons">
+      <button class="btn ghost" onclick="printWorksheet('ws-cover')">📔 <span class="lang-en">Cover</span><span class="lang-es">Portada</span></button>
+      <button class="btn ghost" onclick="printWorksheet('ws-checkin')">✅ <span class="lang-en">Honest check-in</span><span class="lang-es">Chequeo honesto</span></button>
+      <a class="btn ghost" href="#how">⚖️ <span class="lang-en">Calorie sheet ↑</span><span class="lang-es">Hoja de calorías ↑</span></a>
+      <button class="btn ghost" onclick="printWorksheet('ws-mindset')">🧭 <span class="lang-en">Mindset</span><span class="lang-es">Mentalidad</span></button>
+      <button class="btn ghost" onclick="printWorksheet('ws-plan')">🗺️ <span class="lang-en">45-day plan</span><span class="lang-es">Plan de 45 días</span></button>
+      <button class="btn ghost" onclick="printWorksheet('ws-contract')">✍️ <span class="lang-en">Contract</span><span class="lang-es">Contrato</span></button>
+      <button class="btn ghost" onclick="printWorksheet('ws-power')">🔥 <span class="lang-en">Power page</span><span class="lang-es">Página de poder</span></button>
+    </div>
+
+    <div class="callout"><span class="lang-en">⚖️ <strong>The calorie sheet is personal.</strong> Make it up at the calculator above: set one person's numbers, type their name, and save. Then do the other. Each printed sheet carries the name, so Guillermo's and Pilar's never get mixed up.</span><span class="lang-es">⚖️ <strong>La hoja de calorías es personal.</strong> Hacedla en la calculadora de arriba: poned los números de uno, escribid su nombre, y guardad. Luego el otro. Cada hoja impresa lleva el nombre, así que la de Guillermo y la de Pilar nunca se mezclan.</span></div>
+
+    <div class="nextprev"><a class="btn ghost" href="#recipes"><span class="lang-en">Back</span><span class="lang-es">Atrás</span></a><a class="btn primary" href="#welcome"><span class="lang-en">Back to the top ↑</span><span class="lang-es">Volver arriba ↑</span></a></div>
   </section>
 
   <footer>
-    <div class="eus-ribbon" style="max-width:160px; margin:0 auto 1rem"></div>
+    <div class="es-ribbon" style="max-width:160px; margin:0 auto 1rem"></div>
     <div class="foot-qr">
       <img src="assets/img/qr-audiolibro.png" alt="Código QR del audiolibro" width="190" height="190">
       <div>
@@ -2107,6 +2382,315 @@ table.swaps tr:last-child td{border-bottom:none}
   <button id="abShow" onclick="toggleAudioBar()" aria-label="Mostrar el reproductor">🎧 ▴</button>
 </div>
 
+<!-- ============ PRINTABLE WORKSHEETS (one prints at a time via printWorksheet) ============ -->
+<div id="worksheets" aria-hidden="true">
+
+  <!-- COVER (mountain-band design) -->
+  <section class="ws ws-cover" id="ws-cover">
+    <div class="wc2-head">
+      <div class="wc2-place">
+        <svg viewBox="0 0 30 20" width="42" height="28" style="border-radius:3px;flex:none" aria-label="Ikurriña"><rect width="30" height="20" fill="#D52B1E"/><g stroke="#009B48" stroke-width="3.4"><line x1="0" y1="0" x2="30" y2="20"/><line x1="30" y1="0" x2="0" y2="20"/></g><rect x="13" y="0" width="4" height="20" fill="#fff"/><rect x="0" y="8" width="30" height="4" fill="#fff"/></svg>
+        Amorebieta · Euskal Herria
+      </div>
+      <img class="wc2-stamp" src="assets/img/eguzkilore.png" alt="">
+    </div>
+    <div class="wc2-mid">
+      <img class="wc2-logo" src="assets/img/logo.png" alt="">
+      <h1 class="lang-en">Built to Last</h1>
+      <h1 class="lang-es">Hechos para durar</h1>
+      <p class="wc2-sub lang-en">A guide for Guillermo &amp; Pilar</p>
+      <p class="wc2-sub lang-es">Una guía para Guillermo y Pilar</p>
+    </div>
+    <div class="wc2-band">
+      <div class="wc2-qrcard">
+        <img class="wc2-qr" src="assets/img/qr-audiolibro.png" alt="">
+        <div class="wc2-t">
+          <strong class="lang-en">The audiobook</strong><strong class="lang-es">El audiolibro</strong>
+          <span class="lang-en">Scan to listen, chapter by chapter 🎧</span><span class="lang-es">Escaneadlo para escuchar, capítulo a capítulo 🎧</span>
+        </div>
+      </div>
+    </div>
+    <div class="wc2-tricolor"></div>
+  </section>
+
+  <!-- HONEST CHECK-IN -->
+  <section class="ws" id="ws-checkin">
+    <div class="es-ribbon" style="max-width:120px"></div>
+    <div class="lang-en">
+      <h1 class="ws-title">Your honest check-in ✅</h1>
+      <p class="ws-lead">No judgement, nobody sees this but you. Answer fast and from the gut. Every <strong>yes</strong> is not a failure, it is a lever you can actually move. Tick the boxes.</p>
+      <ol class="ws-qlist" id="wsCheckEn"></ol>
+      <p class="ws-commit" id="wsCommitEn"></p>
+    </div>
+    <div class="lang-es">
+      <h1 class="ws-title">Vuestro chequeo honesto ✅</h1>
+      <p class="ws-lead">Sin juzgar, nadie ve esto salvo vosotros. Responded rápido y a bote pronto. Cada <strong>sí</strong> no es un fracaso, es una palanca que de verdad podéis mover. Marcad las casillas.</p>
+      <ol class="ws-qlist" id="wsCheckEs"></ol>
+      <p class="ws-commit" id="wsCommitEs"></p>
+    </div>
+  </section>
+
+  <!-- CALORIE SHEET (dynamic) -->
+  <section class="ws" id="ws-calc">
+    <div class="es-ribbon" style="max-width:120px"></div>
+    <div class="lang-en">
+      <h1 class="ws-title">Calorie sheet ⚖️</h1>
+      <p class="ws-lead">For <strong class="wc-name">·</strong></p>
+      <table class="ws-kv">
+        <tr><td>Age</td><td><span class="wc-age">·</span></td></tr>
+        <tr><td>Height</td><td><span class="wc-ht">·</span> cm</td></tr>
+        <tr><td>Weight</td><td><span class="wc-wt">·</span> kg</td></tr>
+        <tr><td>Sex</td><td class="wc-sex">·</td></tr>
+        <tr><td>A normal day</td><td class="wc-act">·</td></tr>
+      </table>
+      <div class="ws-big"><span class="ws-big-lbl">Your base need, what you burn in a day</span><span class="ws-big-num"><span class="wc-burn">·</span> kcal</span></div>
+      <div class="ws-band">To lose weight, eat <strong>under</strong> your base need. For a slow, steady drop, aim for about <strong><span class="wc-low">·</span> to <span class="wc-high">·</span> kcal a day</strong> (a few hundred below).</div>
+      <div class="ws-note">
+        <p><strong>Important:</strong> stay under your base need. A few hundred below means losing slowly and steadily, the kind that lasts and does not bounce back.</p>
+        <p>If that feels too slow and you want it faster, the guide has a <strong>"Want it faster?"</strong> section, but it asks for a lot more willpower and discipline.</p>
+        <p class="ws-hint">This is a solid estimate, not a lab reading. The scale is the real test: eat to it for 2 to 3 weeks and adjust.</p>
+      </div>
+      <div class="ws-fill-row"><span>Weight today: <b>______ kg</b></span><span>My daily target: <b>______ kcal</b></span><span>Date: <b>__________</b></span></div>
+    </div>
+    <div class="lang-es">
+      <h1 class="ws-title">Hoja de calorías ⚖️</h1>
+      <p class="ws-lead">Para <strong class="wc-name">·</strong></p>
+      <table class="ws-kv">
+        <tr><td>Edad</td><td><span class="wc-age">·</span></td></tr>
+        <tr><td>Altura</td><td><span class="wc-ht">·</span> cm</td></tr>
+        <tr><td>Peso</td><td><span class="wc-wt">·</span> kg</td></tr>
+        <tr><td>Sexo</td><td class="wc-sex">·</td></tr>
+        <tr><td>Un día normal</td><td class="wc-act">·</td></tr>
+      </table>
+      <div class="ws-big"><span class="ws-big-lbl">Vuestra necesidad base, lo que quemáis en un día</span><span class="ws-big-num"><span class="wc-burn">·</span> kcal</span></div>
+      <div class="ws-band">Para adelgazar, comed <strong>por debajo</strong> de vuestra necesidad base. Para una bajada lenta y firme, apuntad a unas <strong><span class="wc-low">·</span> a <span class="wc-high">·</span> kcal al día</strong> (unos cientos por debajo).</div>
+      <div class="ws-note">
+        <p><strong>Importante:</strong> quedaos por debajo de vuestra necesidad base. Unos cientos por debajo significa adelgazar despacio y firme, lo que dura y no rebota.</p>
+        <p>Si os parece demasiado lento y lo queréis más rápido, la guía tiene una sección <strong>«¿Lo queréis más rápido?»</strong>, pero pide mucha más fuerza de voluntad y disciplina.</p>
+        <p class="ws-hint">Es una buena estimación, no una medida de laboratorio. La báscula es la prueba de verdad: comed así 2 o 3 semanas y ajustad.</p>
+      </div>
+      <div class="ws-fill-row"><span>Peso hoy: <b>______ kg</b></span><span>Mi objetivo diario: <b>______ kcal</b></span><span>Fecha: <b>__________</b></span></div>
+    </div>
+  </section>
+
+  <!-- MINDSET FINALE (the whole mindset, distilled, 2 pages) -->
+  <section class="ws ws-mindset" id="ws-mindset">
+    <div class="es-ribbon" style="max-width:120px"></div>
+    <div class="lang-en">
+      <h1 class="ws-title">It was never about the food 🧭</h1>
+      <p class="ws-lead">If you forget everything else in this guide, keep these two pages. It all comes down to a handful of truths, and a couple of laughs. Read them slowly, read them out loud, and come back to them on the hard days.</p>
+      <div class="ws-truth"><b>It was never about the food.</b><p>Of everything in here, this is the deepest part: it is not about food. Not rules, not another diet, not gritting your teeth at the dinner table. It is a deep shift in the way your mind works, and a change in the way you live. That is the foundation, and if you build on sand, no recipe on earth will hold. Get the mind right, and the food quietly takes care of itself. (And that famous line, that breakfast is the most important meal of the day? Never science. It was a cereal advert from the early 1900s, invented to sell more cornflakes.)</p></div>
+      <div class="ws-truth"><b>The magic is hiding in the hunger.</b><p>The magic you are looking for is in the very thing you keep running from: a little hunger. Your body runs on two fuels, the food you just ate and the fat you carry around. (The fat we all carry, Guillermo, not a personal attack, I have seen your arms.) Feed it every couple of hours and it stays lazy and never touches the reserves. Let a little normal hunger back in, and it remembers how to burn its own fat. Your ancestors did not roll out of the cave to a full plate, they hunted the mammoth on an empty stomach and ate after. That little hunger is not the enemy. It is the door.</p></div>
+      <div class="ws-truth"><b>You are the captain.</b><p>Right now, when a craving shows up, your body snaps its fingers and you obey. The body is steering the ship, and you, the captain, have quietly let go of the wheel. Take it back. A craving is just an impulse, it has no power of its own, and the only one with real power here is you. Win that one fight inside your head and you have not just beaten one craving, you have beaten all of them, and every single win literally rewires your brain.</p></div>
+      <div class="ws-truth"><b>Tell the cheesecake to go home. 😄</b><p>Picture it: you are out at the Chinese restaurant you love, and a gorgeous little whisky cheesecake is sitting on the table, batting its eyes at you. You look it dead in the eye, you smile, and you tell it: <em>"Vete a tu puta casa."</em> Go home, you are not invited tonight. And when the bill comes and you never even ordered it, you sit back, grin, and think: I won, because I am stronger than you. That is exactly what being the captain feels like.</p></div>
+      <div class="ws-truth"><b>Systems beat willpower.</b><p>Willpower is a small bucket of water, and by the evening it is almost always empty, which is why plans built on willpower alone fall apart at ten at night on the sofa. The people who make it are not stronger than you, and it is not iron discipline. They simply built systems, so that when temptation shows up, willpower never has to save the day. You do not keep the biscuits out of your mouth, you keep them out of the house.</p></div>
+      <div class="ws-truth"><b>A craving is a wave, not a wall.</b><p>A craving feels like a wall you have to climb, but it is really a wave. It rises, it peaks, and if you do not feed it, it breaks and rolls away, usually in just a few minutes. You do not have to beat it. You just have to outlast it: drink a glass of water, make a tea, step outside, and let it pass. And remember, you cannot out-train a fork, not even up on the scaffolding, so the real work is here, in the small daily choices.</p></div>
+      <div class="ws-truth"><b>Feed the stronger you.</b><p>There is an old line, and it is true: <em>the spirit is willing, but the flesh is weak.</em> Inside you there is a stronger version and a weaker version of yourself, and both are completely real. Every time you keep your word to yourself, the strong one grows. Every time you break it, the weak one grows instead. Nothing you do is ever wasted, it is always feeding one of the two. So the only question that really matters is this: which one do you want to feed?</p></div>
+      <div class="ws-truth"><b>Stop doing the same thing.</b><p><em>"Insanity is doing the same thing over and over again and expecting a different result."</em> That was Einstein, and before Pilar reaches for the frying pan, nobody here is calling anyone crazy, we have all done it. But a seed cannot stay a seed and become a tree at the same time. Something has to break open. So stand in front of the mirror, look yourself in the eye, and say it like you mean it: this is not how I want to feel, and I am going to change it. I brought my body here, so I can bring it back. Food does not control me. I am stronger than my impulses.</p></div>
+      <p class="ws-finale">You do not have to be perfect. You just have to keep coming back. You are stronger than your impulses, so today, prove it to yourself one more time.</p>
+    </div>
+    <div class="lang-es">
+      <h1 class="ws-title">Nunca fue por la comida 🧭</h1>
+      <p class="ws-lead">Si os olvidáis de todo lo demás de esta guía, guardad estas dos páginas. Todo se reduce a un puñado de verdades, y un par de risas. Leedlas despacio, leedlas en voz alta, y volved a ellas en los días difíciles.</p>
+      <div class="ws-truth"><b>Nunca fue por la comida.</b><p>De todo lo que hay aquí, esta es la parte más honda: no va de comida. Ni de normas, ni de otra dieta, ni de apretar los dientes en la mesa. Es un cambio profundo en cómo funciona vuestra mente, y un cambio en cómo vivís. Ese es el fundamento, y si construís sobre arena, no habrá receta en el mundo que aguante. Poned la mente en su sitio, y la comida se resuelve sola. (¿Y esa famosa frase de que el desayuno es la comida más importante del día? Nunca fue ciencia. Fue un eslogan de los cereales de principios del siglo XX, inventado para vender más copos de maíz.)</p></div>
+      <div class="ws-truth"><b>La magia se esconde en el hambre.</b><p>La magia que buscáis está justo en aquello de lo que huís: un poco de hambre. Vuestro cuerpo funciona con dos combustibles, la comida que acabáis de comer y la grasa que lleváis encima. (La grasa que todos llevamos, Guillermo, no es un ataque personal, que te he visto los brazos.) Dadle de comer cada dos horas y se queda vago y no toca nunca las reservas. Dejad entrar un poco de hambre normal, y recuerda cómo quemar su propia grasa. Vuestros antepasados no salían de la cueva a un plato lleno, cazaban el mamut con el estómago vacío y comían después. Ese poquito de hambre no es el enemigo. Es la puerta.</p></div>
+      <div class="ws-truth"><b>Sois el capitán.</b><p>Ahora mismo, cuando aparece un antojo, el cuerpo ladra una orden y vosotros obedecéis. El cuerpo lleva el barco, y vosotros, el capitán, habéis soltado el timón sin daros cuenta. Recuperadlo. Un antojo es solo un impulso, no tiene ningún poder propio, y el único que tiene poder de verdad aquí sois vosotros. Ganad esa batalla dentro de vuestra cabeza y no habréis ganado un solo antojo, los habréis ganado todos, y cada victoria literalmente os reconfigura el cerebro.</p></div>
+      <div class="ws-truth"><b>Mandad la tarta a su casa. 😄</b><p>Imaginaos la escena: estáis cenando en el restaurante chino que tanto os gusta, y una preciosa tarta de queso al whisky descansa sobre la mesa, haciéndoos ojitos. La miráis fijamente, sonreís y le decís: <em>«Vete a tu puta casa.»</em> A casa, que esta noche no estás invitada. Y cuando llega la cuenta y ni siquiera la habéis pedido, os recostáis, sonreís y pensáis: he ganado, porque soy más fuerte que tú. Así se siente, exactamente, ser el capitán.</p></div>
+      <div class="ws-truth"><b>Los sistemas le ganan a la voluntad.</b><p>La fuerza de voluntad es un cubo pequeño de agua, y para la noche casi siempre está vacío, por eso los planes que dependen solo de la voluntad se rompen a las diez de la noche en el sofá. Los que lo consiguen no son más fuertes que vosotros, y no es disciplina de hierro. Simplemente construyeron sistemas, para que, cuando aparezca la tentación, la voluntad no tenga que salvar el día. A las galletas no las ganáis en la boca, las ganáis dejándolas fuera de casa.</p></div>
+      <div class="ws-truth"><b>Un antojo es una ola, no un muro.</b><p>Un antojo parece un muro que hay que escalar, pero en realidad es una ola. Sube, llega a su punto más alto y, si no lo alimentáis, rompe y se aleja, normalmente en unos pocos minutos. No tenéis que vencerlo. Solo tenéis que aguantar más que él: bebed un vaso de agua, haceos una infusión, salid a la calle, y dejadlo pasar. Y recordad, a un tenedor no se le gana entrenando, ni subido al andamio, así que el trabajo de verdad está aquí, en las pequeñas decisiones de cada día.</p></div>
+      <div class="ws-truth"><b>Alimentad a vuestra versión fuerte.</b><p>Hay una frase antigua, y es verdad: <em>el espíritu está dispuesto, pero la carne es débil.</em> Dentro de vosotros hay una versión más fuerte y una más débil, y las dos son completamente reales. Cada vez que cumplís vuestra palabra, crece la fuerte. Cada vez que la rompéis, crece la débil. Nada de lo que hacéis se pierde, siempre está alimentando a una de las dos. Así que la única pregunta que de verdad importa es esta: ¿a cuál queréis alimentar?</p></div>
+      <div class="ws-truth"><b>Dejad de hacer lo mismo.</b><p><em>«La locura es hacer lo mismo una y otra vez y esperar un resultado diferente.»</em> Lo dijo Einstein, y antes de que Pilar coja la sartén, aquí nadie está llamando loco a nadie, todos lo hemos hecho. Pero una semilla no puede seguir siendo semilla y convertirse en árbol a la vez. Algo tiene que romperse. Así que poneos delante del espejo, miraos a los ojos y decidlo en serio: así no es como quiero sentirme, y lo voy a cambiar. Yo traje mi cuerpo hasta aquí, así que puedo devolverlo. La comida no me controla. Soy más fuerte que mis impulsos.</p></div>
+      <p class="ws-finale">No tenéis que ser perfectos. Solo tenéis que seguir volviendo. Sois más fuertes que vuestros impulsos, así que hoy, demostrádtelo a vosotros mismos una vez más.</p>
+    </div>
+    <div class="ws-audio">
+      <img src="assets/img/qr-audiolibro.png" alt="QR">
+      <div>
+        <b><span class="lang-en">Would you rather listen? 🎧</span><span class="lang-es">¿Preferís escucharla? 🎧</span></b>
+        <p><span class="lang-en">Scan the code with your phone. Two ways to take it with you: listen to the whole guide right away in the player, or download all the audio onto your phone.</span><span class="lang-es">Escanead el código con el móvil. Dos formas de llevárosla: escuchad la guía entera ya en el reproductor, o descargad todo el audio al teléfono.</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 45-DAY PLAN -->
+  <section class="ws" id="ws-plan">
+    <div class="es-ribbon" style="max-width:120px"></div>
+    <div class="lang-en">
+      <h1 class="ws-title">The 45-day plan 🗺️</h1>
+      <p class="ws-lead">Print it, put it on the fridge next to your why, and mark it with a pen. A winning day is simply a day you pushed a few of these the right way.</p>
+      <h3>What a winning day looks like ✅</h3>
+      <ul class="ws-check">
+        <li>I stayed under my daily calorie need.</li>
+        <li>No little snacks or sweets today.</li>
+        <li>Less oil in the cooking, like we agreed.</li>
+        <li>At least 5,000 steps, or a 30 minute walk.</li>
+        <li>Kitchen closed after dinner, nothing after 7:30.</li>
+      </ul>
+    </div>
+    <div class="lang-es">
+      <h1 class="ws-title">El plan de 45 días 🗺️</h1>
+      <p class="ws-lead">Imprimidlo, pegadlo en la nevera junto a vuestro porqué, y marcadlo con boli. Un buen día es, sin más, un día en que empujasteis unas cuantas de estas en la buena dirección.</p>
+      <h3>Cómo es un buen día ✅</h3>
+      <ul class="ws-check">
+        <li>Me quedé por debajo de mi necesidad diaria de calorías.</li>
+        <li>Hoy nada de picoteos ni dulces.</li>
+        <li>Menos aceite al cocinar, como acordamos.</li>
+        <li>Al menos 5.000 pasos, o un paseo de 30 minutos.</li>
+        <li>Cocina cerrada después de cenar, nada después de las 19:30.</li>
+      </ul>
+    </div>
+    <div class="ws-block">
+      <h3 class="lang-en">Tick off your 45 days</h3>
+      <h3 class="lang-es">Marcad vuestros 45 días</h3>
+      <div class="ws-grid" id="wsGrid"></div>
+    </div>
+    <div class="ws-block">
+      <h3 class="lang-en">Your weight, every 7 days ⚖️</h3>
+      <h3 class="lang-es">Vuestro peso, cada 7 días ⚖️</h3>
+      <p class="ws-hint"><span class="lang-en">Once a week, same morning, after the toilet and before breakfast. Write it in by hand. Only the trend over the weeks counts, never a single day.</span><span class="lang-es">Una vez por semana, la misma mañana, después del baño y antes de desayunar. Apuntadlo a mano. Solo cuenta la tendencia de las semanas, nunca un solo día.</span></p>
+      <table class="ws-wtable">
+        <thead><tr>
+          <th><span class="lang-en">Checkpoint</span><span class="lang-es">Control</span></th>
+          <th><span class="lang-en">Date</span><span class="lang-es">Fecha</span></th>
+          <th>Peso Pilar (kg)</th>
+          <th>Peso Guillermo (kg)</th>
+        </tr></thead>
+        <tbody>
+          <tr class="wstart"><td><span class="lang-en">Start · Day 1</span><span class="lang-es">Inicio · Día 1</span></td><td></td><td></td><td></td></tr>
+          <tr><td><span class="lang-en">Day 7</span><span class="lang-es">Día 7</span></td><td></td><td></td><td></td></tr>
+          <tr class="wmile"><td><span class="lang-en">Day 15 🌱</span><span class="lang-es">Día 15 🌱</span></td><td></td><td></td><td></td></tr>
+          <tr><td><span class="lang-en">Day 22</span><span class="lang-es">Día 22</span></td><td></td><td></td><td></td></tr>
+          <tr class="wmile"><td><span class="lang-en">Day 30 🏅</span><span class="lang-es">Día 30 🏅</span></td><td></td><td></td><td></td></tr>
+          <tr><td><span class="lang-en">Day 37</span><span class="lang-es">Día 37</span></td><td></td><td></td><td></td></tr>
+          <tr class="wend"><td><span class="lang-en">End · Day 45 🏆</span><span class="lang-es">Final · Día 45 🏆</span></td><td></td><td></td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- CONTRACT -->
+  <section class="ws" id="ws-contract">
+    <div class="es-ribbon" style="max-width:120px"></div>
+    <div class="lang-en">
+      <h1 class="ws-title">Your contract ✍️</h1>
+      <p class="ws-lead">Read it together, write in your numbers, and sign it by hand. That signature is what makes it stick.</p>
+      <div class="ws-callout"><strong>Why a contract, and why now?</strong> Most people only change when it is already too late, after the heart scare, the bad diagnosis, the moment the doctor turns serious. You are doing it <strong>before</strong> that, while it is still a choice and not an emergency. That is exactly what this contract is for.</div>
+      <h3>Put something on the line</h3>
+      <p class="ws-p">A promise with nothing at stake is easy to break, so put something real on the line together: money you would hate to lose, or a trip or treat you both want. One rule, and it is what makes you a team: <strong>you only win if you both win, and if one of you quits, you both lose it.</strong> Now you are not just fighting your own cravings, you are carrying each other.</p>
+      <div class="contract">
+        <span class="seal">🤝</span>
+        <h3>Our Commitment</h3>
+        <p>We, Guillermo and Pilar, on this day <span class="blank"></span>, make this promise to ourselves and to each other. Truly and honestly, with our whole hearts, we commit to this challenge, because deep down we know we want this, and the weak voice in us is not the one steering the ship:</p>
+        <ul class="vows">
+          <li>We will be <strong>stronger than our cravings.</strong> A craving is just a wave, and we let it pass.</li>
+          <li>We will <strong>not give in to our impulses.</strong> An impulse has no power. We are the captains of our ship.</li>
+          <li>Our <strong>systems are stronger than our willpower</strong>, because we know our willpower will run dry, and our systems will not.</li>
+          <li>We will <strong>eat below the calories our bodies truly need</strong>, most days, without starving ourselves.</li>
+          <li>When the impulse hits, we <strong>stay strong, go to our habits, and read our why again.</strong></li>
+          <li>We will <strong>weigh ourselves regularly and write it down</strong>, to see the honest truth.</li>
+        </ul>
+        <p>We make this commitment <strong>as a team</strong>, for <strong><span class="blank"></span> days</strong> (we choose 30 or 45), because changing a lifetime system is hard and deserves a real promise. We do it now, on purpose, before life forces us to.</p>
+        <p><strong>What we put on the line, together:</strong> <span class="blank wide"></span></p>
+        <div class="sign"><div class="sigline">Guillermo</div><div class="sigline">Pilar</div></div>
+      </div>
+    </div>
+    <div class="lang-es">
+      <h1 class="ws-title">Vuestro contrato ✍️</h1>
+      <p class="ws-lead">Leedlo juntos, escribid vuestros números, y firmadlo a mano. Esa firma es lo que lo hace de verdad.</p>
+      <div class="ws-callout"><strong>¿Por qué un contrato, y por qué ahora?</strong> La mayoría solo cambia cuando ya es tarde, tras el susto de corazón, el mal diagnóstico, el momento en que el médico se pone serio. Vosotros lo hacéis <strong>antes</strong> de eso, mientras todavía es una elección y no una urgencia. Justo para eso sirve este contrato.</div>
+      <h3>Poned algo en juego</h3>
+      <p class="ws-p">Una promesa sin nada en juego es fácil de romper, así que poned algo de verdad en juego juntos: dinero que os dolería perder, o un viaje o un capricho que los dos queráis. Una sola regla, y es la que os hace equipo: <strong>solo ganáis si ganáis los dos, y si uno lo deja, lo perdéis los dos.</strong> Ahora ya no peleáis cada uno contra sus antojos, os lleváis el uno al otro.</p>
+      <div class="contract">
+        <span class="seal">🤝</span>
+        <h3>Nuestro Compromiso</h3>
+        <p>Nosotros, Guillermo y Pilar, hoy día <span class="blank"></span>, hacemos esta promesa a nosotros mismos y el uno al otro. De verdad y con honestidad, con todo el corazón, nos comprometemos con este reto, porque en el fondo sabemos que lo queremos, y la voz débil que hay en nosotros no es la que lleva el timón:</p>
+        <ul class="vows">
+          <li>Seremos <strong>más fuertes que nuestros antojos.</strong> Un antojo es solo una ola, y dejamos que pase.</li>
+          <li><strong>No cederemos a nuestros impulsos.</strong> Un impulso no tiene poder. Somos los capitanes de nuestro barco.</li>
+          <li>Nuestros <strong>sistemas son más fuertes que nuestra fuerza de voluntad</strong>, porque sabemos que la voluntad se nos agotará y los sistemas no.</li>
+          <li><strong>Comeremos por debajo de las calorías que nuestro cuerpo necesita de verdad</strong>, la mayoría de los días, sin pasar hambre.</li>
+          <li>Cuando llegue el impulso, <strong>nos mantenemos fuertes, vamos a nuestros hábitos y releemos nuestro porqué.</strong></li>
+          <li><strong>Nos pesaremos con regularidad y lo apuntaremos</strong>, para ver la verdad sin engaños.</li>
+        </ul>
+        <p>Asumimos este compromiso <strong>como equipo</strong>, durante <strong><span class="blank"></span> días</strong> (elegimos 30 o 45), porque cambiar el sistema de toda una vida es difícil y merece una promesa de verdad. Lo hacemos ahora, a propósito, antes de que la vida nos obligue.</p>
+        <p><strong>Lo que ponemos en juego, juntos:</strong> <span class="blank wide"></span></p>
+        <div class="sign"><div class="sigline">Guillermo</div><div class="sigline">Pilar</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- POWER PAGE (last) -->
+  <section class="ws" id="ws-power">
+    <div class="es-ribbon" style="max-width:120px"></div>
+    <div class="lang-en">
+      <h1 class="ws-title">Your Power Page 🔥</h1>
+      <div class="creed">
+        <h3>The one that matters most 🔁</h3>
+        <p class="cascade">One bad hour does not mean the next one has to be bad, and one bad day does not doom the next.</p>
+        <p>The slip is not what beats you. <strong>Giving up after it is.</strong> It is not how often you fall. It is <strong>how often you get back up.</strong> The people who make it got up one more time than they went down. Everyone falls. Maybe the sweets won seven nights, so they got up and fought back on the eighth.</p>
+        <p>When you slip, do not be hard on yourself. Just say: <strong>"I am only practicing,"</strong> and start again. Next meal, next morning, next day. Getting up, again and again, <strong>is the muscle.</strong></p>
+        <p>So do not chase miracles, <strong>chase consistency.</strong> One day the change is not a diet you are surviving, it is simply <strong>who you are now.</strong></p>
+      </div>
+      <div class="ws-aff-cols">
+        <div><h3>For the fighter in you 💪</h3>
+          <ul class="ws-aff">
+            <li>Nobody is coming to do this for me. I save myself.</li>
+            <li>I do not negotiate with my weaker self. Ever.</li>
+            <li>I am the captain of my ship. My cravings do not steer me.</li>
+            <li>The pain of discipline is lighter than the pain of regret.</li>
+            <li>I can do hard things. I do them every day at work.</li>
+            <li>I am not finished. I am just getting started.</li>
+          </ul>
+        </div>
+        <div><h3>For the loving heart in you 💗</h3>
+          <ul class="ws-aff">
+            <li>I am worth taking care of. My body deserves my love.</li>
+            <li>I treat my body with kindness, not punishment.</li>
+            <li>Every good choice is a gift to the people I love.</li>
+            <li>I am becoming my healthiest self, gently and surely.</li>
+            <li>I keep my word to myself, because I matter.</li>
+            <li>I want to be here, strong and well, for many years.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="ws-callout"><strong>You are not alone in this.</strong> Guillermo and Pilar, you have each other. On the hard days, one of you carries the other. That is the strongest system of all.</div>
+    </div>
+    <div class="lang-es">
+      <h1 class="ws-title">Vuestra Página de Poder 🔥</h1>
+      <div class="creed">
+        <h3>La que más importa 🔁</h3>
+        <p class="cascade">Una mala hora no obliga a que la siguiente sea mala, y un mal día no condena al siguiente.</p>
+        <p>El resbalón no es lo que os vence. <strong>Rendirse después, sí.</strong> No importa cuántas veces caigáis. Importa <strong>cuántas veces os levantáis.</strong> Los que lo consiguen se levantaron una vez más de las que cayeron. Todos caemos. Quizá los dulces ganaron siete noches, así que se levantaron y pelearon en la octava.</p>
+        <p>Cuando resbaléis, no os machaquéis. Decid solo: <strong>«Solo estoy practicando»</strong>, y empezad de nuevo. La siguiente comida, la siguiente mañana, el siguiente día. Levantarse, una y otra vez, <strong>es el músculo.</strong></p>
+        <p>Así que no persigáis milagros, <strong>perseguid la constancia.</strong> Un día el cambio ya no es una dieta que aguantáis, es simplemente <strong>quienes sois ahora.</strong></p>
+      </div>
+      <div class="ws-aff-cols">
+        <div><h3>Para el luchador que hay en vosotros 💪</h3>
+          <ul class="ws-aff">
+            <li>Nadie va a hacer esto por mí. Yo me salvo.</li>
+            <li>No negocio con mi yo más débil. Nunca.</li>
+            <li>Soy el capitán de mi barco. Mis antojos no llevan el timón.</li>
+            <li>El dolor de la disciplina pesa menos que el del arrepentimiento.</li>
+            <li>Puedo hacer cosas difíciles. Las hago cada día en el trabajo.</li>
+            <li>No he terminado. Acabo de empezar.</li>
+          </ul>
+        </div>
+        <div><h3>Para el corazón que hay en vosotros 💗</h3>
+          <ul class="ws-aff">
+            <li>Merezco que me cuiden. Mi cuerpo merece mi cariño.</li>
+            <li>Trato a mi cuerpo con amabilidad, no con castigo.</li>
+            <li>Cada buena elección es un regalo para los que quiero.</li>
+            <li>Me convierto en mi versión más sana, con calma y seguridad.</li>
+            <li>Cumplo mi palabra conmigo mismo, porque importo.</li>
+            <li>Quiero estar aquí, fuerte y bien, muchos años.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="ws-callout"><strong>Y no estáis solos en esto.</strong> Guillermo y Pilar, os tenéis el uno al otro. En los días difíciles, uno carga al otro. Ese es el sistema más fuerte de todos.</div>
+    </div>
+  </section>
+
+</div>
+
 <script>
 /* ============ DATA ============ */
 const CHAPTERS=[
@@ -2135,6 +2719,8 @@ const CHAPTERS=[
   {id:"faster",ic:"⚡",t:"Want it faster?",te:"¿Lo queréis más rápido?"},
   {id:"cheatsheet",ic:"📄",t:"Cheat sheet",te:"Chuleta"},
   {id:"recipes",ic:"🍳",t:"Recipes",te:"Recetas"},
+  {g:"Print & keep", ge:"Imprimir y guardar"},
+  {id:"printables",ic:"🖨️",t:"Print worksheets",te:"Hojas para imprimir"},
 ];
 
 const RECIPES=[
@@ -2179,6 +2765,71 @@ const RECIPES=[
   {e:"🍏",n:"Green apple & cucumber juice",m:"juice",cal:110,p:2,tags:["juice","no-cook","sweet"],img:"assets/img/recipes/juice-green-apple.jpg"},
 ];
 
+/* ============ RECIPE LANGUAGE HELPERS ============ */
+function rlang(){return document.documentElement.dataset.lang==='es'?'es':'en';}
+const NAME_ES={
+ "Tomato and egg toast":"Tostada de tomate y huevo",
+ "Yogurt power bowl":"Bol de yogur con fuerza",
+ "Veggie omelette":"Tortilla de verduras",
+ "Proper porridge":"Gachas de avena en condiciones",
+ "Cottage cheese plate":"Plato de requesón",
+ "Grilled fish, salad and beans":"Pescado a la plancha con ensalada y alubias",
+ "Marmitako-style tuna stew":"Marmitako de atún",
+ "Garbanzos with morcilla (Basque)":"Garbanzos con morcilla",
+ "Chicken and vegetable traybake":"Pollo al horno con verduras",
+ "Lentil and vegetable stew":"Lentejas estofadas con verduras",
+ "Big tuna and egg salad bowl":"Ensalada grande de atún y huevo",
+ "Bacalao with peppers (light pil-pil)":"Bacalao con pimientos (pil-pil ligero)",
+ "Steak with grilled vegetables":"Filete con verduras a la plancha",
+ "Vegetable soup with boiled eggs":"Sopa de verduras con huevo cocido",
+ "Pan-seared fish with greens":"Pescado a la sartén con verdura",
+ "Zucchini noodles with prawns":"Espaguetis de calabacín con gambas",
+ "Pisto with a fried egg":"Pisto con huevo frito",
+ "Piperrada with egg":"Piperrada con huevo",
+ "Boiled eggs (carry-snack)":"Huevos cocidos (para llevar)",
+ "Small handful of nuts":"Un puñado de frutos secos",
+ "85% dark chocolate, 2 squares":"Chocolate negro 85%, 2 onzas",
+ "Greek yogurt with berries":"Yogur griego con frutos rojos",
+ "Scrambled eggs, paprika & spinach":"Huevos revueltos con pimentón y espinacas",
+ "Smart protein smoothie":"Batido de proteína inteligente",
+ "Pan con tomate (Andalusian)":"Pan con tomate (andaluz)",
+ "Avocado & egg on rye":"Aguacate y huevo sobre pan de centeno",
+ "Patatas a la vinagre (Melanie's)":"Patatas a la vinagre (de Melanie)",
+ "Spanish tortilla (lighter) + salad":"Tortilla de patata (más ligera) y ensalada",
+ "Grilled sardines + tomato salad":"Sardinas a la brasa con ensalada de tomate",
+ "Chickpeas & spinach with cod":"Garbanzos con espinacas y bacalao",
+ "Gazpacho (Andalusian cold soup)":"Gazpacho (andaluz)",
+ "Pollo al ajillo (garlic chicken)":"Pollo al ajillo",
+ "Squid with garlic & big salad":"Calamares al ajillo con ensalada",
+ "Beetroot & carrot juice":"Zumo de remolacha y zanahoria",
+ "Beetroot, carrot & ginger":"Remolacha, zanahoria y jengibre",
+ "Fresh orange juice":"Zumo de naranja natural",
+ "Fresh lemon & water (light)":"Agua con limón (ligero)",
+ "Green juice (celery, spinach, lemon, ginger)":"Zumo verde (apio, espinaca, limón, jengibre)",
+ "Green apple & cucumber juice":"Zumo de manzana verde y pepino",
+};
+const TAGN_ES={
+ breakfast:"desayuno", lunch:"comida", dinner:"cena", snack:"tentempié", juice:"zumo",
+ basque:"vasco", mediterranean:"mediterráneo", lowcarb:"bajo en carbos", yogurt:"yogur",
+ eggs:"huevos", fish:"pescado", quick:"rápido", "no-cook":"sin cocinar", comfort:"de cuchara",
+ meat:"carne", sweet:"dulce",
+};
+const RUI={
+ en:{ tapDetails:"Tap for details", seeDetails:"See details ›", noRecipes:"No recipes for that yet, more coming soon. 🌱",
+      macros:(cal,p)=>'about '+cal+' kcal · '+p+' g protein',
+      whatIn:"What is in it:", macrosOne:"Macros, one portion", calories:"Calories", protein:"Protein", carbs:"Carbs", fat:"Fat",
+      onePortion:"1 portion", twoPortions:"2 portions", basqueClassic:" · Basque classic", smallChanges:"Small changes that add up",
+      lighter:"Lighter:", shopSummary:"🛒 Shopping list · tap to open", shopNote:"Everything for one portion. Snap a photo and take it shopping. 📷", close:"Close" },
+ es:{ tapDetails:"Tocad para ver los detalles", seeDetails:"Ver detalles ›", noRecipes:"Para eso todavía no hay recetas, pronto habrá más. 🌱",
+      macros:(cal,p)=>'unas '+cal+' kcal · '+p+' g de proteína',
+      whatIn:"Qué lleva:", macrosOne:"Macros, una ración", calories:"Calorías", protein:"Proteína", carbs:"Carbohidratos", fat:"Grasa",
+      onePortion:"1 ración", twoPortions:"2 raciones", basqueClassic:" · Clásico vasco", smallChanges:"Pequeños cambios que suman",
+      lighter:"Más ligero:", shopSummary:"🛒 Lista de la compra · tocad para abrir", shopNote:"Todo para una ración. Hacedle una foto y lleváosla a la compra. 📷", close:"Cerrar" },
+};
+function rname(r){return rlang()==='es'?(NAME_ES[r.n]||r.n):r.n;}
+function tagName(t){return rlang()==='es'?(TAGN_ES[t]||t):t;}
+function rui(k){return RUI[rlang()][k];}
+
 /* ============ NAV ============ */
 const rail=document.getElementById('rail'), ovLinks=document.getElementById('overlayLinks');
 CHAPTERS.forEach(c=>{
@@ -2205,8 +2856,8 @@ document.querySelectorAll('.nextprev .btn.primary, .hero .cta .btn.primary').for
 });
 
 /* ============ LANGUAGE (architecture ready; ES filled as last step) ============ */
-const I18N={en:{brandtitle:"Built to Last", brandsub:"A guide for Guillermo & Pilar", chapters:"Chapters", dlaudio:"Audiobook", audiopop:"Scan to open the player, or download all the audio:", dlall:"⬇️ Download all (ZIP)"},
-  es:{brandtitle:"Hechos para durar", brandsub:"Una guía para Guillermo y Pilar", chapters:"Capítulos", dlaudio:"Audiolibro", audiopop:"Escanéalo para abrir el reproductor, o descárgalo todo:", dlall:"⬇️ Descargar todo (ZIP)"}};
+const I18N={en:{brandtitle:"Built to Last", brandsub:"A guide for Guillermo & Pilar", chapters:"Chapters", dlaudio:"Audiobook", audiopop:"Scan to open the player, or download all the audio:", dlall:"⬇️ Download all (ZIP)", dlpdf:"Worksheets", pdfpop:"Save the worksheets as PDF. All in one, or pick what you need:", pdfall:"⬇️ All in one PDF", pdfpick:"Pick individually →"},
+  es:{brandtitle:"Hechos para durar", brandsub:"Una guía para Guillermo y Pilar", chapters:"Capítulos", dlaudio:"Audiolibro", audiopop:"Escanéalo para abrir el reproductor, o descárgalo todo:", dlall:"⬇️ Descargar todo (ZIP)", dlpdf:"Hojas PDF", pdfpop:"Guardad las hojas como PDF. Todas juntas, o elegid las que necesitéis:", pdfall:"⬇️ Todas en un PDF", pdfpick:"Elegir una a una →"}};
 function setLang(l){
   document.documentElement.dataset.lang=l;
   document.getElementById('btn-en').classList.toggle('active',l==='en');
@@ -2215,6 +2866,8 @@ function setLang(l){
   if(typeof applyNavLang==='function')applyNavLang(l);
   localStorage.setItem('gp_lang',l);
   if(typeof renderQuiz==='function')renderQuiz();
+  if(typeof applyRecipeLang==='function')applyRecipeLang(l);
+  if(typeof renderRecipes==='function')renderRecipes();
 }
 
 /* (Calculator merged into the Calories In/Out widget above) */
@@ -2318,20 +2971,22 @@ function resetDays(){if(confirm('Clear all marked days?')){DAYS=[]; localStorage
 renderDays();
 
 /* ============ RECIPES ============ */
-const FILTERS=[["all","🍽️ All"],["basque","🍲 Basque classics"],["breakfast","🌅 Breakfast"],["lunch","☀️ Lunch"],["dinner","🌙 Dinner"],["snack","🥜 Snack"],["juice","🥤 Juices"],
-  ["mediterranean","🫒 Mediterranean"],["lowcarb","🍳 Low-carb"],["yogurt","🥣 Feel like yogurt"],["eggs","🍳 Feel like eggs"],["fish","🐟 Feel like fish"],["quick","⚡ Quick"],["sweet","🍫 Sweet-tooth"]];
+const FILTERS=[["all","🍽️ All","🍽️ Todas"],["basque","🍲 Basque classics","🍲 Clásicos vascos"],["breakfast","🌅 Breakfast","🌅 Desayuno"],["lunch","☀️ Lunch","☀️ Comida"],["dinner","🌙 Dinner","🌙 Cena"],["snack","🥜 Snack","🥜 Tentempié"],["juice","🥤 Juices","🥤 Zumos"],
+  ["mediterranean","🫒 Mediterranean","🫒 Mediterráneo"],["lowcarb","🍳 Low-carb","🍳 Bajo en carbos"],["yogurt","🥣 Feel like yogurt","🥣 Me apetece yogur"],["eggs","🍳 Feel like eggs","🍳 Me apetecen huevos"],["fish","🐟 Feel like fish","🐟 Me apetece pescado"],["quick","⚡ Quick","⚡ Rápido"],["sweet","🍫 Sweet-tooth","🍫 Dulce"]];
 const rf=document.getElementById('recipeFilters'), rg=document.getElementById('recipeGrid');
 let curFilter='all';
-FILTERS.forEach(([k,l])=>{const b=document.createElement('button'); if(k==='all')b.classList.add('active'); b.textContent=l;
+FILTERS.forEach(([k,le,les])=>{const b=document.createElement('button'); if(k==='all')b.classList.add('active'); b.dataset.en=le; b.dataset.es=les||le; b.textContent=rlang()==='es'?(les||le):le;
   b.addEventListener('click',()=>{curFilter=k; document.querySelectorAll('#recipeFilters button').forEach(x=>x.classList.remove('active')); b.classList.add('active'); renderRecipes();}); rf.appendChild(b);});
+function applyRecipeLang(l){ document.querySelectorAll('#recipeFilters button').forEach(b=>{ b.textContent=b.dataset[l]||b.dataset.en; }); }
 function renderRecipes(){
   rg.innerHTML='';
   const list=RECIPES.filter(r=>curFilter==='all'||r.m===curFilter||r.tags.includes(curFilter));
-  if(!list.length){rg.innerHTML='<p class="hint">No recipes for that yet, more coming soon. 🌱</p>'; return;}
-  list.forEach(r=>{const d=document.createElement('div'); d.className='recipe'; d.tabIndex=0; d.title='Tap for details';
-    d.innerHTML=(r.img?'<div class="recipe-pic"><img src="'+r.img+'" alt="'+r.n+'" loading="lazy"></div>':'<div class="emoji">'+r.e+'</div>')+
-      '<h4>'+r.n+'</h4><div class="macros">about '+r.cal+' kcal · '+r.p+' g protein</div>'+
-      '<div class="tagrow">'+r.tags.map(t=>'<span class="tag">'+t+'</span>').join('')+'</div><div class="recipe-more">See details ›</div>';
+  if(!list.length){rg.innerHTML='<p class="hint">'+rui('noRecipes')+'</p>'; return;}
+  list.forEach(r=>{const d=document.createElement('div'); d.className='recipe'; d.tabIndex=0; d.title=rui('tapDetails');
+    const nm=rname(r);
+    d.innerHTML=(r.img?'<div class="recipe-pic"><img src="'+r.img+'" alt="'+nm+'" loading="lazy"></div>':'<div class="emoji">'+r.e+'</div>')+
+      '<h4>'+nm+'</h4><div class="macros">'+rui('macros')(r.cal,r.p)+'</div>'+
+      '<div class="tagrow">'+r.tags.map(t=>'<span class="tag">'+tagName(t)+'</span>').join('')+'</div><div class="recipe-more">'+rui('seeDetails')+'</div>';
     const open=()=>openRecipe(RECIPES.indexOf(r));
     d.onclick=open; d.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open();}}; rg.appendChild(d);});
 }
@@ -2369,11 +3024,11 @@ const QUIZ_T = {
     q:[
       "¿Coméis a menudo tarde, pasadas las 19:30, y os vais a la cama con la barriga llena?",
       "¿Caéis en un pequeño picoteo nocturno en el sofá, aunque no tengáis hambre de verdad?",
-      "¿Os entran antojos de vez en cuando que parecen casi imposibles de ignorar?",
+      "Después de cenar, sobre las 20:00 o 21:00, ¿buscáis a menudo algo dulce, un poco de chocolate o un capricho pequeño?",
       "En cuanto el estómago ruge, ¿sentís que tenéis que comer, aunque sea justo después de una comida llena?",
       "¿Seguís comiendo porque aún sentís hambre, cuando en realidad es solo apetito, la boca pidiendo más?",
       "¿Bebéis vuestras calorías, una cerveza, un kalimotxo o un refresco azucarado, más a menudo de lo que querríais?",
-      "Para trayectos cortos, ¿cogéis casi siempre el coche o el ascensor en vez de andar o subir escaleras?",
+      "¿Cogéis casi siempre el ascensor y evitáis las escaleras siempre que podéis?",
       "Fuera del trabajo, ¿os movéis muy poco en un día normal?"
     ],
     commit:"¿Os imagináis empezar poco a poco, cambiando solo una o dos de estas, esta semana?",
@@ -2469,6 +3124,47 @@ const RDETAIL={
  "Green juice (celery, spinach, lemon, ginger)":{ing:"Celery, spinach, cucumber, lemon, ginger",c:14,f:1,tip:"Low in sugar, high in greens, a genuinely light and fresh option."},
  "Green apple & cucumber juice":{ing:"Green apples, cucumber, lime",c:26,f:0,tip:"Green apples are tarter and lower in sugar than red. Crisp and clean."},
 };
+const RDETAIL_ES={
+ "Tomato and egg toast":{ing:"2 huevos, una rebanada de pan integral, tomate fresco, ajo, un poco de aceite de oliva",tip:"Una sola rebanada y un espray de aceite en vez de un chorro ahorra unas 150 kcal."},
+ "Yogurt power bowl":{ing:"Yogur griego, frutos rojos frescos, unos copos de avena y frutos secos, un poco de miel",tip:"Usad yogur natural, no los de sabores, y dejad que la fruta endulce."},
+ "Veggie omelette":{ing:"3 huevos, pimientos, cebolla, espinacas, un poco de aceite de oliva",tip:"Cocinadla en sartén antiadherente con un espray de aceite, no un chorro, para que quede ligera."},
+ "Proper porridge":{ing:"Avena, leche o agua, canela, plátano, unos frutos secos",tip:"Coronadla con fruta en vez de azúcar o sirope."},
+ "Cottage cheese plate":{ing:"Requesón, tomate, pepino, un par de crackers integrales",tip:"Mucha proteína, sin cocinar, y os mantiene llenos hasta la comida."},
+ "Grilled fish, salad and beans":{ing:"Pescado blanco, ensalada variada, alubias blancas, limón, aceite de oliva",tip:"A la plancha, no frito, y medid el aceite con cuchara."},
+ "Marmitako-style tuna stew":{ing:"Atún, patata, pimientos, cebolla, tomate, pimentón ahumado",tip:"Un clásico vasco. Id con calma con la patata y el aceite."},
+ "Garbanzos with morcilla (Basque)":{ing:"Garbanzos, un poco de morcilla, cebolla, pimiento rojo, pimentón ahumado",tip:"Un poco de morcilla da sabor a toda la olla, así que usad un trozo, no tres."},
+ "Chicken and vegetable traybake":{ing:"Pollo, calabacín, pimientos, cebolla, hierbas, un poco de aceite de oliva",tip:"Una bandeja, poco aceite, y llenad la mitad de verdura."},
+ "Lentil and vegetable stew":{ing:"Lentejas, zanahoria, cebolla, tomate, un poco de chorizo para dar sabor",tip:"Un trocito de chorizo da sabor a toda la olla, no hace falta más."},
+ "Big tuna and egg salad bowl":{ing:"Atún en lata, 2 huevos, lechuga, tomate, cebolla, aceitunas",tip:"Aliñad con limón y una cuchara de aceite, no a chorro libre."},
+ "Bacalao with peppers (light pil-pil)":{ing:"Bacalao, pimientos rojos y verdes, ajo, aceite de oliva, perejil",tip:"Un pil-pil más ligero: menos aceite, y que el bacalao y el ajo lleven la voz."},
+ "Steak with grilled vegetables":{ing:"Filete magro, pimientos, calabacín, cebolla",tip:"Un trozo de carne del tamaño de la palma, y medio plato de verdura."},
+ "Vegetable soup with boiled eggs":{ing:"Verduras variadas, caldo, 2 huevos cocidos",tip:"Caliente, que llena y muy ligera, perfecta para la noche."},
+ "Pan-seared fish with greens":{ing:"Pescado blanco, judías verdes o acelgas, ajo, limón",tip:"A la sartén seca o con un poco de espray."},
+ "Zucchini noodles with prawns":{ing:"Calabacín, gambas, ajo, un poco de guindilla, tomate",tip:"El calabacín en vez de pasta baja muchísimo las calorías."},
+ "Pisto with a fried egg":{ing:"Calabacín, pimientos, cebolla, tomate, 1 huevo",tip:"El pisto de toda la vida. Coronadlo con un huevo y medid el aceite."},
+ "Piperrada with egg":{ing:"Pimientos, cebolla, tomate, ajo, 1 o 2 huevos, aceite de oliva",tip:"El clásico vasco de pimientos. Medid el aceite y queda ligero."},
+ "Boiled eggs (carry-snack)":{ing:"2 huevos, una pizca de sal",tip:"Llevadlos a la obra, le ganan al bollo de la gasolinera siempre."},
+ "Small handful of nuts":{ing:"Un puñado pequeño de frutos secos sin sal",tip:"Un puñado, no la bolsa entera, tienen muchas calorías."},
+ "85% dark chocolate, 2 squares":{ing:"2 onzas de chocolate negro 85%",tip:"Un capricho decidido de antemano: dos onzas, sentados, sin culpa."},
+ "Greek yogurt with berries":{ing:"Yogur griego, un puñado de frutos rojos",tip:"Que este sea vuestro dulce por defecto en vez de las galletas."},
+ "Scrambled eggs, paprika & spinach":{ing:"3 huevos, espinacas, pimentón ahumado, un poco de aceite de oliva",tip:"Revolvedlos suaves en sartén con espray; el pimentón da el sabor, no más aceite."},
+ "Smart protein smoothie":{ing:"Yogur natural o leche, proteína en polvo, frutos rojos, una cuchara de avena",tip:"Acompañadlo de un huevo cocido para masticar algo de verdad. Que sea algo de vez en cuando."},
+ "Pan con tomate (Andalusian)":{ing:"Pan integral, tomate rallado, ajo, un poco de aceite de oliva",tip:"Una rebanada y un hilo de aceite, no una inundación, para que sea un comienzo ligero."},
+ "Avocado & egg on rye":{ing:"Pan de centeno, aguacate, huevo, limón, copos de guindilla",tip:"Un cuarto de aguacate es suficiente; buena grasa, pero con muchas calorías."},
+ "Patatas a la vinagre (Melanie's)":{ing:"Patatas cocidas, cebolleta, pimiento rojo y verde, vinagre, aceite de oliva",tip:"Un favorito vasco. Limitad el aceite a una cuchara o dos medidas y cargad de pimiento y cebolla."},
+ "Spanish tortilla (lighter) + salad":{ing:"Huevos, un poco de patata, cebolla, calabacín, aceite de oliva, ensalada",tip:"Menos patata, más cebolla y calabacín, una cuchara medida de aceite en vez de una inundación."},
+ "Grilled sardines + tomato salad":{ing:"Sardinas frescas, tomate, cebolla, aceite de oliva, perejil, limón",tip:"Ricas en omega-3 y baratas. A la brasa, no fritas."},
+ "Chickpeas & spinach with cod":{ing:"Garbanzos, espinacas, bacalao, tomate, ajo, pimentón ahumado",tip:"Garbanzos con espinacas más pescado para la proteína, una comida entera en una olla."},
+ "Gazpacho (Andalusian cold soup)":{ing:"Tomates, pepino, pimiento, ajo, aceite de oliva, vinagre",tip:"Triturad y enfriad. Casi sin calorías, lleno de verdura, perfecto para un día de calor."},
+ "Pollo al ajillo (garlic chicken)":{ing:"Pollo, mucho ajo, aceite de oliva, un chorro de vino blanco, perejil",tip:"Mucho ajo, una cuchara medida de aceite, y una buena ensalada al lado."},
+ "Squid with garlic & big salad":{ing:"Calamares o gambas, ajo, perejil, limón, buena ensalada",tip:"A la plancha o salteados rápido, nunca rebozados y fritos."},
+ "Beetroot & carrot juice":{ing:"Remolacha, zanahorias, media manzana opcional",tip:"El zumo se lleva la fibra, así que un vaso, no una jarra; los azúcares siguen contando."},
+ "Beetroot, carrot & ginger":{ing:"Remolacha, zanahorias, jengibre fresco, limón",tip:"El jengibre da un toque y ayuda a la digestión. Aun así, un vaso cada vez."},
+ "Fresh orange juice":{ing:"3 naranjas, exprimidas",tip:"Mejor todavía: comeos una naranja entera. Las mismas vitaminas, más fibra, menos azúcar de golpe."},
+ "Fresh lemon & water (light)":{ing:"Limón, agua, menta opcional",tip:"Casi sin calorías y muy refrescante. Saltaos el azúcar y dejad que brille el limón."},
+ "Green juice (celery, spinach, lemon, ginger)":{ing:"Apio, espinacas, pepino, limón, jengibre",tip:"Bajo en azúcar, lleno de verde, una opción de verdad ligera y fresca."},
+ "Green apple & cucumber juice":{ing:"Manzanas verdes, pepino, lima",tip:"La manzana verde es más ácida y con menos azúcar que la roja. Fresco y limpio."},
+};
 const TWEAKS_GENERAL=[
  ["🫒","One extra tablespoon of olive oil","+120 kcal"],
  ["🍬","A teaspoon of sugar in the coffee","+16 kcal"],
@@ -2485,10 +3181,28 @@ const TWEAKS_MEAL={
  snack:[["🥜","A handful of nuts, not the whole bag","saves ~300 kcal"],["🍫","Two squares of dark chocolate, sitting down","a treat, not a binge"]],
  juice:[["🍊","Eat the whole fruit instead of juicing three","more fibre, less sugar"],["🧃","One glass, not a jug","keeps the sugar in check"]],
 };
+const TWEAKS_GENERAL_ES=[
+ ["🫒","Una cucharada extra de aceite de oliva","+120 kcal"],
+ ["🍬","Una cucharadita de azúcar en el café","+16 kcal"],
+ ["🥤","Un vaso de cola o zumo al lado","+140 kcal"],
+ ["🍉","Cambiad un postre azucarado por sandía","−250 kcal"],
+ ["🥖","Una rebanada extra de pan blanco","+80 kcal"],
+ ["💧","Un buen vaso de agua antes de comer","coméis menos, os llenáis"],
+ ["🍷","Una segunda copa de vino en la cena","+125 kcal"],
+];
+const TWEAKS_MEAL_ES={
+ breakfast:[["🍯","Dejad que la fruta endulce, fuera la miel","−40 kcal"],["🥣","Yogur natural en vez de uno de sabores","−90 kcal"]],
+ lunch:[["🍚","La mitad de arroz o patata, el doble de ensalada","−150 kcal"],["🥗","Haced que medio plato sea verdura","−200 kcal"]],
+ dinner:[["🌙","Terminad de cenar unas 3 horas antes de dormir","mejor sueño + quemar grasa"],["🍳","Tirad de proteína y verdura, menos pan","sigue saciando"]],
+ snack:[["🥜","Un puñado de frutos secos, no la bolsa entera","ahorra ~300 kcal"],["🍫","Dos onzas de chocolate negro, sentados","un capricho, no un atracón"]],
+ juice:[["🍊","Comeos la fruta entera en vez de exprimir tres","más fibra, menos azúcar"],["🧃","Un vaso, no una jarra","mantiene el azúcar a raya"]],
+};
 function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
 function tweaksFor(meal){
-  const specific=shuffle(TWEAKS_MEAL[meal]||[]).slice(0,1);
-  const general=shuffle(TWEAKS_GENERAL).slice(0,4-specific.length);
+  const es=rlang()==='es';
+  const mealSrc=es?TWEAKS_MEAL_ES:TWEAKS_MEAL, genSrc=es?TWEAKS_GENERAL_ES:TWEAKS_GENERAL;
+  const specific=shuffle(mealSrc[meal]||[]).slice(0,1);
+  const general=shuffle(genSrc).slice(0,4-specific.length);
   return shuffle(specific.concat(general));
 }
 /* Ingredient amounts = the photographable shopping list, one portion. */
@@ -2533,30 +3247,74 @@ const RITEMS={
  "Green juice (celery, spinach, lemon, ginger)":["2 celery sticks","2 handfuls of spinach","½ cucumber","½ lemon","2 cm ginger"],
  "Green apple & cucumber juice":["2 green apples","½ cucumber","½ lime","splash of water"],
 };
+const RITEMS_ES={
+ "Tomato and egg toast":["1 rebanada de pan integral","½ tomate maduro, rallado","1–2 huevos","1 cdta de aceite de oliva","una pizca de sal","opcional: una loncha fina de jamón"],
+ "Yogurt power bowl":["200 g de yogur griego natural","un puñado de frutos rojos","6–8 nueces","canela","opcional: ½ cdta de miel"],
+ "Veggie omelette":["3 huevos","½ pimiento, picado","¼ de cebolla, picada","un puñado de espinacas","1 cda de queso rallado","1 cdta de aceite de oliva"],
+ "Proper porridge":["40 g de copos de avena","200 ml de leche (o agua + un chorro de leche)","½ plátano o frutos rojos","unos frutos secos","canela"],
+ "Cottage cheese plate":["200 g de requesón","1 tomate, en rodajas","¼ de pepino","un hilo de aceite de oliva","pimienta negra"],
+ "Grilled fish, salad and beans":["1 filete de pescado blanco (~150 g)","ensalada variada (lechuga, tomate, pepino, pimiento, cebolla)","½ taza de alubias blancas","1 cda de aceite de oliva + vinagre","limón, ajo, perejil"],
+ "Marmitako-style tuna stew":["150 g de atún fresco, en tacos","1 patata mediana","1 pimiento","½ cebolla","1 tomate","1 cdta de pimentón ahumado","1 cda de aceite de oliva","caldo de pescado o verduras"],
+ "Garbanzos with morcilla (Basque)":["1 taza de garbanzos cocidos","1 trozo pequeño de morcilla","½ cebolla","½ pimiento rojo","1 cdta de pimentón ahumado","1 cdta de aceite de oliva"],
+ "Chicken and vegetable traybake":["1 pechuga de pollo o 2 contramuslos","1 calabacín","1 pimiento","1 cebolla","ajo + hierbas","1 cda de aceite de oliva"],
+ "Lentil and vegetable stew":["1 taza de lentejas","1 zanahoria","1 cebolla","1 tomate","1 trozo pequeño de chorizo","ajo, pimentón ahumado, laurel"],
+ "Big tuna and egg salad bowl":["1 lata de atún","2 huevos cocidos","lechuga, tomate, pepino, pimiento, cebolla","unas aceitunas","1 cda de aceite de oliva + vinagre"],
+ "Bacalao with peppers (light pil-pil)":["1 filete de bacalao (~150 g)","1 pimiento rojo + 1 verde","2 dientes de ajo","1 cda de aceite de oliva","perejil"],
+ "Steak with grilled vegetables":["1 filete magro del tamaño de la palma","1 pimiento","½ calabacín","½ cebolla","ensalada de guarnición","un hilo de aceite de oliva"],
+ "Vegetable soup with boiled eggs":["verduras variadas (puerro, calabacín, zanahoria, tomate, cebolla)","caldo de verduras","2 huevos cocidos"],
+ "Pan-seared fish with greens":["1 filete de pescado blanco (~150 g)","espinacas o acelgas","1 diente de ajo","1 cdta de aceite de oliva","limón"],
+ "Zucchini noodles with prawns":["1 calabacín, en espiral","8–10 gambas","1 diente de ajo","un poco de guindilla","un puñado de tomates cherry"],
+ "Pisto with a fried egg":["½ calabacín","1 pimiento","½ cebolla","1 tomate","1 huevo","1 cda de aceite de oliva"],
+ "Piperrada with egg":["2 pimientos","1 cebolla","1 tomate","1 diente de ajo","1–2 huevos","1 cda de aceite de oliva"],
+ "Boiled eggs (carry-snack)":["2 huevos","una pizca de sal"],
+ "Small handful of nuts":["25–30 g de frutos secos sin sal"],
+ "85% dark chocolate, 2 squares":["2 onzas de chocolate negro 85%"],
+ "Greek yogurt with berries":["150–200 g de yogur griego","un puñado de frutos rojos","opcional: canela"],
+ "Scrambled eggs, paprika & spinach":["3 huevos","un puñado de espinacas","una pizca de pimentón ahumado","1 cdta de aceite de oliva","tomate de guarnición"],
+ "Smart protein smoothie":["200 g de yogur natural o 250 ml de leche","½–1 cacito de proteína en polvo","un puñado de frutos rojos","1 cda de avena","opcional: ½ plátano"],
+ "Pan con tomate (Andalusian)":["1 rebanada de pan rústico integral","½ tomate maduro, rallado","1 cdta de aceite de oliva","1 diente de ajo","una pizca de sal"],
+ "Avocado & egg on rye":["1 rebanada de pan de centeno","¼ de aguacate","1 huevo (cocido o escalfado)","limón, copos de guindilla","una pizca de sal"],
+ "Patatas a la vinagre (Melanie's)":["2 patatas medianas, cocidas","1 cebolleta","½ pimiento rojo + ½ verde","2 cdas de vinagre","1–2 cdas de aceite de oliva","una pizca de sal"],
+ "Spanish tortilla (lighter) + salad":["3 huevos","1 patata pequeña","½ cebolla","½ calabacín","1 cda de aceite de oliva","buena ensalada de guarnición"],
+ "Grilled sardines + tomato salad":["4–6 sardinas frescas","2 tomates","½ cebolla","1 cda de aceite de oliva","perejil, limón"],
+ "Chickpeas & spinach with cod":["1 taza de garbanzos cocidos","2 puñados de espinacas","1 filete de bacalao (~150 g)","1 tomate","2 dientes de ajo","1 cdta de pimentón ahumado","1 cdta de aceite de oliva"],
+ "Gazpacho (Andalusian cold soup)":["4 tomates maduros","½ pepino","½ pimiento","1 diente de ajo","1 cda de aceite de oliva","1 cdta de vinagre","un chorro de agua"],
+ "Pollo al ajillo (garlic chicken)":["1 pechuga de pollo o contramuslos, en trozos","4 dientes de ajo","1 cda de aceite de oliva","un chorro de vino blanco","perejil"],
+ "Squid with garlic & big salad":["150 g de calamares o gambas","2 dientes de ajo","perejil, limón","1 cdta de aceite de oliva","gran ensalada variada"],
+ "Beetroot & carrot juice":["1 remolacha pequeña","2 zanahorias","opcional: ½ manzana, para endulzar","un chorro de agua"],
+ "Beetroot, carrot & ginger":["1 remolacha pequeña","2 zanahorias","2 cm de jengibre fresco","½ limón"],
+ "Fresh orange juice":["3 naranjas, exprimidas"],
+ "Fresh lemon & water (light)":["1 limón, exprimido","250 ml de agua","opcional: unas hojas de menta","opcional: ½ cdta de miel"],
+ "Green juice (celery, spinach, lemon, ginger)":["2 ramas de apio","2 puñados de espinacas","½ pepino","½ limón","2 cm de jengibre"],
+ "Green apple & cucumber juice":["2 manzanas verdes","½ pepino","½ lima","un chorro de agua"],
+};
 function openRecipe(i){
-  const r=RECIPES[i]; if(!r) return; const det=RDETAIL[r.n]||{};
+  const r=RECIPES[i]; if(!r) return; const lang=rlang(); const det=RDETAIL[r.n]||{};
+  const ed=(lang==='es')?(RDETAIL_ES[r.n]||{}):{};
+  const ing=(lang==='es'?ed.ing:null)||det.ing, tip=(lang==='es'?ed.tip:null)||det.tip;
+  const nm=rname(r);
   const p=r.p, c=det.c||0, f=det.f||0;
-  const items=RITEMS[r.n]||[];
+  const items=(lang==='es'?(RITEMS_ES[r.n]||RITEMS[r.n]):RITEMS[r.n])||[];
   const mbar=(label,val,max,cls)=>'<div class="rm-mrow"><span class="rm-mlbl">'+label+'</span>'+
     '<div class="rm-bar"><div class="rm-bar-fill '+cls+'" style="width:'+Math.min(100,val/max*100).toFixed(1)+'%"></div></div>'+
     '<span class="rm-mval">'+val+' g</span></div>';
   const trow=(label,a,b)=>'<tr><td>'+label+'</td><td>'+a+'</td><td>'+b+'</td></tr>';
-  const shop=items.length?('<details class="rm-shop"><summary>🛒 Shopping list · tap to open</summary>'+
+  const shop=items.length?('<details class="rm-shop"><summary>'+rui('shopSummary')+'</summary>'+
     '<div class="rm-shop-body"><ul>'+items.map(x=>'<li>'+x+'</li>').join('')+'</ul>'+
-    '<p class="rm-shop-note">Everything for one portion. Snap a photo and take it shopping. 📷</p></div></details>'):'';
+    '<p class="rm-shop-note">'+rui('shopNote')+'</p></div></details>'):'';
   document.getElementById('rmCard').innerHTML=
-    '<button class="ov-close" onclick="closeRecipe()" aria-label="Close">✕</button>'+
-    (r.img?'<div class="rm-photo"><img src="'+r.img+'" alt="'+r.n+'" loading="lazy"></div>':'<div class="rm-emoji">'+r.e+'</div>')+
-    '<div class="eyebrow">'+r.m+(r.tags.indexOf('basque')>-1?' · Basque classic':'')+'</div><h3>'+r.n+'</h3>'+
-    (det.ing?'<p class="rm-ing"><strong>What is in it:</strong> '+det.ing+'</p>':'')+
-    '<div class="rm-plabel">Macros, one portion</div>'+
-    '<div class="rm-macros">'+mbar('Protein',p,60,'pro')+mbar('Carbs',c,70,'carb')+mbar('Fat',f,45,'fat')+'</div>'+
-    '<table class="rm-table"><thead><tr><th></th><th>1 portion</th><th>2 portions</th></tr></thead><tbody>'+
-      trow('Calories',r.cal+' kcal',(r.cal*2)+' kcal')+trow('Protein',p+' g',(p*2)+' g')+trow('Carbs',c+' g',(c*2)+' g')+trow('Fat',f+' g',(f*2)+' g')+
+    '<button class="ov-close" onclick="closeRecipe()" aria-label="'+rui('close')+'">✕</button>'+
+    (r.img?'<div class="rm-photo"><img src="'+r.img+'" alt="'+nm+'" loading="lazy"></div>':'<div class="rm-emoji">'+r.e+'</div>')+
+    '<div class="eyebrow">'+(lang==='es'?(TAGN_ES[r.m]||r.m):r.m)+(r.tags.indexOf('basque')>-1?rui('basqueClassic'):'')+'</div><h3>'+nm+'</h3>'+
+    (ing?'<p class="rm-ing"><strong>'+rui('whatIn')+'</strong> '+ing+'</p>':'')+
+    '<div class="rm-plabel">'+rui('macrosOne')+'</div>'+
+    '<div class="rm-macros">'+mbar(rui('protein'),p,60,'pro')+mbar(rui('carbs'),c,70,'carb')+mbar(rui('fat'),f,45,'fat')+'</div>'+
+    '<table class="rm-table"><thead><tr><th></th><th>'+rui('onePortion')+'</th><th>'+rui('twoPortions')+'</th></tr></thead><tbody>'+
+      trow(rui('calories'),r.cal+' kcal',(r.cal*2)+' kcal')+trow(rui('protein'),p+' g',(p*2)+' g')+trow(rui('carbs'),c+' g',(c*2)+' g')+trow(rui('fat'),f+' g',(f*2)+' g')+
     '</tbody></table>'+
-    '<div class="rm-tweaks"><div class="rm-tweaks-h">Small changes that add up</div>'+
+    '<div class="rm-tweaks"><div class="rm-tweaks-h">'+rui('smallChanges')+'</div>'+
       tweaksFor(r.m).map(t=>'<div class="rm-tweak"><span>'+t[0]+' '+t[1]+'</span><b>'+t[2]+'</b></div>').join('')+'</div>'+
-    (det.tip?'<div class="callout win rm-tip">💡 <strong>Lighter:</strong> '+det.tip+'</div>':'')+
+    (tip?'<div class="callout win rm-tip">💡 <strong>'+rui('lighter')+'</strong> '+tip+'</div>':'')+
     shop;
   const m=document.getElementById('recipeModal'); m.hidden=false; requestAnimationFrame(()=>m.classList.add('show'));
 }
@@ -2648,7 +3406,8 @@ function toggleAudioMenu(ev){ ev.stopPropagation(); const w=document.getElementB
 function selectAudioChapter(id){ const m=document.getElementById('audioPickMenu'); m.hidden=true; document.getElementById('audioPickWrap').classList.remove('open'); pickAudio(id); }
 document.addEventListener('click',e=>{ const w=document.getElementById('audioPickWrap'); if(w&&!w.contains(e.target)){ const m=document.getElementById('audioPickMenu'); if(m&&!m.hidden){m.hidden=true; w.classList.remove('open');} }
   const pop=document.getElementById('qrPop'); if(pop&&!pop.hidden){ const btn=document.getElementById('qrBtn'); if(!pop.contains(e.target) && (!btn||!btn.contains(e.target))) pop.hidden=true; }
-  const ap=document.getElementById('audioPop'); if(ap&&!ap.hidden && !e.target.closest('.dl-wrap')) ap.hidden=true; });
+  const ap=document.getElementById('audioPop'); if(ap&&!ap.hidden && !e.target.closest('.dl-wrap')) ap.hidden=true;
+  const pp=document.getElementById('pdfPop'); if(pp&&!pp.hidden && !e.target.closest('.dl-wrap')) pp.hidden=true; });
 buildVoiceToggle(); buildAudioMenu();
 const player=document.getElementById('player');
 function pickAudio(id){
@@ -2711,6 +3470,68 @@ if(window.matchMedia && matchMedia('(prefers-reduced-motion: no-preference)').ma
     hero.style.setProperty('--mx',((e.clientX-r.left)/r.width*100)+'%');
     hero.style.setProperty('--my',((e.clientY-r.top)/r.height*100)+'%'); });
 })();
+
+/* ============ PRINTABLE WORKSHEETS ============ */
+function wsSaveName(){ try{ localStorage.setItem('gp_wsname', document.getElementById('wsName').value); }catch(e){} }
+function buildCheckinSheet(){
+  if(typeof QUIZ_T==='undefined') return;
+  [['en','wsCheckEn','wsCommitEn'],['es','wsCheckEs','wsCommitEs']].forEach(([l,listId,commitId])=>{
+    const t=QUIZ_T[l], ol=document.getElementById(listId), cm=document.getElementById(commitId);
+    if(!t||!ol) return;
+    ol.innerHTML=t.q.map(q=>'<li class="ws-qrow"><span class="ws-q">'+q+'</span>'
+      +'<span class="ws-yn"><i class="ws-box"></i>'+t.yes+'</span>'
+      +'<span class="ws-yn"><i class="ws-box"></i>'+t.no+'</span></li>').join('');
+    if(cm) cm.innerHTML='<i class="ws-box"></i> '+t.commit;
+  });
+}
+function buildWsGrid(){
+  const g=document.getElementById('wsGrid'); if(!g) return;
+  let h=''; for(let i=1;i<=45;i++){ const s=i<=15?'s1':i<=30?'s2':'s3'; h+='<div class="ws-cell '+s+'">'+i+'</div>'; }
+  g.innerHTML=h;
+}
+const WS_ACT={'1.2':['Mostly sitting','Sobre todo sentado'],'1.375':['At home, light moving','En casa, movimiento ligero'],'1.55':['On your feet much of the day','De pie buena parte del día'],'1.725':['Active or hard daily job','Trabajo activo o duro'],'1.9':['Hard job plus training','Trabajo duro y entreno']};
+function fillCalorieSheet(){
+  const name=(document.getElementById('wsName')?.value||'').trim()||'________';
+  const burn=Math.max(0,+cioEl('cioBurn').value||0);
+  const low=Math.max(0,burn-500), high=Math.max(0,burn-300);
+  const fmt=n=>Math.round(n).toLocaleString('en-US');
+  const setAll=(cls,val)=>document.querySelectorAll('#ws-calc .'+cls).forEach(e=>{e.textContent=val;});
+  setAll('wc-name',name); setAll('wc-burn',fmt(burn)); setAll('wc-low',fmt(low)); setAll('wc-high',fmt(high));
+  setAll('wc-age',cioEl('cioAge').value||'·'); setAll('wc-ht',cioEl('cioHt').value||'·'); setAll('wc-wt',cioEl('cioWt').value||'·');
+  const sexBtn=document.querySelector('#cioSexSeg button.on'); const sx=sexBtn?sexBtn.dataset.v:((typeof CIO!=='undefined'&&CIO.sex)||'m');
+  const setL=(cls,en,es)=>{ document.querySelectorAll('#ws-calc .lang-en .'+cls).forEach(e=>{e.textContent=en;}); document.querySelectorAll('#ws-calc .lang-es .'+cls).forEach(e=>{e.textContent=es;}); };
+  setL('wc-sex', sx==='f'?'Woman':'Man', sx==='f'?'Mujer':'Hombre');
+  const act=WS_ACT[cioEl('cioAct').value]||['·','·'];
+  setL('wc-act', act[0], act[1]);
+}
+let _wsBound=false;
+function bindWsCleanup(){
+  if(_wsBound) return;
+  window.addEventListener('afterprint', wsCleanup);
+  try{ const mq=window.matchMedia('print'); if(mq.addEventListener){mq.addEventListener('change',e=>{ if(!e.matches) wsCleanup(); });} else if(mq.addListener){mq.addListener(e=>{ if(!e.matches) wsCleanup(); });} }catch(e){}
+  _wsBound=true;
+}
+function wsCleanup(){ document.body.classList.remove('ws-print','ws-print-all'); document.querySelectorAll('#worksheets .ws.active').forEach(el=>el.classList.remove('active')); }
+function printWorksheet(id){
+  const ws=document.getElementById(id); if(!ws) return;
+  if(id==='ws-calc') fillCalorieSheet();
+  document.querySelectorAll('#worksheets .ws.active').forEach(el=>el.classList.remove('active'));
+  ws.classList.add('active');
+  document.body.classList.add('ws-print');
+  bindWsCleanup();
+  requestAnimationFrame(()=>{ try{ window.print(); }catch(e){ wsCleanup(); } });
+}
+function printAllWorksheets(){
+  closePdfPop(); fillCalorieSheet();
+  document.querySelectorAll('#worksheets .ws.active').forEach(el=>el.classList.remove('active'));
+  document.body.classList.add('ws-print-all');
+  bindWsCleanup();
+  requestAnimationFrame(()=>{ try{ window.print(); }catch(e){ wsCleanup(); } });
+}
+function togglePdfPop(ev){ if(ev) ev.stopPropagation(); const p=document.getElementById('pdfPop'); if(!p) return; const a=document.getElementById('audioPop'); if(a)a.hidden=true; p.hidden=!p.hidden; }
+function closePdfPop(){ const p=document.getElementById('pdfPop'); if(p)p.hidden=true; }
+buildCheckinSheet(); buildWsGrid();
+try{ const _n=localStorage.getItem('gp_wsname'); if(_n!=null){ const _w=document.getElementById('wsName'); if(_w)_w.value=_n; } }catch(e){}
 
 /* ============ RESTORE SAVED STATE ============ */
 (function restore(){

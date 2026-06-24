@@ -2,6 +2,77 @@
 
 ---
 
+## 2026-06-24 — Spanish recipes/cheat-sheet + printable PDF worksheets
+
+- **Cheat Sheet + Recipes now bilingual.** Added the full ES `.lang-es` block for the Cheat Sheet, and
+  made the JS-driven Recipes language-aware (ES recipe names, filters, tag chips, the detail modal with
+  ingredients/macros/shopping-list/tweaks). `setLang()` now re-renders recipes + relabels filters.
+- **New "Print worksheets" section (`#printables`) + nav entry** ("Print & keep" / "Imprimir y guardar").
+  Has a shared name field (`#wsName`, saved to `gp_wsname`) and 6 buttons.
+- **Print-to-PDF worksheet system.** A body-level `<div id="worksheets">` holds 6 bilingual sheets
+  (`ws-cover`, `ws-checkin`, `ws-calc`, `ws-power`, `ws-plan`, `ws-contract`). `printWorksheet(id)` adds
+  `body.ws-print`, marks one `.ws.active`, `window.print()`; cleanup on `afterprint` + `matchMedia('print')`.
+  New `@media print` block isolates one sheet (`body.ws-print .shell,#hills{display:none}` + show only
+  `.ws.active`). Language follows the page via the global `.lang-en/.lang-es` rule. `@page{margin:13mm}`.
+  - **Cover:** Ikurriña + Amorebieta + logo + audiobook QR (scan → audio).
+  - **Calorie sheet is DYNAMIC:** `fillCalorieSheet()` reads live calculator (`#cioBurn`, age/ht/wt, sex
+    toggle, `#cioAct`→`WS_ACT` bilingual label), writes name + base need + target band (burn−500…−300)
+    into `.wc-*` spans in both lang blocks. Marten sets calc + name, saves; repeats for the other person.
+  - **45-day sheet:** habits checklist + JS-built 45-cell phase-coloured grid (`buildWsGrid`) + weekly
+    weight table with **split "Peso Pilar" / "Peso Guillermo"** columns.
+  - **Check-in sheet:** `buildCheckinSheet()` emits the 8 Qs + commit (Sí/No boxes) from `QUIZ_T`.
+  - **Power + Contract:** curated power copy (ES authored fresh) + reused contract markup w/ signatures.
+- **Spanish flag instead of Basque ribbon below the top.** New `.es-ribbon` (red-yellow-red); swapped the
+  Power-page (`#motivation`) and footer `eus-ribbon`→`es-ribbon` (+ print rule). **Top Ikurriña +
+  "Amorebieta · Euskal Herria" kept Basque** per Marten. Worksheet inner sheets use `.es-ribbon`.
+- **Honest check-in EN/ES re-aligned:** ES Q3 (post-dinner sweets) and Q7 (lift vs stairs) now match EN.
+- **Verified by rendering real PDFs** (headless Chrome `--print-to-pdf` of each isolated sheet, read back):
+  all 6 print alone, correct language, dynamic calc fills, no guide bleed. JS syntax OK; 0 em-dashes
+  (placeholders switched to `·`). **NOT pushed to GitHub yet** (awaiting Marten's OK).
+- **UX round (Marten feedback):** header now has a **📄 Worksheets** link (scrolls to `#printables`, no
+  popup); the **name field + "Save this as a PDF" button live ON the calculator** (`#how`) so each person's
+  sheet is made in place (name printed on the sheet → Guillermo/Pilar never mixed up); `#printables`
+  calorie button just links up to the calculator. Added **"All in one PDF (with cover)"** =
+  `printAllWorksheets()` (body `ws-print-all`, every `.ws` one-per-page, cover first; verified 6-page booklet).
+  Print tiles made compact (flex-wrap chips, not fat grid).
+- **New cover design** (Marten picked variant 2 of 3 rendered options): full-bleed **mountain-band** cover
+  (`.wc2-*`), dark-olive clipped mountain range bleeding to the page edge, QR card on it, eguzkilore stamp
+  top-right, Ikurriña top-left, Basque tricolor at the very bottom. Needed `@page{size:A4; margin:0}` +
+  `html`/body margin reset + `.ws-cover{height:297mm; overflow:hidden}` so it prints as exactly ONE
+  full-bleed page (text sheets keep `padding:14mm 13mm`). Fixed `var(--saffron)`→`var(--honey)` (saffron
+  was undefined). All re-verified via headless-Chrome PDF renders.
+- **Contract PDF expanded:** now also carries the on-screen "Why a contract, and why now?" callout +
+  "Put something on the line" before the signable box (EN+ES), still one page.
+- **New "Mindset" finale PDF** (`#ws-mindset`, button 🧭 in `#printables`, in the booklet between power &
+  plan): a distilled bilingual manifesto of the deepest truths pulled from every mindset section, +
+  `.ws-truth`/`.ws-finale` styles. **Expanded to 2 pages** with the funniest lines per Marten (cornflakes
+  breakfast-myth, the "I've seen your arms" Guillermo joke, the cheesecake "Vete a tu puta casa", "cannot
+  out-train a fork on the scaffolding", Pilar's frying-pan + Einstein) and a green **audiobook QR block**
+  at the end (`.ws-audio`): scan → listen in the player OR download all audio to the phone. Booklet now 9 pages.
+- **Footer audiobook CTA on one line:** `.dl-zip{white-space:nowrap}`, QR 190→160px, card max-width 470→520px.
+- **Mindset PDF round 2 (Marten):** trimmed to **fewer, longer** points and properly balanced across 2
+  pages (5 truths page 1 / 3 + finale + QR page 2, no split sections). Dropped "Your why", "Fall, get back
+  up", "You are not alone" (latter lives in the contract); lengthened the kept ones and added the Bible line
+  **"the spirit is willing, but the flesh is weak"** to the strong/weak-self point. **Power Page moved to the
+  very LAST sheet** (DOM + booklet + button order). Booklet now 8 pages.
+- **Out of scope (Marten):** the Preparation section as PDF was explicitly deferred.
+
+**Feierabend-Stand 2026-06-24 — alles lokal in `site/index.html`, von Marten abgenommen ("passt"),
+NICHT committet/gepusht.** Worksheet-Reihenfolge final: Cover · Honest check-in · Calorie sheet · Mindset ·
+45-day plan · Contract · Power page (Power ganz hinten). "All in one PDF" = 8-Seiten-Booklet. Verifiziert
+per headless-Chrome-PDF-Render; JS sauber (847 Z.), 0 Em-Dashes.
+
+**Offen / morgen weitermachen:**
+1. **Committen + Push auf GitHub** (`main` + `git subtree push --prefix site origin gh-pages`) — wartet auf
+   Martens ausdrückliches OK; heute bewusst nicht gemacht.
+2. **Genuinely last** (laut [[feedback-build-order]]): **ES-Read-aloud-Audio neu generieren** für die seit dem
+   Umbau geänderten/neuen Kapitel, sobald der Text endgültig gelockt ist (Credits sparen).
+3. ⚠️ **ElevenLabs-Key rotieren** (war mal in einem Screenshot sichtbar) — offenes Sicherheits-To-do.
+4. Optional: **Preparation-Sektion als PDF** (heute bewusst zurückgestellt), falls gewünscht.
+5. Optional-Feinschliff: Mindset-Seite 2 hat unten noch etwas Luft — bei Bedarf weiter ausbauen.
+
+---
+
 ## 🟢 START HERE NEXT (where we left off, end of day 2026-06-18)
 
 `site/index.html` is the live file (JS clean, 0 em-dashes, internal links resolve). Resume here.
