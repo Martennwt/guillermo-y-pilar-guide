@@ -29,6 +29,9 @@ const VOICES = {
     settings: { stability: 0.9, similarity_boost: 0.9, style: 0.4, use_speaker_boost: true, speed: 1.0 } },
   dave:      { id: 'QtPMrakdgePQIUwOX7Ut', folder: 'dave',
     settings: { stability: 0.9, similarity_boost: 0.9, style: 0.4, use_speaker_boost: true, speed: 1.08 } },
+  // Toni: expressive, fast and spontaneous. The "fast voice" alternative to the slower dave.
+  toni:      { id: '851ejYcv2BoNPjrkw93G', folder: 'toni',
+    settings: { stability: 0.5, similarity_boost: 0.85, style: 0.5, use_speaker_boost: true, speed: 1.08 } },
 };
 
 /* Sections to voice, top down to "How you do it". id = the section's id in index.html. */
@@ -94,7 +97,7 @@ async function tts(text, voice, key) {
 (async () => {
   const voiceName = arg('voice', 'guillermo');
   const voice = VOICES[voiceName];
-  if (!voice) throw new Error('unknown voice: ' + voiceName + ' (use guillermo|dunkel)');
+  if (!voice) throw new Error('unknown voice: ' + voiceName + ' (use guillermo|dave|toni)');
   const only = arg('only');
   const dry = has('dry');
   const html = fs.readFileSync(HTML, 'utf8');
