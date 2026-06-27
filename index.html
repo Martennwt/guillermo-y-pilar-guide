@@ -184,6 +184,10 @@ section.card.tint{background:linear-gradient(180deg,var(--paper-2),var(--paper))
 .photo{position:relative; margin:1.2rem 0; border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow-sm)}
 .photo img{display:block; width:100%; height:clamp(180px,30vw,300px); object-fit:cover}
 .photo figcaption{position:absolute; right:8px; bottom:6px; font-size:.6rem; color:#fff; background:rgba(0,0,0,.4); padding:2px 8px; border-radius:999px; font-weight:700; letter-spacing:.03em}
+/* "Move your body" illustrations: full image (no crop) + caption below */
+.move-ill{margin:1.3rem 0; text-align:center}
+.move-ill img{display:block; width:100%; height:auto; border-radius:var(--radius); box-shadow:var(--shadow-sm)}
+.move-ill figcaption{margin-top:.55rem; font-size:.82rem; color:var(--ink-soft); font-weight:700}
 /* compact side-by-side: photo left, text + list right */
 .mglass{display:grid; grid-template-columns:clamp(170px,32%,280px) 1fr; gap:1.1rem; align-items:stretch; margin:1.2rem 0}
 .mglass .photo{margin:0; height:100%}
@@ -1614,12 +1618,13 @@ table.swaps tr:last-child td{border-bottom:none}
   <!-- MOVE YOUR BODY -->
   <section class="card tint" id="move">
     <div class="lang-en">
-    <div class="eyebrow">The other half of the engine</div>
+    <div class="eyebrow">Not the extra. The engine.</div>
     <h2>Move Your Body 🏃</h2>
     <p class="lead">Food gets all the attention, but movement is the other half of this, and it is just as
       much a head game as the plate is. You do not move to earn your dinner. You move because a body that
       moves stays strong, clear and alive. The old rule is blunt and true: <strong>if you do not use it,
-      you lose it.</strong></p>
+      you lose it.</strong> So let me say it straight, before anything else: <strong>this part is not
+      optional.</strong> It is not the little cherry on top once the eating is sorted. It is the engine.</p>
 
     <div class="callout key"><strong>Here is the part most people get wrong.</strong> A slim person who
       never moves is often worse off than someone heavier who walks, carries and stays active. How fit you
@@ -1638,39 +1643,72 @@ table.swaps tr:last-child td{border-bottom:none}
       away. But it is also not the end of the road. The question was never <em>"can I still do everything I
       once did?"</em> It is a kinder one: <strong>"what can I do instead?"</strong> Maybe not a gym, maybe not
       the old routine, but there is always something you can still do. So we do not chase the old way. We find
-      the version your body says yes to, and we build from there.</p>
+      the version your body says yes to, and we build from there, slowly, no rush, no ego.</p>
 
-    <p>So we keep it stupidly simple. No gym, no plan, no two or three hours, just a few minutes and the
-      willingness to begin. A walk clears the head and drains the stress that drives the evening snacking. A
-      few minutes of strength keeps the muscle on your frame. That is the whole job.</p>
+    <p>So we keep it stupidly simple. No gym, no plan, no two or three hours. Two things, that is the whole
+      job: a walk, and a short bit of strength. As little as <strong>twice a week, ten to fifteen minutes a
+      time.</strong> If you catch the bug you can always do more, but you never have to.</p>
 
-    <div class="grid2">
-      <div class="minicard good"><h3>🚶 Option one: a walk</h3>
-        <p>Never underestimate it. Aim for somewhere between <strong>5,000 and 10,000 steps</strong>, which is
-          roughly a 45 to 60 minute walk: out toward Durango to the edge of the woods and back, or a loop
-          through the park, stairs instead of the lift. A walk is as good for the head as for the body, and on
-          a heavy day it is the easiest win there is. The body answers faster than you would think.</p>
-      </div>
-      <div class="minicard good"><h3>💪 Option two: a 10 to 15 minute workout</h3>
-        <p>This is where it really pays. A short session uses your whole body, so you burn more than on a walk
-          and build muscle at the same time. Make the <strong>push-up</strong> your hero: one move that hits
-          your chest, shoulders, arms, triceps and your whole core, and just holding yourself steady burns
-          extra on top. Cannot do one off the floor? Lean into the kitchen counter or the wall and lower the
-          angle as you get stronger. You finish feeling your body, and your strength, again.</p>
-      </div>
-    </div>
+    <h3>Start with a walk 🚶</h3>
+    <p>Never underestimate it. Aim for somewhere between <strong>5,000 and 10,000 steps</strong>, which is
+      roughly a 45 to 60 minute walk: out toward Durango to the edge of the woods and back, or a loop through
+      the park, the stairs instead of the lift. A walk is as good for the head as for the body. It clears the
+      mind, drains the stress that drives the evening snacking, and reminds you who is captain. On a heavy day
+      it is the easiest win there is, and the body answers faster than you would think.</p>
 
-    <p>Pick whichever you fancy, the walk or the workout, or best of all do both and swap them around. Here is
-      the whole promise: as little as <strong>twice a week, ten to fifteen minutes a time.</strong> If you
-      catch the bug you can always do more, but you never have to.</p>
+    <h3>Then add a short workout 💪</h3>
+    <p>This is the part that really pays, and the part it is tempting to skip. Do not. A walk keeps you moving,
+      but a few honest minutes of strength are what keep the muscle on your frame and build a shield around
+      your lower back. No gym, no fee, no hour-long trip and shower. You never even have to leave the living
+      room: put a short workout on the TV and follow along, no thinking required.</p>
 
-    <p>And the "I have no time" wall is not real. Ten or fifteen minutes is enough, and you never have to leave
-      the living room or pay for a gym. Open YouTube on the TV, pick any short workout, and just follow along, no
-      thinking required. Even a single kettlebell in the corner turns the room into a whole gym.</p>
+    <figure class="move-ill">
+      <img src="assets/img/move/livingroom.webp" alt="A man doing a push-up on a mat at home, following a short workout on the TV" loading="lazy">
+      <figcaption>Fifteen minutes, your living room, a video on the telly. That is the whole setup.</figcaption>
+    </figure>
+
+    <p>And it does not have to be complicated. A handful of simple moves, done well, will take you a long way.
+      Make the <strong>push-up</strong> your hero: one move that hits your chest, shoulders, arms and your
+      whole core at once. Cannot do one off the floor yet? Lean into the kitchen counter or the wall and lower
+      the angle as you get stronger. Add a <strong>squat</strong> for your legs and backside, a gentle
+      <strong>core move</strong> on the floor, and a <strong>back exercise with a band on the door</strong>,
+      and you have your whole body covered.</p>
+
+    <figure class="move-ill">
+      <img src="assets/img/move/exercises.webp" alt="Four simple home exercises: a push-up, a squat, a floor core move, and a resistance-band back pull on a door" loading="lazy">
+      <figcaption>Four moves to begin: a push-up, a squat, a core move on the floor, and a band pull on the door. That is plenty to start.</figcaption>
+    </figure>
+
+    <div class="callout key"><strong>One rule above all: do it right, not hard.</strong> I talked this through
+      with Sara to be sure of one thing, that the progress you fight for does not get undone by an exercise
+      done badly and a back that pays the price. So we do the opposite of ego. We start light, we keep the
+      form clean, and we work <em>toward</em> the old fear slowly instead of crashing into it. A strong,
+      supported back is built from good reps, not heavy ones. Pain is a stop sign, never a badge of honour.</div>
+
+    <h3>Get it shown to you once 🧭</h3>
+    <p>Here is the smartest money you will spend on this, and it is barely any. You do not need a gym
+      membership, and you do not need a trainer every week draining your wallet. You need someone who knows
+      backs to <strong>show you these few exercises once</strong>, watch how you do them, and tell you how much
+      is right for the start. That was Sara's advice too: go a couple of times, get your form looked at, then
+      take it home and do it yourself.</p>
+
+    <p>So I did the legwork for you. There are good physiotherapists <strong>right here in Durango and
+      Amorebieta</strong>. I looked into three, I have been on the table of one of them myself, and two are
+      genuinely excellent, specialised in backs, with very strong reviews from people who walked in with the
+      very worries you carry. I will give you their names directly, so you walk straight into good hands and
+      skip all the guessing.</p>
+
+    <p>Book an hour, maybe two. Let them take you slowly through the moves: which ones, how many, how often,
+      what to watch for. Then you do them at home. And as you get fitter and stronger, and you will, you add a
+      little: a kettlebell, a light dumbbell. Drop back in now and then and say <em>"this is where I am now,
+      what is next?"</em> Legs, glutes, core, the plank, the push-up, it all works together, and it all feeds
+      one thing: a lower back that finally has something holding it up. Fix the cause, do not just chase
+      today's ache.</p>
 
     <div class="callout win"><strong>Do the math.</strong> The stairs a few times a week, a couple of walks,
       and two or three ten minute sessions. On their own each looks like nothing. Stacked across the weeks and
-      months they burn a serious pile of extra calories, and they protect the muscle you do not want to lose.</div>
+      months they burn a serious pile of extra calories, and they guard the muscle and the back you do not
+      want to lose.</div>
 
     <p>Some days you will not want to. You will go looking for the excuse, and now and then the couch will win.
       That is fine, it is human. What matters is never the perfect week, it is the pattern: a couple of
