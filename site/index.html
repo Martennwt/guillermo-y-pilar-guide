@@ -188,6 +188,21 @@ section.card.tint{background:linear-gradient(180deg,var(--paper-2),var(--paper))
 .move-ill{margin:1.3rem 0; text-align:center}
 .move-ill img{display:block; width:100%; height:auto; border-radius:var(--radius); box-shadow:var(--shadow-sm)}
 .move-ill figcaption{margin-top:.55rem; font-size:.82rem; color:var(--ink-soft); font-weight:700}
+/* physiotherapist option cards (Move Your Body) */
+.physios{display:grid; gap:.75rem; margin:1.2rem 0}
+.physio{background:var(--paper); border:1px solid var(--line); border-radius:14px; padding:.85rem 1rem; box-shadow:var(--shadow-sm)}
+.physio.top{border-color:var(--olive); box-shadow:0 6px 22px rgba(63,84,48,.16)}
+.physio .ph-top{display:flex; flex-wrap:wrap; align-items:baseline; gap:.45rem .55rem; margin-bottom:.15rem}
+.physio h4{margin:0; font-size:1.04rem; color:var(--olive-deep)}
+.physio .ph-town{font-size:.68rem; font-weight:800; letter-spacing:.05em; text-transform:uppercase; color:var(--ink-soft)}
+.physio .ph-pick{font-size:.6rem; font-weight:800; letter-spacing:.05em; text-transform:uppercase; background:var(--olive); color:#fff; padding:.12rem .5rem; border-radius:999px}
+.physio .ph-stars{margin-left:auto; font-size:.82rem; font-weight:800; color:var(--terracotta); white-space:nowrap}
+.physio p{margin:.3rem 0 .65rem; font-size:.9rem}
+.physio .ph-links{display:flex; flex-wrap:wrap; gap:.4rem}
+.physio .ph-links a{font-size:.78rem; font-weight:800; text-decoration:none; padding:.34rem .72rem; border-radius:999px; border:1px solid var(--line-2); transition:filter .15s}
+.physio .ph-links a.web{background:var(--olive); color:#fff; border-color:var(--olive)}
+.physio .ph-links a.map{background:var(--paper-2); color:var(--olive-deep)}
+.physio .ph-links a:hover{filter:brightness(.95)}
 /* compact side-by-side: photo left, text + list right */
 .mglass{display:grid; grid-template-columns:clamp(170px,32%,280px) 1fr; gap:1.1rem; align-items:stretch; margin:1.2rem 0}
 .mglass .photo{margin:0; height:100%}
@@ -1680,29 +1695,51 @@ table.swaps tr:last-child td{border-bottom:none}
     </figure>
 
     <div class="callout key"><strong>One rule above all: do it right, not hard.</strong> I talked this through
-      with Sara to be sure of one thing, that the progress you fight for does not get undone by an exercise
-      done badly and a back that pays the price. So we do the opposite of ego. We start light, we keep the
-      form clean, and we work <em>toward</em> the old fear slowly instead of crashing into it. A strong,
-      supported back is built from good reps, not heavy ones. Pain is a stop sign, never a badge of honour.</div>
+      with Sarah, the chiropractor whose work has already done so much for that back, the reason an operation
+      could be sidestepped. The last thing we want is to undo that hard-won progress with a single exercise
+      done badly. So we do the opposite of ego. We start light, we keep the form clean, and we work
+      <em>toward</em> the old fear slowly instead of crashing into it. A strong, supported back is built from
+      good reps, not heavy ones. Pain is a stop sign, never a badge of honour.</div>
 
-    <h3>Get it shown to you once 🧭</h3>
-    <p>Here is the smartest money you will spend on this, and it is barely any. You do not need a gym
-      membership, and you do not need a trainer every week draining your wallet. You need someone who knows
-      backs to <strong>show you these few exercises once</strong>, watch how you do them, and tell you how much
-      is right for the start. That was Sara's advice too: go a couple of times, get your form looked at, then
-      take it home and do it yourself.</p>
+    <h3>First get cleared, then train 🧭</h3>
+    <p>Here is the order that matters for a back that has been through it: <strong>first</strong> you sit down
+      with someone who truly knows backs and let them tell you which movements are safe for <em>you</em>.
+      <strong>Then</strong> you train. A video or an app cannot look at your back and give it the all clear. A
+      good physio can, and that one visit is the smartest, cheapest insurance there is. It was Sarah's advice
+      too: go a couple of times, get your form looked at, then take it home and do it yourself.</p>
 
-    <p>So I did the legwork for you. There are good physiotherapists <strong>right here in Durango and
-      Amorebieta</strong>. I looked into three, I have been on the table of one of them myself, and two are
-      genuinely excellent, specialised in backs, with very strong reviews from people who walked in with the
-      very worries you carry. I will give you their names directly, so you walk straight into good hands and
-      skip all the guessing.</p>
+    <p>So I did the legwork for you. Right here in <strong>Durango and Amorebieta</strong> there are people who
+      are genuinely good at exactly this. I looked into them, I have been on the table of one myself, and these
+      are the ones I would send you to. Tap a name to open their site or find them on the map.</p>
 
-    <p>Book an hour, maybe two. Let them take you slowly through the moves: which ones, how many, how often,
-      what to watch for. Then you do them at home. And as you get fitter and stronger, and you will, you add a
-      little: a kettlebell, a light dumbbell. Drop back in now and then and say <em>"this is where I am now,
-      what is next?"</em> Legs, glutes, core, the plank, the push-up, it all works together, and it all feeds
-      one thing: a lower back that finally has something holding it up. Fix the cause, do not just chase
+    <div class="physios">
+      <div class="physio top">
+        <div class="ph-top"><span class="ph-pick">My top pick</span><h4>Hodei Gallastegui Fisioterapia</h4><span class="ph-town">Durango</span><span class="ph-stars">★ 4.8 to 5.0</span></div>
+        <p>The best fit for a back like this. He works in real rehab and therapeutic exercise, not just easing
+          the pain for a day. He was the physio for the Dakar Rally and the local Cultural team, and one
+          patient came back from an L5 to S1 disc hernia in five months. He hunts down the cause and sends you
+          home with the exact exercises to keep it from coming back.</p>
+        <div class="ph-links"><a class="web" href="https://www.fisioterapiahodeigallastegui.com/" target="_blank" rel="noopener">🌐 Website</a><a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=Hodei%20Gallastegui%20Fisioterapia%20Durango" target="_blank" rel="noopener">📍 Map</a><a class="map" href="tel:+34688884835">📞 Call</a></div>
+      </div>
+      <div class="physio">
+        <div class="ph-top"><h4>Fisioterapia y Osteopatía Eguzki</h4><span class="ph-town">Durango</span><span class="ph-stars">★ 4.6</span></div>
+        <p>A big team of seven, with gentle group Pilates and stretching, and even home visits. A soft, guided
+          way in while your back is still settling.</p>
+        <div class="ph-links"><a class="web" href="https://fisioeguzki.com" target="_blank" rel="noopener">🌐 Website</a><a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=Fisioterapia%20Osteopatia%20Eguzki%20Durango" target="_blank" rel="noopener">📍 Map</a><a class="map" href="tel:+34946033230">📞 Call</a></div>
+      </div>
+      <div class="physio">
+        <div class="ph-top"><h4>Espazio Bizia</h4><span class="ph-town">Amorebieta</span><span class="ph-stars">★ 5.0</span></div>
+        <p>Pilates right in Amorebieta, with a teacher people praise for watching your technique like a hawk so
+          you build strength without getting hurt. A calm place to begin, close to home.</p>
+        <div class="ph-links"><a class="web" href="https://www.instagram.com/espaziobizia/" target="_blank" rel="noopener">📷 Instagram</a><a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=Espazio%20Bizia%20Amorebieta" target="_blank" rel="noopener">📍 Map</a><a class="map" href="tel:+34636695466">📞 Call</a></div>
+      </div>
+    </div>
+
+    <p>Book an hour, maybe two. Let them watch your form, tell you which exercises and how many, and clear what
+      is safe. Then you take it home and do it yourself. And as you get fitter and stronger, and you will, you
+      add a little: a kettlebell, a light dumbbell. Drop back in now and then and say <em>"this is where I am
+      now, what is next?"</em> Legs, glutes, core, the plank, the push-up, it all works together, and it all
+      feeds one thing: a lower back that finally has something holding it up. Fix the cause, do not just chase
       today's ache.</p>
 
     <div class="callout win"><strong>Do the math.</strong> The stairs a few times a week, a couple of walks,
