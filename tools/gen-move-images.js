@@ -38,6 +38,19 @@ const JOBS = [
       'the floor; TOP-RIGHT a bodyweight squat with knees bent; BOTTOM-LEFT a core crunch lying on his back with ' +
       'knees bent; BOTTOM-RIGHT a back exercise pulling a resistance band anchored to a closed door. Consistent ' +
       'same person and clothing in all four panels. ' + STYLE },
+  { id: 'pilar-livingroom', prompt:
+      'A warm natural photograph of an ordinary woman around 55 (normal everyday body, NOT a fitness model, ' +
+      'shoulder-length hair, casual home clothes) doing a gentle morning workout on a mat in a bright, tidy ' +
+      'apartment living room. On the wall a flat-screen TV shows a friendly instructor leading a simple workout. ' +
+      'Soft morning daylight through the window, a sofa and a plant behind her. Calm and content. Candid, ' +
+      'realistic, encouraging, soft warm light, photorealistic, 35mm. No text, no labels.' },
+  { id: 'pilar-exercises', prompt:
+      'A clean four-panel photo grid, two by two, thin white gutters, plain light neutral background. The SAME ' +
+      'ordinary woman around 55 (normal body, casual home clothes) demonstrates one simple core-and-strength ' +
+      'exercise per panel, photorealistic and clearly from the side: TOP-LEFT a bodyweight squat; TOP-RIGHT a ' +
+      'glute bridge lying on her back with knees bent and hips lifted; BOTTOM-LEFT a forearm plank holding a ' +
+      'straight line; BOTTOM-RIGHT a standing wall push-up with both hands on the wall. Consistent same person ' +
+      'and clothing in all four panels. Soft even lighting, simple and instructional. Photorealistic. No text, no numbers, no labels.' },
 ];
 
 function has(f) { return process.argv.includes(f); }
