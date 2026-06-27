@@ -42,6 +42,7 @@ const CHAPTERS = [
   { id: 'why',       out: '06-vuestro-porque.mp3' },
   { id: 'insanity',  out: '07-la-locura.mp3' },
   { id: 'close',     out: '08-sigue-volviendo.mp3' },
+  { id: 'how',       out: '09-calorias.mp3' },
 ];
 
 function readKey() {
@@ -59,6 +60,7 @@ function extractEs(html, id) {
   const secEnd = html.indexOf('</section>', s);
   if (s < 0 || secEnd < 0 || s > secEnd) throw new Error('lang-es not found for ' + id);
   let b = html.slice(s + esTag.length, secEnd);
+  b = b.split('<div class="cio"')[0];   // drop the shared calculator widget (and anything after it) from the voiced text
   b = b
     .replace(/<div class="eyebrow">[\s\S]*?<\/div>/g, ' ')
     .replace(/<div class="nextprev">[\s\S]*?<\/div>/g, ' ')

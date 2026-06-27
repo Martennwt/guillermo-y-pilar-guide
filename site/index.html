@@ -106,7 +106,7 @@ header.bar{position:sticky; top:0; z-index:70; display:flex; align-items:center;
 .menu-btn:hover{background:var(--paper-2)}
 
 /* ===== stop the horizontal wobble on mobile (screen only, never touch print) =====
-   NB: must be overflow-x:CLIP, not hidden — hidden makes body a scroll container
+   NB: must be overflow-x:CLIP, not hidden (hidden makes body a scroll container)
    and breaks the sticky header; clip trims the overflow without that side effect. */
 @media screen{ html,body{overflow-x:clip} body{max-width:100%} }
 /* ===== phones: bigger menu button, smaller + more centred brand ===== */
@@ -395,6 +395,10 @@ html[data-lang="es"] #esBanner{display:block}
 .lang-es{display:none}
 html[data-lang="es"] .lang-en{display:none}
 html[data-lang="es"] .lang-es{display:block}
+/* inline variant for the calculator labels (so ES does not break the line) */
+.cio .lang-es{display:none}
+html[data-lang="es"] .cio .lang-en{display:none}
+html[data-lang="es"] .cio .lang-es{display:inline}
 /* sticky read-aloud bar (full-width footer player) */
 #audiobar{position:fixed; left:50%; bottom:max(.9rem,env(safe-area-inset-bottom)); transform:translateX(-50%); z-index:70;
   width:min(720px, calc(100% - 1.4rem)); display:flex; align-items:center; gap:.55rem clamp(.5rem,2vw,.9rem); flex-wrap:wrap;
@@ -1450,73 +1454,119 @@ table.swaps tr:last-child td{border-bottom:none}
 
   <!-- HOW IT WORKS -->
   <section class="card" id="how">
+    <div class="lang-en">
     <div class="eyebrow">The whole machine, in one picture</div>
     <h2>Calories In, Calories Out ⚖️</h2>
-    <p class="lead">Of everything on these pages, this is the simplest, and the one you have heard a
-      thousand times: calories in, calories out. You do not need to master the science. You need two small
-      things: a rough sense of your own base need, and the habit of turning the packet over and reading the
-      back before it lands in the trolley. No stress, no obsessing, just a glance. I promise you will be
-      surprised how much sugar and fat hide in there, and how fast one little snack hands back the 400
-      calories you just earned on a 7,000 step walk, so the whole effort was for nothing. That is exactly
-      what the calculator below is for.</p>
-    <p><strong>Calories IN</strong> is the food and drink you take in. <strong>Calories OUT</strong> is
-      everything your body burns just living, working and moving. Tip the balance, and over time your weight
-      quietly follows.</p>
+    <p class="lead">There is a whole industry built on making this sound complicated: the pills, the teas, the
+      magazine miracle plans. You can ignore all of it. Underneath the noise sits one simple, stubborn truth:
+      calories in, calories out. Calories in is what you eat and drink. Calories out is everything your body
+      burns, just by living, working and moving. Tip that balance one way or the other, and over time your
+      weight quietly follows.</p>
     <div class="callout key">
       <strong>Eat less than you burn, and you lose.</strong><br>
       <strong>Eat more than you burn, and you gain.</strong><br>Everything else is detail.
+    </div>
+    <p>The number that matters most is your <strong>daily burn</strong>: the total energy your body spends in
+      a day. It starts from what you burn just being alive, set by your weight, height, age and sex, since a
+      woman's body usually burns a little less. Then it grows with how active your day is, because a hard day
+      on your feet burns far more than a quiet one at a desk. Add it up, and you have a solid estimate of what
+      you burn in a day.</p>
+    <p>Picture your body like a wood stove. The food you eat is the wood you feed in, and the fire is your
+      body burning it all day. Feed it a little <strong>less</strong> than it burns, and the fire reaches into
+      the woodpile you already carry, your fat, to cover the gap. That, in one picture, is how you lose weight.</p>
+    <p>Here it is in plain numbers. Say your burn is <strong>2,500</strong>. Eat 2,500 and you hold steady.
+      Eat 3,000, and that extra 500 slowly goes on as fat. Eat 2,000, and you are 500 short, so your body
+      melts about half a kilo of fat that week. The bigger the gap, the faster it moves, and about
+      <strong>500 a day</strong> is the sweet spot: steady, safe, easy to live with. A body doing hard work
+      burns plenty, so you never need to starve. You just stay a little under.</p>
+    <p>So that is the whole game, and you never have to guess your number. The calculator just below works it
+      out: put in your age, height, weight and how your day usually goes. Just remember it moves with you,
+      more on a busy day, less on a quiet one. And you do not have to hold it in your head: print the little
+      sheet, write your number on it, and keep it where you will see it, always there in black and white.</p>
+    </div>
+    <div class="lang-es">
+    <div class="eyebrow">La máquina entera, en una imagen</div>
+    <h2>Calorías que entran, calorías que salen ⚖️</h2>
+    <p class="lead">Hay una industria entera dedicada a hacer que esto parezca complicado: las pastillas, los
+      tés, los planes milagro de las revistas. Puedes ignorarlo todo. Debajo de tanto ruido hay una verdad
+      simple y tozuda: calorías que entran, calorías que salen. Lo que entra es lo que comes y bebes. Lo que
+      sale es todo lo que tu cuerpo quema, solo por vivir, trabajar y moverse. Inclina esa balanza hacia un
+      lado o el otro, y con el tiempo tu peso va detrás, sin hacer ruido.</p>
+    <div class="callout key">
+      <strong>Come menos de lo que quemas, y adelgazas.</strong><br>
+      <strong>Come más de lo que quemas, y engordas.</strong><br>Todo lo demás son detalles.
+    </div>
+    <p>El número que más importa es tu <strong>gasto diario</strong>: la energía total que tu cuerpo consume
+      en un día. Empieza por lo que quemas solo por estar vivo, que depende de tu peso, tu altura, tu edad y
+      tu sexo, ya que el cuerpo de una mujer suele quemar un poco menos. Luego sube según lo activo que sea tu
+      día, porque un día duro de pie quema mucho más que uno tranquilo en una silla. Súmalo todo y tienes una
+      estimación sólida de lo que quemas al día.</p>
+    <p>Imagina tu cuerpo como una estufa de leña. La comida que comes es la leña que metes, y el fuego es tu
+      cuerpo quemándola todo el día. Dale un poco <strong>menos</strong> de lo que quema, y el fuego echa mano
+      del montón de leña que ya llevas encima, tu grasa, para cubrir la diferencia. Eso, en una sola imagen,
+      es cómo se adelgaza.</p>
+    <p>Aquí lo tienes en números claros. Pongamos que tu gasto es <strong>2.500</strong>. Come 2.500 y te
+      mantienes. Come 3.000, y esas 500 de más se van acumulando como grasa. Come 2.000, y te quedan 500
+      cortas, así que tu cuerpo derrite alrededor de medio kilo de grasa esa semana. Cuanto mayor es la
+      diferencia, más rápido va, y unas <strong>500 al día</strong> es el punto justo: constante, seguro y
+      fácil de mantener. Un cuerpo que hace trabajo duro quema mucho, así que nunca hace falta pasar hambre.
+      Solo te quedas un poco por debajo.</p>
+    <p>Así que ese es todo el juego, y nunca tienes que adivinar tu número. La calculadora de aquí abajo lo
+      saca por ti: pon tu edad, tu altura, tu peso y cómo suele ser tu día. Solo recuerda que se mueve
+      contigo, más en un día ajetreado, menos en uno tranquilo. Y no tienes que llevarlo en la cabeza: imprime
+      la hojita, apunta tu número en ella, y guárdala donde la veas, siempre ahí, negro sobre blanco.</p>
     </div>
 
     <div class="cio" id="cio" data-state="lose">
       <div class="cio-top">
         <div class="cio-burn">
-          <span class="cio-burn-lbl">Your daily burn (OUT) <button type="button" class="cio-help" id="cioHelpBtn" onclick="cioHelp()" aria-label="How is this worked out?">?</button></span>
+          <span class="cio-burn-lbl"><span class="lang-en">Your daily burn (OUT)</span><span class="lang-es">Tu gasto diario (OUT)</span> <button type="button" class="cio-help" id="cioHelpBtn" onclick="cioHelp()" aria-label="How is this worked out?">?</button></span>
           <span class="cio-burn-num"><input id="cioBurn" type="number" min="1200" max="5000" step="10" value="2600" inputmode="numeric" aria-label="Your daily burn in calories"> kcal</span>
-          <span class="cio-burn-note" id="cioBurnNote">example, type your own or use the calculator below</span>
+          <span class="cio-burn-note" id="cioBurnNote"><span class="lang-en">example, type your own or use the calculator below</span><span class="lang-es">ejemplo, escribe el tuyo o usa la calculadora de abajo</span></span>
         </div>
         <div class="cio-chip" id="cioChip">Losing fat 🔥</div>
       </div>
 
       <div class="cio-sexrow">
-        <span class="cio-steps-lbl">Base need for a</span>
+        <span class="cio-steps-lbl"><span class="lang-en">Base need for a</span><span class="lang-es">Gasto base:</span></span>
         <div class="segmented sm" id="cioSexSeg">
-          <button type="button" data-v="m" class="on" onclick="cioSetSex('m')">man</button>
-          <button type="button" data-v="f" onclick="cioSetSex('f')">woman</button>
+          <button type="button" data-v="m" class="on" onclick="cioSetSex('m')"><span class="lang-en">man</span><span class="lang-es">hombre</span></button>
+          <button type="button" data-v="f" onclick="cioSetSex('f')"><span class="lang-en">woman</span><span class="lang-es">mujer</span></button>
         </div>
-        <span class="cio-steps-lbl" style="margin-left:auto">a woman burns less</span>
+        <span class="cio-steps-lbl" style="margin-left:auto"><span class="lang-en">a woman burns less</span><span class="lang-es">una mujer gasta menos</span></span>
       </div>
 
       <div class="cio-inputs">
-        <div class="field"><label>Age</label><input id="cioAge" type="number" inputmode="numeric" oninput="cioRecalc()"></div>
-        <div class="field"><label>Height (cm)</label><input id="cioHt" type="number" inputmode="numeric" oninput="cioRecalc()"></div>
-        <div class="field"><label>Weight (kg)</label><input id="cioWt" type="number" inputmode="numeric" oninput="cioRecalc()"></div>
-        <div class="field" style="grid-column:1/-1"><label>How active is your day?</label>
+        <div class="field"><label><span class="lang-en">Age</span><span class="lang-es">Edad</span></label><input id="cioAge" type="number" inputmode="numeric" oninput="cioRecalc()"></div>
+        <div class="field"><label><span class="lang-en">Height (cm)</span><span class="lang-es">Altura (cm)</span></label><input id="cioHt" type="number" inputmode="numeric" oninput="cioRecalc()"></div>
+        <div class="field"><label><span class="lang-en">Weight (kg)</span><span class="lang-es">Peso (kg)</span></label><input id="cioWt" type="number" inputmode="numeric" oninput="cioRecalc()"></div>
+        <div class="field" style="grid-column:1/-1"><label><span class="lang-en">How active is your day?</span><span class="lang-es">¿Cómo de activo es tu día?</span></label>
           <select id="cioAct" onchange="cioRecalc()">
-            <option value="1.2">Mostly sitting, very little moving</option>
-            <option value="1.375">At home, light moving (cooking, errands, short walks)</option>
-            <option value="1.55">On your feet a good part of the day</option>
-            <option value="1.725" selected>Active job or hard daily labour</option>
-            <option value="1.9">Hard physical job plus training on top</option>
+            <option value="1.2" data-en="Mostly sitting, very little moving" data-es="Casi siempre sentado, te mueves muy poco">Mostly sitting, very little moving</option>
+            <option value="1.375" data-en="At home, light moving (cooking, errands, short walks)" data-es="En casa, te mueves un poco (cocinar, recados, paseos cortos)">At home, light moving (cooking, errands, short walks)</option>
+            <option value="1.55" data-en="On your feet a good part of the day" data-es="De pie buena parte del día">On your feet a good part of the day</option>
+            <option value="1.725" selected data-en="Active job or hard daily labour" data-es="Trabajo activo o labor física dura">Active job or hard daily labour</option>
+            <option value="1.9" data-en="Hard physical job plus training on top" data-es="Trabajo físico duro más entreno encima">Hard physical job plus training on top</option>
           </select>
         </div>
       </div>
 
       <div class="cio-help-pop" id="cioHelpPop" hidden>
-        <strong>How do I know this number is right?</strong>
-        <p>It is a solid estimate, not a lab reading. It starts from your body's resting burn (from your
-        weight, height, age and sex, the standard Mifflin-St Jeor formula), times how active your day is,
-        plus any extra walking. The honest part: <strong>the scale is the real test.</strong> Pick a number,
-        eat to it for 2 to 3 weeks and watch. Losing too fast? Eat a little more. Nothing moving? Trim a
-        little, or add steps. Your body shows you the exact number over time.</p>
-        <p class="hint">Method: Mifflin-St Jeor (1990) plus an activity factor, the same approach dietitians
-        use. About 7,700 kcal of food equals 1 kg of body fat, and roughly 40 kcal per 1,000 steps walked.</p>
+        <strong><span class="lang-en">How this number is worked out</span><span class="lang-es">Cómo se calcula este número</span></strong>
+        <p class="hint"><span class="lang-en">Method: Mifflin-St Jeor (1990) times an activity factor, the
+        same approach dietitians use. About 7,700 kcal of food equals 1 kg of body fat, and roughly 40 kcal
+        per 1,000 steps walked. It is a solid estimate, not a lab reading: the scale is the real test, so eat
+        to your number for 2 to 3 weeks and adjust.</span><span class="lang-es">Método: Mifflin-St Jeor
+        (1990) por un factor de actividad, el mismo que usan los dietistas. Unas 7.700 kcal de comida
+        equivalen a 1 kg de grasa, y unas 40 kcal por cada 1.000 pasos. Es un cálculo sólido, no una medición
+        de laboratorio: la báscula es la prueba real, así que come según tu número 2 o 3 semanas y ajusta.</span></p>
       </div>
 
       <div class="cio-steps">
-        <span class="cio-steps-lbl">Walking on top</span>
+        <span class="cio-steps-lbl"><span class="lang-en">Walking on top</span><span class="lang-es">Caminar extra</span></span>
         <div class="cio-steps-opts" id="cioSteps">
-          <button type="button" data-st="0" class="on" onclick="cioSetSteps(0)">home day</button>
-          <button type="button" data-st="2000" onclick="cioSetSteps(2000)">+2k steps</button>
+          <button type="button" data-st="0" class="on" onclick="cioSetSteps(0)"><span class="lang-en">home day</span><span class="lang-es">en casa</span></button>
+          <button type="button" data-st="2000" onclick="cioSetSteps(2000)"><span class="lang-en">+2k steps</span><span class="lang-es">+2k pasos</span></button>
           <button type="button" data-st="5000" onclick="cioSetSteps(5000)">+5k</button>
           <button type="button" data-st="10000" onclick="cioSetSteps(10000)">+10k</button>
         </div>
@@ -1524,32 +1574,32 @@ table.swaps tr:last-child td{border-bottom:none}
       </div>
 
       <div class="cio-bars">
-        <div class="cio-bar"><span class="cio-bar-lbl">OUT · burn</span>
+        <div class="cio-bar"><span class="cio-bar-lbl"><span class="lang-en">OUT · burn</span><span class="lang-es">OUT · gasto</span></span>
           <div class="cio-track"><div class="cio-fill out" id="cioOut"></div><span class="cio-bar-num" id="cioOutNum">2,600</span></div></div>
-        <div class="cio-bar"><span class="cio-bar-lbl">IN · you eat</span>
+        <div class="cio-bar"><span class="cio-bar-lbl"><span class="lang-en">IN · you eat</span><span class="lang-es">IN · comida</span></span>
           <div class="cio-track"><div class="cio-fill in" id="cioIn"></div><span class="cio-bar-num" id="cioInNum">2,100</span></div></div>
       </div>
 
       <div class="cio-slider">
         <input type="range" id="cioEat" min="1600" max="3600" step="50" value="2100" aria-label="What you eat each day in calories">
-        <div class="cio-slider-cap">drag to change what you eat each day 🍽️</div>
+        <div class="cio-slider-cap"><span class="lang-en">drag to change what you eat each day 🍽️</span><span class="lang-es">arrastra para cambiar lo que comes al día 🍽️</span></div>
       </div>
 
       <div class="cio-graph">
-        <div class="cio-graph-head"><span>Your weight, if you keep this up</span><span class="cio-graph-sub">next 12 weeks</span></div>
+        <div class="cio-graph-head"><span><span class="lang-en">Your weight, if you keep this up</span><span class="lang-es">Tu peso, si sigues así</span></span><span class="cio-graph-sub"><span class="lang-en">next 12 weeks</span><span class="lang-es">próximas 12 semanas</span></span></div>
         <svg id="cioSvg" viewBox="0 0 600 120" aria-hidden="true">
           <line class="cio-base" id="cioBaseLine" x1="0" x2="600" y1="60" y2="60"></line>
           <path class="cio-area" id="cioArea" d=""></path>
           <path class="cio-curve" id="cioCurve" d=""></path>
           <circle class="cio-end" id="cioEnd" r="5.5" cx="576" cy="60"></circle>
         </svg>
-        <div class="cio-graph-foot"><span>today</span><b id="cioEndKg">−6.0 kg</b></div>
+        <div class="cio-graph-foot"><span><span class="lang-en">today</span><span class="lang-es">hoy</span></span><b id="cioEndKg">−6.0 kg</b></div>
       </div>
 
       <div class="cio-nums">
-        <div class="stat"><b id="cioGap">−500</b><span>kcal gap / day</span></div>
-        <div class="stat"><b id="cioWeek">0.45</b><span>kg / week</span></div>
-        <div class="stat"><b id="cioProj">5.5</b><span>kg in 12 weeks</span></div>
+        <div class="stat"><b id="cioGap">−500</b><span><span class="lang-en">kcal gap / day</span><span class="lang-es">diferencia kcal / día</span></span></div>
+        <div class="stat"><b id="cioWeek">0.45</b><span><span class="lang-en">kg / week</span><span class="lang-es">kg / semana</span></span></div>
+        <div class="stat"><b id="cioProj">5.5</b><span><span class="lang-en">kg in 12 weeks</span><span class="lang-es">kg en 12 semanas</span></span></div>
       </div>
 
       <p class="cio-summary" id="cioSummary"></p>
@@ -1564,18 +1614,6 @@ table.swaps tr:last-child td{border-bottom:none}
       <p class="hint"><span class="lang-en">The calculator works out your numbers right here on the screen. The sheet downloads blank, so write your name and those numbers on it by hand. Do one for each of you.</span><span class="lang-es">La calculadora saca vuestros números aquí mismo en la pantalla. La hoja se descarga en blanco, así que escribid a mano vuestro nombre y esos números. Haced una para cada uno.</span></p>
     </div>
 
-    <p>Think of your body like a wood stove. The food you eat is the wood you feed in. The fire is your
-      body burning it all day. Feed it a little <strong>less</strong> than it burns, and it reaches into
-      the woodpile you already carry, your fat, to cover the gap. A small daily gap of about <strong>500
-      kcal</strong> melts roughly half a kilo of fat a week. Steady, and easy to keep. A body doing hard
-      physical work burns a lot, so you do not need to starve, just stay a little under.</p>
-    <div class="callout">🔎 <strong>Two numbers run the whole thing:</strong> your burn (the calculator
-      below works it out for you) and roughly what you eat. The catch is that a lot of calories
-      <em>hide</em>, in oil, sauces and drinks, while others are plain to see. Becoming aware of them, the
-      visible and the hidden, is the real skill. More on spotting the sneaky ones in the
-      <a href="#cheatsheet">extra tips</a>.</div>
-    <p class="nugget">"If you only feed your body from the outside, it never learns to burn the fuel it
-      is already carrying."</p>
     <div class="nextprev"><a class="btn ghost" href="#checkin">Back</a><a class="btn primary" href="#move">Next: Move your body</a></div>
   </section>
 
@@ -1594,36 +1632,57 @@ table.swaps tr:last-child td{border-bottom:none}
       are, not just how thin you are, is one of the strongest signs of a long, healthy life. So this was
       never only about the number on the scale. It is about a body that still carries you up the hill at 75.</div>
 
-    <p>And like the food, it is mostly mental. A walk clears the head, drains the stress that drives the
-      evening snacking, and reminds you who is the captain. You do not need to become an athlete. You need
-      to start, and keep it stupidly simple.</p>
+    <p>And it is about far more than burning a few calories. Moving keeps your muscles awake, your posture
+      tall, your joints oiled and your lower back supported. The quiet part nobody warns you about: from about
+      fifty on, muscle slips away a little every year unless you give your body a reason to keep
+      it. Movement is that reason. It is what keeps you lifting, bending, carrying and standing up straight:
+      the whole difference between simply growing older and growing frail.</p>
+
+    <h3>I know it is not always easy on your body 💛</h3>
+    <p>And I am not going to pretend otherwise. I know your back has its days. I know some movements that were
+      nothing twenty years ago can feel risky now, even a little scary, and that is real. I am not waving it
+      away. But it is also not the end of the road. The question was never <em>"can I still do everything I
+      once did?"</em> It is a kinder one: <strong>"what can I do instead?"</strong> Maybe not a gym, maybe not
+      the old routine, but there is always something you can still do. So we do not chase the old way. We find
+      the version your body says yes to, and we build from there.</p>
+
+    <p>So we keep it stupidly simple. No gym, no plan, no two or three hours, just a few minutes and the
+      willingness to begin. A walk clears the head and drains the stress that drives the evening snacking. A
+      few minutes of strength keeps the muscle on your frame. That is the whole job.</p>
 
     <div class="grid2">
-      <div class="minicard good"><h3>🚶 Start with walks</h3>
-        <p>The easiest win there is. About <strong>7,000 steps</strong> is roughly a 45 minute walk at a
-          normal pace: out toward Durango to the edge of the woods and back, or one loop through the park.
-          Two or three times a week, plus the stairs instead of the elevator. It is surprising how fast the
-          body answers.</p>
+      <div class="minicard good"><h3>🚶 Option one: a walk</h3>
+        <p>Never underestimate it. Aim for somewhere between <strong>5,000 and 10,000 steps</strong>, which is
+          roughly a 45 to 60 minute walk: out toward Durango to the edge of the woods and back, or a loop
+          through the park, stairs instead of the lift. A walk is as good for the head as for the body, and on
+          a heavy day it is the easiest win there is. The body answers faster than you would think.</p>
       </div>
-      <div class="minicard good"><h3>⏱️ Add a 15 minute workout</h3>
-        <p>Forget the gym mountain: the membership, the drive, the hour and a half, the shower. That whole
-          pile kills your motivation before you even start. You do not need any fancy kit either. Barre (big
-          in Spain right now), a bit of bodyweight, a band or some light weights, whatever you enjoy, and it
-          works just as well for women as for men. Put on a standard YouTube workout and let the trainers
-          pull you through <strong>15 minutes</strong>, two or three times a week. A short, effective little
-          session burns real extra calories, and the best part is how much better you feel afterwards.</p>
+      <div class="minicard good"><h3>💪 Option two: a 10 to 15 minute workout</h3>
+        <p>This is where it really pays. A short session uses your whole body, so you burn more than on a walk
+          and build muscle at the same time. Make the <strong>push-up</strong> your hero: one move that hits
+          your chest, shoulders, arms, triceps and your whole core, and just holding yourself steady burns
+          extra on top. Cannot do one off the floor? Lean into the kitchen counter or the wall and lower the
+          angle as you get stronger. You finish feeling your body, and your strength, again.</p>
       </div>
     </div>
 
-    <div class="callout win"><strong>Do the math.</strong> The stairs 2 to 3 times a week, a couple of
-      walks, and two or three 15 minute workouts. On their own each looks small. Stacked across the weeks
-      and months they burn a serious pile of extra calories, and they protect the muscle you do not want
-      to lose.</div>
+    <p>Pick whichever you fancy, the walk or the workout, or best of all do both and swap them around. Here is
+      the whole promise: as little as <strong>twice a week, ten to fifteen minutes a time.</strong> If you
+      catch the bug you can always do more, but you never have to.</p>
 
-    <p>Put that together with the eating tips in here and you do not need some miserable crash diet. You keep
-      your life, your table, Pilar's cooking, with a few honest adjustments like less oil. Movement is the
-      part that buys you the years: the mobility, the joints, staying strong and independent when you are
-      old. That is the real prize.</p>
+    <p>And the "I have no time" wall is not real. Ten or fifteen minutes is enough, and you never have to leave
+      the living room or pay for a gym. Open YouTube on the TV, pick any short workout, and just follow along, no
+      thinking required. Even a single kettlebell in the corner turns the room into a whole gym.</p>
+
+    <div class="callout win"><strong>Do the math.</strong> The stairs a few times a week, a couple of walks,
+      and two or three ten minute sessions. On their own each looks like nothing. Stacked across the weeks and
+      months they burn a serious pile of extra calories, and they protect the muscle you do not want to lose.</div>
+
+    <p>Some days you will not want to. You will go looking for the excuse, and now and then the couch will win.
+      That is fine, it is human. What matters is never the perfect week, it is the pattern: a couple of
+      sessions, week after week, month after month. Keep that up and your body, your mind, your mood, your
+      sleep and your mobility all quietly pay you back. That is the real prize: staying strong, upright and
+      independent for the long haul, with Pilar's cooking still on the table.</p>
 
     <p class="nugget">"I do not move to punish my body. I move because I plan on using it for a long time."</p>
     <div class="nextprev"><a class="btn ghost" href="#how">Back</a><a class="btn primary" href="#motivation">Next: Power page</a></div>
@@ -2937,6 +2996,7 @@ function setLang(l){
   if(typeof renderQuiz==='function')renderQuiz();
   if(typeof applyRecipeLang==='function')applyRecipeLang(l);
   if(typeof renderRecipes==='function')renderRecipes();
+  if(typeof cioApplyLang==='function')cioApplyLang(l);
 }
 
 /* (Calculator merged into the Calories In/Out widget above) */
@@ -2944,8 +3004,22 @@ function setLang(l){
 /* ============ CALORIES IN / OUT LIVE GRAPH ============ */
 const CIO={KPK:7700, WEEKS:12, start:95, steps:0, sex:'m', base:0};
 const cioEl=id=>document.getElementById(id);
-const cioFmt=n=>Math.round(n).toLocaleString('en-US');
+const cioFmt=n=>Math.round(n).toLocaleString(rlang()==='es'?'es-ES':'en-US');
+const cioDec=s=>rlang()==='es'?String(s).replace('.',','):String(s);
 const cioBonus=()=>Math.round(CIO.steps*0.04/10)*10;            // ~40 kcal / 1000 steps, to nearest 10
+const CIO_T={
+  en:{note:'estimated from your numbers, edit any field above', home:'home day',
+      lose:'Losing fat 🔥', gain:'Gaining weight', hold:'Holding steady', in12:' kg in 12 weeks',
+      sumHold:e=>'At <b>'+e+'</b> kcal a day you would hold steady, right around your burn.',
+      sum:(b,e,v,wk,ch)=>'Burning <b>'+b+'</b> and eating <b>'+e+'</b> a day, you would '+v+' about <b>'+wk+' kg a week</b>, roughly <b>'+ch+' kg in 12 weeks</b>.',
+      vLose:'lose', vGain:'gain'},
+  es:{note:'estimado a partir de tus datos, edita cualquier campo de arriba', home:'en casa',
+      lose:'Perdiendo grasa 🔥', gain:'Ganando peso', hold:'Te mantienes', in12:' kg en 12 semanas',
+      sumHold:e=>'Con <b>'+e+'</b> kcal al día te mantendrías, justo en tu gasto.',
+      sum:(b,e,v,wk,ch)=>'Gastando <b>'+b+'</b> y comiendo <b>'+e+'</b> al día, '+v+' unos <b>'+wk+' kg por semana</b>, más o menos <b>'+ch+' kg en 12 semanas</b>.',
+      vLose:'perderías', vGain:'ganarías'}
+};
+const cioL=()=>CIO_T[rlang()];
 function cioDraw(){
   const burnEl=cioEl('cioBurn'); if(!burnEl) return;
   const burn=Math.max(0,+burnEl.value||0), eat=+cioEl('cioEat').value, diff=eat-burn;  // diff<0 = deficit
@@ -2957,15 +3031,16 @@ function cioDraw(){
   cioEl('cioIn').style.width=(eat/scale*100)+'%';
   cioEl('cioOutNum').textContent=cioFmt(burn);
   cioEl('cioInNum').textContent=cioFmt(eat);
-  cioEl('cioStepsOut').textContent= CIO.steps? ('+'+cioFmt(cioBonus())+' kcal') : 'home day';
-  cioEl('cioChip').textContent= state==='lose'?'Losing fat 🔥': state==='gain'?'Gaining weight':'Holding steady';
+  const T=cioL();
+  cioEl('cioStepsOut').textContent= CIO.steps? ('+'+cioFmt(cioBonus())+' kcal') : T.home;
+  cioEl('cioChip').textContent= state==='lose'?T.lose: state==='gain'?T.gain:T.hold;
   cioEl('cioGap').textContent=(diff>=0?'+':'−')+cioFmt(Math.abs(diff));
-  cioEl('cioWeek').textContent=Math.abs(kgWeek).toFixed(2);
-  cioEl('cioProj').textContent=Math.abs(change).toFixed(1);
-  cioEl('cioEndKg').textContent=(change<=0?'−':'+')+Math.abs(change).toFixed(1)+' kg in 12 weeks';
+  cioEl('cioWeek').textContent=cioDec(Math.abs(kgWeek).toFixed(2));
+  cioEl('cioProj').textContent=cioDec(Math.abs(change).toFixed(1));
+  cioEl('cioEndKg').textContent=(change<=0?'−':'+')+cioDec(Math.abs(change).toFixed(1))+T.in12;
   cioEl('cioSummary').innerHTML= state==='hold'
-    ? ('At <b>'+cioFmt(eat)+'</b> kcal a day you would hold steady, right around your burn.')
-    : ('Burning <b>'+cioFmt(burn)+'</b> and eating <b>'+cioFmt(eat)+'</b> a day, you would '+(state==='lose'?'lose':'gain')+' about <b>'+Math.abs(kgWeek).toFixed(2)+' kg a week</b>, roughly <b>'+Math.abs(change).toFixed(1)+' kg in 12 weeks</b>.');
+    ? T.sumHold(cioFmt(eat))
+    : T.sum(cioFmt(burn), cioFmt(eat), (state==='lose'?T.vLose:T.vGain), cioDec(Math.abs(kgWeek).toFixed(2)), cioDec(Math.abs(change).toFixed(1)));
   // weight curve over the next 12 weeks (vertical scale adapts so the line never clips)
   const W=576,H=120;
   const vis=Math.max(Math.abs(change)*1.35, 4);   // kg shown top-to-bottom, with headroom
@@ -3003,7 +3078,7 @@ function cioRecalc(){
   cioEl('cioBurn').value=burn;
   const e=cioEl('cioEat'); e.max=Math.max(4200, burn+1300);
   if(!CIO._touchedEat) e.value=Math.max(+e.min, burn-500);
-  cioEl('cioBurnNote').textContent='estimated from your numbers, edit any field above';
+  cioEl('cioBurnNote').textContent=cioL().note;
   cioDraw(); cioSave();
 }
 function cioSave(){ try{ localStorage.setItem('gp_calc', JSON.stringify({sex:CIO.sex, age:cioEl('cioAge').value, ht:cioEl('cioHt').value, wt:cioEl('cioWt').value, act:cioEl('cioAct').value})); }catch(e){} }
@@ -3013,6 +3088,13 @@ function cioInit(){
   else { cioEl('cioAge').value=48; cioEl('cioHt').value=178; cioEl('cioWt').value=95; }
   document.querySelectorAll('#cioSexSeg button').forEach(b=>b.classList.toggle('on', b.dataset.v===CIO.sex));
   cioRecalc();
+  cioApplyLang(rlang());
+}
+function cioApplyLang(l){
+  l=(l==='es'?'es':'en');
+  document.querySelectorAll('#cioAct option').forEach(o=>{ o.textContent=o.dataset[l]||o.dataset.en; });
+  if(cioEl('cioBurnNote')) cioEl('cioBurnNote').textContent=CIO_T[l].note;
+  if(cioEl('cioBurn')) cioDraw();
 }
 if(cioEl('cioBurn')){
   cioEl('cioEat').addEventListener('input',()=>{ CIO._touchedEat=true; cioDraw(); });
@@ -3073,7 +3155,8 @@ const QUIZ_T = {
       "Do you keep eating because you still feel hungry, when really it is just appetite, the mouth wanting more?",
       "Do you drink your calories, a beer, a Kalimotxo or a sugary soft drink, more often than you would like?",
       "Do you almost always take the lift, and avoid the stairs whenever you can?",
-      "Outside of work, do you move very little on a normal day?"
+      "Outside of work, do you get a regular walk in, around 5,000 to 10,000 steps?",
+      "When it comes to actually training, does the motivation usually fade before you even start, especially on your own?"
     ],
     commit:"Could you imagine starting small, changing just one or two of these, this week?",
     res:function(n,started){
@@ -3098,7 +3181,8 @@ const QUIZ_T = {
       "¿Seguís comiendo porque aún sentís hambre, cuando en realidad es solo apetito, la boca pidiendo más?",
       "¿Bebéis vuestras calorías, una cerveza, un kalimotxo o un refresco azucarado, más a menudo de lo que querríais?",
       "¿Cogéis casi siempre el ascensor y evitáis las escaleras siempre que podéis?",
-      "Fuera del trabajo, ¿os movéis muy poco en un día normal?"
+      "Fuera del trabajo, ¿dais paseos con regularidad, de unos 5.000 a 10.000 pasos?",
+      "Cuando toca entrenar de verdad, ¿se os apaga la motivación antes incluso de empezar, sobre todo a solas?"
     ],
     commit:"¿Os imagináis empezar poco a poco, cambiando solo una o dos de estas, esta semana?",
     res:function(n,started){
@@ -3113,6 +3197,8 @@ const QUIZ_T = {
     }
   }
 };
+/* indices where YES is the GOOD answer, so a NO is the lever (e.g. the 5,000-10,000 steps walk question) */
+const QUIZ_INV = new Set([7]);
 let quizState = {};
 function renderQuiz(){
   const box = document.getElementById('quizBox'); if(!box) return;
@@ -3143,7 +3229,7 @@ function updateQuizResult(){
   const lang=document.documentElement.dataset.lang==='es'?'es':'en';
   const t=QUIZ_T[lang]; const n=t.q.length;
   let answered=0, levers=0;
-  for(let i=0;i<n;i++){ if(quizState[i]!==undefined){ answered++; if(quizState[i]===1)levers++; } }
+  for(let i=0;i<n;i++){ if(quizState[i]!==undefined){ answered++; const lever=QUIZ_INV.has(i)?quizState[i]===0:quizState[i]===1; if(lever)levers++; } }
   const res=document.getElementById('quizResult'); if(!res) return;
   if(answered<n){ res.hidden=true; return; }
   res.hidden=false;
@@ -3423,9 +3509,10 @@ const AUDIO_CHAPTERS=[
   {id:'why',       title:'Vuestro gran porqué',             file:'06-vuestro-porque.mp3'},
   {id:'insanity',  title:'La Locura',                       file:'07-la-locura.mp3'},
   {id:'close',     title:'Sigue volviendo',                 file:'08-sigue-volviendo.mp3'},
+  {id:'how',       title:'Calorías que entran y salen',      file:'09-calorias.mp3'},
 ];
 const AUDIO_VOICES=[
-  {key:'dave',      label:'Dave',      has:['welcome','start','captain','struggles','systems','honest','why','insanity','close']},
+  {key:'dave',      label:'Dave',      has:['welcome','start','captain','struggles','systems','honest','why','insanity','close','how']},
 ];
 let audioVoice=localStorage.getItem('gp_voice')||'dave';
 if(!AUDIO_VOICES.some(v=>v.key===audioVoice)) audioVoice='dave';
@@ -3573,7 +3660,7 @@ function fillCalorieSheet(){
   const act=WS_ACT[cioEl('cioAct').value]||['·','·'];
   setL('wc-act', act[0], act[1]);
 }
-/* ===== WORKSHEET DOWNLOADS — real PDF files, identical on every device =====
+/* ===== WORKSHEET DOWNLOADS: real PDF files, identical on every device =====
    We pre-render the worksheets to actual PDFs (tools/gen-worksheet-pdfs.js, output in
    assets/worksheets/) and simply download them. Browser "print to PDF" was hopeless on
    mobile: it printed the whole guide or left the page blank. A file just downloads. */

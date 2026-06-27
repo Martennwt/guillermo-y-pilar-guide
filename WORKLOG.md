@@ -2,6 +2,87 @@
 
 ---
 
+## 2026-06-25: Kalorien-Sektion als Hörbuch + Audio-Kapitel, Sport-Check-in, Move Your Body (EN)
+
+**Erledigt:**
+- **Kalorien-Sektion (#how) als Hörbuch-Sektion umgebaut:** kompletter Lesetext oben, Rechner darunter. Hook
+  mehrfach überarbeitet (final: "There is a whole industry built on making this sound complicated..."), die
+  Daily-Burn-Erklärung aus dem "?"-Popover in den Fließtext geholt (Popover jetzt nur kurze Methoden-Fußnote).
+  Holzofen-Bild, klares Zahlen-Beispiel (2.500), neues Ende mit Überleitung zum Rechner (ausgedruckte Zahl,
+  ändert sich mit Aktivität). Fließtext danach gestrafft.
+- **Ganze Kalorien-Sektion auf Spanisch (tú)** übersetzt und in lang-en/lang-es verpackt (Rechner bleibt
+  gemeinsam). **Rechner-UI komplett zweisprachig:** Labels (lang-Spans), Dropdown-Optionen (data-en/data-es +
+  JS), JS-Texte (Chip/Zusammenfassung/Notiz/Schritte) über neues CIO_T, spanisches Zahlenformat (es-ES,
+  Dezimalkomma). Scoped CSS, damit die ES-Spans im Rechner inline bleiben.
+- **Audio-Kapitel "Calorías que entran y salen":** build-audio.js extractEs schneidet jetzt beim Rechner ab;
+  neues Kapitel `how` -> `09-calorias.mp3`, mit der getunten Dave-Stimme gerendert (von Marten nach Test-Clip
+  abgenommen), in den Player gehängt (AUDIO_CHAPTERS + dave has[]), `audiolibro-es.zip` neu gebaut (10 MP3s).
+- **Honest Check-in (#checkin):** Sport/Bewegung rausgekitzelt. Frage 8 von "bewegst dich wenig" auf die
+  Positiv-Frage "regelmäßiger Spaziergang, 5.000 bis 10.000 Schritte" geändert (JA = gut, daher NEIN = Hebel
+  via `QUIZ_INV=[7]`), plus neue Frage zu Trainings-Motivation/allein. EN+ES, fließt auch ins Worksheet.
+- **Worksheet-PDFs neu gebaut** (16 Dateien). Chequeo bleibt 1 Seite (jetzt 9 Fragen), Booklet 8 Seiten.
+- **Move Your Body (#move), nur EN ausgebaut:** warum Bewegung wichtig (Muskelverlust ab ~50, Haltung,
+  Rücken), Rücken-Empathie ("what can I do instead?"), so simpel wie möglich, zwei Optionen (Walk
+  5.000-10.000 Schritte ODER 10-15-Min-Workout), Push-up als Ganzkörper-Held, Versprechen "2x/Woche, 10-15
+  Min", "keine Zeit gibt's nicht" via YouTube/TV/Kettlebell, Geschenk-Kasten, Dranbleiben. Doppeltes "Here
+  is" entschärft.
+- 0 neue Em-/En-Dashes, JS-Syntax mehrfach geprüft, ES-Rechner + Player + Quiz per DOM-Dump verifiziert.
+
+**Offen / morgen weitermachen:**
+1. **Zwei Platzhalter in #move (EN):** Video-Links (YouTube/TV) und Geschenk-Details (Sarah/Melanie) von
+   Marten einsetzen. Stehen im Text als kursive "Marten:"-Notizen.
+2. **Spanische Version von #move** schreiben (der ES-Block ist noch die ALTE kurze Fassung, passt nicht mehr
+   zum EN). Erst nach Martens OK zum englischen Text.
+3. **Deploy steht aus:** nichts committet/gepusht, Live-Seite ist alt. Wenn freigegeben: committen +
+   `git subtree push --prefix site origin gh-pages`.
+4. ⚠️ **ElevenLabs-Key rotieren** (Alt-To-do, war in einem Screenshot sichtbar).
+5. Optional: Kalorien-Audio sitzt im Player nach "close"; ggf. umsortieren oder #checkin auch vertonen.
+6. Anrede: Kalorien-Sektion ist "tú", Mindset-Kapitel "vosotros" (so belassen, falls keine Angleichung
+   gewünscht).
+
+---
+
+## 2026-06-24 (spät) — Live-Deploy gefixt, Mobile-Politur, Worksheets als echte Download-PDFs
+
+**Erledigt:**
+- **Kernursache „nichts ist live": GitHub Pages serviert vom Branch `gh-pages` (nicht `main`).** Der
+  Deploy-Schritt `git subtree push --prefix site origin gh-pages` war nach den Commits nie ausgeführt
+  worden, darum hing die Live-Seite auf altem Stand. Nachgeholt; ab jetzt Routine: nach jeder Änderung
+  **committen + subtree-push** (sonst bleibt die Live-Seite alt). Mehrere Builds geprüft. Letzter Stand:
+  main `36584f2`, gh-pages `a468e75`.
+- **Mobile-Politur (live):** großer Hamburger-Button + zentrierte Marke, kein Links-Rechts-Wackeln,
+  runder „nach oben"-Button, Erste-Besuch-Tour (EN/ES, erklärt Menü/Sprache/Kopfhörer/Player-Pfeil).
+- **Sticky-Header-Regression gefixt:** mein Wackel-Fix `overflow-x:hidden` auf `html,body` brach
+  `position:sticky`; jetzt `overflow-x:clip`, nur in `@media screen` (Druck unberührt).
+- **„Nach oben"-Pfeil entschärft:** kleiner (46→40px), weiches halbtransparentes Grün statt vollem Oliv,
+  höher auf Mobile (über dem Player), leicht zurückgenommen (Player bleibt wichtiger).
+- **Worksheets komplett umgestellt: Browser-Druck raus, echte PDF-Dateien rein.** Print-to-PDF war auf
+  Mobile unbrauchbar (druckte den ganzen Guide ~41 Seiten, Seite wurde sogar blank → Browser schließen).
+  iframe-Druck-Versuch ebenfalls verworfen. Jetzt: `tools/gen-worksheet-pdfs.js` rendert via Headless
+  Chrome **alle 7 Blätter + Gesamt-Booklet, je ES + EN (16 Dateien)** nach `site/assets/worksheets/`. Die
+  Buttons sind reine Downloads (`dlWorksheet`, Sprache folgt `data-lang`); der komplette Druck-Code wurde
+  entfernt (behebt das Blank-Bug). Begleittexte angepasst (Download statt „Druckfenster").
+- **Fehlende dynamische Inhalte gefixt:** Chequeo-Fragen (`buildCheckinSheet`) und 45-Tage-Raster
+  (`buildWsGrid`) werden per JS gebaut → Generator nutzt jetzt Chrome `--dump-dom` (DOM NACH JS-Lauf),
+  sonst leere Blätter. **Contrato** per `#ws-contract{zoom:.86}` (Print) auf eine Seite gebracht.
+  **Kalorien-Blatt** = ausfüllbare Vorlage (Platzhalter `·`→`______`).
+- **Verifiziert:** Seitenzahlen je Einzelblatt = 1 (Mindset bewusst 2), Booklet 8; Chequeo/Contrato/Calorías
+  per Screenshot kontrolliert; Live-PDFs Byte-gleich mit lokal, `%PDF`-Header, `application/pdf`. Von Marten
+  abgenommen („passt").
+
+**Offen / morgen weitermachen:**
+1. Marten testet die finalen Download-PDFs am Handy (Chequeo + Contrato waren die Problemfälle). Bei
+   Feinschliff an einem Blatt (Abstand/Größe) gezielt nachziehen. **Merke: nach JEDER Worksheet-Änderung
+   Generator neu laufen lassen UND subtree-push, sonst sind die Live-PDFs veraltet.**
+2. **ES-Read-aloud-Audio neu generieren** für die seit dem Umbau geänderten/neuen Kapitel, sobald der Text
+   endgültig gelockt ist (laut [[feedback-build-order]] genuinely last; Credits sparen).
+3. ⚠️ **ElevenLabs-Key rotieren** (war mal in einem Screenshot sichtbar) — offenes Sicherheits-To-do.
+4. Optional: Kalorien-Blatt **mit ausgefüllten Zahlen** als Download (statt leer) — bräuchte clientseitige
+   PDF-Erzeugung; nur falls gewünscht.
+5. Optional: Preparation-Sektion als PDF (zurückgestellt); Mindset-Seite-2-Feinschliff.
+
+---
+
 ## 2026-06-24 — Spanish recipes/cheat-sheet + printable PDF worksheets
 
 - **Cheat Sheet + Recipes now bilingual.** Added the full ES `.lang-es` block for the Cheat Sheet, and
