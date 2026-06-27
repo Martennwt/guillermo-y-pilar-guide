@@ -452,12 +452,6 @@ body.audio-min #abShow{display:inline-flex}
 .audio-fill{height:100%; width:0%; background:linear-gradient(90deg,var(--honey),var(--terracotta)); border-radius:999px; position:relative}
 .audio-fill::after{content:""; position:absolute; right:-5px; top:50%; transform:translateY(-50%); width:13px; height:13px; border-radius:50%; background:#fff; box-shadow:0 1px 5px rgba(0,0,0,.45); opacity:0; transition:opacity .15s}
 .audio-track:hover .audio-fill::after{opacity:1}
-#qrPop{position:absolute; bottom:calc(100% + .6rem); left:.4rem; z-index:71; width:230px; text-align:center;
-  background:var(--paper); color:var(--ink); border:1px solid var(--line-2); border-radius:16px; padding:1rem; box-shadow:var(--shadow-md)}
-#qrPop[hidden]{display:none}
-#qrPop p{font-size:.8rem; color:var(--ink-soft); margin:0 0 .6rem; font-weight:700; line-height:1.35}
-#qrPop img{width:190px; height:190px; background:#fff; border-radius:8px; display:block; margin:0 auto}
-#qrPop .btn{margin-top:.7rem; font-size:.84rem; padding:.5rem 1rem}
 #audioPickMenu .audio-autonext{display:flex; justify-content:space-between; align-items:center; gap:.6rem; border-bottom:1px solid var(--line); font-weight:700; color:var(--olive-deep)}
 #audioPickMenu .audio-autonext .sw{font-size:.7rem; font-weight:800; padding:.08rem .5rem; border-radius:999px; background:var(--leaf); color:#fff; letter-spacing:.03em}
 #audioPickMenu .audio-autonext.off .sw{background:var(--ink-faint)}
@@ -2451,7 +2445,6 @@ table.swaps tr:last-child td{border-bottom:none}
   <div id="audiobar" hidden>
     <button id="audioBtn" class="audio-btn" onclick="toggleAudio()" aria-label="Reproducir / pausar">▶</button>
     <button class="audio-btn alt" onclick="stopAudio()" aria-label="Parar">⏹</button>
-    <button id="qrBtn" class="audio-btn alt" onclick="toggleQR()" aria-label="Descargar al móvil">📱</button>
     <div class="audio-label">
       <div class="audio-pick" id="audioPickWrap">
         <button type="button" class="audio-pick-btn" id="audioPickBtn" onclick="toggleAudioMenu(event)" aria-haspopup="listbox" aria-label="Elegir capítulo">
@@ -2465,11 +2458,6 @@ table.swaps tr:last-child td{border-bottom:none}
     <span id="audioCur" class="audio-time">0:00</span>
     <div id="audioTrack" class="audio-track" onclick="seekAudio(event)"><div id="audioFill" class="audio-fill"></div></div>
     <span id="audioDur" class="audio-time">0:00</span>
-    <div id="qrPop" hidden>
-      <p>📲 Escanéalo para abrir el <strong>reproductor online</strong> (todos los capítulos). O descárgalo todo aquí abajo:</p>
-      <img id="qrImg" alt="Código QR">
-      <a id="qrDl" class="btn primary" href="assets/audio/audiolibro-es.zip" download="Guillermo-y-Pilar-Audiolibro.zip">⬇️ Descargar todo (ZIP)</a>
-    </div>
     <button class="ab-toggle" onclick="toggleAudioBar()" aria-label="Ocultar el reproductor" title="Ocultar">▾</button>
     <audio id="player" preload="metadata"></audio>
   </div>
@@ -3512,7 +3500,8 @@ const AUDIO_CHAPTERS=[
   {id:'how',       title:'Calorías que entran y salen',      file:'09-calorias.mp3'},
 ];
 const AUDIO_VOICES=[
-  {key:'dave',      label:'Dave',      has:['welcome','start','captain','struggles','systems','honest','why','insanity','close','how']},
+  {key:'dave',      label:'Lenta',     has:['welcome','start','captain','struggles','systems','honest','why','insanity','close','how']},
+  {key:'toni',      label:'Rápida',    has:['welcome','start','captain']},
 ];
 let audioVoice=localStorage.getItem('gp_voice')||'dave';
 if(!AUDIO_VOICES.some(v=>v.key===audioVoice)) audioVoice='dave';
@@ -3561,7 +3550,6 @@ function toggleAudioMenu(ev){ ev.stopPropagation(); const w=document.getElementB
   const willOpen=m.hidden; m.hidden=!willOpen; w.classList.toggle('open', willOpen); }
 function selectAudioChapter(id){ const m=document.getElementById('audioPickMenu'); m.hidden=true; document.getElementById('audioPickWrap').classList.remove('open'); pickAudio(id); }
 document.addEventListener('click',e=>{ const w=document.getElementById('audioPickWrap'); if(w&&!w.contains(e.target)){ const m=document.getElementById('audioPickMenu'); if(m&&!m.hidden){m.hidden=true; w.classList.remove('open');} }
-  const pop=document.getElementById('qrPop'); if(pop&&!pop.hidden){ const btn=document.getElementById('qrBtn'); if(!pop.contains(e.target) && (!btn||!btn.contains(e.target))) pop.hidden=true; }
   const ap=document.getElementById('audioPop'); if(ap&&!ap.hidden && !e.target.closest('.dl-wrap')) ap.hidden=true;
   const pp=document.getElementById('pdfPop'); if(pp&&!pp.hidden && !e.target.closest('.dl-wrap')) pp.hidden=true; });
 buildVoiceToggle(); buildAudioMenu();
@@ -3590,14 +3578,6 @@ function toggleAudio(){
   else { player.pause(); setAudioBtn(false); }
 }
 function stopAudio(){ player.pause(); player.currentTime=0; setAudioBtn(false); resetAudioUI(); }
-function toggleQR(){
-  const pop=document.getElementById('qrPop');
-  if(pop.hidden){
-    const url=SITE_URL+'player.html';
-    document.getElementById('qrImg').src='https://api.qrserver.com/v1/create-qr-code/?size=320x320&margin=12&ecc=L&data='+encodeURIComponent(url);
-    pop.hidden=false;
-  } else { pop.hidden=true; }
-}
 function seekAudio(ev){ const t=document.getElementById('audioTrack'), r=t.getBoundingClientRect();
   const ratio=Math.min(1,Math.max(0,(ev.clientX-r.left)/r.width));
   if(isFinite(player.duration)) player.currentTime=ratio*player.duration; }
