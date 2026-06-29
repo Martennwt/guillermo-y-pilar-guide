@@ -3973,7 +3973,7 @@ function resetAudioUI(){ document.getElementById('audioFill').style.width='0%'; 
 function updateAudioBar(id){
   const bar=document.getElementById('audiobar');
   const src=audioHas(id)?audioSrc(id):null;
-  if(!src){ if(!player.paused)player.pause(); setAudioBtn(false); bar.hidden=true; return; }
+  if(!src){ bar.hidden=false; return; }  // no audio for this section: keep the bar visible, keep playing
   audioCurrentId=id;
   bar.hidden=false;
   setAudioPickLabel(id);
