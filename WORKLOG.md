@@ -2,6 +2,49 @@
 
 ---
 
+## 2026-06-27: Toni-Stimme + Voice-Switcher, "Move Your Body" komplett ausgebaut (Physios, echte Bilder, Pilar), KI-Guide-Logbuch
+
+**Erledigt (alles committet + auf gh-pages deployed, live):**
+- **Offenen Stand live gebracht** (war nur lokal): Kalorien-Hörbuch-Sektion, erweiterter Check-in, alle 16
+  Worksheet-PDFs, `audiolibro-es.zip`, neues `09-calorias.mp3`. In #move (EN) die zwei sichtbaren
+  "(Marten: ...)"-Platzhalter raus, Geschenk-Gutschein-Box entfernt (fällt raus). (`ca80782`)
+- **Zweite Stimme "Toni"** (`851ejYcv2BoNPjrkw93G`, schnell/expressiv) in `build-audio.js` + Player. Player
+  zeigt jetzt einen Voice-Switcher **"voz Lenta (dave) | Rápida (toni)"**; **QR-Button + Popup im Player
+  raus** (QR liegt schon im Sticky-Header + Footer). Toni rendert **welcome..close (9 Kapitel, 00-08)**, nur
+  die Kalorien-Sektion `how` bleibt dave-only. (`5835ac9`, `9a6a44b`)
+- **"Move Your Body" (#move, EN) komplett überarbeitet:**
+  - Stärkere Headline "Move Your Body: This Is How You Last" (Bezug zum Slogan), Eyebrow "Not the extra. The engine."
+  - Empathie neu, geerdet auf Guillermos echte Geschichte: Baustelle, Vorfall am Kabelzug (Griff rutscht,
+    Rücken knackt), Studio so vielleicht nicht mehr, harte Arbeit, aber kein Grund aufzuhören. "stupidly" raus.
+  - **Reihenfolge umgestellt** (Marten): erst die Sorge wegnehmen, dann Übungen. Neuer Einwand-Satz, dann
+    **"First get cleared, then train"** + 3 echte Physios als Karten (Hodei = Top-Pick, Eguzki, Espazio Bizia,
+    je Website/Google-Maps/Anruf + Bewertung, Quelle: Martens Recherche-Doc in Downloads), dann "do it right,
+    not hard" (Sarah = Chiropraktikerin, OP vermieden), DANN der einfache Plan + Bilder.
+  - **Bilder erst Gouache, dann auf Wunsch fotorealistisch neu** via Nano Banana Pro (`gemini-3-pro-image`)
+    + WebP-Kompression (sharp): Wohnzimmer-Liegestütz mit TV + 4-Panel-Übungstafel.
+  - **Pilar-Teil ergänzt** ("And Pilar, this is just as much for you"): gleiche Basics/Core, Tanzkurs gut aber
+    ersetzt es nicht, gleiche Effekte, Morgen/Spaziergang-Logistik, + 2 eigene fotorealistische Frauen-Bilder.
+  - Commits `8cdbe2c`, `e1dad76`, `4088a01`, `3588584`, `d0e05af`, `8719f0f`. Letzter Stand: main `8719f0f`,
+    gh-pages `ca29e4f`.
+- **Tooling:** `sharp` einmal in den geteilten Ordner `tools\images` installiert (PNG zu WebP) + `to-webp.js`.
+  Neues `tools/gen-move-images.js` (Nano Banana Pro + sharp, re-runnable).
+- **KI-Medien-Guide:** neue Sektion "Installierte Programme: das Logbuch" (#installs) + Sidebar-Eintrag,
+  dokumentiert PNG/WebP/sharp; 2 alte Em-Dashes gefixt. (lokale Datei, kein Repo)
+- **Global:** `C:\Users\marte\.claude\CLAUDE.md` neu angelegt (geteilte Bild-Tools, Key-Ordner, Regel
+  "Installationen ins Logbuch", Deutsch, keine Em-Dashes), gilt projektübergreifend. Memory
+  `feedback-log-installed-programs` gespeichert.
+- Verifiziert: 0 Em-Dashes, `node --check` OK, Live-Checks (Stimmen + Bilder liefern 200), Section-Renders geprüft.
+
+**Offen / morgen weitermachen:**
+1. **Marten reviewt "Move Your Body"** (ist am Strand) und kommt mit Feedback zurück (Ton/Bilder/Intensität).
+2. **Spanische Fassung von #move** ist noch die ALTE Kurzversion, komplett out of sync mit dem EN-Ausbau.
+   Nach EN-Lock: ganze Section + alle Captions + Pilar-Teil auf Spanisch (vosotros), danach ES-Audio.
+3. Optional: **Toni auch für `how`** (Kalorien) rendern, dann ist Toni komplett (1 Befehl + `has[]`-Eintrag).
+4. ⚠️ **ElevenLabs-Key rotieren** (Alt-To-do, war mal in einem Screenshot sichtbar).
+5. Dieser WORKLOG-Eintrag ist noch nicht committet (Rest der Session ist alles live).
+
+---
+
 ## 2026-06-25: Kalorien-Sektion als Hörbuch + Audio-Kapitel, Sport-Check-in, Move Your Body (EN)
 
 **Erledigt:**

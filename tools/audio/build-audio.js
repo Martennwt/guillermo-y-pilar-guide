@@ -27,10 +27,11 @@ const MODEL = 'eleven_multilingual_v2';
 const VOICES = {
   guillermo: { id: 'qUPtETgSYRhCRb2pfOla', folder: 'guillermo',
     settings: { stability: 0.9, similarity_boost: 0.9, style: 0.4, use_speaker_boost: true, speed: 1.0 } },
-  dave:      { id: 'QtPMrakdgePQIUwOX7Ut', folder: 'dave',
+  dave:      { id: 'QtPMrakdgePQIUwOX7Ut', folder: 'dave', pause: 0,
     settings: { stability: 0.9, similarity_boost: 0.9, style: 0.4, use_speaker_boost: true, speed: 1.08 } },
   // Toni: expressive, fast and spontaneous. The "fast voice" alternative to the slower dave.
-  toni:      { id: '851ejYcv2BoNPjrkw93G', folder: 'toni',
+  // pause: seconds of silence inserted between paragraphs/headings so the fast voice does not rush.
+  toni:      { id: '851ejYcv2BoNPjrkw93G', folder: 'toni', pause: 0.6,
     settings: { stability: 0.5, similarity_boost: 0.85, style: 0.5, use_speaker_boost: true, speed: 1.08 } },
 };
 
@@ -45,8 +46,31 @@ const CHAPTERS = [
   { id: 'why',       out: '06-vuestro-porque.mp3' },
   { id: 'insanity',  out: '07-la-locura.mp3' },
   { id: 'close',     out: '08-sigue-volviendo.mp3' },
-  { id: 'how',       out: '09-calorias.mp3' },
+  { id: 'how',       out: '09-calorias.mp3', voices: ['dave', 'toni'] },
+  { id: 'move',      out: '10-mover-el-cuerpo.mp3' },
+  { id: 'motivation', out: '11-pagina-de-poder.mp3', voices: ['toni'] },  // fast voice only from here on
 ];
+
+// Remove a whole <div class="<cls>..."> block (incl. nested divs) from the HTML before voicing.
+// Used to skip the physio address cards in #move: they are shown in the guide, never read aloud.
+function stripDiv(html, cls) {
+  let out = html;
+  for (;;) {
+    const start = out.indexOf('<div class="' + cls);
+    if (start < 0) break;
+    const re = /<\/?div\b/g; re.lastIndex = start;
+    let m, depth = 0, endTag = -1;
+    while ((m = re.exec(out))) {
+      if (m[0] === '<div') depth++;
+      else if (--depth === 0) { endTag = m.index; break; }
+    }
+    if (endTag < 0) break;                       // unbalanced: bail, do not loop forever
+    const close = out.indexOf('>', endTag);
+    if (close < 0) break;
+    out = out.slice(0, start) + ' ' + out.slice(close + 1);
+  }
+  return out;
+}
 
 function readKey() {
   const txt = fs.readFileSync(path.join(KEYDIR, 'ElevenLabs.txt'), 'utf8');
@@ -55,7 +79,7 @@ function readKey() {
   return m[1].trim();
 }
 
-function extractEs(html, id) {
+function extractEs(html, id, pauseSec = 0) {
   const i = html.indexOf('id="' + id + '"');
   if (i < 0) throw new Error('section not found: ' + id);
   const esTag = '<div class="lang-es">';
@@ -64,6 +88,8 @@ function extractEs(html, id) {
   if (s < 0 || secEnd < 0 || s > secEnd) throw new Error('lang-es not found for ' + id);
   let b = html.slice(s + esTag.length, secEnd);
   b = b.split('<div class="cio"')[0];   // drop the shared calculator widget (and anything after it) from the voiced text
+  b = stripDiv(b, 'physios');           // #move: skip the physio address cards, an audio-only line points to them instead
+  b = stripDiv(b, 'no-audio');          // generic "shown in the guide, not read aloud" marker (e.g. the affirmation cards)
   b = b
     .replace(/<div class="eyebrow">[\s\S]*?<\/div>/g, ' ')
     .replace(/<div class="nextprev">[\s\S]*?<\/div>/g, ' ')
@@ -71,13 +97,21 @@ function extractEs(html, id) {
     .replace(/<p class="why-dl">[\s\S]*?<\/p>/g, ' ')
     .replace(/<figure[\s\S]*?<\/figure>/g, ' ')
     .replace(/<svg[\s\S]*?<\/svg>/g, ' ')
-    .replace(/<br\s*\/?>/g, ' ')
-    .replace(/<[^>]+>/g, ' ');
+    .replace(/<br\s*\/?>/g, ' ');
+  // mark the end of every block (paragraph, heading, list item) so we can pause there
+  b = b.replace(/<\/(?:p|h1|h2|h3|h4|li|blockquote)>/g, '');
+  b = b.replace(/<[^>]+>/g, ' ');
   b = b.replace(/&amp;/g, 'y').replace(/&lt;/g, '<').replace(/&gt;/g, '>')
        .replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&nbsp;/g, ' ');
   b = b.replace(/[\u{1F000}-\u{1FAFF}\u{2600}-\u{27BF}\u{2190}-\u{21FF}\u{2B00}-\u{2BFF}️‍]/gu, '');
-  b = b.replace(/\s+([.,;:!?»])/g, '$1').replace(/\s+/g, ' ').trim();
-  return b;
+  // one clean chunk per block; drop empties
+  const chunks = b.split('')
+    .map(t => t.replace(/\s+([.,;:!?»])/g, '$1').replace(/\s+/g, ' ').trim())
+    .filter(Boolean);
+  // the fast voice rushes between paragraphs, so glue blocks with a real pause;
+  // the slow voice (pause 0) joins with a plain space, so its text stays byte-identical (no needless re-render)
+  const joiner = pauseSec > 0 ? ` <break time="${pauseSec}s" /> ` : ' ';
+  return chunks.join(joiner);
 }
 
 const arg = (n, d) => { const i = process.argv.indexOf('--' + n); return i >= 0 ? process.argv[i + 1] : d; };
@@ -108,7 +142,8 @@ async function tts(text, voice, key) {
 
   for (const ch of CHAPTERS) {
     if (only && ch.id !== only) continue;
-    const text = extractEs(html, ch.id);
+    if (ch.voices && !ch.voices.includes(voiceName)) { console.log(`[${ch.id}] not for ${voiceName} — skip`); continue; }
+    const text = extractEs(html, ch.id, voice.pause || 0);
     const settings = Object.assign({}, voice.settings, ch.set || {});
     if (dry) { console.log(`[${ch.id}] ${text.length} chars :: ${text.slice(0, 140)}...`); continue; }
     fs.mkdirSync(stateDir, { recursive: true });
