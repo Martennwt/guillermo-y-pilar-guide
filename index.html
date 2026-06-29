@@ -144,11 +144,7 @@ nav.rail .group{font-family:var(--body); font-weight:800; letter-spacing:.13em; 
 nav.rail .group:first-child{margin-top:0}
 nav.rail a{display:flex; align-items:center; gap:.55rem; padding:.32rem .8rem; border-radius:10px; text-decoration:none; color:var(--ink-soft); font-weight:700; font-size:.92rem; transition:.15s}
 nav.rail a .ic{width:1.05rem; height:1.05rem; flex:0 0 auto; border:1.7px solid var(--line-2); border-radius:50%; position:relative; transition:.15s}
-nav.rail a.done .ic{background:var(--check); border-color:var(--check)}
-nav.rail a.done .ic::after{content:""; position:absolute; left:50%; top:47%; width:.26rem; height:.5rem; border:solid #fff; border-width:0 2px 2px 0; transform:translate(-50%,-58%) rotate(45deg)}
 nav.rail a.active .ic{border-color:rgba(255,255,255,.75)}
-nav.rail a.active.done .ic{background:#fff; border-color:#fff}
-nav.rail a.active.done .ic::after{border-color:var(--olive)}
 nav.rail a:hover{background:var(--paper-2); color:var(--olive-deep)}
 nav.rail a.active{background:var(--olive); color:#fff; box-shadow:inset 3px 0 0 var(--honey), var(--shadow-sm)}
 main{min-width:0; padding-top:1.5rem}
@@ -184,6 +180,8 @@ section.card.tint{background:linear-gradient(180deg,var(--paper-2),var(--paper))
 .photo{position:relative; margin:1.2rem 0; border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow-sm)}
 .photo img{display:block; width:100%; height:clamp(180px,30vw,300px); object-fit:cover}
 .photo figcaption{position:absolute; right:8px; bottom:6px; font-size:.6rem; color:#fff; background:rgba(0,0,0,.4); padding:2px 8px; border-radius:999px; font-weight:700; letter-spacing:.03em}
+/* audio-only helper lines: read aloud by the player, never shown on screen or in print */
+.audio-only{display:none !important}
 /* "Move your body" illustrations: full image (no crop) + caption below */
 .move-ill{margin:1.3rem 0; text-align:center}
 .move-ill img{display:block; width:100%; height:auto; border-radius:var(--radius); box-shadow:var(--shadow-sm)}
@@ -877,16 +875,16 @@ table.swaps tr:last-child td{border-bottom:none}
       </div>
       <div class="lang-en">
       <h1>Lose the kilos.<br>And <span class="scrawl">keep them off</span>.</h1>
-      <div class="for">Real change this time, and the whisky cheesecake can stay. 😄</div>
+      <div class="for">Eat well, move a little, change for ever, not just for a summer. 💚</div>
       <p class="sub">This is not a diet, and it is definitely not one of Marten's witchcraft green
-        power-juices. 😅 It is how you lose weight the healthy way and actually keep it off. The main
-        thing is a shift in mindset, backed by a few simple systems and little tricks you will actually
-        stick to. You keep your real Basque food, just with a few small adjustments, and bring in some newer,
-        lighter, healthier recipes alongside it. No starving, and you learn to smile at a craving instead
-        of obeying it. Because this was never about short-term
-        kilos or another diet. It is about the mental strength to become the person you want to be, with
-        the body you want, and to stay that way, not change for a week and slip back into your old
-        habits.</p>
+        power-juices. 😅 It is how you lose the weight the healthy way and actually keep it off. The heart
+        of it is a shift in mindset, backed by a few simple systems and little tricks you will genuinely
+        stick to. You keep your real Basque food, just with a few small tweaks, and add some lighter,
+        healthier recipes alongside it. And we get your body moving again, gently and on your own terms,
+        because that is the other half of staying strong for the long run. No starving, and you learn to
+        smile at a craving instead of obeying it. This was never about dropping a few kilos for one summer.
+        It is about the strength to become the person you want to be, in the body you want, and to stay
+        there, not change for a week and slip back into the old habits.</p>
       <div class="cta">
         <a class="btn primary" href="#start">Start with a smile</a>
         <button class="btn ghost" onclick="toggleNav()">See all chapters</button>
@@ -894,8 +892,8 @@ table.swaps tr:last-child td{border-bottom:none}
       </div>
       <div class="lang-es">
       <h1>Perded los kilos.<br>Y <span class="scrawl">que no vuelvan</span>.</h1>
-      <div class="for">Un cambio de verdad esta vez, y la tarta de queso al whisky se queda. 😄</div>
-      <p class="sub">Esto no es una dieta, y desde luego no es uno de los zumos verdes de brujería de Marten. 😅 Es la forma de adelgazar de manera sana y mantenerlo de verdad. Lo principal es un cambio de mentalidad, apoyado en unos cuantos sistemas sencillos y pequeños trucos que de verdad vais a mantener. Seguís con vuestra comida vasca de verdad, solo con unos pequeños ajustes, y sumáis algunas recetas más nuevas, ligeras y saludables. Sin pasar hambre, y aprendéis a sonreírle a un antojo en vez de obedecerlo. Porque esto nunca fue cuestión de kilos para un verano ni de otra dieta más. Es cuestión de la fuerza mental para convertiros en la persona que queréis ser, con el cuerpo que queréis, y quedaros ahí, no cambiar una semana y recaer en las viejas costumbres.</p>
+      <div class="for">Comed bien, moveos un poco, cambiad para siempre, no solo para un verano. 💚</div>
+      <p class="sub">Esto no es una dieta, y desde luego no es uno de los zumos verdes de brujería de Marten. 😅 Es la forma de adelgazar de manera sana y mantenerlo de verdad. El corazón de todo es un cambio de mentalidad, apoyado en unos cuantos sistemas sencillos y pequeños trucos que de verdad vais a mantener. Seguís con vuestra comida vasca de siempre, solo con unos pequeños ajustes, y sumáis algunas recetas más ligeras y saludables. Y también ponemos el cuerpo en movimiento otra vez, con calma y a vuestro ritmo, porque esa es la otra mitad de manteneros fuertes a largo plazo. Sin pasar hambre, y aprendéis a sonreírle a un antojo en vez de obedecerlo. Esto nunca fue cuestión de perder unos kilos para un verano. Es cuestión de la fuerza para convertiros en la persona que queréis ser, con el cuerpo que queréis, y quedaros ahí, no cambiar una semana y recaer en las viejas costumbres.</p>
       <div class="cta">
         <a class="btn primary" href="#start">Empezad con una sonrisa</a>
         <button class="btn ghost" onclick="toggleNav()">Ver todos los capítulos</button>
@@ -909,9 +907,6 @@ table.swaps tr:last-child td{border-bottom:none}
     <div class="lang-en">
     <div class="eyebrow">First things first</div>
     <h2>You have tried before. I get it.</h2>
-    <p>In a minute I will tell you a little story about a whisky cheesecake in a Chinese restaurant, and
-      five words in Spanish you will be itching to use. But before that story, something
-      important.</p>
     <p>Hey Guillermo and Pilar. I know exactly what you are probably thinking right now: <em>"Madre mía, this is a
       lot of reading. I just want the solution, the quick fix. I don't want to study a whole book."</em>
       Fair enough.</p>
@@ -953,7 +948,6 @@ table.swaps tr:last-child td{border-bottom:none}
     <div class="lang-es">
     <div class="eyebrow">Lo primero de todo</div>
     <h2>Ya lo habéis intentado antes. Lo entiendo.</h2>
-    <p>Dentro de un momento os contaré una pequeña historia sobre una tarta de queso al whisky en un restaurante chino, y cinco palabras que os vais a morir de ganas de usar. Pero antes de esa historia, algo importante.</p>
     <p>Hola Guillermo y Pilar. Sé perfectamente lo que estaréis pensando ahora mismo: <em>«Madre mía, cuánto para leer. Yo solo quiero la solución, el remedio rápido. No me apetece estudiarme un libro entero».</em> Me parece justo.</p>
     <p>Así que mirad qué fácil os lo pongo: ni siquiera tenéis que leerlo. Las manos ya han levantado bastante por esta semana. Por una vez, que trabajen los oídos. <strong><span class="scrawl">Dadle al play</span> y dejad que una voz española de verdad os lo lea todo, en voz alta.</strong> Con calma, ladrillo a ladrillo. Mejor aún en el sofá, al lado de Pilar (tu cómplice, y la cocinera que te tiene como a un rey, que es justo <span class="scrawl">por lo que esto es deporte de equipo</span> 😄), media hora como mucho. Eso es todo lo que hace falta.</p>
     <p>Y Pilar, esto es igual de tuyo. Tú eres el corazón de esta cocina, una auténtica maestra de la cocina española y vasca, la que se asegura de que tu hombre siempre tenga un plato caliente después de un día duro. Eso es amor. Y también os convierte en un equipo, porque Guillermo puede estar fuerte como un toro todo el día, llegar a casa, ver tu famoso ali-oli sonriéndole desde la mesa con 800 calorías por cucharada, y vuelta a empezar la batalla. 😄 (Más sobre cómo domar esa mayonesa en los <a href="#cheatsheet">consejos extra</a>.)</p>
@@ -1079,20 +1073,22 @@ table.swaps tr:last-child td{border-bottom:none}
     <p><strong>Your flesh vs. your spirit. 😇</strong> There is an old line in the Bible: <em>"<span class="scrawl">the spirit is willing, but the flesh is weak</span>."</em>
       It is spot on. Your <strong>flesh</strong> (the body) is the drama queen
       that whines for dessert, begs for the late-night snack, and wants everything right now. Your
-      <strong>spirit</strong> (the real you) is the one who decides who you want to become. The flesh is
+      <strong>spirit</strong> (the real you) is the one who decides who you want to become. The body is
       loud, but the spirit is the boss. This whole guide is really just one thing: getting your spirit
-      fit enough to put the flesh back in its seat.</p>
+      fit enough to put the body back in its seat.</p>
 
     <p class="big-quote">"Willpower is a small bucket of water. By the evening it is usually empty."</p>
     <p>Every time you say no, you pour a little more out. And right when it runs dry, the whole kitchen
       wakes up, and temptation with it.</p>
-    <p>It starts as a whisper from the fridge: <em>"Guillermo... Guillermooo..."</em> Then the biscuits
-      chime in from the cupboard: <em>"Pilar... Pilaaar..."</em> and soon the whole kitchen is one big
-      choir. But that is not the kitchen singing. It is your flesh, that same drama queen, throwing a
-      tantrum for its dessert. 😄</p>
-    <p>And those two at least have the decency to stay hidden. That big bowl of sweets parked right in
-      front of the TV does not even bother to whisper, it just sits there in plain sight, smiling at
-      you all evening. 😄</p>
+    <p>It starts the moment you finally drop onto the sofa. A sweet little voice leans in and purrs:
+      <em>"Pssst... Guillermooo... Pilaaar... just one tiny snack, go on, you have earned it..."</em> So
+      reasonable, so friendly, so very hard to argue with at nine at night. And it does not clock off when
+      you leave the house. Out on the street it tries again, softer still, <em>"...go on, one little pintxo,
+      who is even counting?"</em> 😄</p>
+    <p>But that is not the fridge talking, and it is not the bar. It is you. Or rather the softer, weaker
+      version of you, doing a very convincing impression of an old friend who only wants you to be happy. And
+      at least that one whispers. The big bowl of sweets parked right in front of the TV does not even bother:
+      it just sits there in plain sight, smiling at you all evening. 😄</p>
     <p>That is why <strong class="scrawl">systems over willpower</strong> matter so much.</p>
     <p class="big-quote">The people who make it are not stronger than you. They simply built systems, so
       willpower never has to save the day.</p>
@@ -1118,8 +1114,8 @@ table.swaps tr:last-child td{border-bottom:none}
     </figure>
 
     <p>And you will have them, make no mistake. Your brain, which you trained for years, screams that the
-      body needs to eat something right now or the world is going to end, and the old drama queen, that
-      weak flesh, takes the stage all over again. You win that round the same way every time: you ride the
+      body needs to eat something right now or the world is going to end, and that old, weaker self takes
+      the stage all over again. You win that round the same way every time: you ride the
       wave out, and you get back up, again and again. There is much more on this on the <a href="#motivation">Power
       Page</a>, and this is exactly what the audio is for: in the car, on the sofa, give it one or two
       minutes and you are back on track.</p>
@@ -1131,12 +1127,12 @@ table.swaps tr:last-child td{border-bottom:none}
     <div class="eyebrow">El secreto de los que lo consiguen</div>
     <h2>Fuerza de voluntad vs. sistemas 🧰</h2>
 
-    <p><strong>Vuestra carne contra vuestro espíritu. 😇</strong> Hay una frase antigua en la Biblia: <em>«<span class="scrawl">el espíritu está dispuesto, pero la carne es débil</span>.»</em> Da en el clavo. Vuestra <strong>carne</strong> (el cuerpo) es la reina del drama que lloriquea por el postre, suplica el picoteo de medianoche y lo quiere todo ya. Vuestro <strong>espíritu</strong> (el vosotros de verdad) es quien decide en quién os queréis convertir. La carne grita, pero el espíritu manda. Toda esta guía es en realidad una sola cosa: poner a vuestro espíritu en forma para que devuelva a la carne a su sitio.</p>
+    <p><strong>Vuestra carne contra vuestro espíritu. 😇</strong> Hay una frase antigua en la Biblia: <em>«<span class="scrawl">el espíritu está dispuesto, pero la carne es débil</span>.»</em> Da en el clavo. Vuestra <strong>carne</strong> (el cuerpo) es la reina del drama que lloriquea por el postre, suplica el picoteo de medianoche y lo quiere todo ya. Vuestro <strong>espíritu</strong> (el vosotros de verdad) es quien decide en quién os queréis convertir. El cuerpo grita, pero el espíritu manda. Toda esta guía es en realidad una sola cosa: poner a vuestro espíritu en forma para que devuelva al cuerpo a su sitio.</p>
 
     <p class="big-quote">«La fuerza de voluntad es un cubo pequeño de agua. Para la noche suele estar vacío.»</p>
     <p>Cada vez que decís que no, vertéis un poco más. Y justo cuando se queda seco, toda la cocina se despierta, y con ella la tentación.</p>
-    <p>Empieza como un susurro desde la nevera: <em>«Guillermo... Guillermooo...»</em> Luego se suman las galletas desde el armario: <em>«Pilar... Pilaaar...»</em> y enseguida toda la cocina es un gran coro. Pero no es la cocina la que canta. Es vuestra carne, esa misma reina del drama, montando una pataleta por su postre. 😄</p>
-    <p>Y esos al menos tienen la decencia de quedarse escondidos. Ese cuenco enorme de dulces aparcado justo delante de la tele ni siquiera se molesta en susurrar, se queda ahí a la vista, sonriéndoos toda la tarde. 😄</p>
+    <p>Empieza en el momento en que por fin os dejáis caer en el sofá. Una vocecita dulce se acerca y ronronea: <em>«Pssst... Guillermooo... Pilaaar... solo un caprichito, venga, que os lo habéis ganado...»</em> Tan razonable, tan amable, tan difícil de discutir a las nueve de la noche. Y no libra cuando salís de casa. En la calle lo intenta otra vez, aún más bajito, <em>«...venga, un pintxo de nada, ¿quién lleva la cuenta?»</em> 😄</p>
+    <p>Pero no es la nevera la que habla, ni el bar. Sois vosotros. O mejor dicho, esa versión más blanda y débil de vosotros, haciendo una imitación clavada de un viejo amigo que solo quiere veros felices. Y al menos esa susurra. El cuenco enorme de dulces aparcado justo delante de la tele ni se molesta: se queda ahí a la vista, sonriéndoos toda la tarde. 😄</p>
     <p>Por eso importan tanto los sistemas por encima de la fuerza de voluntad.</p>
     <p class="big-quote">Los que lo consiguen no son más fuertes que vosotros. Simplemente construyeron sistemas, para que la fuerza de voluntad no tenga que salvar el día.</p>
     <p>Dentro de vosotros hay una versión más fuerte y una más débil, y las dos son reales. Cada vez que cumplís vuestra palabra, crece la fuerte. Cada vez que la rompéis, crece la débil. Entonces, ¿a cuál queréis alimentar? A la fuerte la hacéis crecer con esta guía: escuchando el audio una y otra vez, y volviendo a ella cada vez que flaqueáis, dejáis poco a poco que vuestra mente cambie.</p>
@@ -1148,7 +1144,7 @@ table.swaps tr:last-child td{border-bottom:none}
       <figcaption>La izquierda de Mundaka, Bizkaia 🌊</figcaption>
     </figure>
 
-    <p>Y los vais a tener, no os engañéis. Vuestro cerebro, que habéis entrenado durante años, grita que el cuerpo necesita comer algo ahora mismo o se acaba el mundo, y la vieja reina del drama, esa carne débil, vuelve a salir a escena. Esa batalla se gana siempre igual: aguantáis la ola y os volvéis a levantar, una y otra vez. Hay mucho más sobre esto en la <a href="#motivation">Página de Poder</a>, y justo para eso está el audio: en el coche, en el sofá, dadle uno o dos minutos y volvéis al rumbo.</p>
+    <p>Y los vais a tener, no os engañéis. Vuestro cerebro, que habéis entrenado durante años, grita que el cuerpo necesita comer algo ahora mismo o se acaba el mundo, y esa vieja versión más débil de vosotros vuelve a salir a escena. Esa batalla se gana siempre igual: aguantáis la ola y os volvéis a levantar, una y otra vez. Hay mucho más sobre esto en la <a href="#motivation">Página de Poder</a>, y justo para eso está el audio: en el coche, en el sofá, dadle uno o dos minutos y volvéis al rumbo.</p>
     <p class="nugget">«No va de fuerza de voluntad. Va del sistema que tenéis listo cuando aparece la tentación.»</p>
     <div class="nextprev"><a class="btn ghost" href="#struggles">Atrás</a><a class="btn primary" href="#honest">Siguiente: La Magia</a></div>
     </div>
@@ -1471,63 +1467,54 @@ table.swaps tr:last-child td{border-bottom:none}
     <div class="eyebrow">The whole machine, in one picture</div>
     <h2>Calories In, Calories Out ⚖️</h2>
     <p class="lead">There is a whole industry built on making this sound complicated: the pills, the teas, the
-      magazine miracle plans. You can ignore all of it. Underneath the noise sits one simple, stubborn truth:
-      calories in, calories out. Calories in is what you eat and drink. Calories out is everything your body
-      burns, just by living, working and moving. Tip that balance one way or the other, and over time your
-      weight quietly follows.</p>
+      magazine miracle plans. Ignore all of it. Underneath the noise sits one stubborn truth: calories in,
+      calories out. What you eat and drink goes in. Everything your body burns, just by living, working and
+      moving, goes out. Tip that balance one way, and over time your weight quietly follows.</p>
     <div class="callout key">
       <strong>Eat less than you burn, and you lose.</strong><br>
       <strong>Eat more than you burn, and you gain.</strong><br>Everything else is detail.
     </div>
-    <p>The number that matters most is your <strong>daily burn</strong>: the total energy your body spends in
-      a day. It starts from what you burn just being alive, set by your weight, height, age and sex, since a
-      woman's body usually burns a little less. Then it grows with how active your day is, because a hard day
-      on your feet burns far more than a quiet one at a desk. Add it up, and you have a solid estimate of what
-      you burn in a day.</p>
-    <p>Picture your body like a wood stove. The food you eat is the wood you feed in, and the fire is your
-      body burning it all day. Feed it a little <strong>less</strong> than it burns, and the fire reaches into
-      the woodpile you already carry, your fat, to cover the gap. That, in one picture, is how you lose weight.</p>
-    <p>Here it is in plain numbers. Say your burn is <strong>2,500</strong>. Eat 2,500 and you hold steady.
-      Eat 3,000, and that extra 500 slowly goes on as fat. Eat 2,000, and you are 500 short, so your body
-      melts about half a kilo of fat that week. The bigger the gap, the faster it moves, and about
-      <strong>500 a day</strong> is the sweet spot: steady, safe, easy to live with. A body doing hard work
-      burns plenty, so you never need to starve. You just stay a little under.</p>
-    <p>So that is the whole game, and you never have to guess your number. The calculator just below works it
-      out: put in your age, height, weight and how your day usually goes. Just remember it moves with you,
-      more on a busy day, less on a quiet one. And you do not have to hold it in your head: print the little
-      sheet, write your number on it, and keep it where you will see it, always there in black and white.</p>
+    <p>The number that matters is your <strong>daily burn</strong>: the total energy your body spends in a
+      day. It starts from what you burn just being alive, set by your weight, height, age and sex, since a
+      woman's body usually burns a little less, and it grows with how active your day is, because a hard day
+      on your feet burns far more than a quiet one at a desk.</p>
+    <p>Picture your body as a wood stove. The food you eat is the wood, and the fire is your body burning it
+      all day. Feed it a little <strong>less</strong> than it burns, and the fire reaches into the woodpile you
+      already carry, your fat, to cover the gap. Say your burn is <strong>2,500</strong>: eat 2,500 and you
+      hold steady, eat 3,000 and the extra slowly goes on as fat, eat 2,000 and your body melts about half a
+      kilo of fat that week. About <strong>500 a day</strong> under is the sweet spot: steady, safe, easy to
+      live with. A body doing hard work burns plenty, so you never have to starve. You just stay a little under.</p>
+    <p>And here is the best part: you do not have to work any of this out yourselves. I worked your number out
+      with you already, and you have it printed on a little sheet, yours to keep for good. So there is nothing
+      to set up here and nothing to do. Your number is already in black and white, ready for the fridge. All
+      that is left is to live by it. 💛</p>
     </div>
     <div class="lang-es">
     <div class="eyebrow">La máquina entera, en una imagen</div>
     <h2>Calorías que entran, calorías que salen ⚖️</h2>
     <p class="lead">Hay una industria entera dedicada a hacer que esto parezca complicado: las pastillas, los
-      tés, los planes milagro de las revistas. Puedes ignorarlo todo. Debajo de tanto ruido hay una verdad
-      simple y tozuda: calorías que entran, calorías que salen. Lo que entra es lo que comes y bebes. Lo que
-      sale es todo lo que tu cuerpo quema, solo por vivir, trabajar y moverse. Inclina esa balanza hacia un
-      lado o el otro, y con el tiempo tu peso va detrás, sin hacer ruido.</p>
+      tés, los planes milagro de las revistas. Ignóralo todo. Debajo de tanto ruido hay una verdad tozuda:
+      calorías que entran, calorías que salen. Lo que comes y bebes entra. Todo lo que tu cuerpo quema, solo
+      por vivir, trabajar y moverse, sale. Inclina esa balanza hacia un lado, y con el tiempo tu peso va
+      detrás, sin hacer ruido.</p>
     <div class="callout key">
       <strong>Come menos de lo que quemas, y adelgazas.</strong><br>
       <strong>Come más de lo que quemas, y engordas.</strong><br>Todo lo demás son detalles.
     </div>
     <p>El número que más importa es tu <strong>gasto diario</strong>: la energía total que tu cuerpo consume
       en un día. Empieza por lo que quemas solo por estar vivo, que depende de tu peso, tu altura, tu edad y
-      tu sexo, ya que el cuerpo de una mujer suele quemar un poco menos. Luego sube según lo activo que sea tu
-      día, porque un día duro de pie quema mucho más que uno tranquilo en una silla. Súmalo todo y tienes una
-      estimación sólida de lo que quemas al día.</p>
-    <p>Imagina tu cuerpo como una estufa de leña. La comida que comes es la leña que metes, y el fuego es tu
-      cuerpo quemándola todo el día. Dale un poco <strong>menos</strong> de lo que quema, y el fuego echa mano
-      del montón de leña que ya llevas encima, tu grasa, para cubrir la diferencia. Eso, en una sola imagen,
-      es cómo se adelgaza.</p>
-    <p>Aquí lo tienes en números claros. Pongamos que tu gasto es <strong>2.500</strong>. Come 2.500 y te
-      mantienes. Come 3.000, y esas 500 de más se van acumulando como grasa. Come 2.000, y te quedan 500
-      cortas, así que tu cuerpo derrite alrededor de medio kilo de grasa esa semana. Cuanto mayor es la
-      diferencia, más rápido va, y unas <strong>500 al día</strong> es el punto justo: constante, seguro y
-      fácil de mantener. Un cuerpo que hace trabajo duro quema mucho, así que nunca hace falta pasar hambre.
-      Solo te quedas un poco por debajo.</p>
-    <p>Así que ese es todo el juego, y nunca tienes que adivinar tu número. La calculadora de aquí abajo lo
-      saca por ti: pon tu edad, tu altura, tu peso y cómo suele ser tu día. Solo recuerda que se mueve
-      contigo, más en un día ajetreado, menos en uno tranquilo. Y no tienes que llevarlo en la cabeza: imprime
-      la hojita, apunta tu número en ella, y guárdala donde la veas, siempre ahí, negro sobre blanco.</p>
+      tu sexo, ya que el cuerpo de una mujer suele quemar un poco menos, y sube según lo activo que sea tu
+      día, porque un día duro de pie quema mucho más que uno tranquilo en una silla.</p>
+    <p>Imagina tu cuerpo como una estufa de leña. La comida que comes es la leña, y el fuego es tu cuerpo
+      quemándola todo el día. Dale un poco <strong>menos</strong> de lo que quema, y el fuego echa mano del
+      montón de leña que ya llevas encima, tu grasa, para cubrir la diferencia. Pongamos que tu gasto es
+      <strong>2.500</strong>: come 2.500 y te mantienes, come 3.000 y esas de más se van acumulando como
+      grasa, come 2.000 y tu cuerpo derrite alrededor de medio kilo de grasa esa semana. Unas <strong>500 al
+      día</strong> por debajo es el punto justo: constante, seguro y fácil de mantener. Un cuerpo que hace
+      trabajo duro quema mucho, así que nunca hace falta pasar hambre. Solo te quedas un poco por debajo.</p>
+    <p>Y lo mejor de todo: no tienes que sacar nada de esto tú mismo. Tu número ya lo calculé contigo, y lo
+      tienes impreso en una hojita, tuya para siempre. Así que aquí no hay nada que montar ni nada que hacer.
+      Tu número ya está en blanco y negro, listo para la nevera. Lo único que queda es vivir según él. 💛</p>
     </div>
 
     <div class="cio" id="cio" data-state="lose">
@@ -1633,8 +1620,8 @@ table.swaps tr:last-child td{border-bottom:none}
   <!-- MOVE YOUR BODY -->
   <section class="card tint" id="move">
     <div class="lang-en">
-    <div class="eyebrow">Not the extra. The engine.</div>
-    <h2>Move Your Body: This Is How You Last 🏃</h2>
+    <div class="eyebrow">Part 1 of 2 · what carries you up the hill at 75</div>
+    <h2>Move Your Body: The Most Important Page in This Guide 🏃</h2>
     <p class="lead">Food gets all the attention, but movement is the other half of this, and it is just as
       much a head game as the plate is. You do not move to earn your dinner. You move because a body that
       moves stays strong, clear and alive. The old rule is blunt and true: <strong>if you do not use it,
@@ -1670,6 +1657,14 @@ table.swaps tr:last-child td{border-bottom:none}
     <p>And right about now a thought might be creeping in: <em>"that is all well and good, but I cannot really do sport, not with my back."</em> Fair. Hold onto that caution, it is wise. It is exactly why we do not start with the exercises. We start by making it safe.</p>
 
     <h3>First get cleared, then train 🧭</h3>
+
+    <div class="callout key"><strong>One rule above all: do it right, not hard.</strong> I talked this through
+      with Sarah, the chiropractor whose work has already done so much for that back, the reason an operation
+      could be sidestepped. The last thing we want is to undo that hard-won progress with a single exercise
+      done badly. So we do the opposite of ego. We start light, we keep the form clean, and we work
+      <em>toward</em> the old fear slowly instead of crashing into it. A strong, supported back is built from
+      good reps, not heavy ones. Pain is a stop sign, never a badge of honour.</div>
+
     <p>Here is the order that matters for a back that has been through it: <strong>first</strong> you sit down
       with someone who truly knows backs and let them tell you which movements are safe for <em>you</em>.
       <strong>Then</strong> you train. A video or an app cannot look at your back and give it the all clear. A
@@ -1709,13 +1704,107 @@ table.swaps tr:last-child td{border-bottom:none}
       now, what is next?"</em> Legs, glutes, core, the plank, the push-up, it all works together, and it all
       feeds one thing: a lower back that finally has something holding it up. Fix the cause, do not just chase
       today's ache.</p>
+    <div class="nextprev"><a class="btn ghost" href="#how">Back</a><a class="btn primary" href="#move2">Next: the simple plan</a></div>
+    </div>
+    <div class="lang-es">
+    <div class="eyebrow">Parte 1 de 2 · lo que os sube la cuesta a los 75</div>
+    <h2>Mover el Cuerpo: la página más importante de esta guía 🏃</h2>
+    <p class="lead">Toda la atención va a la comida, pero el movimiento es la otra mitad de esto, y es tanto un
+      juego de cabeza como el plato. No os movéis para ganaros la cena. Os movéis porque un cuerpo que se mueve
+      se mantiene fuerte, despierto y vivo. La vieja regla es directa y cierta: <strong>si no lo usáis, lo
+      perdéis.</strong> Así que os lo digo claro, antes que nada: <strong>esta parte no es opcional.</strong> No
+      es la guinda del pastel una vez arreglada la comida. Es el motor.</p>
 
-    <div class="callout key"><strong>One rule above all: do it right, not hard.</strong> I talked this through
-      with Sarah, the chiropractor whose work has already done so much for that back, the reason an operation
-      could be sidestepped. The last thing we want is to undo that hard-won progress with a single exercise
-      done badly. So we do the opposite of ego. We start light, we keep the form clean, and we work
-      <em>toward</em> the old fear slowly instead of crashing into it. A strong, supported back is built from
-      good reps, not heavy ones. Pain is a stop sign, never a badge of honour.</div>
+    <div class="callout key"><strong>Aquí está lo que casi todos entienden mal.</strong> Una persona delgada
+      que no se mueve nunca suele estar peor que alguien con algún kilo de más que camina, carga y se mantiene
+      activo. Lo en forma que estáis, no solo lo delgados, es una de las señales más fuertes de una vida larga
+      y sana. Así que esto nunca fue solo el número de la báscula. Es tener un cuerpo que todavía os sube la
+      cuesta a los 75.</div>
+
+    <p>Y va de mucho más que quemar unas pocas calorías. Moverse mantiene los músculos despiertos, la postura
+      erguida, las articulaciones engrasadas y la zona lumbar sostenida. La parte silenciosa de la que nadie os
+      avisa: a partir de los cincuenta, el músculo se va escapando un poco cada año a no ser que le deis al
+      cuerpo una razón para conservarlo. El movimiento es esa razón. Es lo que os mantiene levantando,
+      agachándoos, cargando y de pie bien rectos: toda la diferencia entre simplemente hacerse mayor y volverse
+      frágil.</p>
+
+    <h3>Tu espalda ha pasado por mucho 💛</h3>
+    <p>Puede que tu espalda ya haya cargado más de lo que le tocaba. Los años en la obra se acumulan: levantar,
+      agacharse, las mañanas frías, el mismo esfuerzo día tras día. Y luego estuvo aquel día en el gimnasio, en
+      la polea baja, cuando el agarre se soltó y algo en tu espalda cedió, un crujido que no has olvidado. Desde
+      entonces, movimientos que hace veinte años no eran nada pueden parecer arriesgados, hasta dar un poco de
+      miedo. Eso es real. El gimnasio como era antes quizá ya no sea la respuesta, y el trabajo en la obra ya es
+      bastante duro de por sí.</p>
+
+    <p>Pero nada de eso tiene por qué ser la razón para parar. Una espalda que ha pasado por mucho es un motivo
+      para moverse con más cabeza, no para dejar de moverse del todo. La pregunta nunca fue <em>«¿puedo seguir
+      haciendo todo lo que hacía antes?»</em> Es otra más amable: <strong>«¿qué puedo hacer en su lugar?»</strong>
+      Siempre hay algo a lo que tu cuerpo todavía dirá que sí. Así que no perseguimos el viejo camino. Buscamos
+      la versión que te encaja ahora, y construimos desde ahí, despacio, sin prisa, sin ego. La fuerza y las
+      ganas de volver a empezar siguen dentro de ti. Solo las apuntamos hacia donde tu espalda puede aguantar.</p>
+
+    <p>Y justo ahora puede que se te cuele un pensamiento: <em>«todo eso está muy bien, pero yo no puedo hacer deporte de verdad, no con mi espalda.»</em> Es justo. Quédate con esa prudencia, es sabia. Es exactamente por eso que no empezamos por los ejercicios. Empezamos por hacerlo seguro.</p>
+
+    <h3>Primero que te den el visto bueno, luego entrena 🧭</h3>
+
+    <div class="callout key"><strong>Una regla por encima de todas: hazlo bien, no fuerte.</strong> Lo hablé con
+      Sarah, la quiropráctica cuyo trabajo ya ha hecho tanto por esa espalda, el motivo por el que se pudo
+      evitar una operación. Lo último que queremos es deshacer ese progreso tan costoso con un solo ejercicio
+      mal hecho. Así que hacemos lo contrario del ego. Empezamos ligero, mantenemos la técnica limpia, y
+      trabajamos <em>hacia</em> el viejo miedo despacio en vez de estrellarnos contra él. Una espalda fuerte y
+      sostenida se construye con repeticiones buenas, no pesadas. El dolor es una señal de stop, nunca una
+      medalla.</div>
+
+    <p>Este es el orden que importa para una espalda que ha pasado por mucho: <strong>primero</strong> te
+      sientas con alguien que de verdad entiende de espaldas y dejas que te diga qué movimientos son seguros
+      para <em>ti</em>. <strong>Luego</strong> entrenas. Un vídeo o una app no pueden mirarte la espalda y darle
+      el visto bueno. Un buen fisio sí, y esa única visita es el seguro más listo y más barato que hay. Era
+      también el consejo de Sarah: ve un par de veces, que te miren la técnica, y luego te lo llevas a casa y lo
+      haces tú mismo.</p>
+
+    <p>Así que hice el trabajo por ti. Aquí mismo, en <strong>Durango y Amorebieta</strong>, hay gente que es
+      de verdad buena exactamente en esto. Los investigué, yo mismo he estado en la camilla de uno, y estos son
+      a los que te enviaría. Toca un nombre para abrir su web o encontrarlos en el mapa.</p>
+
+    <p class="audio-only">Las tres están aquí mismo en la guía, cada una con su página web, su mapa y su teléfono. Echadles un vistazo y llamad a la que mejor os encaje.</p>
+
+    <div class="physios">
+      <div class="physio top">
+        <div class="ph-top"><span class="ph-pick">Mi recomendación</span><h4>Hodei Gallastegui Fisioterapia</h4><span class="ph-town">Durango</span><span class="ph-stars">★ 4.8 a 5.0</span></div>
+        <p>La mejor opción para una espalda así. Trabaja la rehabilitación de verdad y el ejercicio
+          terapéutico, no solo quitar el dolor por un día. Fue el fisio del Rally Dakar y del equipo del
+          Cultural, y un paciente se recuperó de una hernia discal de L5 a S1 en cinco meses. Busca la causa y
+          te manda a casa con los ejercicios exactos para que no vuelva.</p>
+        <div class="ph-links"><a class="web" href="https://www.fisioterapiahodeigallastegui.com/" target="_blank" rel="noopener">🌐 Web</a><a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=Hodei%20Gallastegui%20Fisioterapia%20Durango" target="_blank" rel="noopener">📍 Mapa</a><a class="map" href="tel:+34688884835">📞 Llamar</a></div>
+      </div>
+      <div class="physio">
+        <div class="ph-top"><h4>Fisioterapia y Osteopatía Eguzki</h4><span class="ph-town">Durango</span><span class="ph-stars">★ 4.6</span></div>
+        <p>Un equipo grande de siete, con Pilates suave en grupo y estiramientos, e incluso visitas a domicilio.
+          Una entrada suave y guiada mientras la espalda aún se asienta.</p>
+        <div class="ph-links"><a class="web" href="https://fisioeguzki.com" target="_blank" rel="noopener">🌐 Web</a><a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=Fisioterapia%20Osteopatia%20Eguzki%20Durango" target="_blank" rel="noopener">📍 Mapa</a><a class="map" href="tel:+34946033230">📞 Llamar</a></div>
+      </div>
+      <div class="physio">
+        <div class="ph-top"><h4>Espazio Bizia</h4><span class="ph-town">Amorebieta</span><span class="ph-stars">★ 5.0</span></div>
+        <p>Pilates en pleno Amorebieta, con una profesora a la que la gente alaba por vigilar tu técnica como un
+          halcón para que ganes fuerza sin hacerte daño. Un sitio tranquilo para empezar, cerca de casa.</p>
+        <div class="ph-links"><a class="web" href="https://www.instagram.com/espaziobizia/" target="_blank" rel="noopener">📷 Instagram</a><a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=Espazio%20Bizia%20Amorebieta" target="_blank" rel="noopener">📍 Mapa</a><a class="map" href="tel:+34636695466">📞 Llamar</a></div>
+      </div>
+    </div>
+
+    <p>Reserva una hora, quizá dos. Deja que te miren la técnica, que te digan qué ejercicios y cuántos, y que
+      aclaren qué es seguro. Luego te lo llevas a casa y lo haces tú mismo. Y según te pongas más en forma y más
+      fuerte, que lo harás, vas añadiendo un poco: una kettlebell, una mancuerna ligera. Vuelve de vez en cuando
+      y di: <em>«aquí estoy ahora, ¿qué viene después?»</em> Piernas, glúteos, core, la plancha, la flexión,
+      todo trabaja junto, y todo alimenta una cosa: una zona lumbar que por fin tiene algo que la sostenga.
+      Arregla la causa, no persigas solo el dolor de hoy.</p>
+    <div class="nextprev"><a class="btn ghost" href="#how">Atrás</a><a class="btn primary" href="#move2">Siguiente: el plan sencillo</a></div>
+    </div>
+  </section>
+
+  <section class="card tint" id="move2">
+    <div class="lang-en">
+    <div class="eyebrow">Part 2 of 2 · the simple plan</div>
+    <h2>A Walk, and a Little Strength 💪</h2>
 
     <p>So we keep it simple. No gym, no plan, no two or three hours. Two things, that is the whole
       job: a walk, and a short bit of strength. As little as <strong>twice a week, ten to fifteen minutes a
@@ -1785,60 +1874,92 @@ table.swaps tr:last-child td{border-bottom:none}
       independent for the long haul, with Pilar's cooking still on the table.</p>
 
     <p class="nugget">"I do not move to punish my body. I move because I plan on using it for a long time."</p>
-    <div class="nextprev"><a class="btn ghost" href="#how">Back</a><a class="btn primary" href="#motivation">Next: Power page</a></div>
+    <div class="nextprev"><a class="btn ghost" href="#move">Back</a><a class="btn primary" href="#motivation">Next: Power page</a></div>
     </div>
     <div class="lang-es">
-    <div class="eyebrow">La otra mitad del motor</div>
-    <h2>Mover el Cuerpo 🏃</h2>
-    <p class="lead">Toda la atención va a la comida, pero el movimiento es la otra mitad de esto, y es tanto un
-      juego de cabeza como el plato. No os movéis para ganaros la cena. Os movéis porque un cuerpo que se mueve
-      se mantiene fuerte, despierto y vivo. La vieja regla es directa y cierta: <strong>si no lo usáis, lo
-      perdéis.</strong></p>
+    <div class="eyebrow">Parte 2 de 2 · el plan sencillo</div>
+    <h2>Un paseo, y un poco de fuerza 💪</h2>
 
-    <div class="callout key"><strong>Aquí está lo que casi todos entienden mal.</strong> Una persona delgada
-      que no se mueve nunca suele estar peor que alguien con algún kilo de más que camina, carga y se mantiene
-      activo. Lo en forma que estáis, no solo lo delgados, es una de las señales más fuertes de una vida larga
-      y sana. Así que esto nunca fue solo el número de la báscula. Es tener un cuerpo que todavía os sube la
-      cuesta a los 75.</div>
+    <p>Así que lo mantenemos simple. Nada de gimnasio, nada de plan, nada de dos o tres horas. Dos cosas, ese es
+      todo el trabajo: un paseo, y un poco de fuerza. Tan poco como <strong>dos veces por semana, de diez a
+      quince minutos cada vez.</strong> Si te pica el gusanillo siempre puedes hacer más, pero nunca tienes que
+      hacerlo.</p>
 
-    <p>Y como con la comida, es sobre todo mental. Un paseo despeja la cabeza, descarga el estrés que dispara
-      el picoteo de la noche, y os recuerda quién es el capitán. No hace falta volverse atleta. Hace falta
-      empezar, y mantenerlo absurdamente simple.</p>
+    <h3>Empieza con un paseo 🚶</h3>
+    <p>No lo subestimes nunca. Apunta a algo entre <strong>5.000 y 10.000 pasos</strong>, que es más o menos un
+      paseo de 45 a 60 minutos: hacia Durango hasta el borde del bosque y vuelta, o una vuelta por el parque,
+      las escaleras en vez del ascensor. Un paseo es tan bueno para la cabeza como para el cuerpo. Despeja la
+      mente, descarga el estrés que dispara el picoteo de la noche, y te recuerda quién es el capitán. En un día
+      duro es la victoria más fácil que hay, y el cuerpo responde más rápido de lo que crees.</p>
 
-    <div class="grid2">
-      <div class="minicard good"><h3>🚶 Empezad con paseos</h3>
-        <p>La victoria más fácil que hay. Unos <strong>7.000 pasos</strong> son más o menos un paseo de 45
-          minutos a ritmo normal: hacia Durango hasta el borde del bosque y vuelta, o una vuelta por el parque.
-          Dos o tres veces por semana, más las escaleras en vez del ascensor. Sorprende lo rápido que responde
-          el cuerpo.</p>
-      </div>
-      <div class="minicard good"><h3>⏱️ Añadid un entreno de 15 minutos</h3>
-        <p>Olvidaos de la montaña del gimnasio: la cuota, el viaje, la hora y media, la ducha. Todo ese montón
-          os mata la motivación antes de empezar. Tampoco hace falta ningún equipo elegante. Barre (muy de moda
-          ahora en España), un poco de peso corporal, una banda o unas pesas ligeras, lo que os guste, y
-          funciona igual de bien para mujeres que para hombres. Poned un vídeo de entreno de YouTube y dejad que
-          los entrenadores os lleven durante <strong>15 minutos</strong>, dos o tres veces por semana. Una
-          sesión corta y efectiva quema calorías extra de verdad, y lo mejor es lo bien que os sentís después.</p>
-      </div>
-    </div>
+    <h3>Luego añade un entreno corto 💪</h3>
+    <p>Esta es la parte que de verdad merece la pena, y la que da pereza saltarse. No lo hagas. Un paseo te
+      mantiene en movimiento, pero unos minutos honestos de fuerza son los que mantienen el músculo en tu cuerpo
+      y construyen un escudo alrededor de la zona lumbar. Nada de gimnasio, nada de cuota, nada de viaje de una
+      hora y ducha. Ni siquiera tienes que salir del salón: pon un entreno corto en la tele y síguelo, sin
+      pensar.</p>
 
-    <div class="callout win"><strong>Echad cuentas.</strong> Las escaleras 2 o 3 veces por semana, un par de
-      paseos, y dos o tres entrenos de 15 minutos. Por separado cada cosa parece poco. Apiladas a lo largo de
-      las semanas y los meses queman un montón serio de calorías extra, y protegen el músculo que no queréis
-      perder.</div>
+    <figure class="move-ill">
+      <img src="assets/img/move/livingroom.webp" alt="Un hombre haciendo una flexión sobre una esterilla en casa, siguiendo un entreno corto en la tele" loading="lazy">
+      <figcaption>Quince minutos, tu salón, un vídeo en la tele. Ese es todo el montaje.</figcaption>
+    </figure>
 
-    <p>Juntad eso con los consejos de comida de aquí y no os hace falta ninguna dieta milagro miserable.
-      Mantenéis vuestra vida, vuestra mesa, la cocina de Pilar, con unos pocos ajustes honestos como menos
-      aceite. El movimiento es la parte que os compra los años: la movilidad, las articulaciones, seguir
-      fuertes e independientes de mayores. Ese es el premio de verdad.</p>
+    <p>Y no tiene por qué ser complicado. Un puñado de movimientos sencillos, bien hechos, te llevan muy lejos.
+      Haz de la <strong>flexión</strong> tu héroe: un solo movimiento que trabaja pecho, hombros, brazos y todo
+      el core a la vez. ¿Aún no puedes hacer una en el suelo? Apóyate en la encimera de la cocina o en la pared
+      y baja el ángulo según te vuelves más fuerte. Añade una <strong>sentadilla</strong> para las piernas y el
+      trasero, un <strong>ejercicio de core</strong> suave en el suelo, y un <strong>ejercicio de espalda con
+      una banda en la puerta</strong>, y tienes todo el cuerpo cubierto.</p>
+
+    <p class="audio-only">Por cierto, en la guía tenéis una foto de cada uno de estos ejercicios, para que veáis exactamente cómo se hacen. Y si os apetece, poned un vídeo corto de YouTube en la tele y seguidlo paso a paso.</p>
+
+    <figure class="move-ill">
+      <img src="assets/img/move/exercises.webp" alt="Cuatro ejercicios sencillos en casa: una flexión, una sentadilla, un ejercicio de core en el suelo y un tirón de espalda con banda elástica en una puerta" loading="lazy">
+      <figcaption>Cuatro movimientos para empezar: una flexión, una sentadilla, un ejercicio de core en el suelo y un tirón con banda en la puerta. Con eso sobra para empezar.</figcaption>
+    </figure>
+
+    <h3>Y Pilar, esto es igual de tuyo 💃</h3>
+    <p>Nada de esto era solo para Guillermo. Cada palabra cuenta para ti también. Tu clase de baile es
+      maravillosa, no la dejes, ya te pone en movimiento y te levanta el ánimo. Pero por debajo del baile siguen
+      siendo el mismo puñado de básicos los que mantienen un cuerpo fuerte y firme: un poco de core para un
+      centro sólido, las piernas, y los movimientos sencillos que te mantienen erguida y te protegen para los
+      años que vienen. Las mismas recompensas de las que hablamos ahí arriba, la fuerza, la energía, seguir
+      siendo independiente, son igual de tuyas.</p>
+
+    <figure class="move-ill">
+      <img src="assets/img/move/pilar-livingroom.webp" alt="Una mujer haciendo un entreno suave por la mañana en casa, siguiendo un entreno corto en la tele" loading="lazy">
+      <figcaption>Una mañana tranquila, una esterilla, un entreno corto en la tele. No hace falta más.</figcaption>
+    </figure>
+
+    <p>Y encaja con tu día. Unos minutos por la mañana mientras la casa aún está tranquila, o antes de que
+      Guillermo vuelva de la obra, delante de la tele. Cuando su sesión y la tuya no coinciden, no pasa nada: tú
+      das tu paseo, él hace su entreno, y los dos volvéis un poco mejor. Diez o quince minutos, un par de veces
+      por semana, igual que él.</p>
+
+    <figure class="move-ill">
+      <img src="assets/img/move/pilar-exercises.webp" alt="Cuatro movimientos sencillos de fuerza y core: una sentadilla, un puente de glúteos, una plancha sobre antebrazos y una flexión en la pared" loading="lazy">
+      <figcaption>Los mismos básicos, tu versión: una sentadilla, un puente de glúteos, una plancha y una flexión en la pared. Fuerte desde el centro.</figcaption>
+    </figure>
+
+    <div class="callout win"><strong>Echad cuentas.</strong> Las escaleras un par de veces por semana, un par de
+      paseos, y dos o tres sesiones de diez minutos. Por separado cada cosa parece nada. Apiladas a lo largo de
+      las semanas y los meses queman un montón serio de calorías extra, y protegen el músculo y la espalda que
+      no queréis perder.</div>
+
+    <p>Algunos días no os apetecerá. Saldréis a buscar la excusa, y de vez en cuando el sofá ganará. No pasa
+      nada, es humano. Lo que importa nunca es la semana perfecta, es el patrón: un par de sesiones, semana tras
+      semana, mes tras mes. Mantenedlo y vuestro cuerpo, vuestra mente, vuestro ánimo, vuestro sueño y vuestra
+      movilidad os lo van pagando en silencio. Ese es el premio de verdad: seguir fuertes, erguidos e
+      independientes a largo plazo, con la cocina de Pilar todavía en la mesa.</p>
 
     <p class="nugget">«No me muevo para castigar mi cuerpo. Me muevo porque pienso usarlo durante mucho tiempo.»</p>
-    <div class="nextprev"><a class="btn ghost" href="#how">Atrás</a><a class="btn primary" href="#motivation">Siguiente: Página de Poder</a></div>
+    <div class="nextprev"><a class="btn ghost" href="#move">Atrás</a><a class="btn primary" href="#motivation">Siguiente: Página de Poder</a></div>
     </div>
   </section>
 
   <!-- MOTIVATION / POWER PAGE -->
   <section class="card" id="motivation">
+    <div class="lang-en">
     <div class="es-ribbon" style="max-width:130px"></div>
     <div class="eyebrow">Read this whenever you need it</div>
     <h2>Your Power Page 🔥</h2>
@@ -1905,17 +2026,95 @@ table.swaps tr:last-child td{border-bottom:none}
       each other. On the hard days, one of you carries the other. That is the strongest system of all.</div>
     <p class="nugget">"You are stronger than your impulses. Today, prove it to yourself one more time."</p>
     <div class="nextprev"><a class="btn ghost" href="#move">Back</a><a class="btn primary" href="#plan">Next: 45-day plan</a></div>
+    </div>
+
+    <div class="lang-es">
+    <div class="es-ribbon" style="max-width:130px"></div>
+    <div class="eyebrow">Léela siempre que lo necesitéis</div>
+    <h2>Vuestra Página de Poder 🔥</h2>
+    <p class="lead">Cuando la noche se ponga dura, cuando el antojo grite, cuando se os olvide por qué empezasteis,
+      volved aquí. Leedla despacio. Leedla en voz alta si podéis. Ahora son vuestras.</p>
+
+    <div class="creed">
+      <h3>La que más importa 🔁</h3>
+      <p class="cascade">Una hora mala no obliga a que la siguiente lo sea, y un día malo no condena al siguiente.</p>
+      <p>El resbalón no es lo que os tumba. <strong>Rendirse después, sí.</strong> No es cuántas veces caéis. Es
+        <strong>cuántas veces os volvéis a levantar.</strong> Los que lo consiguen no son más fuertes que
+        vosotros, y no es pura fuerza de voluntad, son sus <strong>sistemas</strong>, y se levantaron una vez
+        más de las que cayeron. Todo el mundo cae. Todos. Quizá los dulces ganaron siete noches, así que se
+        levantaron y plantaron cara en la octava.</p>
+      <p>Así que cuando resbaléis, no os machaquéis. La vieja voz dirá: <em>«lo intenté otra vez y fracasé. No
+        estoy hecho para esto, no puedo.»</em> No os lo creáis. Decid solo: <strong>«solo estoy
+        practicando»</strong>, y empezad de nuevo. La próxima comida, la próxima mañana, el próximo día.
+        Levantarse, una y otra vez, <strong>es el músculo.</strong> Cada vez se hace más fuerte.</p>
+      <p>Y lo más hondo: si queréis esto <strong>con todo el corazón</strong>, encontraréis el camino. Las reglas
+        de la comida importan, claro, y las calorías que entran y salen son reales. Pero lo principal nunca fue
+        la dieta. Es vuestra <strong>mentalidad.</strong></p>
+      <p>Así que no persigáis milagros, <strong>perseguid la constancia.</strong> Esperad la subida lenta y firme
+        en vez de la magia, y un día levantáis la vista y el cambio ya no es una dieta que aguantáis, es
+        simplemente <strong>quienes sois ahora.</strong></p>
+    </div>
+
+    <p class="audio-only">Aquí, en la guía, tenéis también una colección de pequeñas tarjetas de afirmaciones:
+      unas para el guerrero que lleváis dentro, duras y sin excusas, y otras para el corazón, más suaves pero
+      igual de fuertes.</p>
+
+    <div class="no-audio">
+      <h3>Para el guerrero que lleváis dentro 💪</h3>
+      <p class="hint">Combustible duro, sin excusas. Leedlas como si cada palabra fuera en serio.</p>
+      <div class="affirms">
+        <div class="affirm"><span class="star">★</span>Nadie va a venir a hacer esto por mí. Yo me salvo.</div>
+        <div class="affirm"><span class="star">★</span>No negocio con mi yo más débil. Nunca.</div>
+        <div class="affirm"><span class="star">★</span>Soy el capitán de mi barco. Mis antojos no llevan el timón.</div>
+        <div class="affirm"><span class="star">★</span>El dolor de la disciplina pesa menos que el dolor del arrepentimiento.</div>
+        <div class="affirm"><span class="star">★</span>Puedo con las cosas difíciles. Las hago cada día en el trabajo.</div>
+        <div class="affirm"><span class="star">★</span>No he terminado. Solo estoy empezando.</div>
+      </div>
+      <h3>Para el corazón que lleváis dentro 💗</h3>
+      <p class="hint">Combustible más suave. Igual de fuerte.</p>
+      <div class="affirms">
+        <div class="affirm"><span class="star">★</span>Merezco que me cuiden. Mi cuerpo merece mi cariño.</div>
+        <div class="affirm"><span class="star">★</span>Trato a mi cuerpo con cariño, no con castigo.</div>
+        <div class="affirm"><span class="star">★</span>Cada buena decisión es un regalo para los que quiero.</div>
+        <div class="affirm"><span class="star">★</span>Me estoy convirtiendo en mi versión más sana, con calma y paso firme.</div>
+        <div class="affirm"><span class="star">★</span>Cumplo mi palabra conmigo mismo, porque importo.</div>
+        <div class="affirm"><span class="star">★</span>Quiero estar aquí, fuerte y bien, muchos años.</div>
+      </div>
+    </div>
+
+    <div class="callout win mky">💡 <strong>Hacedlas vuestras.</strong> Elegid las dos o tres que más os
+      lleguen. Guillermo y Pilar, cada uno las suyas. Mejor aún, <strong>escribid las vuestras</strong> con
+      vuestras propias palabras. Luego ponedlas en papelitos por la casa, en el espejo, la nevera, el coche, y
+      leedlas en voz alta cuando las necesitéis. La afirmación más fuerte es la que os da a <em>vosotros</em> la
+      mayor fuerza.</div>
+
+    <h3>Recordad estas verdades 💭</h3>
+    <p class="audio-only">Recordadlas sobre todo en los momentos flojos.</p>
+    <ul class="quotes-list">
+      <li>No es cuántas veces caigo. Es cuántas veces me vuelvo a levantar.</li>
+      <li>No estoy fracasando. Estoy practicando, y vuelvo a practicar mañana.</li>
+      <li>No persigo milagros. Persigo la constancia, y la constancia me reconstruye.</li>
+      <li>No va de fuerza de voluntad. Va de los sistemas que monto antes del momento débil.</li>
+      <li>¿Seré más débil que mis antojos, o más fuerte que mis impulsos? Hoy, más fuerte.</li>
+      <li>Un antojo parece hambre, pero es solo una ola. Las olas siempre rompen.</li>
+      <li>Una salida de la autopista no significa estrellar el coche. La próxima comida, de vuelta a la carretera.</li>
+      <li>La disciplina no es castigo. Es la libertad de llegar a ser quien quiero ser.</li>
+    </ul>
+    <div class="callout win"><strong>No estáis solos en esto.</strong> Guillermo y Pilar, os tenéis el uno al
+      otro. En los días duros, uno carga al otro. Ese es el sistema más fuerte de todos.</div>
+    <p class="nugget">«Sois más fuertes que vuestros impulsos. Hoy, demostrádselo una vez más.»</p>
+    <div class="nextprev"><a class="btn ghost" href="#move">Atrás</a><a class="btn primary" href="#plan">Siguiente: Plan de 45 días</a></div>
+    </div>
   </section>
 
   <!-- 45 DAY PLAN -->
   <section class="card" id="plan">
+    <div class="lang-en">
     <div class="eyebrow">Your road, one day at a time</div>
     <h2>The 45-Day Plan 🗺️</h2>
     <p class="lead">No magic here, just 45 days of small wins you tick off. A good day is simply a day you
       pushed a few of these habits the right way. Print this page, put it on the fridge next to your why,
       and mark it with a pen. 💚</p>
-
-    <!-- DAILY HABITS: what counts as a win today -->
     <div class="habits">
       <h3>What a winning day looks like ✅</h3>
       <p class="habits-sub">Tick the ones you nailed today. You do not need all of them every day, you need
@@ -1928,137 +2127,85 @@ table.swaps tr:last-child td{border-bottom:none}
         <li><label><input type="checkbox"><span><strong>Kitchen closed</strong> after dinner, nothing after 7:30.</span></label></li>
       </ul>
     </div>
-
-    <!-- 45-DAY GRID: mark each day you did your best -->
     <h3 class="plan-h">Mark off your 45 days</h3>
     <p class="plan-sub">Each day you did your best, mark it. The colour follows your three phases:
       <span class="leg s1">green, days 1 to 15, awareness and easy swaps</span> ·
       <span class="leg s2">amber, 16 to 30, structure and habits</span> ·
       <span class="leg s3">terracotta, 31 to 45, make it yours</span>.</p>
+    </div>
+    <div class="lang-es">
+    <div class="eyebrow">Vuestro camino, día a día</div>
+    <h2>El plan de 45 días 🗺️</h2>
+    <p class="lead">Aquí no hay magia, solo 45 días de pequeñas victorias que vais marcando. Un buen día es,
+      sin más, un día en que empujasteis unas cuantas de estas costumbres en la buena dirección. Imprimid
+      esta página, pegadla en la nevera junto a vuestro porqué, y marcadla con boli. 💚</p>
+    <div class="habits">
+      <h3>Cómo es un buen día ✅</h3>
+      <p class="habits-sub">Marcad las que clavasteis hoy. No las necesitáis todas cada día, lo que
+        necesitáis es que la mayoría de los días apunten en la buena dirección.</p>
+      <ul class="checklist">
+        <li><label><input type="checkbox"><span>Me quedé <strong>por debajo de mi necesidad diaria de calorías.</strong></span></label></li>
+        <li><label><input type="checkbox"><span><strong>Hoy nada de picoteos ni dulces.</strong> 🍫🚫</span></label></li>
+        <li><label><input type="checkbox"><span><strong>Menos aceite</strong> al cocinar, como acordamos.</span></label></li>
+        <li><label><input type="checkbox"><span><strong>Al menos 5.000 pasos</strong>, o un paseo de 30 minutos.</span></label></li>
+        <li><label><input type="checkbox"><span><strong>Cocina cerrada</strong> después de cenar, nada después de las 19:30.</span></label></li>
+      </ul>
+    </div>
+    <h3 class="plan-h">Marcad vuestros 45 días</h3>
+    <p class="plan-sub">Cada día que disteis lo mejor, marcadlo. El color sigue vuestras tres fases:
+      <span class="leg s1">verde, días 1 a 15, conciencia y cambios fáciles</span> ·
+      <span class="leg s2">ámbar, 16 a 30, estructura y hábitos</span> ·
+      <span class="leg s3">terracota, 31 a 45, hacedlo vuestro</span>.</p>
+    </div>
+
     <div class="tracker-top">
       <div class="pbar"><i id="pbarFill"></i></div>
       <strong id="pbarLabel">0 / 45 days</strong>
-      <button class="btn ghost" onclick="resetDays()" style="padding:.4rem .9rem; font-size:.85rem">Reset</button>
+      <button class="btn ghost" onclick="resetDays()" style="padding:.4rem .9rem; font-size:.85rem"><span class="lang-en">Reset</span><span class="lang-es">Reiniciar</span></button>
     </div>
     <div class="days" id="daysGrid"></div>
     <div class="badges" id="badges">
-      <div class="badge" data-b="15"><span class="em">🌱</span><b>First leg!</b><span class="hint">Day 15</span></div>
-      <div class="badge" data-b="30"><span class="em">🏅</span><b>Halfway!</b><span class="hint">Day 30</span></div>
-      <div class="badge" data-b="45"><span class="em">🏆</span><b>You did it!</b><span class="hint">Day 45</span></div>
+      <div class="badge" data-b="15"><span class="em">🌱</span><b><span class="lang-en">First leg!</span><span class="lang-es">¡Primera etapa!</span></b><span class="hint"><span class="lang-en">Day 15</span><span class="lang-es">Día 15</span></span></div>
+      <div class="badge" data-b="30"><span class="em">🏅</span><b><span class="lang-en">Halfway!</span><span class="lang-es">¡A mitad!</span></b><span class="hint"><span class="lang-en">Day 30</span><span class="lang-es">Día 30</span></span></div>
+      <div class="badge" data-b="45"><span class="em">🏆</span><b><span class="lang-en">You did it!</span><span class="lang-es">¡Lo lograsteis!</span></b><span class="hint"><span class="lang-en">Day 45</span><span class="lang-es">Día 45</span></span></div>
     </div>
 
-    <!-- WEIGHT LOG: weigh every 7 days, write it in by hand -->
     <div class="weighlog">
-      <h3>Your weight, every 7 days ⚖️</h3>
-      <p class="plan-sub">Once a week, same morning, after the toilet and before breakfast. Write it in by
-        hand. Only the trend over the weeks counts, never a single day.</p>
+      <h3><span class="lang-en">Your weight, every 7 days ⚖️</span><span class="lang-es">Vuestro peso, cada 7 días ⚖️</span></h3>
+      <p class="plan-sub"><span class="lang-en">Weigh once a week, same morning, after the toilet and before breakfast. Both of you write it in by hand, so you can cheer each other on. Only the trend over the weeks counts, never a single day.</span><span class="lang-es">Pesaos una vez por semana, la misma mañana, después del baño y antes de desayunar. Lo apuntáis los dos a mano, para animaros el uno al otro. Solo cuenta la tendencia de las semanas, nunca un solo día.</span></p>
+      <div style="overflow-x:auto">
       <table class="wtable">
-        <thead><tr><th>Checkpoint</th><th>Date</th><th>Weight (kg)</th><th>Lost so far</th></tr></thead>
+        <thead>
+          <tr>
+            <th rowspan="2"><span class="lang-en">Checkpoint</span><span class="lang-es">Control</span></th>
+            <th colspan="2">Guillermo</th>
+            <th colspan="2">Pilar</th>
+          </tr>
+          <tr>
+            <th>kg</th><th><span class="lang-en">lost</span><span class="lang-es">perdido</span></th>
+            <th>kg</th><th><span class="lang-en">lost</span><span class="lang-es">perdido</span></th>
+          </tr>
+        </thead>
         <tbody>
-          <tr class="wstart"><td>Start · Day 1</td><td></td><td></td><td>·</td></tr>
-          <tr><td>Day 7</td><td></td><td></td><td></td></tr>
-          <tr class="wmile"><td>Day 15 🌱</td><td></td><td></td><td></td></tr>
-          <tr><td>Day 22</td><td></td><td></td><td></td></tr>
-          <tr class="wmile"><td>Day 30 🏅</td><td></td><td></td><td></td></tr>
-          <tr><td>Day 37</td><td></td><td></td><td></td></tr>
-          <tr class="wend"><td>End · Day 45 🏆</td><td></td><td></td><td></td></tr>
+          <tr class="wstart"><td><span class="lang-en">Start · Day 1</span><span class="lang-es">Inicio · Día 1</span></td><td></td><td>·</td><td></td><td>·</td></tr>
+          <tr><td><span class="lang-en">Day 7</span><span class="lang-es">Día 7</span></td><td></td><td></td><td></td><td></td></tr>
+          <tr class="wmile"><td><span class="lang-en">Day 15 🌱</span><span class="lang-es">Día 15 🌱</span></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td><span class="lang-en">Day 22</span><span class="lang-es">Día 22</span></td><td></td><td></td><td></td><td></td></tr>
+          <tr class="wmile"><td><span class="lang-en">Day 30 🏅</span><span class="lang-es">Día 30 🏅</span></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td><span class="lang-en">Day 37</span><span class="lang-es">Día 37</span></td><td></td><td></td><td></td><td></td></tr>
+          <tr class="wend"><td><span class="lang-en">End · Day 45 🏆</span><span class="lang-es">Final · Día 45 🏆</span></td><td></td><td></td><td></td><td></td></tr>
         </tbody>
       </table>
+      </div>
     </div>
 
-    <p class="nugget">"Anyone can be good for three days. The art is keeping the good grade."</p>
-    <div class="nextprev"><a class="btn ghost" href="#motivation">Back</a><a class="btn primary" href="#preparation">Next: Preparation</a></div>
-  </section>
-
-  <!-- PREPARATION -->
-  <section class="card tint" id="preparation">
     <div class="lang-en">
-    <div class="eyebrow">Step 1 · Before you sign</div>
-    <h2>Preparation ✅</h2>
-    <p class="lead">Before you sign anything, sit down together and go through this list out loud. Tick only
-      what you truly mean, and write your own numbers on the lines, the ones you know you can keep. A small
-      promise you actually keep beats a big one you break. Next we copy your choices into your contract. Be a
-      little stricter on weekdays, you can ease off a touch at the weekend.</p>
-    <div class="habits">
-      <h3>The big levers</h3>
-      <p class="habits-sub">Only the things that really move the needle. Pick the ones you will actually keep.</p>
-      <ul class="checklist">
-        <li><label><input type="checkbox"><span><strong>Walk</strong> at least <span class="blank"></span> times a week, <span class="blank"></span> km (or <span class="blank"></span> minutes) each time.</span></label></li>
-        <li><label><input type="checkbox"><span><strong>Take the stairs instead of the elevator</strong> <span class="blank"></span> times a week.</span></label></li>
-        <li><label><input type="checkbox"><span><strong>No sweets or junk</strong> on <span class="blank"></span> weekdays: chocolate, pastries, fizzy drinks, all the industrial rubbish. A small treat only at the weekend.</span></label></li>
-        <li><label><input type="checkbox"><span><strong>Wine only</strong> on <span class="blank"></span> days a week, <span class="blank"></span> glasses at most, never on a normal day.</span></label></li>
-        <li><label><input type="checkbox"><span><strong>No sugary or fizzy drinks:</strong> water instead, <span class="blank"></span> glasses a day.</span></label></li>
-        <li><label><input type="checkbox"><span><strong>At every main meal:</strong> half the plate vegetables, plus a portion of protein (fish, chicken, eggs or meat) about the size of the palm of your hand.</span></label></li>
-        <li><label><input type="checkbox"><span><strong>Cook with less oil:</strong> measure it with a spoon instead of pouring freely.</span></label></li>
-        <li><label><input type="checkbox"><span><strong>Less bread, and less sausage and cold cuts</strong> (chorizo, salchichón, ham): only on <span class="blank"></span> days a week.</span></label></li>
-        <li><label><input type="checkbox"><span><strong>Kitchen closes</strong> after <span class="blank"></span> (for example 7 p.m.), nothing after that, <span class="blank"></span> days a week.</span></label></li>
-        <li><label><input type="checkbox"><span><strong>Weigh ourselves every 2 to 3 days</strong> and write it down. If the scale has not moved after 3 to 4 days, something is off, so we change something.</span></label></li>
-      </ul>
-    </div>
-    <div class="habits">
-      <h3>Go all in (optional, for the whole challenge)</h3>
-      <p class="habits-sub">The strongest move of all. Pick these if you are ready to draw a hard line.</p>
-      <ul class="checklist">
-        <li><label><input type="checkbox"><span><strong>No alcohol at all for <span class="blank"></span> days</strong> (for example the full 45).</span></label></li>
-        <li><label><input type="checkbox"><span><strong>No sweets or junk at all for <span class="blank"></span> days:</strong> chocolate, pastries, industrial food, all the rubbish that is no good for your body, your brain, and especially your belly.</span></label></li>
-      </ul>
-    </div>
-    <div class="habits">
-      <h3>If you want it faster (optional, stronger)</h3>
-      <p class="habits-sub">Only tick these if you feel ready. They work fast, but the big levers come first.</p>
-      <ul class="checklist">
-        <li><label><input type="checkbox"><span><strong>7,000 steps every day</strong> (about a 45 minute walk, depending on your pace).</span></label></li>
-        <li><label><input type="checkbox"><span><strong>16:8:</strong> eat only inside an 8 hour window and stop eating for the other 16 hours, on <span class="blank"></span> days a week. One harder week now and then, to train our discipline.</span></label></li>
-        <li><label><input type="checkbox"><span><strong>Only <span class="blank"></span> meals a day</strong> (for example two), with no grazing in between.</span></label></li>
-        <li><label><input type="checkbox"><span><strong>Big salads with fish or chicken</strong>, but no sweet sauces or dressings on top, they hide a lot of sugar. Use oil and vinegar, lemon, or plain yogurt.</span></label></li>
-        <li><label><input type="checkbox"><span><strong>Our own promise:</strong> <span class="blank wide"></span></span></label></li>
-      </ul>
-    </div>
-    <div class="nextprev"><a class="btn ghost" href="#plan">Back</a><a class="btn primary" href="#contract">Next: Your contract</a></div>
+    <p class="nugget">"Anyone can be good for three days. The art is keeping the good grade."</p>
+    <div class="nextprev"><a class="btn ghost" href="#motivation">Back</a><a class="btn primary" href="#contract">Next: Your contract</a></div>
     </div>
     <div class="lang-es">
-    <div class="eyebrow">Paso 1 · Antes de firmar</div>
-    <h2>Preparación ✅</h2>
-    <p class="lead">Antes de firmar nada, sentaos juntos y repasad esta lista en voz alta. Marcad solo lo que
-      de verdad vais a cumplir, y escribid vuestros propios números en las líneas, los que sabéis que podéis
-      mantener. Vale más una promesa pequeña que cumplís que una grande que rompéis. Luego pasamos vuestras
-      elecciones al contrato. Un poco más estrictos entre semana, el finde podéis aflojar algo.</p>
-    <div class="habits">
-      <h3>Lo que más impacto tiene</h3>
-      <p class="habits-sub">Solo lo que de verdad mueve la aguja. Elegid lo que vais a cumplir de verdad.</p>
-      <ul class="checklist">
-        <li><label><input type="checkbox"><span><strong>Andar</strong> al menos <span class="blank"></span> veces por semana, <span class="blank"></span> km (o <span class="blank"></span> minutos) cada vez.</span></label></li>
-        <li><label><input type="checkbox"><span><strong>Subir por las escaleras en vez del ascensor</strong> <span class="blank"></span> veces a la semana.</span></label></li>
-        <li><label><input type="checkbox"><span><strong>Sin dulces ni basura</strong> <span class="blank"></span> días entre semana: chocolate, bollería, refrescos, toda la porquería industrial. Un capricho pequeño solo el finde.</span></label></li>
-        <li><label><input type="checkbox"><span><strong>Vino solo</strong> <span class="blank"></span> días a la semana, <span class="blank"></span> copas como mucho, nunca en un día normal.</span></label></li>
-        <li><label><input type="checkbox"><span><strong>Nada de refrescos ni bebidas azucaradas:</strong> agua en su lugar, <span class="blank"></span> vasos al día.</span></label></li>
-        <li><label><input type="checkbox"><span><strong>En cada comida principal:</strong> medio plato de verduras, más una ración de proteína (pescado, pollo, huevos o carne) del tamaño de la palma de la mano.</span></label></li>
-        <li><label><input type="checkbox"><span><strong>Cocinar con menos aceite:</strong> medirlo con una cuchara en vez de echarlo a chorro.</span></label></li>
-        <li><label><input type="checkbox"><span><strong>Menos pan, y menos embutido y fiambre</strong> (chorizo, salchichón, jamón): solo <span class="blank"></span> días a la semana.</span></label></li>
-        <li><label><input type="checkbox"><span><strong>La cocina cierra</strong> después de las <span class="blank"></span> (por ejemplo las 19:00), nada después, <span class="blank"></span> días a la semana.</span></label></li>
-        <li><label><input type="checkbox"><span><strong>Pesarnos cada 2 o 3 días</strong> y apuntarlo. Si la báscula no se ha movido en 3 o 4 días, algo falla, así que cambiamos algo.</span></label></li>
-      </ul>
-    </div>
-    <div class="habits">
-      <h3>A tope (opcional, para todo el reto)</h3>
-      <p class="habits-sub">El golpe más fuerte de todos. Elegid esto si estáis listos para poner una línea clara.</p>
-      <ul class="checklist">
-        <li><label><input type="checkbox"><span><strong>Nada de alcohol durante <span class="blank"></span> días</strong> (por ejemplo los 45 enteros).</span></label></li>
-        <li><label><input type="checkbox"><span><strong>Nada de dulces ni basura durante <span class="blank"></span> días:</strong> chocolate, bollería, comida industrial, toda la porquería que no es buena para vuestro cuerpo, vuestro cerebro y, sobre todo, vuestra barriga.</span></label></li>
-      </ul>
-    </div>
-    <div class="habits">
-      <h3>Si lo queréis más rápido (opcional, más fuerte)</h3>
-      <p class="habits-sub">Marcad esto solo si os veis listos. Funciona rápido, pero las palancas grandes van primero.</p>
-      <ul class="checklist">
-        <li><label><input type="checkbox"><span><strong>7.000 pasos cada día</strong> (un paseo de unos 45 minutos, según vuestro ritmo).</span></label></li>
-        <li><label><input type="checkbox"><span><strong>16:8:</strong> comer solo dentro de una ventana de 8 horas y no comer las otras 16, <span class="blank"></span> días a la semana. Alguna semana más dura de vez en cuando, para entrenar la disciplina.</span></label></li>
-        <li><label><input type="checkbox"><span><strong>Solo <span class="blank"></span> comidas al día</strong> (por ejemplo dos), sin picar entre medias.</span></label></li>
-        <li><label><input type="checkbox"><span><strong>Ensaladas grandes con pescado o pollo</strong>, pero sin salsas ni aliños dulces por encima, esconden mucho azúcar. Usad aceite y vinagre, limón, o yogur natural.</span></label></li>
-        <li><label><input type="checkbox"><span><strong>Nuestra propia promesa:</strong> <span class="blank wide"></span></span></label></li>
-      </ul>
-    </div>
-    <div class="nextprev"><a class="btn ghost" href="#plan">Atrás</a><a class="btn primary" href="#contract">Siguiente: Vuestro contrato</a></div>
+    <p class="nugget">«Cualquiera puede ser bueno tres días. El arte está en mantener la buena nota.»</p>
+    <div class="nextprev"><a class="btn ghost" href="#motivation">Atrás</a><a class="btn primary" href="#contract">Siguiente: Vuestro contrato</a></div>
     </div>
   </section>
 
@@ -2069,8 +2216,8 @@ table.swaps tr:last-child td{border-bottom:none}
     <h2>Your Contract ✍️</h2>
     <p class="lead">Here is a trick that genuinely works. You make a promise in writing, you put
       something on the line, and you sign it. That turns a vague wish into a real commitment. First you
-      fill in the preparation together and choose what you can really keep, then we put it into the
-      contract and you sign it on paper.</p>
+      choose together the few habits you can really keep, then we put them into the contract and you
+      sign it on paper.</p>
     <div class="callout key"><strong>Why a contract, and why now?</strong> Most people only change when
       it is already too late, after the heart scare, the bad diagnosis, the moment the doctor turns
       serious. You are doing it <strong>before</strong> that, while it is still a choice and not an
@@ -2083,7 +2230,7 @@ table.swaps tr:last-child td{border-bottom:none}
       Now you are not just fighting your own cravings, you are carrying each other.</p>
 
     <h3>Sign it ✍️</h3>
-    <p>This is the real thing. Once your preparation is filled in and you have agreed what is on the line,
+    <p>This is the real thing. Once you have agreed your habits and what is on the line,
       read this together, write in your numbers, and sign it by hand. That signature is what makes it stick.</p>
 
     <div class="contract">
@@ -2100,7 +2247,20 @@ table.swaps tr:last-child td{border-bottom:none}
         <li>When the impulse hits, we <strong>stay strong, go to our habits, and read our why again.</strong></li>
         <li>We will <strong>weigh ourselves regularly and write it down</strong>, to see the honest truth.</li>
       </ul>
-      <p>Our specific daily habits are <strong>the ones we chose in the preparation above</strong>, in our own numbers.</p>
+      <p><strong>The habits we commit to, at least 2 to 5 times a week:</strong></p>
+      <ul class="vows">
+        <li>At least 5,000 steps, or a quick little workout.</li>
+        <li>Less oil in the cooking, measured with a spoon, like we agreed.</li>
+        <li>More protein and more vegetables, fewer carbs (bread, rice, sugar).</li>
+        <li>Less fat, and easy on the typical Basque cured meats (chorizo, salchichón, morcilla).</li>
+        <li>Kitchen closed after dinner: nothing 2 to 3 hours before sleep.</li>
+        <li>When we eat out, we stay strong: a small plate or nothing, never breaking our rules.</li>
+        <li><span class="blank wide"></span></li>
+        <li><span class="blank wide"></span></li>
+        <li><span class="blank wide"></span></li>
+      </ul>
+      <p class="hint">On the blank lines, add your own, in your own numbers. If you want to go all in, write
+        something like 16:8 fasting 2 to 3 times a week, or even 5 if you are feeling brave.</p>
       <p>We make this commitment <strong>as a team</strong>, for <strong><span class="blank"></span> days</strong>
         (we choose 30 or 45), because changing a lifetime system is hard and deserves a real promise. We do
         it now, on purpose, before life forces us to.</p>
@@ -2109,17 +2269,18 @@ table.swaps tr:last-child td{border-bottom:none}
         <div class="sigline">Guillermo</div>
         <div class="sigline">Pilar</div>
       </div>
+<p><strong>We weigh in every 7 days and see our program right through</strong>, together. The trend is what counts, never one bad day.</p>
     </div>
     <p class="hint">Marten prepares and prints the real one. You read it, adjust it together, and sign it
       by hand. That signature matters.</p>
-    <div class="nextprev"><a class="btn ghost" href="#preparation">Back</a><a class="btn primary" href="#faster">Next: Want it faster?</a></div>
+    <div class="nextprev"><a class="btn ghost" href="#plan">Back</a><a class="btn primary" href="#faster">Next: Want it faster?</a></div>
     </div>
     <div class="lang-es">
     <div class="eyebrow">Dejadlo bien atado</div>
     <h2>Vuestro Contrato ✍️</h2>
     <p class="lead">Aquí va un truco que funciona de verdad. Hacéis una promesa por escrito, ponéis algo en
-      juego, y la firmáis. Eso convierte un deseo vago en un compromiso real. Primero rellenáis juntos la
-      preparación y elegís lo que de verdad podéis mantener, luego lo pasamos al contrato y lo firmáis en papel.</p>
+      juego, y la firmáis. Eso convierte un deseo vago en un compromiso real. Primero elegís juntos los
+      pocos hábitos que de verdad podéis mantener, luego los pasamos al contrato y lo firmáis en papel.</p>
     <div class="callout key"><strong>¿Por qué un contrato, y por qué ahora?</strong> La mayoría solo cambia
       cuando ya es tarde, tras el susto de corazón, el mal diagnóstico, el momento en que el médico se pone
       serio. Vosotros lo hacéis <strong>antes</strong> de eso, mientras todavía es una elección y no una
@@ -2132,7 +2293,7 @@ table.swaps tr:last-child td{border-bottom:none}
       Ahora ya no peleáis cada uno contra sus antojos, os lleváis el uno al otro.</p>
 
     <h3>Firmad el contrato ✍️</h3>
-    <p>Esto es lo de verdad. Cuando tengáis la preparación rellena y hayáis acordado qué ponéis en juego,
+    <p>Esto es lo de verdad. Cuando hayáis acordado vuestros hábitos y qué ponéis en juego,
       leedlo juntos, escribid vuestros números, y firmadlo a mano. Esa firma es lo que lo hace de verdad.</p>
 
     <div class="contract">
@@ -2150,7 +2311,20 @@ table.swaps tr:last-child td{border-bottom:none}
         <li>Cuando llegue el impulso, <strong>nos mantenemos fuertes, vamos a nuestros hábitos y releemos nuestro porqué.</strong></li>
         <li><strong>Nos pesaremos con regularidad y lo apuntaremos</strong>, para ver la verdad sin engaños.</li>
       </ul>
-      <p>Nuestros hábitos concretos son <strong>los que hemos elegido en la preparación de arriba</strong>, con nuestros propios números.</p>
+      <p><strong>Los hábitos que nos comprometemos a cumplir, al menos de 2 a 5 veces por semana:</strong></p>
+      <ul class="vows">
+        <li>Al menos 5.000 pasos, o un entreno cortito.</li>
+        <li>Menos aceite al cocinar, medido con una cuchara, como acordamos.</li>
+        <li>Más proteína y más verdura, menos carbohidratos (pan, arroz, azúcar).</li>
+        <li>Menos grasa, y poco de los embutidos típicos vascos (chorizo, salchichón, morcilla).</li>
+        <li>La cocina cerrada después de cenar: nada de comer 2 o 3 horas antes de dormir.</li>
+        <li>Cuando comemos fuera, nos mantenemos fuertes: un plato pequeño o nada, nunca rompemos nuestras reglas.</li>
+        <li><span class="blank wide"></span></li>
+        <li><span class="blank wide"></span></li>
+        <li><span class="blank wide"></span></li>
+      </ul>
+      <p class="hint">En las líneas en blanco, añadid las vuestras, con vuestros propios números. Si queréis ir
+        a por todas, escribid algo como ayuno 16:8 dos o tres veces por semana, o incluso cinco si os veis valientes.</p>
       <p>Asumimos este compromiso <strong>como equipo</strong>, durante <strong><span class="blank"></span> días</strong>
         (elegimos 30 o 45), porque cambiar el sistema de toda una vida es difícil y merece una promesa de verdad.
         Lo hacemos ahora, a propósito, antes de que la vida nos obligue.</p>
@@ -2159,10 +2333,11 @@ table.swaps tr:last-child td{border-bottom:none}
         <div class="sigline">Guillermo</div>
         <div class="sigline">Pilar</div>
       </div>
+<p><strong>Nos pesamos cada 7 días y llevamos nuestro programa hasta el final</strong>, juntos. Lo que cuenta es la tendencia, nunca un solo mal día.</p>
     </div>
     <p class="hint">Marten prepara e imprime el de verdad. Vosotros lo leéis, lo ajustáis juntos y lo
       firmáis a mano. Esa firma importa.</p>
-    <div class="nextprev"><a class="btn ghost" href="#preparation">Atrás</a><a class="btn primary" href="#faster">Siguiente: Recetas</a></div>
+    <div class="nextprev"><a class="btn ghost" href="#plan">Atrás</a><a class="btn primary" href="#faster">Siguiente: ¿Lo queréis más rápido?</a></div>
     </div>
   </section>
 
@@ -2175,61 +2350,54 @@ table.swaps tr:last-child td{border-bottom:none}
       while you keep doing the inner work, here are a few proven accelerators. Pick one or two to start,
       do not throw them all on at once.</p>
 
-    <h3>🚶 The simplest, strongest one: walk</h3>
-    <p>Steps are quietly one of the healthiest and most powerful things you can do, good for the body and
-      the head at the same time. Here is a real one for you: once around the Amorebieta park, back through
-      the little woods toward Durango, then turn around and come home. That is close to <strong class="scrawl">7,000
-      steps</strong>.</p>
-    <div class="callout win"><strong>Do the maths, it adds up fast.</strong>
-      <ul>
-        <li><strong>~7,000 steps ≈ about 5 km ≈ roughly 300 kcal</strong> burned, on top of your normal day.</li>
-        <li>Every day for a week: <strong>~2,000 kcal.</strong></li>
-        <li>In a month: <strong>~9,000 kcal, more than 1 kg of pure fat,</strong> from the walk alone.</li>
-        <li>Now eat a little less on top of that, and the deficit roughly doubles. You will be surprised how fast you see it.</li>
-      </ul>
-      <span class="hint">(Rough numbers: a heavier body burns a bit more, a lighter one a bit less.)</span></div>
+    <h3>🕗 The big one: 16:8</h3>
+    <p>Eat all your food inside an <strong>8-hour window</strong> and give your body the other <strong>16
+      hours off</strong>. The easy version: finish your last meal by 18:00 to 19:00, skip breakfast, and
+      break the fast at lunch. <strong>Coffee or tea on its own, no sugar, is fine and does not break the
+      fast</strong>, and neither does water or the morning glass below. On medication or with a health
+      condition? Check with your doctor first.</p>
+    <p>This is as much head training as body training. At first you feel a little weak in the morning and
+      your brain swears you need breakfast. You do not. Your body is just used to being fed every couple of
+      hours, like an oven you throw firewood into every single hour, and it has half forgotten how to burn
+      its own fat. Give it a little time and it remembers. I know it from my own body: even fasting up to
+      22 hours, doing my workout on an empty stomach, I have more energy than I ever thought I would. It is
+      a process, it takes a few weeks, and every morning you hold the line you train your willpower and
+      teach your body to run on its own fat again.</p>
 
-    <h3>The other accelerators</h3>
-    <div class="grid2">
-      <div class="minicard good"><h3>🕗 16:8 (eating window)</h3>
-        <p>Eat inside an 8-hour window, give your body 16 hours off. Easy version: last meal by 18:00 to
-          19:00, skip breakfast, break the fast at lunch. It is also pure discipline training, because
-          your body finally learns to live off its own fat instead of always begging for the next meal,
-          like an oven you have to throw firewood into every single hour.</p>
-        <p class="hint">On medication or with a health condition? Check with your doctor first.</p></div>
-      <div class="minicard good"><h3>🥩 Lower-carb, higher-protein</h3>
-        <p>Ease off the bread, rice and sugar, and build the plate around protein, a big salad, and just a
-          little smart carb. Protein keeps you full for hours and protects your muscle while the fat comes
-          off.</p></div>
-    </div>
-    <h3>Beat the hunger 🥄</h3>
+    <div class="callout key"><strong>🥩 Lower carbs, higher protein, in one line.</strong> Ease right off the
+      bread, rice, pasta and sugar, and build every plate on protein (fish, chicken, eggs, a little meat)
+      with <strong>plenty of vegetables</strong>, and go easy on the oil. Protein and veg keep you full for
+      hours and protect your muscle while the fat comes off.</div>
+
+    <h3>Beat the morning hunger 🥄</h3>
     <div class="mglass">
       <figure class="photo">
         <img src="assets/img/morning-glass.jpg" alt="A glass of lemon water with the morning-drink ingredients beside it" loading="lazy">
         <figcaption>The morning glass, on an empty stomach 🍋</figcaption>
       </figure>
       <div class="mglass-body">
-        <p><strong>The morning glass.</strong> First thing, on an empty stomach: a glass of water with half a
-          lemon, a splash of vinegar, a pinch of salt, a little cayenne pepper and a small pinch of cinnamon.
-          Leave out whatever you do not like, but get a small glass of it into you to start the day. Here is
-          what each part is quietly doing:</p>
+        <p><strong>The morning glass.</strong> First thing, on an empty stomach: a glass of water (about
+          250 ml) with a squeeze of <strong>lemon</strong>, a small pinch of <strong>cinnamon</strong>, a
+          little <strong>cayenne</strong>, and if you like a tiny pinch of salt. Leave out whatever you do
+          not fancy. It costs almost no calories and quietly does a lot:</p>
         <ul class="quotes-list">
-          <li><strong>🥛 Water first.</strong> You wake up dehydrated, and thirst is constantly mistaken for hunger. A big glass on its own already takes the edge off.</li>
-          <li><strong>🍋 Lemon.</strong> Vitamin C and a fresh taste that makes plain water easy to drink, so you actually keep the habit.</li>
-          <li><strong>🍶 Vinegar.</strong> A little (apple-cider is nice) can soften the blood-sugar spike from your next meal and nudge fullness up a notch.</li>
-          <li><strong>🧂 A pinch of salt.</strong> A few electrolytes, which matter most on a 16:8 morning, and it helps the water actually absorb.</li>
-          <li><strong>🌶️ Cayenne.</strong> The capsaicin gives a small, real bump to metabolism and tends to take the sharp edge off the appetite.</li>
-          <li><strong>🍂 Cinnamon.</strong> Helps steady blood sugar and adds a touch of natural sweetness, so the brain feels treated without a gram of sugar.</li>
+          <li><strong>🥛 The water itself is the real win.</strong> You wake up dehydrated, and thirst is
+            constantly mistaken for hunger, so a big glass before anything already takes the edge off. People
+            who drink water first simply eat less.</li>
+          <li><strong>🍂 Cinnamon</strong> is not just a sweet taste to calm the cravings. It genuinely helps
+            <strong>steady your blood sugar</strong>, so you get less of the spike and crash that drives the
+            next craving, and it feeds the good bacteria in your gut. A real effect, even if a gentle one.</li>
+          <li><strong>🌶️ Cayenne</strong> gives a small warming kick that can nudge your circulation and
+            blood flow, and tends to take the sharp edge off the appetite.</li>
+          <li><strong>🍋 Lemon</strong> makes plain water easy to drink, so you actually keep the habit, plus
+            a little vitamin C. The <strong>pinch of salt</strong> is just a few electrolytes for the fast.</li>
         </ul>
+        <p>Coffee afterwards is completely fine. None of this is a magic pill, each part is just a small
+          nudge, but stacked together on an empty stomach they hydrate you, steady your blood sugar and turn
+          the morning hunger down, so holding the 16:8 window gets a lot easier.</p>
       </div>
     </div>
-    <div class="callout"><strong>Why it works:</strong> none of these is a magic pill, the honest truth is each one is just a small nudge. But stacked together, on an empty stomach and for almost zero calories, they hydrate you, steady your blood sugar and quietly turn the morning hunger down. A tiny ritual that starts the day on your terms.</div>
-    <ul class="quotes-list">
-      <li><strong>Hungry? Make a tea first.</strong> Thirst and habit love to dress up as hunger. The tea buys ten minutes, and the urge usually passes.</li>
-      <li><strong>Craving hitting hard?</strong> Train yourself to reach for a handful of nuts, fat-rich and genuinely filling.</li>
-      <li><strong>Crunch a carrot</strong> when the mouth is bored, not hungry.</li>
-      <li><strong>Have an apple,</strong> fibre, sweetness and water, nature's snack.</li>
-    </ul>
+
     <p class="nugget">"Speed helps, but the mindset is what makes it stay. Use the accelerators, keep the foundation."</p>
     <div class="nextprev"><a class="btn ghost" href="#contract">Back</a><a class="btn primary" href="#cheatsheet">Next: Cheat sheet</a></div>
     </div>
@@ -2240,61 +2408,54 @@ table.swaps tr:last-child td{border-bottom:none}
       mueva más rápido mientras seguís con el trabajo interior, aquí tenéis unos cuantos aceleradores
       probados. Empezad por uno o dos, no os echéis todos encima a la vez.</p>
 
-    <h3>🚶 El más simple y más potente: andar</h3>
-    <p>Los pasos son, sin hacer ruido, una de las cosas más sanas y potentes que podéis hacer, buenas para
-      el cuerpo y para la cabeza a la vez. Una de verdad para vosotros: una vuelta al parque de Amorebieta,
-      volver por el bosquecito hacia Durango, y daros la vuelta a casa. Eso son casi <strong class="scrawl">7.000
-      pasos</strong>.</p>
-    <div class="callout win"><strong>Echad la cuenta, suma rápido.</strong>
-      <ul>
-        <li><strong>~7.000 pasos ≈ unos 5 km ≈ unas 300 kcal</strong> quemadas, además de vuestro día normal.</li>
-        <li>Cada día durante una semana: <strong>~2.000 kcal.</strong></li>
-        <li>En un mes: <strong>~9.000 kcal, más de 1 kg de pura grasa,</strong> solo del paseo.</li>
-        <li>Ahora comed un poco menos encima, y el déficit casi se dobla. Os vais a sorprender de lo rápido que se nota.</li>
-      </ul>
-      <span class="hint">(Números aproximados: un cuerpo más pesado quema algo más, uno más ligero algo menos.)</span></div>
+    <h3>🕗 La grande: 16:8</h3>
+    <p>Comed toda la comida dentro de una <strong>ventana de 8 horas</strong> y dad al cuerpo las otras
+      <strong>16 horas de descanso</strong>. Versión fácil: última comida hacia las 18:00 o 19:00, saltaos
+      el desayuno y romped el ayuno en la comida. <strong>El café o el té solos, sin azúcar, valen y no
+      rompen el ayuno</strong>, y tampoco el agua ni el vaso de la mañana de aquí abajo. ¿Tomáis medicación
+      o tenéis alguna condición? Consultad antes con vuestro médico.</p>
+    <p>Esto entrena la cabeza tanto como el cuerpo. Al principio os sentiréis algo flojos por la mañana y
+      el cerebro jurará que necesitáis desayunar. No es así. El cuerpo solo está acostumbrado a que le den
+      de comer cada dos horas, como un horno al que hay que echar leña cada hora, y casi ha olvidado cómo
+      quemar su propia grasa. Dadle un poco de tiempo y se acuerda. Lo sé por mi propio cuerpo: incluso
+      ayunando hasta 22 horas, haciendo mi entreno en ayunas, tengo más energía de la que jamás habría
+      imaginado. Es un proceso, lleva unas semanas, y cada mañana que aguantáis entrenáis vuestra voluntad
+      y le enseñáis al cuerpo a tirar otra vez de su propia grasa.</p>
 
-    <h3>Los otros aceleradores</h3>
-    <div class="grid2">
-      <div class="minicard good"><h3>🕗 16:8 (ventana de comida)</h3>
-        <p>Comed dentro de una ventana de 8 horas y dad 16 horas de descanso al cuerpo. Versión fácil:
-          última comida hacia las 18:00 o 19:00, saltaos el desayuno y romped el ayuno en la comida. Es
-          también entrenamiento puro de disciplina, porque el cuerpo por fin aprende a vivir de su propia
-          grasa en vez de mendigar la siguiente comida, como un horno al que hay que echar leña cada hora.</p>
-        <p class="hint">¿Tomáis medicación o tenéis alguna condición? Consultad antes con vuestro médico.</p></div>
-      <div class="minicard good"><h3>🥩 Menos carbohidratos, más proteína</h3>
-        <p>Aflojad el pan, el arroz y el azúcar, y montad el plato sobre la proteína, una buena ensalada y
-          solo un poco de carbohidrato inteligente. La proteína os mantiene llenos durante horas y protege
-          el músculo mientras se va la grasa.</p></div>
-    </div>
-    <h3>Ganarle al hambre 🥄</h3>
+    <div class="callout key"><strong>🥩 Menos carbohidratos, más proteína, en una línea.</strong> Aflojad
+      del todo el pan, el arroz, la pasta y el azúcar, y montad cada plato sobre la proteína (pescado, pollo,
+      huevos, un poco de carne) con <strong>mucha verdura</strong>, y echad poco aceite. La proteína y la
+      verdura os mantienen llenos durante horas y protegen el músculo mientras se va la grasa.</div>
+
+    <h3>Ganarle al hambre de la mañana 🥄</h3>
     <div class="mglass">
       <figure class="photo">
         <img src="assets/img/morning-glass.jpg" alt="Un vaso de agua con limón y los ingredientes de la bebida de la mañana al lado" loading="lazy">
         <figcaption>El vaso de la mañana, en ayunas 🍋</figcaption>
       </figure>
       <div class="mglass-body">
-        <p><strong>El vaso de la mañana.</strong> Lo primero, en ayunas: un vaso de agua con medio limón, un
-          chorrito de vinagre, una pizca de sal, un poco de cayena y una pizca pequeña de canela. Dejad fuera lo
-          que no os guste, pero meteos un vasito para empezar el día. Esto es lo que hace cada parte, sin hacer
-          ruido:</p>
+        <p><strong>El vaso de la mañana.</strong> Lo primero, en ayunas: un vaso de agua (unos 250 ml) con
+          un chorro de <strong>limón</strong>, una pizca de <strong>canela</strong>, un poco de
+          <strong>cayena</strong>, y si os apetece una pizca pequeña de sal. Dejad fuera lo que no os guste.
+          Cuesta casi cero calorías y hace mucho sin hacer ruido:</p>
         <ul class="quotes-list">
-          <li><strong>🥛 Primero el agua.</strong> Os despertáis deshidratados, y la sed se confunde constantemente con hambre. Un buen vaso ya quita el filo él solo.</li>
-          <li><strong>🍋 Limón.</strong> Vitamina C y un sabor fresco que hace fácil beber agua, así de verdad mantenéis el hábito.</li>
-          <li><strong>🍶 Vinagre.</strong> Un poco (el de manzana va bien) puede suavizar el pico de azúcar de la siguiente comida y subir un punto la saciedad.</li>
-          <li><strong>🧂 Una pizca de sal.</strong> Unos electrolitos, que importan sobre todo en una mañana de 16:8, y ayudan a que el agua se absorba de verdad.</li>
-          <li><strong>🌶️ Cayena.</strong> La capsaicina da un pequeño empujón real al metabolismo y suele quitarle el filo al apetito.</li>
-          <li><strong>🍂 Canela.</strong> Ayuda a estabilizar el azúcar en sangre y aporta un toque de dulzor natural, así el cerebro se siente premiado sin un gramo de azúcar.</li>
+          <li><strong>🥛 El agua en sí es la victoria de verdad.</strong> Os despertáis deshidratados, y la
+            sed se confunde constantemente con hambre, así que un buen vaso antes de nada ya quita el filo.
+            Quien bebe agua primero, come menos.</li>
+          <li><strong>🍂 La canela</strong> no es solo un sabor dulce para calmar el antojo. Ayuda de verdad a
+            <strong>estabilizar el azúcar en sangre</strong>, así hay menos del pico y el bajón que dispara el
+            siguiente antojo, y alimenta a las bacterias buenas del intestino. Un efecto real, aunque suave.</li>
+          <li><strong>🌶️ La cayena</strong> da un pequeño golpe de calor que puede animar la circulación y el
+            riego, y suele quitarle el filo al apetito.</li>
+          <li><strong>🍋 El limón</strong> hace fácil beber agua, así de verdad mantenéis el hábito, y aporta
+            algo de vitamina C. La <strong>pizca de sal</strong> son solo unos electrolitos para el ayuno.</li>
         </ul>
+        <p>El café después está perfectamente bien. Nada de esto es una pastilla mágica, cada parte es solo
+          un pequeño empujón, pero juntos y en ayunas os hidratan, estabilizan el azúcar y bajan el hambre de
+          la mañana, así aguantar la ventana 16:8 se hace mucho más fácil.</p>
       </div>
     </div>
-    <div class="callout"><strong>Por qué funciona:</strong> ninguno es una pastilla mágica, la verdad honesta es que cada uno es solo un pequeño empujón. Pero juntos, en ayunas y con casi cero calorías, os hidratan, estabilizan el azúcar y bajan sin ruido el hambre de la mañana. Un pequeño ritual para empezar el día en vuestros términos.</div>
-    <ul class="quotes-list">
-      <li><strong>¿Hambre? Haceos primero un té.</strong> La sed y la costumbre se disfrazan de hambre. El té os da diez minutos, y las ganas suelen pasar.</li>
-      <li><strong>¿Antojo fuerte?</strong> Entrenaos para echar mano de un puñado de frutos secos, ricos en grasa y de verdad saciantes.</li>
-      <li><strong>Mordisquead una zanahoria</strong> cuando la boca está aburrida, no hambrienta.</li>
-      <li><strong>Tomad una manzana:</strong> fibra, dulzor y agua, el aperitivo de la naturaleza.</li>
-    </ul>
+
     <p class="nugget">«La velocidad ayuda, pero es la mentalidad la que lo hace quedarse. Usad los aceleradores, mantened el fundamento.»</p>
     <div class="nextprev"><a class="btn ghost" href="#contract">Atrás</a><a class="btn primary" href="#cheatsheet">Siguiente: Chuleta</a></div>
     </div>
@@ -2313,22 +2474,25 @@ table.swaps tr:last-child td{border-bottom:none}
       <p class="hint">Not the easiest seven, the ones with the biggest payoff for the effort. Do mostly
         these and the rest takes care of itself.</p>
       <ol class="levers">
-        <li><strong>Stop drinking your calories.</strong> Cola, juice, sugary coffee, most of the
-          alcohol. The fastest, biggest win there is, and you barely feel it. One can of cola is about a
-          third of a day's sugar, gone in two minutes.</li>
-        <li><strong>Protein and vegetables first, every meal.</strong> Half the plate vegetables, a palm
-          of protein, then a smaller side of bread, rice, or potato. Full on fewer calories. This is the
-          lever that makes hunger bearable.</li>
+        <li><strong>Stop drinking your calories.</strong> Cola, juice, sugary coffee, and the alcohol,
+          especially kalimotxo and the sweet mixers. The fastest, biggest win there is, and you barely feel
+          it. One can of cola is about a third of a day's sugar, gone in two minutes.</li>
+        <li><strong>Move every day, and not only walks.</strong> A daily walk is gold (around 7,000 steps,
+          roughly 300 kcal, real fat over a month), but add a little proper strength too. It protects your
+          muscle, your back and your health, not just your calorie count. See "Move your body" for the why
+          and the how.</li>
+        <li><strong>Protein and vegetables first, every meal.</strong> Half the plate vegetables, a palm of
+          protein, then a smaller side of bread, rice, or potato. Full on fewer calories. This is the lever
+          that makes hunger bearable.</li>
         <li><strong>Don't keep the trigger food in the house.</strong> You don't beat the biscuits at
           10 p.m. on the couch, you beat them on Saturday in the shop. If it isn't there, you won't eat it.</li>
-        <li><strong>Close the kitchen after dinner.</strong> Last food about 3 hours before bed, then
-          water or tea, brush your teeth, done. The evening couch is where most plans quietly die.</li>
-        <li><strong>Move every day.</strong> Not the gym, just movement: a walk after dinner, the stairs,
-          parking further away. Steps add up to real calories and they cool down cravings.</li>
-        <li><strong>Protect your sleep.</strong> One bad night and your hunger hormones turn up the volume
-          the next day. Good sleep is a weight-loss tool, treat it like one.</li>
+        <li><strong>Close the kitchen after dinner.</strong> Last food about 3 to 4 hours before bed
+          (depending on your window), then water or tea, brush your teeth, done. The evening couch is where
+          most plans quietly die.</li>
         <li><strong>Measure your fats.</strong> Oil with a spoon or a spray, never a free pour. One
           tablespoon of olive oil is about 120 kcal. Easy to drown a healthy meal without noticing.</li>
+        <li><strong>Protect your sleep.</strong> One bad night and your hunger hormones turn up the volume
+          the next day. Good sleep is a weight-loss tool, treat it like one.</li>
       </ol>
       <p class="nugget">"It is not about willpower. It is about setting things up so you barely need any."</p>
     </div>
@@ -2341,20 +2505,19 @@ table.swaps tr:last-child td{border-bottom:none}
         <tbody>
           <tr><td class="bad">Cola, juice, energy drinks</td><td>Sparkling water with lemon; coffee or tea, no sugar</td></tr>
           <tr><td class="bad">A free pour of oil into the pan</td><td>Measure it: one spoon, or a spray (1 tbsp ≈ 120 kcal)</td></tr>
-          <tr><td class="bad">Eating in front of the TV</td><td>Eat at the table, on a plate; skip the automatic second helping</td></tr>
           <tr><td class="bad">A mountain of white bread or rice</td><td>Half a plate of vegetables first, a smaller side of carbs</td></tr>
           <tr><td class="bad">Shopping hungry with no list</td><td>Eat first, shop the edges of the store, stick to the list</td></tr>
           <tr><td class="bad">"Just one" from the big bag</td><td>Buy single-serve, and keep it out of the house</td></tr>
           <tr><td class="bad">Snacking all day long</td><td>2 or 3 real meals; let the body burn its own fat between</td></tr>
           <tr><td class="bad">Sausages, bacon, chorizo every day</td><td>Fish, eggs, chicken; cured meat as an occasional treat</td></tr>
           <tr><td class="bad">The late-night cupboard hunt</td><td>Kitchen closed, water or tea, brush teeth, treat pre-decided</td></tr>
-          <tr><td class="bad">A pastry breakfast</td><td>Eggs or yogurt, so you stay full until lunch</td></tr>
           <tr><td class="bad">Sitting still all evening</td><td>A 10-minute walk after dinner</td></tr>
           <tr><td class="bad">"I blew it, I'll start Monday"</td><td>Next meal, back to normal. One slip is not a collapse</td></tr>
           <tr><td class="bad">Weighing daily and panicking</td><td>Weigh weekly at the same time, judge by the trend</td></tr>
           <tr><td class="bad">Eating because you're stressed</td><td>Run the HALT check first, then walk, breathe, or call someone</td></tr>
         </tbody>
       </table>
+      <p class="hint"><strong>HALT</strong> = before you eat, ask yourself: am I really <strong>H</strong>ungry, or just <strong>A</strong>ngry, <strong>L</strong>onely or <strong>T</strong>ired? If it is not real hunger, food will not fix it, so deal with the real thing instead.</p>
     </div>
 
     <div class="sheet-page">
@@ -2395,23 +2558,25 @@ table.swaps tr:last-child td{border-bottom:none}
       <p class="hint">No las siete más fáciles, las que más rinden por el esfuerzo. Haced sobre todo estas
         y el resto se cuida solo.</p>
       <ol class="levers">
-        <li><strong>Dejad de beber vuestras calorías.</strong> Cola, zumos, café azucarado, casi todo el
-          alcohol. La victoria más rápida y más grande que existe, y casi ni la notáis. Una lata de cola es
-          casi un tercio del azúcar de un día, fuera en dos minutos.</li>
+        <li><strong>Dejad de beber vuestras calorías.</strong> Cola, zumos, café azucarado, y el alcohol,
+          sobre todo el kalimotxo y los combinados dulces. La victoria más rápida y más grande que existe, y
+          casi ni la notáis. Una lata de cola es casi un tercio del azúcar de un día, fuera en dos minutos.</li>
+        <li><strong>Moveos cada día, y no solo paseos.</strong> Un paseo diario es oro (unos 7.000 pasos,
+          alrededor de 300 kcal, grasa de verdad en un mes), pero añadid también algo de fuerza de verdad.
+          Protege vuestro músculo, vuestra espalda y vuestra salud, no solo la cuenta de calorías. Mirad
+          "Mover el cuerpo" para el porqué y el cómo.</li>
         <li><strong>Proteína y verdura primero, en cada comida.</strong> Medio plato de verdura, una palma
           de proteína, y luego una guarnición más pequeña de pan, arroz o patata. Llenos con menos calorías.
           Esta es la palanca que hace el hambre llevadera.</li>
         <li><strong>No tengáis en casa la comida que os tienta.</strong> A las diez de la noche en el sofá
           no le ganáis a las galletas, las ganáis el sábado en la tienda. Si no está, no os la coméis.</li>
-        <li><strong>Cerrad la cocina después de cenar.</strong> La última comida unas 3 horas antes de
-          dormir, luego agua o infusión, lavaos los dientes y listo. El sofá de la noche es donde mueren
-          callados casi todos los planes.</li>
-        <li><strong>Moveos cada día.</strong> No el gimnasio, solo movimiento: un paseo después de cenar,
-          las escaleras, aparcar más lejos. Los pasos suman calorías de verdad y bajan los antojos.</li>
-        <li><strong>Cuidad el sueño.</strong> Una mala noche y al día siguiente vuestras hormonas del hambre
-          suben el volumen. Dormir bien es una herramienta para adelgazar, tratadla como tal.</li>
+        <li><strong>Cerrad la cocina después de cenar.</strong> La última comida unas 3 o 4 horas antes de
+          dormir (según vuestra ventana), luego agua o infusión, lavaos los dientes y listo. El sofá de la
+          noche es donde mueren callados casi todos los planes.</li>
         <li><strong>Medid las grasas.</strong> El aceite con cuchara o en espray, nunca a chorro libre. Una
           cucharada de aceite de oliva son unas 120 kcal. Es fácil ahogar una comida sana sin daros cuenta.</li>
+        <li><strong>Cuidad el sueño.</strong> Una mala noche y al día siguiente vuestras hormonas del hambre
+          suben el volumen. Dormir bien es una herramienta para adelgazar, tratadla como tal.</li>
       </ol>
       <p class="nugget">«No va de fuerza de voluntad. Va de montarlo todo para que apenas necesitéis ninguna.»</p>
     </div>
@@ -2424,20 +2589,19 @@ table.swaps tr:last-child td{border-bottom:none}
         <tbody>
           <tr><td class="bad">Cola, zumos, bebidas energéticas</td><td>Agua con gas y limón; café o té, sin azúcar</td></tr>
           <tr><td class="bad">Un chorro libre de aceite en la sartén</td><td>Medidlo: una cuchara, o un espray (1 cda ≈ 120 kcal)</td></tr>
-          <tr><td class="bad">Comer delante de la tele</td><td>Comed en la mesa, en un plato; saltaos el segundo plato automático</td></tr>
           <tr><td class="bad">Una montaña de pan blanco o arroz</td><td>Medio plato de verdura primero, una guarnición más pequeña de carbohidratos</td></tr>
           <tr><td class="bad">Ir a comprar con hambre y sin lista</td><td>Comed antes, comprad por los bordes de la tienda, ceñíos a la lista</td></tr>
           <tr><td class="bad">«Solo una» de la bolsa grande</td><td>Comprad raciones individuales, y dejadlo fuera de casa</td></tr>
           <tr><td class="bad">Picar todo el día</td><td>2 o 3 comidas de verdad; dejad que el cuerpo queme su propia grasa entre medias</td></tr>
           <tr><td class="bad">Salchichas, beicon, chorizo a diario</td><td>Pescado, huevos, pollo; el embutido como capricho de vez en cuando</td></tr>
           <tr><td class="bad">La excursión nocturna a la despensa</td><td>Cocina cerrada, agua o infusión, dientes lavados, capricho decidido de antemano</td></tr>
-          <tr><td class="bad">Un desayuno de bollería</td><td>Huevos o yogur, para llegar llenos hasta la comida</td></tr>
           <tr><td class="bad">Pasar toda la tarde sentados</td><td>Un paseo de 10 minutos después de cenar</td></tr>
           <tr><td class="bad">«La he liado, empiezo el lunes»</td><td>La siguiente comida, de vuelta a lo normal. Un resbalón no es un derrumbe</td></tr>
           <tr><td class="bad">Pesaros a diario y entrar en pánico</td><td>Pesaos una vez por semana a la misma hora, juzgad por la tendencia</td></tr>
           <tr><td class="bad">Comer porque estáis estresados</td><td>Haced primero el chequeo HALT, luego andad, respirad o llamad a alguien</td></tr>
         </tbody>
       </table>
+      <p class="hint"><strong>HALT</strong> (siglas en inglés) = antes de comer, preguntaos: ¿tengo de verdad <strong>H</strong>ambre (Hungry), o solo estoy <strong>e</strong>nfadado (Angry), <strong>s</strong>olo (Lonely) o <strong>c</strong>ansado (Tired)? Si no es hambre de verdad, la comida no lo arregla, así que atajad lo de verdad.</p>
     </div>
 
     <div class="sheet-page">
@@ -2524,6 +2688,8 @@ table.swaps tr:last-child td{border-bottom:none}
       <button class="btn ghost" onclick="printWorksheet('ws-plan')">🗺️ <span class="lang-en">45-day plan</span><span class="lang-es">Plan de 45 días</span></button>
       <button class="btn ghost" onclick="printWorksheet('ws-contract')">✍️ <span class="lang-en">Contract</span><span class="lang-es">Contrato</span></button>
       <button class="btn ghost" onclick="printWorksheet('ws-power')">🔥 <span class="lang-en">Power page</span><span class="lang-es">Página de poder</span></button>
+      <button class="btn ghost" onclick="printWorksheet('ws-faster')">⚡ <span class="lang-en">Want it faster?</span><span class="lang-es">¿Lo queréis más rápido?</span></button>
+      <button class="btn ghost" onclick="printWorksheet('ws-cheatsheet')">📄 <span class="lang-en">Cheat sheet</span><span class="lang-es">Chuleta</span></button>
     </div>
 
     <div class="callout"><span class="lang-en">⚖️ <strong>The calorie sheet is personal.</strong> The calculator above works out your numbers on the screen; the sheet itself downloads blank, so write your name and those numbers on it. Do one each, and Guillermo's and Pilar's never get mixed up.</span><span class="lang-es">⚖️ <strong>La hoja de calorías es personal.</strong> La calculadora de arriba saca vuestros números en la pantalla; la hoja se descarga en blanco, así que escribid en ella vuestro nombre y esos números. Haced una cada uno, y la de Guillermo y la de Pilar nunca se mezclan.</span></div>
@@ -2877,6 +3043,136 @@ table.swaps tr:last-child td{border-bottom:none}
     </div>
   </section>
 
+  <!-- WANT IT FASTER -->
+  <section class="ws" id="ws-faster">
+    <div class="es-ribbon" style="max-width:120px"></div>
+    <div class="lang-en">
+      <h1 class="ws-title">Want faster results? ⚡</h1>
+      <p class="ws-lead">The mindset stays the foundation. But if you want the scale to move faster, here are the strongest accelerators. Pick one or two, do not throw them all on at once.</p>
+      <h3>🕗 The big one: 16:8</h3>
+      <p class="ws-p">Eat all your food inside an 8-hour window and give your body the other 16 hours off. Easy version: last meal by 18:00 to 19:00, skip breakfast, break the fast at lunch. Coffee or tea on its own, no sugar, is fine and does not break the fast. It is head training as much as body training: your body relearns how to burn its own fat. On medication or with a health condition? Check with your doctor first.</p>
+      <div class="ws-callout"><strong>🥩 Lower carbs, higher protein, in one line.</strong> Ease right off the bread, rice, pasta and sugar, and build every plate on protein (fish, chicken, eggs, a little meat) with plenty of vegetables, and go easy on the oil. Protein and veg keep you full for hours and protect your muscle while the fat comes off.</div>
+      <h3>Beat the morning hunger 🥄</h3>
+      <p class="ws-p"><strong>The morning glass.</strong> First thing, on an empty stomach: a glass of water (about 250 ml) with a squeeze of lemon, a small pinch of cinnamon, a little cayenne, and if you like a tiny pinch of salt.</p>
+      <ul class="ws-check">
+        <li><strong>Water</strong> is the real win: you wake up dehydrated and thirst feels like hunger, so a big glass takes the edge off.</li>
+        <li><strong>Cinnamon</strong> helps steady your blood sugar (less spike and crash) and feeds the good gut bacteria.</li>
+        <li><strong>Cayenne</strong> gives a small warming kick that can nudge circulation and dull the appetite.</li>
+        <li><strong>Lemon</strong> makes the water easy to drink; the <strong>pinch of salt</strong> is a few electrolytes for the fast.</li>
+      </ul>
+      <p class="ws-p">Coffee afterwards is fine. None of these is magic on its own, but stacked together on an empty stomach they turn the morning hunger down, so the 16:8 window is far easier to hold.</p>
+    </div>
+    <div class="lang-es">
+      <h1 class="ws-title">¿Queréis resultados más rápidos? ⚡</h1>
+      <p class="ws-lead">La mentalidad sigue siendo el fundamento. Pero si queréis que la báscula se mueva más rápido, aquí tenéis los aceleradores más fuertes. Empezad por uno o dos, no os los echéis todos a la vez.</p>
+      <h3>🕗 La grande: 16:8</h3>
+      <p class="ws-p">Comed toda la comida dentro de una ventana de 8 horas y dad al cuerpo las otras 16 de descanso. Versión fácil: última comida hacia las 18:00 o 19:00, saltaos el desayuno y romped el ayuno en la comida. El café o el té solos, sin azúcar, valen y no rompen el ayuno. Entrena la cabeza tanto como el cuerpo: el cuerpo vuelve a aprender a quemar su propia grasa. ¿Tomáis medicación o tenéis alguna condición? Consultad antes con vuestro médico.</p>
+      <div class="ws-callout"><strong>🥩 Menos carbohidratos, más proteína, en una línea.</strong> Aflojad del todo el pan, el arroz, la pasta y el azúcar, y montad cada plato sobre la proteína (pescado, pollo, huevos, un poco de carne) con mucha verdura, y echad poco aceite. La proteína y la verdura os mantienen llenos durante horas y protegen el músculo mientras se va la grasa.</div>
+      <h3>Ganarle al hambre de la mañana 🥄</h3>
+      <p class="ws-p"><strong>El vaso de la mañana.</strong> Lo primero, en ayunas: un vaso de agua (unos 250 ml) con un chorro de limón, una pizca de canela, un poco de cayena, y si os apetece una pizca pequeña de sal.</p>
+      <ul class="ws-check">
+        <li><strong>El agua</strong> es la victoria de verdad: os despertáis deshidratados y la sed parece hambre, así que un buen vaso quita el filo.</li>
+        <li><strong>La canela</strong> ayuda a estabilizar el azúcar en sangre (menos pico y bajón) y alimenta a las bacterias buenas del intestino.</li>
+        <li><strong>La cayena</strong> da un pequeño golpe de calor que puede animar la circulación y bajar el apetito.</li>
+        <li><strong>El limón</strong> hace fácil beber el agua; la <strong>pizca de sal</strong> son unos electrolitos para el ayuno.</li>
+      </ul>
+      <p class="ws-p">El café después está bien. Ninguno es mágico por sí solo, pero juntos y en ayunas bajan el hambre de la mañana, así aguantar la ventana 16:8 es mucho más fácil.</p>
+    </div>
+  </section>
+
+  <!-- CHEAT SHEET -->
+  <section class="ws" id="ws-cheatsheet">
+    <div class="es-ribbon" style="max-width:120px"></div>
+    <div class="lang-en">
+      <h1 class="ws-title">The cheat sheet 📄</h1>
+      <p class="ws-lead">If you forget everything else, keep this. The biggest levers and the simple swaps, on a sheet for the fridge.</p>
+      <h3>The biggest levers 🎯</h3>
+      <ol class="levers">
+        <li><strong>Stop drinking your calories.</strong> Cola, juice, sugary coffee, and the alcohol, especially kalimotxo and the sweet mixers. The fastest, biggest win there is.</li>
+        <li><strong>Move every day, and not only walks.</strong> A daily walk is gold (~7,000 steps, ~300 kcal), but add a little proper strength too. It protects your muscle, your back and your health, not just your calorie count.</li>
+        <li><strong>Protein and vegetables first, every meal.</strong> Half the plate vegetables, a palm of protein, then a smaller side of bread, rice or potato. Full on fewer calories.</li>
+        <li><strong>Don't keep the trigger food in the house.</strong> You beat the biscuits on Saturday in the shop, not at 10 p.m. on the couch. If it isn't there, you won't eat it.</li>
+        <li><strong>Close the kitchen after dinner.</strong> Last food about 3 to 4 hours before bed, then water or tea, brush your teeth, done.</li>
+        <li><strong>Measure your fats.</strong> Oil with a spoon or a spray, never a free pour. One tablespoon of olive oil is about 120 kcal.</li>
+        <li><strong>Protect your sleep.</strong> One bad night and your hunger hormones turn up the volume. Good sleep is a weight-loss tool.</li>
+      </ol>
+      <h3>Avoid this, do this instead 🔁</h3>
+      <table class="swaps">
+        <thead><tr><th class="bad">❌ Avoid this</th><th class="good">✅ Do this instead</th></tr></thead>
+        <tbody>
+          <tr><td class="bad">Cola, juice, energy drinks</td><td>Sparkling water with lemon; coffee or tea, no sugar</td></tr>
+          <tr><td class="bad">A free pour of oil into the pan</td><td>Measure it: one spoon, or a spray (1 tbsp ≈ 120 kcal)</td></tr>
+          <tr><td class="bad">A mountain of white bread or rice</td><td>Half a plate of vegetables first, a smaller side of carbs</td></tr>
+          <tr><td class="bad">Shopping hungry with no list</td><td>Eat first, shop the edges of the store, stick to the list</td></tr>
+          <tr><td class="bad">"Just one" from the big bag</td><td>Buy single-serve, and keep it out of the house</td></tr>
+          <tr><td class="bad">Snacking all day long</td><td>2 or 3 real meals; let the body burn its own fat between</td></tr>
+          <tr><td class="bad">Sausages, bacon, chorizo every day</td><td>Fish, eggs, chicken; cured meat as an occasional treat</td></tr>
+          <tr><td class="bad">The late-night cupboard hunt</td><td>Kitchen closed, water or tea, brush teeth, treat pre-decided</td></tr>
+          <tr><td class="bad">Sitting still all evening</td><td>A 10-minute walk after dinner</td></tr>
+          <tr><td class="bad">"I blew it, I'll start Monday"</td><td>Next meal, back to normal. One slip is not a collapse</td></tr>
+          <tr><td class="bad">Weighing daily and panicking</td><td>Weigh weekly at the same time, judge by the trend</td></tr>
+          <tr><td class="bad">Eating because you're stressed</td><td>Run the HALT check first, then walk, breathe, or call someone</td></tr>
+        </tbody>
+      </table>
+      <p class="ws-hint"><strong>HALT</strong> = before you eat, ask yourself: am I really <strong>H</strong>ungry, or just <strong>A</strong>ngry, <strong>L</strong>onely or <strong>T</strong>ired? If it is not real hunger, food will not fix it, so deal with the real thing instead.</p>
+    </div>
+    <div class="lang-es">
+      <h1 class="ws-title">La chuleta 📄</h1>
+      <p class="ws-lead">Si os olvidáis de todo lo demás, guardad esto. Las palancas más grandes y los cambios sencillos, en una hoja para la nevera.</p>
+      <h3>Las palancas más grandes 🎯</h3>
+      <ol class="levers">
+        <li><strong>Dejad de beber vuestras calorías.</strong> Cola, zumos, café azucarado, y el alcohol, sobre todo el kalimotxo y los combinados dulces. La victoria más rápida y más grande que existe.</li>
+        <li><strong>Moveos cada día, y no solo paseos.</strong> Un paseo diario es oro (unos 7.000 pasos, ~300 kcal), pero añadid también algo de fuerza de verdad. Protege vuestro músculo, vuestra espalda y vuestra salud, no solo la cuenta de calorías.</li>
+        <li><strong>Proteína y verdura primero, en cada comida.</strong> Medio plato de verdura, una palma de proteína, y luego una guarnición más pequeña de pan, arroz o patata. Llenos con menos calorías.</li>
+        <li><strong>No tengáis en casa la comida que os tienta.</strong> A las galletas las ganáis el sábado en la tienda, no a las diez de la noche en el sofá. Si no está, no os la coméis.</li>
+        <li><strong>Cerrad la cocina después de cenar.</strong> La última comida unas 3 o 4 horas antes de dormir, luego agua o infusión, lavaos los dientes y listo.</li>
+        <li><strong>Medid las grasas.</strong> El aceite con cuchara o en espray, nunca a chorro libre. Una cucharada de aceite de oliva son unas 120 kcal.</li>
+        <li><strong>Cuidad el sueño.</strong> Una mala noche y vuestras hormonas del hambre suben el volumen. Dormir bien es una herramienta para adelgazar.</li>
+      </ol>
+      <h3>Evitad esto, haced esto en su lugar 🔁</h3>
+      <table class="swaps">
+        <thead><tr><th class="bad">❌ Evitad esto</th><th class="good">✅ Haced esto en su lugar</th></tr></thead>
+        <tbody>
+          <tr><td class="bad">Cola, zumos, bebidas energéticas</td><td>Agua con gas y limón; café o té, sin azúcar</td></tr>
+          <tr><td class="bad">Un chorro libre de aceite en la sartén</td><td>Medidlo: una cuchara, o un espray (1 cda ≈ 120 kcal)</td></tr>
+          <tr><td class="bad">Una montaña de pan blanco o arroz</td><td>Medio plato de verdura primero, una guarnición más pequeña</td></tr>
+          <tr><td class="bad">Ir a comprar con hambre y sin lista</td><td>Comed antes, comprad por los bordes de la tienda, ceñíos a la lista</td></tr>
+          <tr><td class="bad">«Solo una» de la bolsa grande</td><td>Comprad raciones individuales, y dejadlo fuera de casa</td></tr>
+          <tr><td class="bad">Picar todo el día</td><td>2 o 3 comidas de verdad; dejad que el cuerpo queme su grasa entre medias</td></tr>
+          <tr><td class="bad">Salchichas, beicon, chorizo a diario</td><td>Pescado, huevos, pollo; el embutido como capricho de vez en cuando</td></tr>
+          <tr><td class="bad">La excursión nocturna a la despensa</td><td>Cocina cerrada, agua o infusión, dientes lavados, capricho decidido</td></tr>
+          <tr><td class="bad">Pasar toda la tarde sentados</td><td>Un paseo de 10 minutos después de cenar</td></tr>
+          <tr><td class="bad">«La he liado, empiezo el lunes»</td><td>La siguiente comida, de vuelta a lo normal. Un resbalón no es un derrumbe</td></tr>
+          <tr><td class="bad">Pesaros a diario y entrar en pánico</td><td>Pesaos una vez por semana a la misma hora, juzgad por la tendencia</td></tr>
+          <tr><td class="bad">Comer porque estáis estresados</td><td>Haced primero el chequeo HALT, luego andad, respirad o llamad a alguien</td></tr>
+        </tbody>
+      </table>
+      <p class="ws-hint"><strong>HALT</strong> (siglas en inglés) = antes de comer, preguntaos: ¿tengo de verdad <strong>H</strong>ambre (Hungry), o solo estoy <strong>e</strong>nfadado (Angry), <strong>s</strong>olo (Lonely) o <strong>c</strong>ansado (Tired)? Si no es hambre de verdad, la comida no lo arregla, así que atajad lo de verdad.</p>
+    </div>
+    <div class="ws-block">
+      <h3 class="lang-en">What lands in the basket 🧺</h3>
+      <h3 class="lang-es">Qué cae en la cesta 🧺</h3>
+      <h4 class="foodhead"><span class="lang-en">❌ Leave it on the shelf (buy rarely, single-serve)</span><span class="lang-es">❌ Dejadlo en la estantería (poco, ración individual)</span></h4>
+      <div class="foodgrid avoid">
+        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/cola.webp" alt=""></div><span class="lbl"><span class="lang-en">Sugary drinks</span><span class="lang-es">Bebidas azucaradas</span></span></figure>
+        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/sweets.webp" alt=""></div><span class="lbl"><span class="lang-en">Sweets &amp; pastries</span><span class="lang-es">Dulces y bollería</span></span></figure>
+        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/chips.webp" alt=""></div><span class="lbl"><span class="lang-en">Crisps &amp; fried snacks</span><span class="lang-es">Patatas fritas y frituras</span></span></figure>
+        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/meat.webp" alt=""></div><span class="lbl"><span class="lang-en">Cured meat, daily</span><span class="lang-es">Embutido, a diario</span></span></figure>
+        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/white.webp" alt=""></div><span class="lbl"><span class="lang-en">White bread &amp; sugary cereal</span><span class="lang-es">Pan blanco y cereales azucarados</span></span></figure>
+        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/ready.webp" alt=""></div><span class="lbl"><span class="lang-en">Ready meals &amp; instant noodles</span><span class="lang-es">Precocinados y fideos</span></span></figure>
+      </div>
+      <h4 class="foodhead"><span class="lang-en">✅ Fill the cart with these</span><span class="lang-es">✅ Llenad el carro con esto</span></h4>
+      <div class="foodgrid good">
+        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/veg.webp" alt=""></div><span class="lbl"><span class="lang-en">Vegetables &amp; salad</span><span class="lang-es">Verdura y ensalada</span></span></figure>
+        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/fish.webp" alt=""></div><span class="lbl"><span class="lang-en">Fish &amp; seafood</span><span class="lang-es">Pescado y marisco</span></span></figure>
+        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/eggs.webp" alt=""></div><span class="lbl"><span class="lang-en">Eggs</span><span class="lang-es">Huevos</span></span></figure>
+        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/beans.webp" alt=""></div><span class="lbl"><span class="lang-en">Beans &amp; lentils</span><span class="lang-es">Legumbres y lentejas</span></span></figure>
+        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/fruit.webp" alt=""></div><span class="lbl"><span class="lang-en">Fruit</span><span class="lang-es">Fruta</span></span></figure>
+        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/yogurt.webp" alt=""></div><span class="lbl"><span class="lang-en">Plain yogurt &amp; nuts</span><span class="lang-es">Yogur natural y frutos secos</span></span></figure>
+      </div>
+    </div>
+  </section>
+
 </div>
 
 <button id="toTop" onclick="scrollToTop()" aria-label="Volver arriba" title="Volver arriba ↑">↑</button>
@@ -2930,12 +3226,12 @@ const CHAPTERS=[
   {g:"Exercise & Learn", ge:"Ejercicio y aprender"},
   {id:"checkin",ic:"✅",t:"Honest check-in",te:"Chequeo honesto"},
   {id:"how",ic:"⚖️",t:"Calories in, out",te:"Calorías"},
-  {id:"move",ic:"🏃",t:"Move your body",te:"Mover el cuerpo"},
+  {id:"move",ic:"🏃",t:"Move your body · Part 1",te:"Mover el cuerpo · Parte 1",aud:"move"},
+  {id:"move2",ic:"🏃",t:"Move your body · Part 2",te:"Mover el cuerpo · Parte 2",aud:"move2"},
   {id:"motivation",ic:"🔥",t:"Power page",te:"Página de poder"},
   {g:"Do", ge:"Manos a la obra"},
   {id:"plan",ic:"🗺️",t:"45-day plan",te:"Plan de 45 días"},
   {g:"Commit", ge:"El compromiso"},
-  {id:"preparation",ic:"✅",t:"Preparation",te:"Preparación"},
   {id:"contract",ic:"✍️",t:"Your contract",te:"Vuestro contrato"},
   {g:"Make it stick", ge:"Para que dure"},
   {id:"faster",ic:"⚡",t:"Want it faster?",te:"¿Lo queréis más rápido?"},
@@ -3063,14 +3359,15 @@ CHAPTERS.forEach(c=>{
   a.appendChild(ic); a.appendChild(lab); rail.appendChild(a);
   a.addEventListener('click',()=>document.body.classList.remove('nav-open'));
   const a2=a.cloneNode(true); a2.addEventListener('click',toggleOverlay); ovLinks.appendChild(a2);
+  if(c.aud){ const cue=()=>{ try{updateAudioBar(c.aud);}catch(e){} }; a.addEventListener('click',cue); a2.addEventListener('click',cue); }
 });
 function applyNavLang(l){ document.querySelectorAll('#rail [data-en], #overlayLinks [data-en]').forEach(el=>{ el.textContent=el.dataset[l]||el.dataset.en; }); }
 applyNavLang(document.documentElement.dataset.lang||'en');
 /* progress: green check for chapters you have read or heard */
 const DONE_KEY='gp_done2';
 let doneSet=new Set(JSON.parse(localStorage.getItem(DONE_KEY)||'[]'));
-function applyDone(){ document.querySelectorAll('nav.rail a').forEach(a=>a.classList.toggle('done',doneSet.has(a.dataset.target))); }
-function markDone(id){ if(!id||doneSet.has(id))return; doneSet.add(id); try{localStorage.setItem(DONE_KEY,JSON.stringify([...doneSet]));}catch(e){} applyDone(); }
+function applyDone(){ document.querySelectorAll('nav.rail a.done').forEach(a=>a.classList.remove('done')); }
+function markDone(id){ /* chapter "done" check removed */ }
 applyDone();
 /* mark a chapter green ONLY on its "next section" CTA click (not on scroll) */
 document.querySelectorAll('.nextprev .btn.primary, .hero .cta .btn.primary').forEach(b=>{
@@ -3091,6 +3388,7 @@ function setLang(l){
   if(typeof applyRecipeLang==='function')applyRecipeLang(l);
   if(typeof renderRecipes==='function')renderRecipes();
   if(typeof cioApplyLang==='function')cioApplyLang(l);
+  if(typeof renderDays==='function')renderDays();
 }
 
 /* (Calculator merged into the Calories In/Out widget above) */
@@ -3209,10 +3507,10 @@ function renderDays(){
   }
   const n=DAYS.length, pct=Math.round(n/45*100);
   document.getElementById('pbarFill').style.width=pct+'%';
-  document.getElementById('pbarLabel').textContent=n+' / 45 days';
+  document.getElementById('pbarLabel').textContent=n+(document.documentElement.dataset.lang==='es'?' / 45 días':' / 45 days');
   document.querySelectorAll('.badge').forEach(b=>b.classList.toggle('unlocked',n>=+b.dataset.b));
 }
-function resetDays(){if(confirm('Clear all marked days?')){DAYS=[]; localStorage.setItem('gp_days','[]'); renderDays();}}
+function resetDays(){if(confirm(document.documentElement.dataset.lang==='es'?'¿Borrar los días marcados?':'Clear all marked days?')){DAYS=[]; localStorage.setItem('gp_days','[]'); renderDays();}}
 renderDays();
 
 /* ============ RECIPES ============ */
@@ -3604,10 +3902,13 @@ const AUDIO_CHAPTERS=[
   {id:'insanity',  title:'La Locura',                       file:'07-la-locura.mp3'},
   {id:'close',     title:'Sigue volviendo',                 file:'08-sigue-volviendo.mp3'},
   {id:'how',       title:'Calorías que entran y salen',      file:'09-calorias.mp3'},
+  {id:'move',      title:'Mover el cuerpo · Parte 1',        file:'10-mover-el-cuerpo-1.mp3'},
+  {id:'move2',     title:'Mover el cuerpo · Parte 2',        file:'10-mover-el-cuerpo-2.mp3'},
+  {id:'motivation',title:'Página de Poder',                 file:'11-pagina-de-poder.mp3'},
 ];
 const AUDIO_VOICES=[
-  {key:'dave',      label:'Lenta',     has:['welcome','start','captain','struggles','systems','honest','why','insanity','close','how']},
-  {key:'toni',      label:'Rápida',    has:['welcome','start','captain','struggles','systems','honest','why','insanity','close']},
+  {key:'dave',      label:'Lenta',     has:['welcome','start','captain','struggles','systems','honest','why','insanity','close','how','move','move2']},
+  {key:'toni',      label:'Rápida',    has:['welcome','start','captain','struggles','systems','honest','why','insanity','close','how','move','move2','motivation']},
 ];
 let audioVoice=localStorage.getItem('gp_voice')||'dave';
 if(!AUDIO_VOICES.some(v=>v.key===audioVoice)) audioVoice='dave';
