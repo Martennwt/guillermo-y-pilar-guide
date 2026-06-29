@@ -2714,7 +2714,7 @@ table.swaps tr:last-child td{border-bottom:none}
   </main>
 
   <!-- sticky read-aloud bar (Spanish voice) -->
-  <div id="audiobar" hidden>
+  <div id="audiobar">
     <button id="audioBtn" class="audio-btn" onclick="toggleAudio()" aria-label="Reproducir / pausar">▶</button>
     <button class="audio-btn alt" onclick="stopAudio()" aria-label="Parar">⏹</button>
     <div class="audio-label">
@@ -3961,6 +3961,7 @@ document.addEventListener('click',e=>{ const w=document.getElementById('audioPic
   const pp=document.getElementById('pdfPop'); if(pp&&!pp.hidden && !e.target.closest('.dl-wrap')) pp.hidden=true; });
 buildVoiceToggle(); buildAudioMenu();
 const player=document.getElementById('player');
+updateAudioBar('welcome');
 function pickAudio(id){
   if(!audioHas(id)){ const m=AUDIO_VOICES.find(v=>v.has.includes(id)); if(m){ audioVoice=m.key; localStorage.setItem('gp_voice',m.key); buildVoiceToggle(); buildAudioMenu(); } }
   const sec=document.getElementById(id); if(sec) sec.scrollIntoView({behavior:'smooth', block:'start'});
