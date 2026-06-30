@@ -2,6 +2,52 @@
 
 ---
 
+## 2026-06-30: Sicherheits-Cleanup — Chrome-Profil aus History entfernt (main + gh-pages)
+
+**Erledigt:**
+- **Versehentlich committetes Headless-Chrome-Profil komplett aus der Git-History entfernt.** `6fe126b` hatte
+  `site/assets/worksheets/_chrome-profile/` mitgeschleppt (223 Dateien, ~11 MB, inkl. `Login Data`, `Cookies`,
+  `History`, Tokens). Lag auf `origin/main` UND auf der **öffentlichen `origin/gh-pages`**.
+- Vorgehen: Sicherungs-Tag `backup-before-profile-purge` gesetzt; `git filter-branch --index-filter` über
+  `8719f0f..HEAD` löschte den Pfad aus allen 4 betroffenen Commits (echter Inhalt unangetastet, nur das Profil
+  weg); `**/_chrome-profile/` in `.gitignore` aufgenommen; physisches Profil von der Platte gelöscht;
+  `main` und `gh-pages` per Force-Push neu geschrieben; lokal Reflog/GC zum Purgen der Blobs.
+- **Regel bekräftigt:** sensible Daten (Chrome-Profile, Keys, Cookies, Login-Daten) NIEMALS committen.
+
+---
+
+## 2026-06-29: "Move Your Body" in 2 Teile, 45-Tage-Plan auf Spanisch, neue PDFs, Intro-Rewrite, Player-Bar fix, Toni-Hörbuch komplett
+
+**Erledigt (4 Commits `6fe126b` → `9e7fd33`, committet + auf `origin/main` UND `origin/gh-pages` deployed, live):**
+- **"Move Your Body" in zwei Sektionen + zwei Audio-Teile gesplittet** (Teil 1 = Warum/Sicher bleiben, Teil 2
+  = der einfache Plan); Menü + Player führen jeden Teil getrennt. (`6fe126b`)
+- **Preparation-Sektion gelöscht;** der Contract ist jetzt selbsttragend (Gewohnheits-Zeilen, Auswärts-Essen-Regel,
+  "wir wiegen alle 7 Tage").
+- **"Want it faster?" + Cheat Sheet gestrafft:** 16:8 oben erklärt, Lower-Carb-Einzeiler, ehrliches Morgen-Glas;
+  Cheat Sheet: Bewegung nach oben, Kalimotxo, HALT erklärt.
+- **Neue Druck-PDFs:** `ws-faster` + `ws-cheatsheet`; Cheat-Sheet-Bilder verkleinert (Cheat-Sheet-PDF 9,5 MB → 3,9 MB).
+- **45-Tage-Plan komplett auf Spanisch;** Gewichtstabelle jetzt zweiköpfig (Guillermo + Pilar, kg + verloren).
+- **Intro:** Whisky-Cheesecake-Wiederholung raus, Hero gestärkt, Bewegung eingebracht, neuer Badge.
+- **Audio neu gerendert:** Intro (welcome + start, beide Stimmen); **Toni jetzt komplett** (Calorías, Página de
+  Poder, Mover el cuerpo dazu). Grüner "done"-Haken aus der Nav entfernt.
+- **QR-Player (`player.html`) fertiggestellt + auf Toni umgestellt:** hatte nur 9 Kapitel mit Dave, jetzt 13
+  Kapitel (+ Calorías, Mover el cuerpo Teil 1+2, Página de Poder); BASE auf `assets/audio/toni/`, damit das ganze
+  Hörbuch in EINER Stimme läuft (Power Page existiert nur als Toni). (`a5fdd5e`)
+- **Sticky-Player-Bar immer sichtbar:** bleibt auch auf Sektionen ohne Audio sichtbar (und spielt weiter), schon
+  ab dem Laden (erstes Kapitel beim Init gecued, `hidden`-Attribut entfernt). (`41c1a77`, `9e7fd33`)
+- **`audiolibro-es.zip` neu gebaut** aus dem kompletten Toni-Hörbuch (13 Kapitel), passend zum QR-Web-Player
+  (34 MB → 45 MB). (`41c1a77`)
+- **Tooling:** `tools/audio/split-move.js` neu, `build-audio.js` erweitert.
+- Hinweis: dieser Worklog wurde damals NICHT mitgeschrieben (nur der 27.06.-Eintrag wurde in `6fe126b` committet);
+  hier am 30.06. aus den vier Commits nachgezogen.
+
+**Offen / als Nächstes:**
+1. ✅ **Chrome-Profil aus dem Repo entfernt** (am 2026-06-30, siehe Eintrag oben). Erledigt.
+2. **Martens Review zu "Move Your Body"** (Ton/Bilder/Intensität, war am Strand) steht noch aus.
+3. ⚠️ **ElevenLabs-Key rotieren** (Alt-To-do, war mal in einem Screenshot sichtbar).
+
+---
+
 ## 2026-06-27: Toni-Stimme + Voice-Switcher, "Move Your Body" komplett ausgebaut (Physios, echte Bilder, Pilar), KI-Guide-Logbuch
 
 **Erledigt (alles committet + auf gh-pages deployed, live):**

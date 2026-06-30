@@ -3,3 +3,5 @@
 *.bak
 # audio build backups (kept locally, not shipped)
 site/assets/audio/**/_backup/
+# headless-chrome user-data-dir vom Worksheet-PDF-Rendern: NIEMALS committen (enthaelt Profil-/Login-/Cookie-Daten)
+**/_chrome-profile/
