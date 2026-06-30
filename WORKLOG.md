@@ -2,6 +2,40 @@
 
 ---
 
+## 2026-06-30 (Teil 2): "Move Your Body · Part 3" — YouTube-Video-Sektion + Audio, Stimme auf Toni reduziert
+
+**Erledigt:**
+- Neue Sektion `#move3` ("Part 3 of 3"), zweisprachig EN/ES, mit Menü-Eintrag (🎬) und Navigation
+  (Part 1 → 2 → 3 → Power Page). Eyebrows von Part 1/2 auf "of 3 / de 3".
+- **4 YouTube-Videos im 2er-Raster** (eins links, eins rechts), zwei Reihen:
+  - Reihe 1 (Erklärungen): "Los 5 ejercicios después de los 50" (Viejo Pero Activo, 1,4 M) +
+    "50 y más fuerte que nunca" (Dr. Borja Bandera, 939 K).
+  - Reihe 2 (zwei Programme): "Rutina principiantes 20 min" (Chuy Almada, 6,8 M) +
+    "Cuerpo completo 25 min" (Memo Fitgame, 1,1 M).
+- Jede Karte: **Original-Thumbnail** lokal als WebP (`assets/img/move/yt/v1..4.webp`, von i.ytimg
+  maxresdefault, via shared `to-webp.js`), Typ-Tag, Titel, Kanal · Aufrufzahl (Social Proof),
+  Beschreibung, "Watch on YouTube". Klick lädt das Embed (youtube-nocookie, Facade-Pattern, `loadVid()`).
+- Text geschärft: "wichtigster/erster Schritt", handverlesene ruhige Leute, Physios aus Part 1 +
+  langsam ohne Ego anfangen; Reihe 1 = Warum + 1-2 Übungen; Reihe 2 = zwei einfache aber starke
+  Programme für 2-3 Monate (Kalorien verbrennen, langsam fit werden).
+- **Audio Part 3 (Toni)** gerendert → `toni/10-mover-el-cuerpo-3.mp3`; `build-audio.js`-Kapitel `move3`
+  (voices:['toni']). Video-Karten per `no-audio` von der Vertonung ausgenommen (Vorlese-Text block-für-block
+  geprüft: keine Titel/Aufrufe/Links).
+- **Langsame Stimme (Dave) aus dem Player entfernt:** Stimmen-Umschalter verschwindet automatisch
+  (nur noch Toni), Default = Toni. QR-Player `player.html` ebenfalls um Parte 3 ergänzt.
+- Verifiziert: JS 0 Fehler, keine neuen Em-Dashes, Player-Menü zeigt "13. Mover el cuerpo · Parte 3"
+  ohne Umschalter, EN/ES/mobil per Screenshot, kein horizontaler Überlauf.
+
+**Offen / morgen:**
+1. **Großer Tagesjob: 45-Tage-Essensplan** (Rezepte) für Frühstück / Mittag / Abendbrot zum Abnehmen.
+   Dazu **Einkaufsliste** mit Mengen für **zwei Personen, aber kleinere Portionen** (keine Riesenportionen),
+   und klare **max. Kalorien pro Tag**, um in 45 Tagen starke Fortschritte zu sehen.
+2. **Feinschliff** an Part 3 (Ton / Look / Reihenfolge nach Martens Review).
+3. **`audiolibro-es.zip` neu bauen** (aktuell 13 Kapitel, es fehlt Parte 3; soll 14 werden).
+4. ⚠️ **ElevenLabs-Key rotieren** (Alt-To-do).
+
+---
+
 ## 2026-06-30: Sicherheits-Cleanup — Chrome-Profil aus History entfernt (main + gh-pages)
 
 **Erledigt:**

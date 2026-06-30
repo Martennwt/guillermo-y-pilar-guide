@@ -48,6 +48,7 @@ const CHAPTERS = [
   { id: 'close',     out: '08-sigue-volviendo.mp3' },
   { id: 'how',       out: '09-calorias.mp3', voices: ['dave', 'toni'] },
   { id: 'move',      out: '10-mover-el-cuerpo.mp3' },
+  { id: 'move3',     out: '10-mover-el-cuerpo-3.mp3', voices: ['toni'] },
   { id: 'motivation', out: '11-pagina-de-poder.mp3', voices: ['toni'] },  // fast voice only from here on
 ];
 

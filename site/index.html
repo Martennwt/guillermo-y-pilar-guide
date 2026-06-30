@@ -201,6 +201,26 @@ section.card.tint{background:linear-gradient(180deg,var(--paper-2),var(--paper))
 .physio .ph-links a.web{background:var(--olive); color:#fff; border-color:var(--olive)}
 .physio .ph-links a.map{background:var(--paper-2); color:var(--olive-deep)}
 .physio .ph-links a:hover{filter:brightness(.95)}
+/* video grid (Move Your Body · Part 3): click-to-load YouTube facade */
+.vidgrid{display:grid; grid-template-columns:1fr 1fr; gap:1.1rem; margin:1rem 0 1.4rem}
+@media(max-width:620px){ .vidgrid{grid-template-columns:1fr} }
+.vidrow-label{font-family:var(--display); font-style:italic; color:var(--terracotta-deep); font-size:1.06rem; margin:1.5rem 0 .1rem}
+.vidcard{background:var(--paper); border:1px solid var(--line); border-radius:14px; overflow:hidden; box-shadow:var(--shadow-sm); display:flex; flex-direction:column}
+.vidcard.top{border-color:var(--olive); box-shadow:0 6px 22px rgba(63,84,48,.16)}
+.vid{position:relative; aspect-ratio:16/9; background:linear-gradient(135deg,#2D3D1F,#3F5430); cursor:pointer; border:0; padding:0; margin:0; width:100%; display:block}
+.vid img{width:100%; height:100%; object-fit:cover; display:block}
+.vid iframe{width:100%; height:100%; border:0; display:block}
+.vid .vid-play{position:absolute; inset:0}
+.vid .vid-play::after{content:""; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:62px; height:62px; border-radius:999px; background:rgba(190,79,52,.92); box-shadow:0 4px 16px rgba(0,0,0,.35); transition:background .15s}
+.vid .vid-play::before{content:""; position:absolute; top:50%; left:50%; transform:translate(-44%,-50%); z-index:2; border-style:solid; border-width:11px 0 11px 19px; border-color:transparent transparent transparent #fff}
+.vid:hover .vid-play::after{background:var(--terracotta)}
+.vid-meta{padding:.8rem .95rem 1rem}
+.vid-tag{font-size:.6rem; font-weight:800; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-faint); display:block; margin-bottom:.22rem}
+.vid-meta h4{margin:0 0 .1rem; font-size:1rem; color:var(--olive-deep); line-height:1.22}
+.vid-chan{font-size:.74rem; font-weight:800; color:var(--terracotta); margin:0 0 .42rem}
+.vid-meta p:not(.vid-chan){margin:.3rem 0 .55rem; font-size:.88rem; color:var(--ink-soft)}
+.vid-link{font-size:.76rem; font-weight:800; text-decoration:none; color:var(--olive-deep)}
+.vid-link:hover{text-decoration:underline}
 /* compact side-by-side: photo left, text + list right */
 .mglass{display:grid; grid-template-columns:clamp(170px,32%,280px) 1fr; gap:1.1rem; align-items:stretch; margin:1.2rem 0}
 .mglass .photo{margin:0; height:100%}
@@ -1620,7 +1640,7 @@ table.swaps tr:last-child td{border-bottom:none}
   <!-- MOVE YOUR BODY -->
   <section class="card tint" id="move">
     <div class="lang-en">
-    <div class="eyebrow">Part 1 of 2 · what carries you up the hill at 75</div>
+    <div class="eyebrow">Part 1 of 3 · what carries you up the hill at 75</div>
     <h2>Move Your Body: The Most Important Page in This Guide 🏃</h2>
     <p class="lead">Food gets all the attention, but movement is the other half of this, and it is just as
       much a head game as the plate is. You do not move to earn your dinner. You move because a body that
@@ -1707,7 +1727,7 @@ table.swaps tr:last-child td{border-bottom:none}
     <div class="nextprev"><a class="btn ghost" href="#how">Back</a><a class="btn primary" href="#move2">Next: the simple plan</a></div>
     </div>
     <div class="lang-es">
-    <div class="eyebrow">Parte 1 de 2 · lo que os sube la cuesta a los 75</div>
+    <div class="eyebrow">Parte 1 de 3 · lo que os sube la cuesta a los 75</div>
     <h2>Mover el Cuerpo: la página más importante de esta guía 🏃</h2>
     <p class="lead">Toda la atención va a la comida, pero el movimiento es la otra mitad de esto, y es tanto un
       juego de cabeza como el plato. No os movéis para ganaros la cena. Os movéis porque un cuerpo que se mueve
@@ -1803,7 +1823,7 @@ table.swaps tr:last-child td{border-bottom:none}
 
   <section class="card tint" id="move2">
     <div class="lang-en">
-    <div class="eyebrow">Part 2 of 2 · the simple plan</div>
+    <div class="eyebrow">Part 2 of 3 · the simple plan</div>
     <h2>A Walk, and a Little Strength 💪</h2>
 
     <p>So we keep it simple. No gym, no plan, no two or three hours. Two things, that is the whole
@@ -1874,10 +1894,10 @@ table.swaps tr:last-child td{border-bottom:none}
       independent for the long haul, with Pilar's cooking still on the table.</p>
 
     <p class="nugget">"I do not move to punish my body. I move because I plan on using it for a long time."</p>
-    <div class="nextprev"><a class="btn ghost" href="#move">Back</a><a class="btn primary" href="#motivation">Next: Power page</a></div>
+    <div class="nextprev"><a class="btn ghost" href="#move">Back</a><a class="btn primary" href="#move3">Next: the videos</a></div>
     </div>
     <div class="lang-es">
-    <div class="eyebrow">Parte 2 de 2 · el plan sencillo</div>
+    <div class="eyebrow">Parte 2 de 3 · el plan sencillo</div>
     <h2>Un paseo, y un poco de fuerza 💪</h2>
 
     <p>Así que lo mantenemos simple. Nada de gimnasio, nada de plan, nada de dos o tres horas. Dos cosas, ese es
@@ -1953,9 +1973,203 @@ table.swaps tr:last-child td{border-bottom:none}
       independientes a largo plazo, con la cocina de Pilar todavía en la mesa.</p>
 
     <p class="nugget">«No me muevo para castigar mi cuerpo. Me muevo porque pienso usarlo durante mucho tiempo.»</p>
-    <div class="nextprev"><a class="btn ghost" href="#move">Atrás</a><a class="btn primary" href="#motivation">Siguiente: Página de Poder</a></div>
+    <div class="nextprev"><a class="btn ghost" href="#move">Atrás</a><a class="btn primary" href="#move3">Siguiente: los vídeos</a></div>
     </div>
   </section>
+
+  <!-- MOVE YOUR BODY · PART 3: VIDEOS -->
+  <section class="card tint" id="move3">
+    <div class="lang-en">
+    <div class="eyebrow">Part 3 of 3 · watch, then follow along</div>
+    <h2>See It, Then Do It: Four Videos Worth Your Time 🎬</h2>
+
+    <p>This short page may be the most important step in the whole guide. Not the food, not the numbers:
+      this. Moving your body is where the change becomes real, and it is the <strong>first step, not the
+      last</strong>. So do not skim past it: actually watch these four videos. I picked them by hand, calm and
+      easy-going people, nothing extreme, made for exactly where you are starting from.</p>
+
+    <p>You already met the three physios back on <a href="#move">Part 1</a>. Get the all-clear from one of them
+      first, then begin, slowly and without ego. There is no rush and no prize for going hard on day one. Here
+      it is easy and steady that wins.</p>
+
+    <p class="audio-only">The four videos are right here in the guide. Open it on your phone or your TV, and follow along.</p>
+
+    <p class="vidrow-label">First, the why and the how</p>
+    <p>These first two drive home, one more time, just how much this matters, and show you a couple of simple moves to start with.</p>
+    <div class="no-audio vidgrid">
+      <div class="vidcard">
+        <button class="vid" data-id="Amjs2fAovA4" onclick="loadVid(this)" aria-label="Play: the only 5 exercises you need after 50">
+          <img src="assets/img/move/yt/v1.webp" alt="Thumbnail: the only 5 exercises you need after 50" loading="lazy">
+          <span class="vid-play"></span>
+        </button>
+        <div class="vid-meta">
+          <span class="vid-tag">Explanation · why it matters</span>
+          <h4>The only 5 exercises you need after 50</h4>
+          <p class="vid-chan">Viejo Pero Activo · 1.4M views</p>
+          <p>The five moves that matter most after 50, and how they fight the slow muscle loss (sarcopenia) that quietly steals your strength.</p>
+          <a class="vid-link" href="https://www.youtube.com/watch?v=Amjs2fAovA4" target="_blank" rel="noopener">Watch on YouTube ↗</a>
+        </div>
+      </div>
+      <div class="vidcard">
+        <button class="vid" data-id="saWgYsdv1kU" onclick="loadVid(this)" aria-label="Play: 50 and stronger than ever, building muscle after 50">
+          <img src="assets/img/move/yt/v2.webp" alt="Thumbnail: 50 and stronger than ever" loading="lazy">
+          <span class="vid-play"></span>
+        </button>
+        <div class="vid-meta">
+          <span class="vid-tag">Explanation · why it matters</span>
+          <h4>50 and stronger than ever: building muscle after 50</h4>
+          <p class="vid-chan">Dr. Borja Bandera · 939K views</p>
+          <p>A doctor explains, in plain words, how you can still build real muscle past fifty: no pills, no tricks, just the basics done right.</p>
+          <a class="vid-link" href="https://www.youtube.com/watch?v=saWgYsdv1kU" target="_blank" rel="noopener">Watch on YouTube ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <p class="vidrow-label">Then, two simple programs (pick the one you like)</p>
+    <p>These two are full little workouts you can keep going for two or three months: kept simple, but strong enough to burn real calories and bring your fitness back, step by step. You do not have to understand a thing, just put one on and follow along.</p>
+    <div class="no-audio vidgrid">
+      <div class="vidcard">
+        <button class="vid" data-id="y9-_6xBgJbE" onclick="loadVid(this)" aria-label="Play: beginner home routine, 20 minutes">
+          <img src="assets/img/move/yt/v3.webp" alt="Thumbnail: beginner home routine, 20 minutes" loading="lazy">
+          <span class="vid-play"></span>
+        </button>
+        <div class="vid-meta">
+          <span class="vid-tag">Follow along · 20 min</span>
+          <h4>Beginner home routine, starting from zero</h4>
+          <p class="vid-chan">Chuy Almada · 6.8M views</p>
+          <p>A complete beginner routine you do at home, from zero. Twenty calm minutes, no equipment, nothing you cannot manage.</p>
+          <a class="vid-link" href="https://www.youtube.com/watch?v=y9-_6xBgJbE" target="_blank" rel="noopener">Watch on YouTube ↗</a>
+        </div>
+      </div>
+      <div class="vidcard">
+        <button class="vid" data-id="OQbheFBLKK8" onclick="loadVid(this)" aria-label="Play: full-body home routine for beginners, 25 minutes">
+          <img src="assets/img/move/yt/v4.webp" alt="Thumbnail: full-body home routine for beginners, 25 minutes" loading="lazy">
+          <span class="vid-play"></span>
+        </button>
+        <div class="vid-meta">
+          <span class="vid-tag">Follow along · 25 min</span>
+          <h4>Full-body home routine for beginners</h4>
+          <p class="vid-chan">Memo Fitgame · 1.1M views</p>
+          <p>A full-body home routine for beginners. Twenty-five minutes that work everything. Swap between this one and the other so it never gets stale.</p>
+          <a class="vid-link" href="https://www.youtube.com/watch?v=OQbheFBLKK8" target="_blank" rel="noopener">Watch on YouTube ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout win"><strong>My honest recommendation: watch all four, and give them real time.</strong>
+      This is not the extra, it is the engine. Start relaxed and easy, a few minutes is plenty at the
+      beginning. Every walk and every short session quietly burns a little extra and keeps you fit, healthy
+      and on your feet for the long haul. And do not skip the other half: book that appointment with the physio
+      first (the three on <a href="#move">Part 1</a>), so you start safe.</div>
+
+    <p>Two to watch and learn from, two to move along with. Put one on, press play, and let it carry you.</p>
+
+    <p class="nugget">"I do not have to be good at it. I only have to press play."</p>
+    <div class="nextprev"><a class="btn ghost" href="#move2">Back</a><a class="btn primary" href="#motivation">Next: Power page</a></div>
+    </div>
+    <div class="lang-es">
+    <div class="eyebrow">Parte 3 de 3 · míralo, y luego acompáñalo</div>
+    <h2>Velo, y luego hazlo: cuatro vídeos que merecen vuestro tiempo 🎬</h2>
+
+    <p>Esta página corta quizá sea el paso más importante de toda la guía. No la comida, no los números: esto.
+      Mover el cuerpo es donde el cambio se vuelve real, y es el <strong>primer paso, no el último</strong>. Así
+      que no paséis de largo: ved de verdad estos cuatro vídeos. Los he elegido yo a mano, gente tranquila y
+      cercana, nada extremo, pensados justo para el punto donde empezáis.</p>
+
+    <p>A los tres fisios ya los conocéis, de la <a href="#move">Parte 1</a>. Pasad primero por uno de ellos para
+      que os den el visto bueno, y luego empezad, despacio y sin ego. No hay prisa ni premio por irse fuerte el
+      primer día. Aquí gana lo fácil y lo constante.</p>
+
+    <p class="audio-only">Los cuatro vídeos están aquí mismo, en la guía. Abridla en el móvil o en la tele, y seguidlos.</p>
+
+    <p class="vidrow-label">Primero, el porqué y el cómo</p>
+    <p>Estos dos primeros están para recordaros, una vez más, lo mucho que esto importa, y para enseñaros un par de movimientos sencillos con los que empezar.</p>
+    <div class="no-audio vidgrid">
+      <div class="vidcard">
+        <button class="vid" data-id="Amjs2fAovA4" onclick="loadVid(this)" aria-label="Reproducir: los 5 ejercicios que necesitas después de los 50">
+          <img src="assets/img/move/yt/v1.webp" alt="Miniatura: los 5 ejercicios que necesitas después de los 50" loading="lazy">
+          <span class="vid-play"></span>
+        </button>
+        <div class="vid-meta">
+          <span class="vid-tag">Explicación · el porqué</span>
+          <h4>Los 5 ejercicios que necesitas después de los 50</h4>
+          <p class="vid-chan">Viejo Pero Activo · 1,4 M de visitas</p>
+          <p>Los cinco movimientos que más importan pasados los 50, y cómo combaten la pérdida lenta de músculo (sarcopenia) que poco a poco os roba la fuerza.</p>
+          <a class="vid-link" href="https://www.youtube.com/watch?v=Amjs2fAovA4" target="_blank" rel="noopener">Ver en YouTube ↗</a>
+        </div>
+      </div>
+      <div class="vidcard">
+        <button class="vid" data-id="saWgYsdv1kU" onclick="loadVid(this)" aria-label="Reproducir: 50 y más fuerte que nunca, ganar músculo a partir de los 50">
+          <img src="assets/img/move/yt/v2.webp" alt="Miniatura: 50 y más fuerte que nunca" loading="lazy">
+          <span class="vid-play"></span>
+        </button>
+        <div class="vid-meta">
+          <span class="vid-tag">Explicación · el porqué</span>
+          <h4>50 y más fuerte que nunca: ganar músculo a partir de los 50</h4>
+          <p class="vid-chan">Dr. Borja Bandera · 939 mil visitas</p>
+          <p>Un médico explica, en palabras sencillas, cómo todavía podéis ganar músculo de verdad pasados los 50: sin pastillas, sin trucos, solo lo básico bien hecho.</p>
+          <a class="vid-link" href="https://www.youtube.com/watch?v=saWgYsdv1kU" target="_blank" rel="noopener">Ver en YouTube ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <p class="vidrow-label">Luego, dos programas sencillos (elegid el que más os guste)</p>
+    <p>Estos dos son entrenos completos que podéis mantener dos o tres meses: sencillos, pero lo bastante fuertes para quemar calorías de verdad y recuperar la forma, poco a poco. No tenéis que entender nada, solo poned uno y seguidlo.</p>
+    <div class="no-audio vidgrid">
+      <div class="vidcard">
+        <button class="vid" data-id="y9-_6xBgJbE" onclick="loadVid(this)" aria-label="Reproducir: rutina para principiantes en casa, 20 minutos">
+          <img src="assets/img/move/yt/v3.webp" alt="Miniatura: rutina para principiantes en casa, 20 minutos" loading="lazy">
+          <span class="vid-play"></span>
+        </button>
+        <div class="vid-meta">
+          <span class="vid-tag">Acompáñalo · 20 min</span>
+          <h4>Rutina para principiantes en casa, de cero</h4>
+          <p class="vid-chan">Chuy Almada · 6,8 M de visitas</p>
+          <p>Una rutina completa para principiantes en casa, desde cero. Veinte minutos tranquilos, sin equipo, nada que no podáis hacer.</p>
+          <a class="vid-link" href="https://www.youtube.com/watch?v=y9-_6xBgJbE" target="_blank" rel="noopener">Ver en YouTube ↗</a>
+        </div>
+      </div>
+      <div class="vidcard">
+        <button class="vid" data-id="OQbheFBLKK8" onclick="loadVid(this)" aria-label="Reproducir: rutina de cuerpo completo para principiantes, 25 minutos">
+          <img src="assets/img/move/yt/v4.webp" alt="Miniatura: rutina de cuerpo completo para principiantes, 25 minutos" loading="lazy">
+          <span class="vid-play"></span>
+        </button>
+        <div class="vid-meta">
+          <span class="vid-tag">Acompáñalo · 25 min</span>
+          <h4>Rutina de cuerpo completo para principiantes</h4>
+          <p class="vid-chan">Memo Fitgame · 1,1 M de visitas</p>
+          <p>Una rutina de cuerpo completo en casa para principiantes. Veinticinco minutos que trabajan todo. Id alternando entre esta y la otra para que no se haga aburrido.</p>
+          <a class="vid-link" href="https://www.youtube.com/watch?v=OQbheFBLKK8" target="_blank" rel="noopener">Ver en YouTube ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout win"><strong>Mi recomendación sincera: ved los cuatro, y dedicadles tiempo de verdad.</strong>
+      Esto no es el extra, es el motor. Empezad relajados y suave, unos minutos bastan al principio. Cada paseo
+      y cada sesión corta queman en silencio un poco de más y os mantienen en forma, sanos y de pie a largo
+      plazo. Y no os saltéis la otra mitad: pedid primero la cita con el fisio (los tres de la
+      <a href="#move">Parte 1</a>), para empezar seguros.</div>
+
+    <p>Dos para mirar y aprender, dos para moverse con ellas. Poned uno, dadle al play, y dejad que os lleve.</p>
+
+    <p class="nugget">«No tengo que hacerlo bien. Solo tengo que darle al play.»</p>
+    <div class="nextprev"><a class="btn ghost" href="#move2">Atrás</a><a class="btn primary" href="#motivation">Siguiente: Página de Poder</a></div>
+    </div>
+  </section>
+
+  <script>
+  /* Move · Part 3: swap the click-to-play facade for the real YouTube embed on click */
+  function loadVid(btn){
+    var id=btn.getAttribute('data-id'); if(!id) return;
+    var wrap=document.createElement('div'); wrap.className='vid';
+    var f=document.createElement('iframe');
+    f.src='https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0';
+    f.title=btn.getAttribute('aria-label')||'Video';
+    f.setAttribute('allow','accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+    f.setAttribute('allowfullscreen','');
+    wrap.appendChild(f); btn.replaceWith(wrap);
+  }
+  </script>
 
   <!-- MOTIVATION / POWER PAGE -->
   <section class="card" id="motivation">
@@ -3228,6 +3442,7 @@ const CHAPTERS=[
   {id:"how",ic:"⚖️",t:"Calories in, out",te:"Calorías"},
   {id:"move",ic:"🏃",t:"Move your body · Part 1",te:"Mover el cuerpo · Parte 1",aud:"move"},
   {id:"move2",ic:"🏃",t:"Move your body · Part 2",te:"Mover el cuerpo · Parte 2",aud:"move2"},
+  {id:"move3",ic:"🎬",t:"Move your body · Part 3",te:"Mover el cuerpo · Parte 3",aud:"move3"},
   {id:"motivation",ic:"🔥",t:"Power page",te:"Página de poder"},
   {g:"Do", ge:"Manos a la obra"},
   {id:"plan",ic:"🗺️",t:"45-day plan",te:"Plan de 45 días"},
@@ -3904,14 +4119,14 @@ const AUDIO_CHAPTERS=[
   {id:'how',       title:'Calorías que entran y salen',      file:'09-calorias.mp3'},
   {id:'move',      title:'Mover el cuerpo · Parte 1',        file:'10-mover-el-cuerpo-1.mp3'},
   {id:'move2',     title:'Mover el cuerpo · Parte 2',        file:'10-mover-el-cuerpo-2.mp3'},
+  {id:'move3',     title:'Mover el cuerpo · Parte 3',        file:'10-mover-el-cuerpo-3.mp3'},
   {id:'motivation',title:'Página de Poder',                 file:'11-pagina-de-poder.mp3'},
 ];
 const AUDIO_VOICES=[
-  {key:'dave',      label:'Lenta',     has:['welcome','start','captain','struggles','systems','honest','why','insanity','close','how','move','move2']},
-  {key:'toni',      label:'Rápida',    has:['welcome','start','captain','struggles','systems','honest','why','insanity','close','how','move','move2','motivation']},
+  {key:'toni',      label:'Rápida',    has:['welcome','start','captain','struggles','systems','honest','why','insanity','close','how','move','move2','move3','motivation']},
 ];
-let audioVoice=localStorage.getItem('gp_voice')||'dave';
-if(!AUDIO_VOICES.some(v=>v.key===audioVoice)) audioVoice='dave';
+let audioVoice=localStorage.getItem('gp_voice')||'toni';
+if(!AUDIO_VOICES.some(v=>v.key===audioVoice)) audioVoice='toni';
 let audioCurrentId='welcome';
 function voiceCfg(){ return AUDIO_VOICES.find(v=>v.key===audioVoice)||AUDIO_VOICES[0]; }
 function audioHas(id){ return voiceCfg().has.includes(id); }
