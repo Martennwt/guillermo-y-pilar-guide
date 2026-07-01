@@ -76,8 +76,8 @@ em{color:var(--ink-soft)}
 .es-ribbon{height:6px; border-radius:999px; background:linear-gradient(90deg,#AA151B 0 25%, #F1BF00 25% 75%, #AA151B 75% 100%); opacity:.95; margin:0 0 1.2rem}
 #progress{position:fixed; top:0; left:0; height:6px; width:0%; z-index:90; background:linear-gradient(90deg,var(--eus-red),var(--honey),var(--eus-green)); box-shadow:0 1px 4px rgba(0,0,0,.14); transition:width .08s linear}
 
-header.bar{position:sticky; top:0; z-index:70; display:flex; align-items:center; gap:1rem;
-  padding:.7rem clamp(1rem,3vw,2rem); background:rgba(251,246,236,.86); backdrop-filter:blur(10px); border-bottom:1px solid var(--line)}
+header.bar{position:-webkit-sticky; position:sticky; top:0; z-index:70; display:flex; align-items:center; gap:1rem;
+  padding:.7rem 5%; background:rgba(251,246,236,.92); -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px); border-bottom:1px solid var(--line)}
 .brand{display:flex; align-items:center; gap:.6rem; font-family:var(--display); font-weight:900; color:var(--olive-deep); font-size:1.15rem; letter-spacing:-.01em; text-decoration:none}
 .brand .mark{width:36px; height:36px; border-radius:50%; background:url("assets/img/logo.png") center/126% no-repeat #F2ECD6; box-shadow:var(--shadow-sm); border:1px solid var(--line)}
 .brand small{display:block; font-family:var(--body); font-weight:700; font-size:.62rem; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-faint)}
@@ -141,7 +141,7 @@ html[data-lang="en"] .langflag .flag-es{display:none}
 .intro-card .btn{width:100%; justify-content:center}
 @media print{ #toTop,#intro{display:none!important} }
 
-.shell{position:relative; z-index:1; max-width:1180px; margin:0 auto; padding:0 clamp(1.25rem,5vw,3.5rem) 5rem}
+.shell{position:relative; z-index:1; max-width:1180px; margin:0 auto; padding:0 6% 5rem}
 nav.rail{position:fixed; top:0; left:0; z-index:60; width:min(280px,84vw); height:100vh; overflow:auto; padding:4rem .55rem 1.4rem; background:var(--paper); border-right:1px solid var(--line); box-shadow:var(--shadow-md); transform:translateX(-100%); transition:transform .3s cubic-bezier(.2,.8,.2,1)}
 body.nav-open nav.rail{transform:translateX(0)}
 #navScrim{position:fixed; inset:0; z-index:55; background:rgba(34,40,22,.14); backdrop-filter:blur(2px); -webkit-backdrop-filter:blur(2px); opacity:0; visibility:hidden; transition:opacity .3s, visibility .3s}
@@ -155,7 +155,7 @@ nav.rail a:hover{background:var(--paper-2); color:var(--olive-deep)}
 nav.rail a.active{background:var(--olive); color:#fff; box-shadow:inset 3px 0 0 var(--honey), var(--shadow-sm)}
 main{min-width:0; padding-top:1.5rem}
 
-section.card{background:var(--paper); border:1px solid var(--line); border-radius:var(--radius-lg); padding:clamp(1.2rem,3vw,2.1rem); margin:0 0 1.5rem; box-shadow:var(--shadow-sm); scroll-margin-top:80px}
+section.card{background:var(--paper); border:1px solid var(--line); border-radius:var(--radius-lg); padding:1.6rem; margin:0 0 1.5rem; box-shadow:var(--shadow-sm); scroll-margin-top:80px}
 section.card.tint{background:linear-gradient(180deg,var(--paper-2),var(--paper))}
 .lead{font-size:1.18rem; color:var(--ink-soft)}
 
@@ -4875,7 +4875,7 @@ function buildWsGrid(){
 }
 const WS_ACT={'1.2':['Mostly sitting','Sobre todo sentado'],'1.375':['At home, light moving','En casa, movimiento ligero'],'1.55':['On your feet much of the day','De pie buena parte del día'],'1.725':['Active or hard daily job','Trabajo activo o duro'],'1.9':['Hard job plus training','Trabajo duro y entreno']};
 function fillCalorieSheet(){
-  const name=(document.getElementById('wsName')?.value||'').trim()||'________';
+  const _wn=document.getElementById('wsName'); const name=((_wn&&_wn.value)||'').trim()||'________';
   const burn=Math.max(0,+cioEl('cioBurn').value||0);
   const low=Math.max(0,burn-500), high=Math.max(0,burn-300);
   const fmt=n=>Math.round(n).toLocaleString('en-US');
