@@ -51,6 +51,10 @@
     background:var(--paper-2); color:var(--olive-deep); font-weight:800; font-size:.85rem}
   .track .t{flex:1 1 auto; font-weight:700}
   .track .d{flex:0 0 auto; font-size:.8rem; color:var(--ink-faint); font-variant-numeric:tabular-nums}
+  .track .pbtn{flex:0 0 auto; width:2.15rem; height:2.15rem; border-radius:50%; display:grid; place-items:center;
+    background:var(--olive); color:#fff; font-size:.82rem; box-shadow:0 2px 6px rgba(70,83,42,.3)}
+  .track.on .pbtn{background:var(--leaf)}
+  .track.na .pbtn{background:var(--ink-faint); box-shadow:none}
   .track.on{border-color:var(--olive); background:#f7f9ef}
   .track.on .n{background:var(--leaf); color:#fff}
   .track .ck{display:none; flex:0 0 auto; width:1.55rem; height:1.55rem; border-radius:50%; background:var(--leaf); color:#fff; place-items:center; font-size:.82rem; font-weight:800}
@@ -178,17 +182,19 @@ TRACKS.forEach((tr,i)=>{
   const li=document.createElement('li');
   const b=document.createElement('button'); b.className='track'; b.dataset.i=i;
   b.innerHTML='<span class="n">'+(i+1)+'</span><span class="t">'+title(i)+'</span>'
-    +'<span class="eq"><i></i><i></i><i></i></span><span class="d" data-d="'+i+'">··</span><span class="ck">✓</span>';
+    +'<span class="d" data-d="'+i+'">··</span><span class="pbtn" aria-hidden="true">▶</span>';
   b.onclick=()=>play(i);
   li.appendChild(b); ol.appendChild(li);
 });
 
 function render(){
   document.querySelectorAll('.track').forEach((el)=>{
-    const i=+el.dataset.i; el.classList.toggle('on', i===cur);
-    el.classList.toggle('playing', i===cur && !au.paused);
+    const i=+el.dataset.i; const on=(i===cur);
+    el.classList.toggle('on', on);
     el.classList.toggle('done', done.has(i));
     el.classList.toggle('na', !has(i));
+    const n=el.querySelector('.n'); if(n) n.textContent = done.has(i) ? '✓' : (i+1);
+    const pb=el.querySelector('.pbtn'); if(pb) pb.textContent = (on && !au.paused) ? '⏸' : '▶';
   });
   $('now').textContent = cur>=0 ? (cur+1)+'. '+title(cur) : UI[lang].tap;
   $('pp').textContent = (cur>=0 && !au.paused) ? '⏸' : '▶';
@@ -214,8 +220,8 @@ function setVoice(v){
 
 function play(i){
   if(i<0||i>=TRACKS.length||!has(i)) return;
-  if(i!==cur){ cur=i; au.src=base()+TRACKS[i].f; }
-  au.play().catch(()=>{}); render();
+  if(i===cur){ if(au.paused) au.play().catch(()=>{}); else au.pause(); render(); return; }
+  cur=i; au.src=base()+TRACKS[i].f; au.play().catch(()=>{}); render();
   const el=document.querySelector('.track[data-i="'+i+'"]'); if(el) el.scrollIntoView({behavior:'smooth',block:'nearest'});
 }
 $('pp').onclick=()=>{ if(cur<0){ let n=0; while(n<TRACKS.length && !has(n)) n++; play(n); return; } if(au.paused) au.play().catch(()=>{}); else au.pause(); render(); };
