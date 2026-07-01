@@ -9,6 +9,7 @@
   :root{
     --paper:#fbf7ee; --paper-2:#f3ecdd; --ink:#2c2c22; --ink-soft:#5b5647; --ink-faint:#8c8676;
     --olive:#6b7a3f; --olive-deep:#46532a; --leaf:#7fa650; --terra:#c0623c; --line:#e4dcc8;
+    --green-bar:#e6edd6; --green-line:#c7d6a4;
     --shadow:0 10px 30px rgba(60,70,30,.12);
     --display:"Fraunces",Georgia,"Times New Roman",serif;
     --body:"Nunito",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
@@ -18,14 +19,29 @@
     -webkit-font-smoothing:antialiased; padding:0 0 7rem;}
   body::after{content:""; position:fixed; right:-130px; bottom:-150px; width:520px; height:520px; pointer-events:none; z-index:0; opacity:.045;
     background:url("assets/img/eguzkilore.png") no-repeat center/contain;}
-  .wrap{max-width:560px; margin:0 auto; padding:1.6rem 1.2rem; position:relative; z-index:1}
+  body::before{content:""; position:fixed; left:0; bottom:0; width:min(460px,60vw); height:230px; pointer-events:none; z-index:0; opacity:.10;
+    background:url("assets/img/player-mountains.svg") no-repeat left bottom/contain;}
+  .wrap{max-width:560px; margin:0 auto; padding:1.2rem 1.2rem; position:relative; z-index:1}
+
+  .topbar{position:sticky; top:0; z-index:40; display:flex; align-items:center; gap:.8rem;
+    padding:.5rem .9rem; background:rgba(251,247,238,.94); backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line)}
+  .backbtn{display:inline-flex; align-items:center; gap:.35rem; background:#fff; color:var(--olive-deep);
+    border:1.5px solid var(--olive); border-radius:999px; padding:.4rem .9rem; font-weight:800; text-decoration:none; font-size:.85rem}
+  .backbtn:hover{background:#f2f6e8}
+
   .ribbon{height:6px; border-radius:999px; max-width:120px; margin:0 0 1.1rem;
     background:linear-gradient(90deg,#c0392b 0 33.3%, #fff 33.3% 66.6%, #2e7d32 66.6% 100%); opacity:.9}
   .eyebrow{font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:var(--terra); font-weight:800}
   h1{font-family:var(--display); font-size:2rem; line-height:1.1; margin:.2rem 0 .3rem; color:var(--olive-deep)}
   .lead{font-size:1.05rem; color:var(--ink-soft); margin:.2rem 0 1.3rem}
-  .note{background:var(--paper-2); border:1px solid var(--line); border-radius:14px; padding:.9rem 1.1rem; font-size:.95rem; margin:0 0 1.3rem}
+  .note{background:var(--paper-2); border:1px solid var(--line); border-radius:14px; padding:.9rem 1.1rem; font-size:.95rem; margin:0 0 1rem}
   .note b{color:var(--olive-deep)}
+  .voicesel{display:flex; align-items:center; gap:.5rem; flex-wrap:wrap; margin:0 0 1.3rem}
+  .voicesel .vl{font-weight:800; color:var(--ink-soft); font-size:.9rem}
+  .voicesel .vbtn{border:1.5px solid var(--line); background:#fff; color:var(--olive-deep); border-radius:999px;
+    padding:.35rem .85rem; font-weight:800; cursor:pointer; font:inherit; font-size:.85rem}
+  .voicesel .vbtn.on{background:var(--olive); color:#fff; border-color:var(--olive)}
   ol.tracks{list-style:none; margin:0; padding:0; display:grid; gap:.5rem}
   .track{display:flex; align-items:center; gap:.8rem; width:100%; text-align:left; cursor:pointer;
     background:#fff; border:1px solid var(--line); border-radius:14px; padding:.75rem .9rem; font:inherit; color:inherit;
@@ -37,6 +53,12 @@
   .track .d{flex:0 0 auto; font-size:.8rem; color:var(--ink-faint); font-variant-numeric:tabular-nums}
   .track.on{border-color:var(--olive); background:#f7f9ef}
   .track.on .n{background:var(--leaf); color:#fff}
+  .track .ck{display:none; flex:0 0 auto; width:1.55rem; height:1.55rem; border-radius:50%; background:var(--leaf); color:#fff; place-items:center; font-size:.82rem; font-weight:800}
+  .track.done .ck{display:grid}
+  .track.done .d{display:none}
+  .track.done .n{background:var(--leaf); color:#fff}
+  .track.na{opacity:.42; cursor:default}
+  .track.na:hover{transform:none; box-shadow:none}
   .track .eq{display:none}
   .track.on.playing .eq{display:inline-flex; gap:2px; align-items:flex-end; height:14px; margin-left:.2rem}
   .track.on.playing .d{display:none}
@@ -46,41 +68,48 @@
   .more{margin:1.6rem 0 0; display:flex; flex-direction:column; gap:.7rem; align-items:center}
   .btn{display:inline-block; background:var(--olive); color:#fff; text-decoration:none; font-weight:800;
     padding:.8rem 1.4rem; border-radius:999px; box-shadow:var(--shadow)}
-  .btn.ghost{background:#fff; color:var(--olive-deep); border:2px solid var(--olive); box-shadow:none}
   .more .sub{font-size:.78rem; color:var(--ink-faint)}
   .foot{margin:1.4rem 0 0; font-size:.82rem; color:var(--ink-faint); text-align:center}
-  /* sticky bottom player */
+  /* sticky bottom player, green tone + Basque mountains on the left */
   #bar{position:fixed; left:50%; bottom:max(.8rem,env(safe-area-inset-bottom)); transform:translateX(-50%); z-index:30;
-    width:min(540px,92vw); background:#fff; border:1px solid var(--line); border-radius:18px; box-shadow:var(--shadow);
+    width:min(540px,92vw); background:var(--green-bar) url("assets/img/player-mountains.svg") left bottom/auto 82% no-repeat;
+    border:1px solid var(--green-line); border-radius:18px; box-shadow:var(--shadow);
     padding:.7rem .9rem; display:flex; align-items:center; gap:.7rem}
   #bar .pp{flex:0 0 auto; width:3rem; height:3rem; border-radius:50%; border:none; cursor:pointer;
-    background:var(--olive); color:#fff; font-size:1.2rem; display:grid; place-items:center}
+    background:var(--olive); color:#fff; font-size:1.2rem; display:grid; place-items:center; box-shadow:0 4px 12px rgba(70,83,42,.35)}
   #bar .mid{flex:1 1 auto; min-width:0}
   #bar .now{font-weight:800; font-size:.9rem; color:var(--olive-deep); white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
-  #bar .seek{height:6px; border-radius:999px; background:var(--paper-2); margin:.35rem 0 0; cursor:pointer; position:relative}
-  #bar .fill{position:absolute; left:0; top:0; bottom:0; width:0; background:var(--leaf); border-radius:999px}
-  #bar .tm{font-size:.72rem; color:var(--ink-faint); font-variant-numeric:tabular-nums; margin-top:.2rem; display:flex; justify-content:space-between}
-  #bar .an{flex:0 0 auto; font-size:.66rem; font-weight:800; letter-spacing:.04em; color:var(--ink-faint);
-    background:var(--paper-2); border:none; border-radius:999px; padding:.35rem .55rem; cursor:pointer; line-height:1.1; text-align:center}
-  #bar .an.on{background:var(--leaf); color:#fff}
+  #bar .seek{height:6px; border-radius:999px; background:rgba(70,83,42,.16); margin:.35rem 0 0; cursor:pointer; position:relative}
+  #bar .fill{position:absolute; left:0; top:0; bottom:0; width:0; background:var(--olive); border-radius:999px}
+  #bar .tm{font-size:.72rem; color:var(--ink-soft); font-variant-numeric:tabular-nums; margin-top:.2rem; display:flex; justify-content:space-between}
+  #bar .an{flex:0 0 auto; font-size:.66rem; font-weight:800; letter-spacing:.04em; color:var(--olive-deep);
+    background:rgba(70,83,42,.12); border:none; border-radius:999px; padding:.35rem .55rem; cursor:pointer; line-height:1.1; text-align:center}
+  #bar .an.on{background:var(--olive); color:#fff}
 </style>
 </head>
 <body>
+<header class="topbar"><a class="backbtn" id="backBtn" href="index.html">← Volver a la guía</a></header>
 <div class="wrap">
+
   <div class="ribbon"></div>
-  <div class="eyebrow">Audiolibro · para Guillermo y Pilar</div>
-  <h1>¡Disfrutad del audiolibro! 🎧</h1>
-  <p class="lead">Poneos cómodos, dadle al play y dejad que os lo lea. Un capítulo lleva al siguiente, solo.</p>
-  <div class="note">💚 <b>Cómo va:</b> tocad <b>Reproducir</b> y se escuchan los capítulos en orden, uno tras otro. Podéis tocar cualquier capítulo para saltar, y parar cuando queráis.</div>
+  <div class="eyebrow" id="eyebrow">Audiolibro · para Guillermo y Pilar</div>
+  <h1 id="h1t">¡Disfrutad del audiolibro! 🎧</h1>
+  <p class="lead" id="leadt">Poneos cómodos, dadle al play y dejad que os lo lea. Un capítulo lleva al siguiente, solo.</p>
+  <div class="note" id="notet">💚 <b>Cómo va:</b> tocad <b>Reproducir</b> y se escuchan los capítulos en orden, uno tras otro. Podéis tocar cualquier capítulo para saltar, y parar cuando queráis.</div>
+
+  <div class="voicesel">
+    <span class="vl" id="vLabel">Voz</span>
+    <button class="vbtn" id="vDave" onclick="setVoice('dave')">Lenta</button>
+    <button class="vbtn on" id="vToni" onclick="setVoice('toni')">Rápida</button>
+  </div>
 
   <ol class="tracks" id="tracks"></ol>
 
   <div class="more">
-    <a class="btn" href="assets/audio/audiolibro-es.zip" download="Guillermo-y-Pilar-Audiolibro.zip">⬇️ Descargar todo (ZIP)</a>
-    <span class="sub">9 capítulos, unos 27 MB. Se guardan en el móvil para escucharlos sin internet.</span>
-    <a class="btn ghost" id="guideLink" href="index.html">Leer la guía completa →</a>
+    <a class="btn" id="zipBtn" href="assets/audio/audiolibro-es.zip" download="Guillermo-y-Pilar-Audiolibro.zip">⬇️ Descargar todo (ZIP)</a>
+    <span class="sub" id="zipSub">Todos los capítulos, para escucharlos también sin internet.</span>
   </div>
-  <p class="foot">Hecho con cariño · Amorebieta 🌿</p>
+  <p class="foot" id="foott">Hecho con cariño · Amorebieta 🌿</p>
 </div>
 
 <div id="bar">
@@ -96,65 +125,114 @@
 
 <script>
 const TRACKS=[
-  {t:'Bienvenida', f:'00-welcome.mp3'},
-  {t:'Antes de empezar', f:'01-antes-de-empezar.mp3'},
-  {t:'Quién es el capitán', f:'02-quien-es-el-capitan.mp3'},
-  {t:'¿Esto te suena?', f:'03-esto-te-suena.mp3'},
-  {t:'Fuerza de voluntad vs. sistemas', f:'04-fuerza-de-voluntad.mp3'},
-  {t:'La Magia', f:'05-como-se-hace.mp3'},
-  {t:'Vuestro gran porqué', f:'06-vuestro-porque.mp3'},
-  {t:'La Locura', f:'07-la-locura.mp3'},
-  {t:'Sigue volviendo', f:'08-sigue-volviendo.mp3'},
-  {t:'Calorías que entran y salen', f:'09-calorias.mp3'},
-  {t:'Mover el cuerpo · Parte 1', f:'10-mover-el-cuerpo-1.mp3'},
-  {t:'Mover el cuerpo · Parte 2', f:'10-mover-el-cuerpo-2.mp3'},
-  {t:'Mover el cuerpo · Parte 3', f:'10-mover-el-cuerpo-3.mp3'},
-  {t:'Página de Poder', f:'11-pagina-de-poder.mp3'},
+  {t:'Bienvenida', te:'Welcome', f:'00-welcome.mp3'},
+  {t:'Antes de empezar', te:'Before you begin', f:'01-antes-de-empezar.mp3'},
+  {t:'Quién es el capitán', te:'Who is the captain', f:'02-quien-es-el-capitan.mp3'},
+  {t:'¿Esto te suena?', te:'Sound familiar?', f:'03-esto-te-suena.mp3'},
+  {t:'Fuerza de voluntad vs. sistemas', te:'Willpower vs systems', f:'04-fuerza-de-voluntad.mp3'},
+  {t:'La Magia', te:'The Magic', f:'05-como-se-hace.mp3'},
+  {t:'Vuestro gran porqué', te:'Your big why', f:'06-vuestro-porque.mp3'},
+  {t:'La Locura', te:'Insanity', f:'07-la-locura.mp3'},
+  {t:'Sigue volviendo', te:'Keep coming back', f:'08-sigue-volviendo.mp3'},
+  {t:'Calorías que entran y salen', te:'Calories in, calories out', f:'09-calorias.mp3'},
+  {t:'Mover el cuerpo · Parte 1', te:'Move your body · Part 1', f:'10-mover-el-cuerpo-1.mp3'},
+  {t:'Mover el cuerpo · Parte 2', te:'Move your body · Part 2', f:'10-mover-el-cuerpo-2.mp3'},
+  {t:'Mover el cuerpo · Parte 3', te:'Move your body · Part 3', f:'10-mover-el-cuerpo-3.mp3'},
+  {t:'Página de Poder', te:'Power page', f:'11-pagina-de-poder.mp3'},
+  {t:'El plan de comidas de 45 días', te:'The 45-day meal plan', f:'12-plato-45-dias.mp3'},
 ];
-const BASE='assets/audio/toni/';
+// dave (slow voice) was only recorded up to chapter 12 (index 11); toni has everything.
+const DAVE_MAX=11;
+const UI={
+  es:{eyebrow:'Audiolibro · para Guillermo y Pilar', h1:'¡Disfrutad del audiolibro! 🎧',
+    lead:'Poneos cómodos, dadle al play y dejad que os lo lea. Un capítulo lleva al siguiente, solo.',
+    note:'💚 <b>Cómo va:</b> tocad <b>Reproducir</b> y se escuchan los capítulos en orden, uno tras otro. Podéis tocar cualquier capítulo para saltar, y parar cuando queráis.',
+    zip:'⬇️ Descargar todo (ZIP)', sub:'Todos los capítulos, para escucharlos también sin internet.',
+    back:'← Volver a la guía', foot:'Hecho con cariño · Amorebieta 🌿', tap:'Toca un capítulo',
+    yes:'SÍ', no:'NO', vlabel:'Voz', dave:'Lenta', toni:'Rápida'},
+  en:{eyebrow:'Audiobook · for Guillermo & Pilar', h1:'Enjoy the audiobook! 🎧',
+    lead:'Get comfortable, press play, and let it read to you. One chapter leads into the next, on its own.',
+    note:'💚 <b>How it works:</b> tap <b>Play</b> and the chapters play in order, one after another. Tap any chapter to jump, and stop whenever you like.',
+    zip:'⬇️ Download all (ZIP)', sub:'All the chapters, to listen even without internet.',
+    back:'← Back to the guide', foot:'Made with care · Amorebieta 🌿', tap:'Tap a chapter',
+    yes:'ON', no:'OFF', vlabel:'Voice', dave:'Slow', toni:'Fast'},
+};
 const au=document.getElementById('au');
+let lang=(localStorage.getItem('gp_lang')==='en')?'en':'es';
+let voice=(localStorage.getItem('gp_player_voice')==='dave')?'dave':'toni';
 let cur=-1, autoNext=(localStorage.getItem('gp_player_auto')||'1')==='1';
+let done=new Set(JSON.parse(localStorage.getItem('gp_player_done')||'[]'));
 const $=id=>document.getElementById(id);
 function fmt(s){ if(!isFinite(s)||s<0)return '0:00'; s=Math.floor(s); return Math.floor(s/60)+':'+String(s%60).padStart(2,'0'); }
+function title(i){ return lang==='en'?TRACKS[i].te:TRACKS[i].t; }
+function base(){ return 'assets/audio/'+voice+'/'; }
+function has(i){ return voice==='toni' || i<=DAVE_MAX; }
+function autoLabel(){ return 'AUTO<br>'+(autoNext?UI[lang].yes:UI[lang].no); }
+function probeDur(i){ const el=document.querySelector('.d[data-d="'+i+'"]'); if(!el)return;
+  if(!has(i)){ el.textContent='—'; return; }
+  el.textContent='··'; const p=new Audio(); p.preload='metadata'; p.src=base()+TRACKS[i].f;
+  p.addEventListener('loadedmetadata',()=>{ el.textContent=fmt(p.duration); }); }
 
 const ol=$('tracks');
 TRACKS.forEach((tr,i)=>{
   const li=document.createElement('li');
   const b=document.createElement('button'); b.className='track'; b.dataset.i=i;
-  b.innerHTML='<span class="n">'+(i+1)+'</span><span class="t">'+tr.t+'</span>'
-    +'<span class="eq"><i></i><i></i><i></i></span><span class="d" data-d="'+i+'">··</span>';
+  b.innerHTML='<span class="n">'+(i+1)+'</span><span class="t">'+title(i)+'</span>'
+    +'<span class="eq"><i></i><i></i><i></i></span><span class="d" data-d="'+i+'">··</span><span class="ck">✓</span>';
   b.onclick=()=>play(i);
   li.appendChild(b); ol.appendChild(li);
-  // lazy duration probe
-  const probe=new Audio(); probe.preload='metadata'; probe.src=BASE+tr.f;
-  probe.addEventListener('loadedmetadata',()=>{ const el=document.querySelector('.d[data-d="'+i+'"]'); if(el) el.textContent=fmt(probe.duration); });
 });
 
 function render(){
   document.querySelectorAll('.track').forEach((el)=>{
     const i=+el.dataset.i; el.classList.toggle('on', i===cur);
     el.classList.toggle('playing', i===cur && !au.paused);
+    el.classList.toggle('done', done.has(i));
+    el.classList.toggle('na', !has(i));
   });
-  $('now').textContent = cur>=0 ? (cur+1)+'. '+TRACKS[cur].t : 'Toca un capítulo';
+  $('now').textContent = cur>=0 ? (cur+1)+'. '+title(cur) : UI[lang].tap;
   $('pp').textContent = (cur>=0 && !au.paused) ? '⏸' : '▶';
 }
+function applyLang(){
+  document.documentElement.dataset.lang=lang; document.documentElement.lang=lang;
+  const u=UI[lang];
+  $('eyebrow').textContent=u.eyebrow; $('h1t').textContent=u.h1; $('leadt').textContent=u.lead;
+  $('notet').innerHTML=u.note; $('zipBtn').textContent=u.zip; $('zipSub').textContent=u.sub;
+  $('backBtn').textContent=u.back; $('foott').textContent=u.foot; $('an').innerHTML=autoLabel();
+  $('vLabel').textContent=u.vlabel; $('vDave').textContent=u.dave; $('vToni').textContent=u.toni;
+  document.querySelectorAll('.track').forEach((el)=>{ const i=+el.dataset.i; const t=el.querySelector('.t'); if(t)t.textContent=title(i); });
+  render();
+}
+function setVoice(v){
+  if(v!==voice){ voice=v; localStorage.setItem('gp_player_voice',v); }
+  $('vToni').classList.toggle('on',voice==='toni'); $('vDave').classList.toggle('on',voice==='dave');
+  if(cur>=0 && !has(cur)){ au.pause(); cur=-1; au.removeAttribute('src'); }
+  else if(cur>=0){ const wasPlaying=!au.paused; au.src=base()+TRACKS[cur].f; if(wasPlaying) au.play().catch(()=>{}); }
+  for(let i=0;i<TRACKS.length;i++) probeDur(i);
+  render();
+}
+
 function play(i){
-  if(i<0||i>=TRACKS.length) return;
-  if(i!==cur){ cur=i; au.src=BASE+TRACKS[i].f; }
+  if(i<0||i>=TRACKS.length||!has(i)) return;
+  if(i!==cur){ cur=i; au.src=base()+TRACKS[i].f; }
   au.play().catch(()=>{}); render();
   const el=document.querySelector('.track[data-i="'+i+'"]'); if(el) el.scrollIntoView({behavior:'smooth',block:'nearest'});
 }
-$('pp').onclick=()=>{ if(cur<0){ play(0); return; } if(au.paused) au.play().catch(()=>{}); else au.pause(); render(); };
+$('pp').onclick=()=>{ if(cur<0){ let n=0; while(n<TRACKS.length && !has(n)) n++; play(n); return; } if(au.paused) au.play().catch(()=>{}); else au.pause(); render(); };
 $('an').onclick=()=>{ autoNext=!autoNext; localStorage.setItem('gp_player_auto',autoNext?'1':'0');
-  $('an').classList.toggle('on',autoNext); $('an').innerHTML='AUTO<br>'+(autoNext?'SÍ':'NO'); };
+  $('an').classList.toggle('on',autoNext); $('an').innerHTML=autoLabel(); };
 au.addEventListener('play',render); au.addEventListener('pause',render);
-au.addEventListener('ended',()=>{ if(autoNext && cur<TRACKS.length-1) play(cur+1); else render(); });
+au.addEventListener('ended',()=>{ if(cur>=0){ done.add(cur); localStorage.setItem('gp_player_done',JSON.stringify([...done])); }
+  let n=cur+1; while(n<TRACKS.length && !has(n)) n++;
+  if(autoNext && n<TRACKS.length) play(n); else render(); });
 au.addEventListener('timeupdate',()=>{ const d=au.duration||0; $('fill').style.width=(d?au.currentTime/d*100:0)+'%';
   $('cur').textContent=fmt(au.currentTime); });
 au.addEventListener('loadedmetadata',()=>{ $('dur').textContent=fmt(au.duration); });
 $('seek').onclick=(e)=>{ const r=$('seek').getBoundingClientRect(); const ratio=Math.min(1,Math.max(0,(e.clientX-r.left)/r.width));
   if(isFinite(au.duration)) au.currentTime=ratio*au.duration; };
-$('an').classList.toggle('on',autoNext); $('an').innerHTML='AUTO<br>'+(autoNext?'SÍ':'NO');
+$('an').classList.toggle('on',autoNext);
+applyLang();
+setVoice(voice);
 </script>
 </body>
 </html>

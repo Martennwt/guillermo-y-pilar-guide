@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Pilar: Two Ways to 45 Days</title>
+<style>
+  :root{
+    --ink:#1f2317; --soft:#5b5f52; --line:#d8d8cf; --olive:#3f5233; --terra:#b0472f;
+    --honey:#cf9b3f; --band:#f4f4ef; --olive-tint:#eef2e6; --terra-tint:#f6e9e4;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:#fff;color:var(--ink);}
+  body{font-family:-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;font-size:10.5pt;
+       line-height:1.45;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  .wrap{max-width:184mm;margin:0 auto;padding:0;}
+  .pre{display:inline-block;background:var(--terra);color:#fff;font-size:9pt;font-weight:800;
+       letter-spacing:2px;text-transform:uppercase;padding:4pt 11pt;border-radius:20pt;}
+  h1{font-size:25pt;line-height:1.05;color:var(--olive);margin:6pt 0 5pt;letter-spacing:.3px;}
+  .lead{font-size:10.5pt;color:var(--soft);margin:0 0 9pt;}
+  .lead strong{color:var(--ink);}
+
+  .cap{font-size:8.5pt;text-transform:uppercase;letter-spacing:.6px;color:var(--soft);margin:0 0 3pt;}
+  .chart{width:100%;height:88mm;display:block;margin:0 auto;}
+  .chart .grid line{stroke:var(--line);stroke-width:1;}
+  .chart .axis{stroke:#b8b8ac;stroke-width:1;}
+  .chart text{font-family:-apple-system,"Segoe UI",Roboto,Arial,sans-serif;fill:var(--soft);}
+  .chart .yl,.chart .xl{font-size:10px;}
+  .chart .lab{font-size:11px;font-weight:800;}
+  .chart .labv{font-size:10px;}
+
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:10pt;margin-top:10pt;}
+  .card{border:1px solid var(--line);border-radius:8px;padding:8pt 11pt;}
+  .card.a{border-top:5px solid var(--olive);background:var(--olive-tint);}
+  .card.b{border-top:5px solid var(--terra);background:var(--terra-tint);}
+  .card h3{margin:2pt 0 6pt;font-size:12pt;}
+  .card.a h3{color:var(--olive);} .card.b h3{color:var(--terra);}
+  .row{display:flex;justify-content:space-between;gap:8pt;padding:2pt 0;border-bottom:1px solid rgba(0,0,0,.06);font-size:9.5pt;}
+  .row:last-child{border-bottom:0;}
+  .row .k{color:var(--soft);} .row .v{font-weight:700;text-align:right;}
+  .big{margin-top:6pt;font-size:9.5pt;}
+  .big .n{font-size:20pt;font-weight:800;}
+  .card.a .big .n{color:var(--olive);} .card.b .big .n{color:var(--terra);}
+
+  .pills{display:flex;gap:8pt;flex-wrap:wrap;margin:2pt 0 9pt;}
+  .pill{display:inline-flex;align-items:baseline;gap:6pt;border:1px solid var(--line);border-radius:22pt;padding:5pt 14pt;}
+  .pill .pk{color:var(--soft);text-transform:uppercase;letter-spacing:.6px;font-size:7.5pt;}
+  .pill .pv{font-weight:800;font-size:12pt;}
+  .pill.goal .pv{color:var(--olive);}
+  .pill.lose{background:var(--terra);border-color:var(--terra);}
+  .pill.lose .pk{color:rgba(255,255,255,.82);}
+  .pill.lose .pv{color:#fff;}
+  .fine{margin-top:12pt;font-size:8.7pt;color:var(--soft);border-top:1px solid var(--line);padding-top:8pt;font-style:italic;}
+  @page{size:A4;margin:14mm 13mm;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="pre">Pilar · 45-day projection</div>
+  <h1>Two ways to run the next 45 days</h1>
+  <div class="pills">
+    <div class="pill now"><span class="pk">Now</span><span class="pv">65.9 kg</span></div>
+    <div class="pill goal"><span class="pk">Goal</span><span class="pv">60 kg</span></div>
+    <div class="pill lose"><span class="pk">To lose</span><span class="pv">5.9 kg</span></div>
+  </div>
+  <p class="lead">You are what you eat, so both ways start in the kitchen: you follow the meal plan
+  either way, and <strong>the food alone already works</strong>. The second way is the same plan
+  <strong>plus movement</strong>: daily walks, a little strength, a couple of 16:8 days. For Pilar,
+  movement is the bigger lever, because she is small and should not cut the food much (never below the
+  safe floor). Both keep her muscle when protein stays high, and week 1 drops fastest because of water.</p>
+
+  <p class="cap">Weight on the scale over 45 days · start 65.9 kg · goal 60 kg</p>
+  <svg class="chart" viewBox="0 0 560 300" role="img" aria-label="Projected weight over 45 days for two scenarios">
+    <g class="grid">
+      <line x1="44" y1="12" x2="470" y2="12"/>
+      <line x1="44" y1="98.7" x2="470" y2="98.7"/>
+      <line x1="44" y1="185.3" x2="470" y2="185.3"/>
+      <line x1="44" y1="272.0" x2="470" y2="272.0"/>
+    </g>
+    <text class="yl" x="38" y="16" text-anchor="end">66</text>
+    <text class="yl" x="38" y="102" text-anchor="end">64</text>
+    <text class="yl" x="38" y="189" text-anchor="end">62</text>
+    <text class="yl" x="38" y="275" text-anchor="end">60</text>
+    <line class="axis" x1="44" y1="272" x2="470" y2="272"/>
+    <text class="xl" x="44" y="288" text-anchor="middle">Day 0</text>
+    <text class="xl" x="110.3" y="288" text-anchor="middle">7</text>
+    <text class="xl" x="186" y="288" text-anchor="middle">15</text>
+    <text class="xl" x="328" y="288" text-anchor="middle">30</text>
+    <text class="xl" x="470" y="288" text-anchor="middle">45</text>
+
+    <!-- Relaxed: only the food (olive) -->
+    <polyline points="44,18.5 110.3,68.3 186,94.3 328,124.7 470,148.5" fill="none" stroke="#3f5233" stroke-width="2.6" stroke-linejoin="round"/>
+    <g fill="#3f5233">
+      <circle cx="44" cy="18.5" r="3.3"/><circle cx="110.3" cy="68.3" r="3.3"/><circle cx="186" cy="94.3" r="3.3"/><circle cx="328" cy="124.7" r="3.3"/><circle cx="470" cy="148.5" r="3.3"/>
+    </g>
+    <!-- All gas: food + movement (terracotta) -->
+    <polyline points="44,18.5 110.3,85.7 186,124.7 328,185.3 470,235.2" fill="none" stroke="#b0472f" stroke-width="2.6" stroke-linejoin="round"/>
+    <g fill="#b0472f">
+      <circle cx="44" cy="18.5" r="3.3"/><circle cx="110.3" cy="85.7" r="3.3"/><circle cx="186" cy="124.7" r="3.3"/><circle cx="328" cy="185.3" r="3.3"/><circle cx="470" cy="235.2" r="3.3"/>
+    </g>
+
+    <text class="labv" x="54" y="14" fill="#5b5f52">65.9 kg</text>
+    <text class="lab" x="476" y="146" fill="#3f5233">Only food</text>
+    <text class="labv" x="476" y="159" fill="#3f5233">62.9 kg (-3)</text>
+    <text class="lab" x="476" y="233" fill="#b0472f">Food + move</text>
+    <text class="labv" x="476" y="246" fill="#b0472f">60.9 kg (-5)</text>
+  </svg>
+
+  <div class="cards">
+    <div class="card a">
+      <h3>Relaxed: only the food</h3>
+      <div class="row"><span class="k">Movement</span><span class="v">same as now (home, light)</span></div>
+      <div class="row"><span class="k">Daily burn</span><span class="v">~1,700 kcal</span></div>
+      <div class="row"><span class="k">Eat</span><span class="v">~1,350 to 1,400</span></div>
+      <div class="row"><span class="k">Deficit</span><span class="v">~300 to 350 / day</span></div>
+      <div class="row"><span class="k">Fat loss</span><span class="v">~0.3 kg / week</span></div>
+      <p class="big">In 45 days: <span class="n">~3 kg</span></p>
+    </div>
+    <div class="card b">
+      <h3>All gas: food + movement</h3>
+      <div class="row"><span class="k">Movement</span><span class="v">+ daily walks, light strength 2-3x, 2-3 days 16:8</span></div>
+      <div class="row"><span class="k">Daily burn</span><span class="v">~1,950 to 2,000 kcal</span></div>
+      <div class="row"><span class="k">Eat</span><span class="v">~1,300 (not below 1,200)</span></div>
+      <div class="row"><span class="k">Deficit</span><span class="v">~650 to 700 / day (safe max)</span></div>
+      <div class="row"><span class="k">Fat loss</span><span class="v">~0.6 kg / week</span></div>
+      <p class="big">In 45 days: <span class="n">~5 kg</span></p>
+    </div>
+  </div>
+
+  <p class="fine">The goal of 60 kg (the full ~6 kg) is a 2 to 4 month job depending on the movement:
+  these 45 days are the strong start, and the all-gas path lands her almost there. Week 1 drops fastest
+  because of water and glycogen, not all fat, so trust the weekly average. Keep protein high (about 110
+  to 120 g a day) and add a little strength, or the extra loss turns into muscle instead of fat. Do not
+  eat below about 1,200 kcal: for Pilar, faster comes from moving more, never from eating less.</p>
+
+</div>
+</body>
+</html>
