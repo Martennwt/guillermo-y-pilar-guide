@@ -1,0 +1,494 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>El plan de comidas de 45 días: Guillermo y Pilar</title>
+<style>
+  /* Clean, print-first. White background, one restrained accent, thin grey lines. */
+  :root{
+    --ink:#1f2317;         /* near-black text */
+    --soft:#5b5f52;        /* muted grey text */
+    --line:#d8d8cf;        /* thin borders */
+    --accent:#3f5233;      /* single dark-olive accent */
+    --band:#f4f4ef;        /* very light zebra / callout fill */
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:#fff;color:var(--ink);}
+  body{
+    font-family:-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:10.5pt; line-height:1.42; -webkit-print-color-adjust:exact; print-color-adjust:exact;
+  }
+  .wrap{max-width:184mm;margin:0 auto;padding:0;}
+  h1{font-size:23pt;line-height:1.1;margin:0 0 4pt;color:var(--accent);letter-spacing:.2px;}
+  h2{font-size:14pt;margin:20pt 0 8pt;color:var(--accent);
+     border-bottom:2px solid var(--accent);padding-bottom:3pt;}
+  h3{font-size:11.5pt;margin:12pt 0 3pt;color:var(--ink);}
+  h3 .tag{color:var(--accent);font-weight:800;}
+  h3 .desc{display:block;font-size:9pt;font-weight:400;font-style:italic;color:var(--soft);margin-top:1pt;}
+  p{margin:0 0 7pt;}
+  .lead{font-size:11pt;color:var(--soft);font-style:italic;margin:2pt 0 10pt;}
+  strong{color:var(--ink);}
+  ul,ol{margin:0 0 8pt;padding-left:16pt;}
+  li{margin:0 0 3pt;}
+  .muted{color:var(--soft);}
+  .small{font-size:9pt;}
+
+  /* Callout box (rules, tips) */
+  .box{background:var(--band);border:1px solid var(--line);border-radius:6px;
+       padding:8pt 11pt;margin:8pt 0;}
+  .box.accent{border-left:4px solid var(--accent);}
+
+  /* Rules list */
+  .rules{list-style:none;padding:0;margin:6pt 0;counter-reset:r;}
+  .rules>li{position:relative;padding:6pt 0 6pt 26pt;border-bottom:1px solid var(--line);}
+  .rules>li:last-child{border-bottom:0;}
+  .rules>li::before{counter-increment:r;content:counter(r);position:absolute;left:0;top:6pt;
+     width:18pt;height:18pt;border-radius:50%;background:var(--accent);color:#fff;
+     font-size:9pt;font-weight:800;text-align:center;line-height:18pt;}
+
+  /* Meal card + portion table */
+  .card{border:1px solid var(--line);border-radius:6px;padding:9pt 11pt;margin:8pt 0;
+        break-inside:avoid;}
+  table{width:100%;border-collapse:collapse;margin:5pt 0 0;font-size:9.5pt;}
+  th,td{text-align:left;padding:3.5pt 6pt;border-bottom:1px solid var(--line);}
+  thead th{font-size:8.5pt;text-transform:uppercase;letter-spacing:.4px;color:var(--soft);
+           border-bottom:1.5px solid var(--line);}
+  td.n,th.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;}
+  tr.total td{border-top:1.5px solid var(--accent);border-bottom:0;font-weight:800;color:var(--accent);
+              background:var(--band);}
+  tr.wk td{background:var(--accent);color:#fff;font-weight:800;letter-spacing:.4px;padding:4.5pt 6pt;}
+  .who{display:flex;gap:14pt;font-size:8.5pt;color:var(--soft);margin-top:2pt;}
+
+  /* Calorie band table + shopping columns */
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:0 22pt;}
+  .tracker{font-family:"Courier New",monospace;font-size:10pt;line-height:1.9;letter-spacing:1px;
+           background:var(--band);border:1px solid var(--line);border-radius:6px;padding:8pt 11pt;}
+
+  .pagebreak{break-before:page;}
+  .avoid{break-inside:avoid;}
+  h2{break-after:avoid;}
+  footer{margin-top:14pt;padding-top:8pt;border-top:1px solid var(--line);
+         font-size:8.5pt;color:var(--soft);font-style:italic;}
+
+  /* Cover (page 1): simple, a little colour */
+  .cover{height:252mm;display:flex;flex-direction:column;justify-content:center;align-items:center;
+         text-align:center;break-after:page;}
+  .cv-pre{display:inline-block;background:#b0472f;color:#fff;font-size:9.5pt;font-weight:800;
+          letter-spacing:2px;text-transform:uppercase;padding:5pt 13pt;border-radius:20pt;}
+  h1.cv-h{font-size:44pt;line-height:1.02;color:var(--accent);margin:16pt 0 0;letter-spacing:.5px;}
+  .cv-rule{width:64pt;height:4pt;background:#cf9b3f;border-radius:2pt;margin:15pt 0;}
+  .cv-sub{font-size:13pt;color:var(--ink);max-width:120mm;line-height:1.5;margin:0;}
+  .cv-foot{margin-top:30pt;font-size:9.5pt;color:var(--soft);letter-spacing:1px;text-transform:uppercase;}
+  .cv-bar{width:120pt;height:6pt;border-radius:3pt;margin:9pt auto 0;
+          background:linear-gradient(90deg,var(--accent) 0 50%,#cf9b3f 50% 100%);}
+
+  @page{size:A4;margin:14mm 13mm;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="cover">
+    <div class="cv-pre">Guillermo y Pilar · El reto de 45 días</div>
+    <h1 class="cv-h">El plan de comidas de 45 días</h1>
+    <div class="cv-rule"></div>
+    <p class="cv-sub">Todo lo que coméis durante los próximos 45 días: mucha proteína, fácil de
+    mantener, y hecho para perder grasa mientras conserváis el músculo. Comida de verdad, un menú
+    corto, y dos tamaños de ración pensados para cada uno.</p>
+    <div class="cv-foot">Amorebieta · Euskal Herria</div>
+    <div class="cv-bar"></div>
+  </div>
+
+  <p class="lead">Leedlo entero y con calma, sin saltaros ninguna parte: es corto a propósito y todo
+  encaja, así que leedlo una vez de principio a fin para entenderlo del todo. Lo he dejado lo más
+  sencillo posible, y aun así tenéis tres versiones de cada comida, para que el día que os canséis de
+  una, cambiéis a otra.</p>
+
+  <h2>Dos maneras de hacerlo</h2>
+  <p><strong>Opción 1: el plan estricto de 45 días (el reto).</strong> Durante los próximos 45 días
+  seguís el plan a rajatabla: dais en vuestro objetivo casi todos los días, mantenéis la proteína
+  alta y solo una comida libre cada 2 semanas. Aquí es donde ocurre el cambio de verdad.</p>
+  <p><strong>Opción 2: la manera relajada.</strong> El mismo menú, solo que más flexible: apuntáis al
+  objetivo casi siempre, os permitís alguna comida libre más y no os agobiáis por un desliz. Más
+  lento, pero muy fácil de mantener. Perfecto para después de los 45 días, o si lo estricto se os
+  hace demasiado.</p>
+  <div class="box accent"><strong>Un plan estricto NO es aburrido.</strong> Incluso en el plan
+  estricto tenéis un menú corto: <strong>3 desayunos, 3 comidas, 3 cenas.</strong> Cada día elegís
+  uno de cada, en el orden que queráis. ¿Hoy no os apetece uno? Lo cambiáis. La estructura es fija, la
+  elección es vuestra. Cada plato tiene dos tamaños de ración: uno para Pilar, uno más grande para Guillermo.</div>
+
+  <h2>El plan es solo la mitad: moverse</h2>
+  <p>Comer quita el peso. Lo que hacéis con el cuerpo decide QUÉ tipo de peso se va. El resultado más
+  fuerte y mejor demostrado viene de tres cosas juntas:</p>
+  <ol>
+    <li><strong>Este plan</strong> (el déficit de calorías, la proteína alta). Es lo que quema la grasa.</li>
+    <li><strong>Un poco de fuerza</strong> (flexiones, una pesa rusa, ejercicios sencillos con vuestro
+    peso 2 a 3 veces por semana). Es lo que mantiene y hasta hace crecer el músculo mientras perdéis
+    grasa, así acabáis más definidos y fuertes, no solo más ligeros.</li>
+    <li><strong>Pasear a menudo.</strong> Quema extra sin apenas inconvenientes, y ayuda tanto a la
+    cabeza como a la cintura.</li>
+  </ol>
+  <p class="muted">Solo la dieta os encoge. La dieta más un poco de fuerza más caminar os transforma.</p>
+
+  <!-- ============ RULES ============ -->
+  <div class="pagebreak"></div>
+  <h2>Lee esto primero: las reglas que hacen que funcione</h2>
+  <ol class="rules">
+    <li><strong>La proteína manda en el plato.</strong> Cuando coméis por debajo de vuestras calorías,
+    el cuerpo puede quemar grasa O músculo. La proteína le dice que queme grasa y guarde el músculo,
+    así os ponéis más definidos y fuertes, no solo más ligeros. Objetivo diario:
+    <strong>Guillermo unos 160 g, Pilar unos 110 g.</strong> Por eso el pollo, el pescado, los huevos
+    y las claras se llevan la mayor parte del plato, y el arroz o la pasta pasan a ser la guarnición pequeña.</li>
+
+    <li><strong>Vuestras calorías al día.</strong> Apuntad dentro de vuestra franja. El plan estricto
+    apunta a la parte baja, la manera relajada se queda arriba.
+      <table style="margin-top:6pt">
+        <thead><tr><th>Persona</th><th>Vuestra franja diaria</th><th>Estricto apunta a</th><th>Nunca por debajo de</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Guillermo</strong></td><td>2.200 a 2.400 kcal</td><td>~2.200 kcal</td><td>1.600 kcal</td></tr>
+          <tr><td><strong>Pilar</strong></td><td>1.300 a 1.500 kcal</td><td>~1.300 kcal</td><td>1.200 kcal</td></tr>
+        </tbody>
+      </table>
+      <span class="small muted">No recortéis más de unas 500 kcal por debajo de vuestro gasto normal:
+      pasado eso el cuerpo empieza a quemar músculo y la energía para la obra se hunde. Un recorte
+      moderado + proteína + un poco de entrenamiento gana a pasar hambre, siempre.</span></li>
+
+    <li><strong>Dos tamaños de ración, una sola cocina.</strong> Pilar y Guillermo comen los mismos
+    platos. Guillermo solo recibe un plato más grande, porque un hombre en la obra quema casi 900 kcal
+    más al día. Se cocina una vez y se sirve en dos tamaños. Los gramos de abajo son un punto de
+    partida, no una ley.</li>
+
+    <li><strong>Comed hasta "ya no tengo hambre", no hasta "estoy lleno".</strong> El intestino le
+    avisa al cerebro de que está lleno con hormonas (CCK, PYY), y esa señal llega tarde: unos 15 a 20
+    minutos después de empezar. Así que el truco es sencillo y está demostrado: <strong>un vaso de
+    agua antes de comer, comer despacio, y esperar.</strong> En un estudio, beber agua antes de las
+    comidas supuso 4,3 kg más de pérdida de peso en 12 semanas.</li>
+
+    <li><strong>La verdura es libre y obligatoria</strong> en comida y cena. Es casi toda agua: mucho
+    volumen, casi cero calorías. La verdura no se pesa nunca.</li>
+
+    <li><strong>2 a 3 litros de agua al día. Pesaos 3 veces por semana</strong> (por la mañana,
+    después del baño, antes de comer) y fiaos solo de la media semanal, no de un solo día.</li>
+
+    <li><strong>Una comida libre cada 2 semanas.</strong> No un día libre, una comida. Disfrutadla
+    entera, y a la siguiente comida, de vuelta al plan. Nada de "compensar" luego.</li>
+
+    <li><strong>Guillermo, el fin de semana es la trampa.</strong> Fuera del andamio quemáis mucho
+    menos, así que mantened el plan base y dejad los extras de los días de trabajo. La misma comida
+    que el lunes está bien, el domingo es un exceso.</li>
+  </ol>
+  <p class="small muted">Opcional, está bien tenerlo pero no hace falta: un omega-3 al día, vitamina D
+  en invierno, 5 g de creatina si entrenáis, magnesio por la noche. El plan funciona sin nada de esto.</p>
+
+  <!-- ============ BREAKFAST ============ -->
+  <div class="pagebreak"></div>
+  <h2>Desayuno: elige 1</h2>
+  <p class="muted small">Dos de estos viven en tarros en la nevera. Una mañana de trabajo, Guillermo
+  abre la nevera, coge un tarro y sale. Preparad 4 o 5 de golpe el domingo.</p>
+
+  <div class="card">
+    <h3><span class="tag">B1</span> · Tarro de avena y yogur (overnight)
+      <span class="desc">Dulce, sin cocinar, aguanta unos 4 días. Añadid los arándanos y las nueces frescos por la mañana.</span></h3>
+    <table>
+      <thead><tr><th>Ingrediente</th><th class="n">Pilar</th><th class="n">Guillermo</th></tr></thead>
+      <tbody>
+        <tr><td>Avena</td><td class="n">45 g</td><td class="n">70 g</td></tr>
+        <tr><td>Yogur alto en proteína</td><td class="n">175 g</td><td class="n">250 g</td></tr>
+        <tr><td>Arándanos</td><td class="n">80 g</td><td class="n">100 g</td></tr>
+        <tr><td>Nueces</td><td class="n">12 g</td><td class="n">20 g</td></tr>
+        <tr class="total"><td>Por ración</td><td class="n">~400 kcal · 26 g P</td><td class="n">~600 kcal · 37 g P</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3><span class="tag">B2</span> · Tarro de tortilla de claras
+      <span class="desc">Solo claras, sin yema: la opción salada y ligera. Aguanta unos 5 días, con los ingredientes aparte. Guillermo la come fría o la calienta 40 segundos. ¿La queréis más saciante? Añadid una rebanada de pan integral.</span></h3>
+    <table>
+      <thead><tr><th>Ingrediente</th><th class="n">Pilar</th><th class="n">Guillermo</th></tr></thead>
+      <tbody>
+        <tr><td>Claras de huevo</td><td class="n">200 g</td><td class="n">300 g</td></tr>
+        <tr><td>Tacos de jamón (serrano o pavo)</td><td class="n">30 g</td><td class="n">40 g</td></tr>
+        <tr><td>Espinacas + cebolla</td><td class="n">libre</td><td class="n">libre</td></tr>
+        <tr><td>Aceite de oliva</td><td class="n">5 g</td><td class="n">8 g</td></tr>
+        <tr><td>Arroz cocido</td><td class="n">nada</td><td class="n">80 g</td></tr>
+        <tr class="total"><td>Por ración</td><td class="n">~230 kcal · 31 g P</td><td class="n">~450 kcal · 47 g P</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3><span class="tag">B3</span> · Boniato con pollo salteado
+      <span class="desc">Caliente y salado, una proteína distinta de los desayunos con huevo. Cocinad el pollo en tanda el domingo. ¿Preferís huevo? Cambiad el pollo por 100 a 150 g de claras (la versión de boniato con huevo).</span></h3>
+    <table>
+      <thead><tr><th>Ingrediente</th><th class="n">Pilar</th><th class="n">Guillermo</th></tr></thead>
+      <tbody>
+        <tr><td>Pollo cocido (o pavo)</td><td class="n">100 g</td><td class="n">160 g</td></tr>
+        <tr><td>Boniato</td><td class="n">120 g</td><td class="n">180 g</td></tr>
+        <tr><td>Espinacas</td><td class="n">libre</td><td class="n">libre</td></tr>
+        <tr><td>Aceite de oliva</td><td class="n">3 g</td><td class="n">5 g</td></tr>
+        <tr class="total"><td>Por ración</td><td class="n">~300 kcal · 32 g P</td><td class="n">~460 kcal · 50 g P</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ============ LUNCH ============ -->
+  <div class="pagebreak"></div>
+  <h2>Comida: elige 1 (la comida principal)</h2>
+  <p class="muted small">Siempre la misma estructura: un buen trozo de proteína, una montaña de
+  verdura, y una ración pequeña de hidratos buenos. La proteína se lleva la mayor parte del plato.</p>
+
+  <div class="card">
+    <h3><span class="tag">L1</span> · Pollo al horno + boniato + verdura
+      <span class="desc">El héroe en tanda. Asad una bandeja grande: cubre 2 o 3 días de comidas.</span></h3>
+    <table>
+      <thead><tr><th>Ingrediente</th><th class="n">Pilar</th><th class="n">Guillermo</th></tr></thead>
+      <tbody>
+        <tr><td>Pollo (pechuga o muslo)</td><td class="n">150 g</td><td class="n">220 g</td></tr>
+        <tr><td>Boniato</td><td class="n">130 g</td><td class="n">180 g</td></tr>
+        <tr><td>Verduras</td><td class="n">libre</td><td class="n">libre</td></tr>
+        <tr><td>Aceite de oliva</td><td class="n">6 g</td><td class="n">10 g</td></tr>
+        <tr class="total"><td>Por ración</td><td class="n">~470 kcal · 46 g P</td><td class="n">~640 kcal · 68 g P</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3><span class="tag">L2</span> · Ternera magra Euskal Okela
+      <span class="desc">Solo 1 o 2 veces por semana. Buscad el Eusko Label en la carnicería: ternera vasca, de pasto, de kilómetro cero.</span></h3>
+    <table>
+      <thead><tr><th>Ingrediente</th><th class="n">Pilar</th><th class="n">Guillermo</th></tr></thead>
+      <tbody>
+        <tr><td>Ternera magra (filete o picada)</td><td class="n">110 g</td><td class="n">180 g</td></tr>
+        <tr><td>Verduras a la plancha</td><td class="n">libre</td><td class="n">libre</td></tr>
+        <tr><td>Patata</td><td class="n">80 g</td><td class="n">120 g</td></tr>
+        <tr><td>Aceite de oliva</td><td class="n">5 g</td><td class="n">8 g</td></tr>
+        <tr class="total"><td>Por ración</td><td class="n">~380 kcal · 34 g P</td><td class="n">~600 kcal · 52 g P</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3><span class="tag">L3</span> · Clásico vasco o mediterráneo, aligerado
+      <span class="desc">Para que nunca parezca una dieta. Elegid uno, cocinado más ligero (aceite medido, más verdura).</span></h3>
+    <ul class="small" style="margin-bottom:4pt">
+      <li>Merluza o bacalao a la plancha + ensalada grande + media taza de alubias blancas</li>
+      <li>Marmitako (guiso de bonito y patata), con menos aceite y más verdura</li>
+      <li>Garbanzos con espinacas y un trozo de bacalao por encima</li>
+      <li>Lentejas con un huevo o un poco de pescado para más proteína</li>
+    </ul>
+    <p class="small muted" style="margin:0">Servid con la proteína por delante: Pilar unas 450 kcal,
+    Guillermo unas 600 kcal, 30 a 40 g de proteína.</p>
+  </div>
+
+  <div class="box small"><strong>Truco fiambrera (para la obra):</strong> cualquier comida se puede
+  llevar fría en un táper. La más fácil es una ensalada grande con proteína: atún o pollo que sobró +
+  2 huevos duros + un puñado de garbanzos sobre una buena ensalada con una cucharada de aceite y
+  vinagre. Pilar ~360 kcal / 34 g P, Guillermo ~620 kcal / 58 g P.</div>
+
+  <!-- ============ DINNER ============ -->
+  <div class="pagebreak"></div>
+  <h2>Cena: elige 1 (que sea ligera)</h2>
+  <p class="muted small">Más ligera, sobre todo en una tarde de poco movimiento: proteína más verdura,
+  poco o nada de almidón, y terminada unas 3 horas antes de dormir.</p>
+
+  <div class="card">
+    <h3><span class="tag">D1</span> · Hamburguesa Euskal Okela + verdura
+      <span class="desc">La que quería Guillermo. Una hamburguesa magra de pasto, sin pan, un buen montón de verdura y una cucharada pequeña de arroz si os apetece.</span></h3>
+    <table>
+      <thead><tr><th>Ingrediente</th><th class="n">Pilar</th><th class="n">Guillermo</th></tr></thead>
+      <tbody>
+        <tr><td>Hamburguesa de ternera magra</td><td class="n">90 g</td><td class="n">150 g</td></tr>
+        <tr><td>Verduras</td><td class="n">libre</td><td class="n">libre</td></tr>
+        <tr><td>Arroz cocido (opcional)</td><td class="n">40 g</td><td class="n">60 g</td></tr>
+        <tr><td>Aceite de oliva</td><td class="n">3 g</td><td class="n">5 g</td></tr>
+        <tr class="total"><td>Por ración</td><td class="n">~300 kcal · 22 g P</td><td class="n">~470 kcal · 35 g P</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3><span class="tag">D2</span> · Tortilla ligera
+      <span class="desc">Tortilla ligera, 5 minutos. Casi todo claras más un huevo entero.</span></h3>
+    <table>
+      <thead><tr><th>Ingrediente</th><th class="n">Pilar</th><th class="n">Guillermo</th></tr></thead>
+      <tbody>
+        <tr><td>Huevo entero</td><td class="n">1</td><td class="n">2</td></tr>
+        <tr><td>Claras de huevo</td><td class="n">120 g</td><td class="n">150 g</td></tr>
+        <tr><td>Tacos de jamón</td><td class="n">30 g</td><td class="n">40 g</td></tr>
+        <tr><td>Verduras</td><td class="n">libre</td><td class="n">libre</td></tr>
+        <tr><td>Aceite de oliva</td><td class="n">5 g</td><td class="n">8 g</td></tr>
+        <tr class="total"><td>Por ración</td><td class="n">~280 kcal · 28 g P</td><td class="n">~430 kcal · 40 g P</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3><span class="tag">D3</span> · Pescado blanco o salmón + verdura salteada
+      <span class="desc">A la plancha con ajo y limón, con espinacas o acelgas al lado. Ligero, rápido y con mucha proteína.</span></h3>
+    <table>
+      <thead><tr><th>Ingrediente</th><th class="n">Pilar</th><th class="n">Guillermo</th></tr></thead>
+      <tbody>
+        <tr><td>Pescado blanco o salmón</td><td class="n">150 g</td><td class="n">220 g</td></tr>
+        <tr><td>Verdura de hoja</td><td class="n">libre</td><td class="n">libre</td></tr>
+        <tr><td>Patata (opcional, Guillermo)</td><td class="n">nada</td><td class="n">100 g</td></tr>
+        <tr><td>Aceite de oliva</td><td class="n">5 g</td><td class="n">8 g</td></tr>
+        <tr class="total"><td>Por ración</td><td class="n">~230 kcal · 28 g P</td><td class="n">~420 kcal · 42 g P</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ============ SNACK + SWAPS ============ -->
+  <div class="pagebreak"></div>
+  <h2>Merienda: elige 1 (opcional)</h2>
+  <p class="small muted">Sobre todo para Guillermo en un día duro de trabajo (a media mañana o antes
+  de la obra). Pilar normalmente no la necesita: solo si se ha movido mucho, o en lugar de la cena si
+  ha entrenado tarde.</p>
+  <ul>
+    <li><strong>Yogur proteico + unos arándanos + unos frutos secos</strong> (~180 a 260 kcal, 15 a 22 g de proteína)</li>
+    <li><strong>Kéfir + arándanos + una cucharada de avena</strong> (~200 kcal, buena energía antes de la obra)</li>
+    <li><strong>Requesón + una pieza de fruta</strong> (~200 kcal, 20 g de proteína)</li>
+  </ul>
+
+  <h2>Cambios permitidos (¿no os gusta? cambiadlo, no os saltéis la comida)</h2>
+  <ul>
+    <li><strong>Proteína:</strong> pollo = pavo = conejo = pescado blanco = lomo de cerdo magro =
+    ternera magra = huevos = claras = pescado azul (sardinas, caballa, un poco más graso).</li>
+    <li><strong>Hidratos:</strong> boniato = patata = arroz = quinoa = legumbres. Casi siempre, mejor
+    boniato y legumbres que arroz blanco y pasta.</li>
+    <li><strong>Verduras:</strong> libres, y NO solo las verdes. Brócoli, coliflor, pimiento,
+    calabacín, judías verdes, champiñones, lo que os apetezca. Cocinadlas como queráis (horno,
+    plancha, hervidas, en puré).</li>
+    <li><strong>Grasas:</strong> aceite de oliva = unos frutos secos = un poco de aguacate = aceitunas.
+    Siempre medido: una cucharada de aceite son unas 120 kcal.</li>
+    <li>El arroz y la pasta se pesan <strong>cocidos</strong>, todo lo demás <strong>en crudo</strong>. La verdura no se pesa.</li>
+  </ul>
+
+  <div class="box accent avoid">
+    <strong>Un día de ejemplo, para que veáis que cuadra:</strong>
+    <p style="margin:5pt 0 0" class="small"><strong>Pilar, día tranquilo:</strong> B1 avena (400) + L1
+    pollo al horno (470) + D1 hamburguesa (300) + una merienda pequeña de yogur (180) = <strong>unas
+    1.350 kcal y 109 g de proteína.</strong> En el objetivo.</p>
+    <p style="margin:4pt 0 0" class="small"><strong>Guillermo, día de trabajo:</strong> B1 avena (600)
+    + L1 pollo al horno (640) + D1 hamburguesa (470) + una merienda (250) = <strong>unas 1.960 kcal y
+    152 g de proteína</strong>. Añadid una rebanada de pan o una cucharada más de arroz para quedar
+    entre 2.200 y 2.300, dentro de vuestra franja. En el objetivo.</p>
+  </div>
+
+  <!-- ============ EXAMPLE WEEKS ============ -->
+  <div class="pagebreak"></div>
+  <h2>Tres semanas de ejemplo (para verlo funcionando)</h2>
+  <p class="small muted">Solo una forma de rotar el menú. Cada desayuno, comida y cena aparece varias
+  veces, la ternera solo una o dos veces por semana, el pescado a menudo. Guillermo añade una merienda
+  los días de trabajo (lunes a viernes); el fin de semana mantiene el plan base. Cambiad cualquier
+  casilla por otra opción que os apetezca.</p>
+  <table class="avoid" style="margin-top:6pt">
+    <thead><tr><th>Día</th><th>Desayuno</th><th>Comida</th><th>Cena</th></tr></thead>
+    <tbody>
+      <tr class="wk"><td colspan="4">Semana 1</td></tr>
+      <tr><td><strong>Lun</strong></td><td>B1 avena</td><td>L1 pollo al horno</td><td>D3 pescado + verdura</td></tr>
+      <tr><td><strong>Mar</strong></td><td>B2 claras</td><td>L3 lentejas + bacalao</td><td>D1 hamburguesa</td></tr>
+      <tr><td><strong>Mié</strong></td><td>B3 boniato con pollo</td><td>L1 sobras</td><td>D2 tortilla</td></tr>
+      <tr><td><strong>Jue</strong></td><td>B1 avena</td><td>L2 ternera Euskal Okela</td><td>D3 pescado + verdura</td></tr>
+      <tr><td><strong>Vie</strong></td><td>B2 claras</td><td>L1 pollo al horno</td><td>D1 hamburguesa</td></tr>
+      <tr><td><strong>Sáb</strong></td><td>B3 boniato con pollo</td><td>L3 marmitako</td><td>D2 tortilla</td></tr>
+      <tr><td><strong>Dom</strong></td><td>B1 avena</td><td>L2 ternera (o comida libre)</td><td>D3 pescado</td></tr>
+      <tr class="wk"><td colspan="4">Semana 2</td></tr>
+      <tr><td><strong>Lun</strong></td><td>B2 claras</td><td>L1 pollo al horno</td><td>D1 hamburguesa</td></tr>
+      <tr><td><strong>Mar</strong></td><td>B1 avena</td><td>L3 garbanzos + bacalao</td><td>D3 pescado + verdura</td></tr>
+      <tr><td><strong>Mié</strong></td><td>B3 boniato con pollo</td><td>L1 sobras</td><td>D2 tortilla</td></tr>
+      <tr><td><strong>Jue</strong></td><td>B2 claras</td><td>L2 ternera Euskal Okela</td><td>D3 pescado + verdura</td></tr>
+      <tr><td><strong>Vie</strong></td><td>B1 avena</td><td>L1 pollo al horno</td><td>D1 hamburguesa</td></tr>
+      <tr><td><strong>Sáb</strong></td><td>B3 boniato con pollo</td><td>L3 merluza + alubias</td><td>D2 tortilla</td></tr>
+      <tr><td><strong>Dom</strong></td><td>B2 claras</td><td>L2 ternera (o comida libre)</td><td>D3 pescado</td></tr>
+      <tr class="wk"><td colspan="4">Semana 3</td></tr>
+      <tr><td><strong>Lun</strong></td><td>B1 avena</td><td>L1 pollo al horno</td><td>D2 tortilla</td></tr>
+      <tr><td><strong>Mar</strong></td><td>B3 boniato con pollo</td><td>L3 lentejas</td><td>D1 hamburguesa</td></tr>
+      <tr><td><strong>Mié</strong></td><td>B2 claras</td><td>L1 sobras</td><td>D3 pescado + verdura</td></tr>
+      <tr><td><strong>Jue</strong></td><td>B1 avena</td><td>L2 ternera Euskal Okela</td><td>D1 hamburguesa</td></tr>
+      <tr><td><strong>Vie</strong></td><td>B3 boniato con pollo</td><td>L1 pollo al horno</td><td>D2 tortilla</td></tr>
+      <tr><td><strong>Sáb</strong></td><td>B2 claras</td><td>L3 marmitako</td><td>D3 pescado + verdura</td></tr>
+      <tr><td><strong>Dom</strong></td><td>B1 avena</td><td>L2 ternera (o comida libre)</td><td>D3 pescado</td></tr>
+    </tbody>
+  </table>
+
+  <!-- ============ SHOPPING + TRACKER ============ -->
+  <div class="pagebreak"></div>
+  <h2>La lista de la compra semanal (2 personas, raciones pequeñas)</h2>
+  <p class="small muted">Más o menos una semana para los dos, pequeña a propósito. Compradla, id
+  rotando las comidas, y ajustad la semana siguiente según lo que se haya acabado.</p>
+  <div class="grid2 small">
+    <div>
+      <p style="margin:0 0 3pt"><strong>Proteína (el gasto principal)</strong></p>
+      <ul style="margin-top:0">
+        <li>Huevos: 1 docena, más 3 briks de claras</li>
+        <li>Pollo: 1,5 a 2 kg (desayuno + comida)</li>
+        <li>Ternera magra Euskal Okela (1 o 2 comidas): 600 a 800 g</li>
+        <li>Pescado blanco o salmón: 800 g a 1 kg</li>
+        <li>Atún al natural: 3 o 4 latas</li>
+        <li>Tacos de jamón (serrano o pavo): 200 g</li>
+        <li>Yogur alto en proteína: 1,5 kg; kéfir o requesón si os gustan</li>
+      </ul>
+      <p style="margin:6pt 0 3pt"><strong>Hidratos buenos (poca cantidad)</strong></p>
+      <ul style="margin-top:0">
+        <li>Boniato: 1,5 a 2 kg</li>
+        <li>Patata: 1 kg</li>
+        <li>Avena: 500 g (dura muchísimo)</li>
+        <li>Arroz: 500 g, o una bolsa pequeña de quinoa</li>
+        <li>Legumbres: 2 botes o bolsas (garbanzos, lentejas)</li>
+        <li>Pan integral: 1 barra pequeña (Guillermo, días de trabajo)</li>
+      </ul>
+    </div>
+    <div>
+      <p style="margin:0 0 3pt"><strong>Fruta y grasas</strong></p>
+      <ul style="margin-top:0">
+        <li>Arándanos u otros frutos rojos: 500 g (congelados valen)</li>
+        <li>Nueces o almendras: 200 g</li>
+        <li>Aceite de oliva virgen extra, un par de aguacates</li>
+      </ul>
+      <p style="margin:6pt 0 3pt"><strong>Verduras (libres, comprad de sobra)</strong></p>
+      <ul style="margin-top:0">
+        <li>Espinacas, pimiento, calabacín, cebolla, tomate, ensalada, pepino, judías verdes, coliflor,
+        ajo, limón. Lo que esté fresco y barato esa semana.</li>
+      </ul>
+      <p class="muted" style="margin:6pt 0 0">Opcional, solo si los queréis: creatina, omega-3,
+      vitamina D, magnesio.</p>
+    </div>
+  </div>
+
+  <h2>Cómo son 45 días</h2>
+  <p class="small">No estáis contando hasta 45 recetas, estáis repitiendo una buena semana unas 6
+  veces. Marcad una casilla cada día que sigáis el plan (una comida libre sigue contando como "sí").
+  Perspectiva realista, buscad la tendencia y no los milagros: <strong>Guillermo unos 3 a 5 kg</strong>
+  (un buen arranque hacia los 15 kg, un trabajo de 3 a 5 meses); <strong>Pilar unos 2 a 3 kg</strong>,
+  bien encaminada hacia los ~6 kg.</p>
+  <div class="tracker avoid">
+    Semana 1&nbsp;&nbsp;[ ] [ ] [ ] [ ] [ ] [ ] [ ]<br>
+    Semana 2&nbsp;&nbsp;[ ] [ ] [ ] [ ] [ ] [ ] [ ]<br>
+    Semana 3&nbsp;&nbsp;[ ] [ ] [ ] [ ] [ ] [ ] [ ]<br>
+    Semana 4&nbsp;&nbsp;[ ] [ ] [ ] [ ] [ ] [ ] [ ]<br>
+    Semana 5&nbsp;&nbsp;[ ] [ ] [ ] [ ] [ ] [ ] [ ]<br>
+    Semana 6&nbsp;&nbsp;[ ] [ ] [ ] [ ] [ ] [ ] [ ]&nbsp;&nbsp;+ Día 43 [ ] &nbsp;44 [ ] &nbsp;45 [ ]
+  </div>
+
+  <table class="avoid" style="margin-top:8pt">
+    <thead><tr><th>Semana</th><th class="n">Peso Guillermo</th><th class="n">Perdido</th><th class="n">Peso Pilar</th><th class="n">Perdido</th></tr></thead>
+    <tbody>
+      <tr><td>Inicio</td><td class="n">90,5 kg</td><td class="n">-</td><td class="n">65,9 kg</td><td class="n">-</td></tr>
+      <tr><td>1</td><td class="n">&nbsp;</td><td class="n"></td><td class="n"></td><td class="n"></td></tr>
+      <tr><td>2</td><td class="n">&nbsp;</td><td class="n"></td><td class="n"></td><td class="n"></td></tr>
+      <tr><td>3</td><td class="n">&nbsp;</td><td class="n"></td><td class="n"></td><td class="n"></td></tr>
+      <tr><td>4</td><td class="n">&nbsp;</td><td class="n"></td><td class="n"></td><td class="n"></td></tr>
+      <tr><td>5</td><td class="n">&nbsp;</td><td class="n"></td><td class="n"></td><td class="n"></td></tr>
+      <tr><td>6</td><td class="n">&nbsp;</td><td class="n"></td><td class="n"></td><td class="n"></td></tr>
+    </tbody>
+  </table>
+
+  <footer>Los números son estimaciones cuidadas para tomar conciencia, no una medida de laboratorio.
+  La báscula a lo largo de 2 o 3 semanas es la prueba de verdad: si la media semanal no se mueve,
+  recortad un poco o moveos un poco más; si os sentís hechos polvo, comed un poco más. Lo que se
+  pierde despacio, se mantiene.</footer>
+
+</div>
+</body>
+</html>

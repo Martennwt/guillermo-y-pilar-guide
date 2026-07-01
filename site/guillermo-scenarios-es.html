@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Guillermo: dos maneras en 45 días</title>
+<style>
+  :root{
+    --ink:#1f2317; --soft:#5b5f52; --line:#d8d8cf; --olive:#3f5233; --terra:#b0472f;
+    --honey:#cf9b3f; --band:#f4f4ef; --olive-tint:#eef2e6; --terra-tint:#f6e9e4;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:#fff;color:var(--ink);}
+  body{font-family:-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;font-size:10.5pt;
+       line-height:1.45;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  .wrap{max-width:184mm;margin:0 auto;padding:0;}
+  .pre{display:inline-block;background:var(--terra);color:#fff;font-size:9pt;font-weight:800;
+       letter-spacing:2px;text-transform:uppercase;padding:4pt 11pt;border-radius:20pt;}
+  h1{font-size:25pt;line-height:1.05;color:var(--olive);margin:6pt 0 5pt;letter-spacing:.3px;}
+  .lead{font-size:10.5pt;color:var(--soft);margin:0 0 9pt;}
+  .lead strong{color:var(--ink);}
+
+  .cap{font-size:8.5pt;text-transform:uppercase;letter-spacing:.6px;color:var(--soft);margin:0 0 3pt;}
+  .chart{width:100%;height:88mm;display:block;margin:0 auto;}
+  .chart .grid line{stroke:var(--line);stroke-width:1;}
+  .chart .axis{stroke:#b8b8ac;stroke-width:1;}
+  .chart text{font-family:-apple-system,"Segoe UI",Roboto,Arial,sans-serif;fill:var(--soft);}
+  .chart .yl,.chart .xl{font-size:10px;}
+  .chart .lab{font-size:11px;font-weight:800;}
+  .chart .labv{font-size:10px;}
+
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:10pt;margin-top:10pt;}
+  .card{border:1px solid var(--line);border-radius:8px;padding:8pt 11pt;}
+  .card.a{border-top:5px solid var(--olive);background:#fff;}
+  .card.b{border-top:5px solid var(--terra);background:#fff;}
+  .card h3{margin:2pt 0 6pt;font-size:12pt;}
+  .card.a h3{color:var(--olive);} .card.b h3{color:var(--terra);}
+  .row{display:flex;justify-content:space-between;gap:8pt;padding:2pt 0;border-bottom:1px solid rgba(0,0,0,.06);font-size:9.5pt;}
+  .row:last-child{border-bottom:0;}
+  .row .k{color:var(--soft);} .row .v{font-weight:700;text-align:right;}
+  .big{margin-top:6pt;font-size:9.5pt;}
+  .big .n{font-size:20pt;font-weight:800;}
+  .card.a .big .n{color:var(--olive);} .card.b .big .n{color:var(--terra);}
+
+  .pills{display:flex;gap:8pt;flex-wrap:wrap;margin:2pt 0 9pt;}
+  .pill{display:inline-flex;align-items:baseline;gap:6pt;border:1px solid var(--line);border-radius:22pt;padding:5pt 14pt;}
+  .pill .pk{color:var(--soft);text-transform:uppercase;letter-spacing:.6px;font-size:7.5pt;}
+  .pill .pv{font-weight:800;font-size:12pt;}
+  .pill.goal .pv{color:var(--olive);}
+  .pill.lose{background:var(--terra);border-color:var(--terra);}
+  .pill.lose .pk{color:rgba(255,255,255,.82);}
+  .pill.lose .pv{color:#fff;}
+  .fine{margin-top:12pt;font-size:8.7pt;color:var(--soft);border-top:1px solid var(--line);padding-top:8pt;font-style:italic;}
+  @page{size:A4;margin:14mm 13mm;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="pre">Guillermo · proyección a 45 días</div>
+  <h1>Dos maneras de hacer los próximos 45 días</h1>
+  <div class="pills">
+    <div class="pill now"><span class="pk">Ahora</span><span class="pv">90,5 kg</span></div>
+    <div class="pill goal"><span class="pk">Objetivo</span><span class="pv">75 kg</span></div>
+    <div class="pill lose"><span class="pk">A perder</span><span class="pv">15,5 kg</span></div>
+  </div>
+  <p class="lead">Eres lo que comes, así que las dos maneras empiezan en la cocina: en ambas sigues el
+  plan de comidas, y <strong>solo la comida ya es una palanca fuerte</strong>. La segunda manera es el
+  mismo plan <strong>más movimiento</strong>: caminar, un poco de fuerza, un par de días de 16:8, y la
+  grasa baja más rápido. La diferencia es el movimiento, no comer menos. Las dos conservan el músculo
+  mientras la proteína esté alta, y la semana 1 baja más rápido por el agua.</p>
+
+  <p class="cap">Peso en la báscula a lo largo de 45 días · inicio 90,5 kg · objetivo 75 kg (llega después)</p>
+  <svg class="chart" viewBox="0 0 590 300" role="img" aria-label="Peso previsto a lo largo de 45 días en dos escenarios">
+    <g class="grid">
+      <line x1="44" y1="40.9" x2="470" y2="40.9"/>
+      <line x1="44" y1="98.7" x2="470" y2="98.7"/>
+      <line x1="44" y1="156.4" x2="470" y2="156.4"/>
+      <line x1="44" y1="214.2" x2="470" y2="214.2"/>
+      <line x1="44" y1="272.0" x2="470" y2="272.0"/>
+    </g>
+    <text class="yl" x="38" y="44" text-anchor="end">90</text>
+    <text class="yl" x="38" y="102" text-anchor="end">88</text>
+    <text class="yl" x="38" y="160" text-anchor="end">86</text>
+    <text class="yl" x="38" y="218" text-anchor="end">84</text>
+    <text class="yl" x="38" y="275" text-anchor="end">82</text>
+    <line class="axis" x1="44" y1="272" x2="470" y2="272"/>
+    <text class="xl" x="44" y="288" text-anchor="middle">Día 0</text>
+    <text class="xl" x="110.3" y="288" text-anchor="middle">7</text>
+    <text class="xl" x="186" y="288" text-anchor="middle">15</text>
+    <text class="xl" x="328" y="288" text-anchor="middle">30</text>
+    <text class="xl" x="470" y="288" text-anchor="middle">45</text>
+
+    <polyline points="44,26.4 110.3,75.6 186,101.6 328,139.1 470,170.9" fill="none" stroke="#3f5233" stroke-width="2.6" stroke-linejoin="round"/>
+    <g fill="#3f5233">
+      <circle cx="44" cy="26.4" r="3.3"/><circle cx="110.3" cy="75.6" r="3.3"/><circle cx="186" cy="101.6" r="3.3"/><circle cx="328" cy="139.1" r="3.3"/><circle cx="470" cy="170.9" r="3.3"/>
+    </g>
+    <polyline points="44,26.4 110.3,104.4 186,144.9 328,205.6 470,257.6" fill="none" stroke="#b0472f" stroke-width="2.6" stroke-linejoin="round"/>
+    <g fill="#b0472f">
+      <circle cx="44" cy="26.4" r="3.3"/><circle cx="110.3" cy="104.4" r="3.3"/><circle cx="186" cy="144.9" r="3.3"/><circle cx="328" cy="205.6" r="3.3"/><circle cx="470" cy="257.6" r="3.3"/>
+    </g>
+
+    <text class="labv" x="50" y="20" fill="#5b5f52">90,5 kg</text>
+    <text class="lab" x="476" y="168" fill="#3f5233">Solo comida</text>
+    <text class="labv" x="476" y="181" fill="#3f5233">85,5 kg (-5)</text>
+    <text class="lab" x="476" y="255" fill="#b0472f">Con movimiento</text>
+    <text class="labv" x="476" y="268" fill="#b0472f">82,5 kg (-8)</text>
+  </svg>
+
+  <div class="cards">
+    <div class="card a">
+      <h3>Relajado: solo la comida</h3>
+      <div class="row"><span class="k">Movimiento</span><span class="v">igual que ahora (trabajo)</span></div>
+      <div class="row"><span class="k">Gasto diario</span><span class="v">~2.800 kcal</span></div>
+      <div class="row"><span class="k">Come</span><span class="v">~2.200 a 2.300</span></div>
+      <div class="row"><span class="k">Déficit</span><span class="v">~500 a 600 / día</span></div>
+      <div class="row"><span class="k">Pérdida de grasa</span><span class="v">~0,5 kg / semana</span></div>
+      <p class="big">En 45 días: <span class="n">~5 kg</span></p>
+    </div>
+    <div class="card b">
+      <h3>A tope: comida + movimiento</h3>
+      <div class="row"><span class="k">Movimiento</span><span class="v">+ fuerza 2-3x, caminar a diario, 2-3 días 16:8</span></div>
+      <div class="row"><span class="k">Gasto diario</span><span class="v">~3.100 kcal</span></div>
+      <div class="row"><span class="k">Come</span><span class="v">~2.000</span></div>
+      <div class="row"><span class="k">Déficit</span><span class="v">~1.100 / día (máx. seguro)</span></div>
+      <div class="row"><span class="k">Pérdida de grasa</span><span class="v">~0,9 a 1,0 kg / semana</span></div>
+      <p class="big">En 45 días: <span class="n">~8 kg</span></p>
+    </div>
+  </div>
+
+  <p class="fine">El objetivo de 75 kg (los 15,5 kg completos) es cosa de 4 a 6 meses: estos 45 días son
+  el arranque fuerte. La semana 1 baja más rápido por agua y glucógeno, no todo es grasa, así que fíate
+  de la media semanal. Mantened la proteína en unos 180 a 190 g al día y entrenad 2 a 3 veces por
+  semana, o lo que se pierda de más será músculo en vez de grasa. No comáis por debajo de unas 1.900
+  kcal: por debajo pierdes energía para la obra, no más grasa. Ir más rápido viene de moverse más, no de
+  comer menos.</p>
+
+</div>
+</body>
+</html>

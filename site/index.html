@@ -87,6 +87,12 @@ header.bar{position:sticky; top:0; z-index:70; display:flex; align-items:center;
 .langtoggle .flag{width:1.5rem; height:1.02rem; border-radius:3px; display:block; box-shadow:0 0 0 1px rgba(0,0,0,.12); opacity:.5; filter:grayscale(.45); transition:.15s}
 .langtoggle button.active{background:#fff; box-shadow:var(--shadow-sm)}
 .langtoggle button.active .flag{opacity:1; filter:none}
+.langflag{border:1px solid var(--line-2); background:var(--paper); border-radius:999px; padding:.32rem .55rem; cursor:pointer; line-height:0; display:inline-flex; align-items:center}
+.langflag:hover{background:var(--paper-2)}
+.langflag .flag{width:1.6rem; height:1.08rem; border-radius:3px; display:block; box-shadow:0 0 0 1px rgba(0,0,0,.12)}
+.langflag .flag-en{display:none}
+html[data-lang="en"] .langflag .flag-en{display:block}
+html[data-lang="en"] .langflag .flag-es{display:none}
 .dl-head{display:inline-flex; align-items:center; gap:.3rem; background:var(--olive); color:#fff; text-decoration:none; font-weight:800; font-size:.82rem; padding:.42rem .85rem; border-radius:999px; margin-right:.5rem; white-space:nowrap}
 .dl-head:hover{background:var(--olive-deep)}
 .dl-wrap{position:relative; display:inline-flex}
@@ -810,6 +816,12 @@ table.swaps tr:last-child td{border-bottom:none}
   #worksheets #ws-mindset .ws-truth,
   #worksheets #ws-mindset .ws-audio,
   #worksheets .ws-qrow{break-inside:avoid}
+  /* low-ink print: drop big colour fills to white, keep thin borders + small accents */
+  #worksheets .contract,#worksheets .callout,#worksheets .habits,#worksheets .widget,
+  #worksheets .minicard,#worksheets .quotes-list li,#worksheets .ws-block,
+  #worksheets .ws-truth,#worksheets .ws-audio,#worksheets .ws-wtable th,#worksheets .wtable th,
+  #worksheets .day,#worksheets .badge,#worksheets .cio,#worksheets .cio-nums .stat,
+  #worksheets .result .stat,#worksheets .rm-portion,#worksheets .rm-tweaks,#worksheets .rm-shop{background:#fff!important}
   html, body.ws-print, body.ws-print-all{margin:0!important; padding:0!important}
   /* Pin the print canvas to a true A4 width. Without this, phones lay the sheets
      out at the narrow device viewport, the text wraps far more, and the booklet
@@ -824,6 +836,7 @@ table.swaps tr:last-child td{border-bottom:none}
 </style>
 </head>
 <body>
+<script>try{history.scrollRestoration='manual';}catch(e){}</script>
 <div id="progress"></div>
 <div id="hills" aria-hidden="true"></div>
 
@@ -834,33 +847,22 @@ table.swaps tr:last-child td{border-bottom:none}
     <span><span data-i18n="brandtitle">Built to Last</span><small data-i18n="brandsub">A guide for Guillermo &amp; Pilar</small></span>
   </a>
   <span class="spacer"></span>
-  <div class="dl-wrap">
-    <button class="dl-head" onclick="toggleAudioPop(event)" aria-haspopup="true" aria-label="Audiolibro">🎧 <span class="dl-head-t" data-i18n="dlaudio">Audiobook</span></button>
-    <div id="audioPop" hidden>
-      <p data-i18n="audiopop">Scan to open the player, or download all the audio:</p>
-      <img src="assets/img/qr-audiolibro.png" alt="QR" width="150" height="150">
-      <a class="btn primary" href="assets/audio/audiolibro-es.zip" download="Guillermo-y-Pilar-Audiolibro.zip" data-i18n="dlall">⬇️ Download all (ZIP)</a>
-    </div>
-  </div>
+  <a class="dl-head" href="player.html" target="_blank" rel="noopener" aria-label="Reproductor">🎧 <span class="dl-head-t"><span class="lang-en">Web player</span><span class="lang-es">Reproductor</span></span></a>
   <a class="dl-head pdf" href="#printables" aria-label="PDF"><span aria-hidden="true">📄</span> <span class="dl-head-t" data-i18n="dlpdf">Worksheets</span></a>
-  <div class="langtoggle" role="group" aria-label="Language">
-    <button id="btn-en" class="active" onclick="setLang('en')" aria-label="English" title="English">
-      <svg class="flag" viewBox="0 0 60 30" aria-hidden="true">
-        <clipPath id="ukt"><path d="M0 0v30h60V0z"/></clipPath>
-        <clipPath id="uks"><path d="M30 15h30v15zV15H0v15zM0 0h30V0H0zM60 0v15H30z"/></clipPath>
-        <g clip-path="url(#ukt)">
-          <path d="M0 0v30h60V0z" fill="#012169"/>
-          <path d="M0 0l60 30m0-30L0 30" stroke="#fff" stroke-width="6"/>
-          <path d="M0 0l60 30m0-30L0 30" clip-path="url(#uks)" stroke="#C8102E" stroke-width="4"/>
-          <path d="M30 0v30M0 15h60" stroke="#fff" stroke-width="10"/>
-          <path d="M30 0v30M0 15h60" stroke="#C8102E" stroke-width="6"/>
-        </g>
-      </svg>
-    </button>
-    <button id="btn-es" onclick="setLang('es')" aria-label="Español" title="Español">
-      <svg class="flag" viewBox="0 0 3 2" aria-hidden="true"><rect width="3" height="2" fill="#AA151B"/><rect y="0.5" width="3" height="1" fill="#F1BF00"/></svg>
-    </button>
-  </div>
+  <button class="langflag" onclick="toggleLang()" aria-label="Cambiar idioma / Switch language" title="ES / EN">
+    <svg class="flag flag-es" viewBox="0 0 3 2" aria-hidden="true"><rect width="3" height="2" fill="#AA151B"/><rect y="0.5" width="3" height="1" fill="#F1BF00"/></svg>
+    <svg class="flag flag-en" viewBox="0 0 60 30" aria-hidden="true">
+      <clipPath id="ukt"><path d="M0 0v30h60V0z"/></clipPath>
+      <clipPath id="uks"><path d="M30 15h30v15zV15H0v15zM0 0h30V0H0zM60 0v15H30z"/></clipPath>
+      <g clip-path="url(#ukt)">
+        <path d="M0 0v30h60V0z" fill="#012169"/>
+        <path d="M0 0l60 30m0-30L0 30" stroke="#fff" stroke-width="6"/>
+        <path d="M0 0l60 30m0-30L0 30" clip-path="url(#uks)" stroke="#C8102E" stroke-width="4"/>
+        <path d="M30 0v30M0 15h60" stroke="#fff" stroke-width="10"/>
+        <path d="M30 0v30M0 15h60" stroke="#C8102E" stroke-width="6"/>
+      </g>
+    </svg>
+  </button>
 </header>
 
 <div id="overlay" onclick="if(event.target.id==='overlay')toggleOverlay()">
@@ -1999,7 +2001,7 @@ table.swaps tr:last-child td{border-bottom:none}
     <div class="no-audio vidgrid">
       <div class="vidcard">
         <button class="vid" data-id="Amjs2fAovA4" onclick="loadVid(this)" aria-label="Play: the only 5 exercises you need after 50">
-          <img src="assets/img/move/yt/v1.webp" alt="Thumbnail: the only 5 exercises you need after 50" loading="lazy">
+          <img src="https://i.ytimg.com/vi/Amjs2fAovA4/hqdefault.jpg" alt="Thumbnail: the only 5 exercises you need after 50" loading="lazy">
           <span class="vid-play"></span>
         </button>
         <div class="vid-meta">
@@ -2012,7 +2014,7 @@ table.swaps tr:last-child td{border-bottom:none}
       </div>
       <div class="vidcard">
         <button class="vid" data-id="saWgYsdv1kU" onclick="loadVid(this)" aria-label="Play: 50 and stronger than ever, building muscle after 50">
-          <img src="assets/img/move/yt/v2.webp" alt="Thumbnail: 50 and stronger than ever" loading="lazy">
+          <img src="https://i.ytimg.com/vi/saWgYsdv1kU/hqdefault.jpg" alt="Thumbnail: 50 and stronger than ever" loading="lazy">
           <span class="vid-play"></span>
         </button>
         <div class="vid-meta">
@@ -2030,7 +2032,7 @@ table.swaps tr:last-child td{border-bottom:none}
     <div class="no-audio vidgrid">
       <div class="vidcard">
         <button class="vid" data-id="y9-_6xBgJbE" onclick="loadVid(this)" aria-label="Play: beginner home routine, 20 minutes">
-          <img src="assets/img/move/yt/v3.webp" alt="Thumbnail: beginner home routine, 20 minutes" loading="lazy">
+          <img src="https://i.ytimg.com/vi/y9-_6xBgJbE/hqdefault.jpg" alt="Thumbnail: beginner home routine, 20 minutes" loading="lazy">
           <span class="vid-play"></span>
         </button>
         <div class="vid-meta">
@@ -2043,7 +2045,7 @@ table.swaps tr:last-child td{border-bottom:none}
       </div>
       <div class="vidcard">
         <button class="vid" data-id="OQbheFBLKK8" onclick="loadVid(this)" aria-label="Play: full-body home routine for beginners, 25 minutes">
-          <img src="assets/img/move/yt/v4.webp" alt="Thumbnail: full-body home routine for beginners, 25 minutes" loading="lazy">
+          <img src="https://i.ytimg.com/vi/OQbheFBLKK8/hqdefault.jpg" alt="Thumbnail: full-body home routine for beginners, 25 minutes" loading="lazy">
           <span class="vid-play"></span>
         </button>
         <div class="vid-meta">
@@ -2087,7 +2089,7 @@ table.swaps tr:last-child td{border-bottom:none}
     <div class="no-audio vidgrid">
       <div class="vidcard">
         <button class="vid" data-id="Amjs2fAovA4" onclick="loadVid(this)" aria-label="Reproducir: los 5 ejercicios que necesitas después de los 50">
-          <img src="assets/img/move/yt/v1.webp" alt="Miniatura: los 5 ejercicios que necesitas después de los 50" loading="lazy">
+          <img src="https://i.ytimg.com/vi/Amjs2fAovA4/hqdefault.jpg" alt="Miniatura: los 5 ejercicios que necesitas después de los 50" loading="lazy">
           <span class="vid-play"></span>
         </button>
         <div class="vid-meta">
@@ -2100,7 +2102,7 @@ table.swaps tr:last-child td{border-bottom:none}
       </div>
       <div class="vidcard">
         <button class="vid" data-id="saWgYsdv1kU" onclick="loadVid(this)" aria-label="Reproducir: 50 y más fuerte que nunca, ganar músculo a partir de los 50">
-          <img src="assets/img/move/yt/v2.webp" alt="Miniatura: 50 y más fuerte que nunca" loading="lazy">
+          <img src="https://i.ytimg.com/vi/saWgYsdv1kU/hqdefault.jpg" alt="Miniatura: 50 y más fuerte que nunca" loading="lazy">
           <span class="vid-play"></span>
         </button>
         <div class="vid-meta">
@@ -2118,7 +2120,7 @@ table.swaps tr:last-child td{border-bottom:none}
     <div class="no-audio vidgrid">
       <div class="vidcard">
         <button class="vid" data-id="y9-_6xBgJbE" onclick="loadVid(this)" aria-label="Reproducir: rutina para principiantes en casa, 20 minutos">
-          <img src="assets/img/move/yt/v3.webp" alt="Miniatura: rutina para principiantes en casa, 20 minutos" loading="lazy">
+          <img src="https://i.ytimg.com/vi/y9-_6xBgJbE/hqdefault.jpg" alt="Miniatura: rutina para principiantes en casa, 20 minutos" loading="lazy">
           <span class="vid-play"></span>
         </button>
         <div class="vid-meta">
@@ -2131,7 +2133,7 @@ table.swaps tr:last-child td{border-bottom:none}
       </div>
       <div class="vidcard">
         <button class="vid" data-id="OQbheFBLKK8" onclick="loadVid(this)" aria-label="Reproducir: rutina de cuerpo completo para principiantes, 25 minutos">
-          <img src="assets/img/move/yt/v4.webp" alt="Miniatura: rutina de cuerpo completo para principiantes, 25 minutos" loading="lazy">
+          <img src="https://i.ytimg.com/vi/OQbheFBLKK8/hqdefault.jpg" alt="Miniatura: rutina de cuerpo completo para principiantes, 25 minutos" loading="lazy">
           <span class="vid-play"></span>
         </button>
         <div class="vid-meta">
@@ -2415,11 +2417,644 @@ table.swaps tr:last-child td{border-bottom:none}
 
     <div class="lang-en">
     <p class="nugget">"Anyone can be good for three days. The art is keeping the good grade."</p>
-    <div class="nextprev"><a class="btn ghost" href="#motivation">Back</a><a class="btn primary" href="#contract">Next: Your contract</a></div>
+    <div class="nextprev"><a class="btn ghost" href="#motivation">Back</a><a class="btn primary" href="#mealplan">Next: The meal plan</a></div>
     </div>
     <div class="lang-es">
     <p class="nugget">«Cualquiera puede ser bueno tres días. El arte está en mantener la buena nota.»</p>
-    <div class="nextprev"><a class="btn ghost" href="#motivation">Atrás</a><a class="btn primary" href="#contract">Siguiente: Vuestro contrato</a></div>
+    <div class="nextprev"><a class="btn ghost" href="#motivation">Atrás</a><a class="btn primary" href="#mealplan">Siguiente: El plan de comidas</a></div>
+    </div>
+  </section>
+
+  <!-- 45-DAY MEAL PLAN -->
+  <style>
+    #mealplan .mp-dl{margin:.2rem 0 1rem}
+    #mealplan h3{margin-top:1.6rem}
+    #mealplan .mp-band{background:#fff;border:1px solid var(--line);border-left:4px solid var(--olive);
+      border-radius:12px;padding:.75rem 1rem;margin:.8rem 0}
+    #mealplan .mp-move{margin:.3rem 0 0;padding-left:1.1rem}
+    #mealplan .mp-move li{margin:.25rem 0}
+    #mealplan .mp-rules{list-style:none;padding:0;margin:.6rem 0;counter-reset:mpr}
+    #mealplan .mp-rules>li{position:relative;padding:.55rem 0 .55rem 2.3rem;border-bottom:1px solid var(--line)}
+    #mealplan .mp-rules>li:last-child{border-bottom:0}
+    #mealplan .mp-rules>li::before{counter-increment:mpr;content:counter(mpr);position:absolute;left:0;top:.5rem;
+      width:1.55rem;height:1.55rem;line-height:1.55rem;text-align:center;border-radius:50%;
+      background:var(--olive);color:#fff;font-size:.8rem;font-weight:800}
+    #mealplan .mp-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:.85rem 1.05rem;
+      margin:.7rem 0;box-shadow:var(--shadow-sm)}
+    #mealplan .mp-card h4{margin:0;font-family:var(--body);font-size:1.02rem;color:var(--olive-deep)}
+    #mealplan .mp-card h4 .mp-tag{color:var(--leaf);font-weight:900;margin-right:.15rem}
+    #mealplan .mp-desc{display:block;font-size:.85rem;font-style:italic;color:var(--ink-faint);margin:.1rem 0 .1rem}
+    #mealplan .mp-table{width:100%;border-collapse:collapse;font-size:.9rem;margin-top:.35rem}
+    #mealplan .mp-table th,#mealplan .mp-table td{text-align:left;padding:.3rem .5rem;border-bottom:1px solid var(--line)}
+    #mealplan .mp-table thead th{font-size:.7rem;text-transform:uppercase;letter-spacing:.5px;color:var(--ink-faint);background:transparent}
+    #mealplan .mp-table td.n,#mealplan .mp-table th.n{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+    #mealplan .mp-table tr.mp-total td{border-top:2px solid var(--olive);border-bottom:0;font-weight:800;
+      color:var(--olive-deep);background:var(--paper-2)}
+    #mealplan .mp-table tr.wk td{background:var(--olive);color:#fff;font-weight:800;letter-spacing:.4px}
+    #mealplan .mp-grid{display:grid;grid-template-columns:1fr 1fr;gap:.4rem 1.6rem}
+    #mealplan .mp-grid h4{margin:.6rem 0 .2rem;font-family:var(--body);font-size:.95rem;color:var(--olive-deep)}
+    #mealplan .mp-grid ul{margin:.1rem 0 .4rem;padding-left:1.1rem}
+    #mealplan .mp-grid li{margin:.12rem 0;font-size:.92rem}
+    @media(max-width:640px){#mealplan .mp-grid{grid-template-columns:1fr}}
+  </style>
+  <section class="card" id="mealplan">
+    <div class="lang-en">
+    <div class="eyebrow">What to actually eat</div>
+    <h2>The 45-Day Meal Plan 🍽️</h2>
+    <p class="lead">A simple, high-protein menu you rotate for 45 days, so the fat comes off while your
+      muscle stays. Not 45 different menus: a short list you pick from each day, in two portion sizes
+      (a bigger plate for Guillermo, a smaller one for Pilar).</p>
+    <p class="mp-dl"><a class="btn primary" href="assets/worksheets/meal-plan-en.pdf" target="_blank" rel="noopener">⬇️ Download the full plan (PDF)</a></p>
+    <p>Read this through slowly and do not skip a part: it is short on purpose, and it all fits together,
+      so read it once from start to finish to understand it all. I have kept it as simple as I possibly
+      can, and you still get three versions of every meal, so the day you are fed up with one, you just
+      switch to another.</p>
+
+    <h3>Two ways to run this</h3>
+    <p><strong>Path 1, the strict 45-day plan (the challenge):</strong> follow it tightly, hit your
+      target most days, keep protein high, one free meal every 2 weeks. This is where the real change happens.</p>
+    <p><strong>Path 2, the relaxed way:</strong> the same menu, just looser. Aim for the target most
+      days, a few more free meals, do not stress a slip. Slower, but easy to live with, and perfect for
+      after the 45 days.</p>
+    <div class="mp-band"><strong>A strict plan is NOT a boring one.</strong> You still get a small menu:
+      <strong>3 breakfasts, 3 lunches, 3 dinners.</strong> Each day you pick one from each, in any
+      order, and swap if you do not fancy one. The structure is fixed, the choice is yours.</div>
+
+    <h3>The plan is only half of it: move</h3>
+    <p>Eating gets the weight off. What you do with your body decides what kind of weight comes off.
+      The strongest, best-proven result comes from three things together:</p>
+    <ol class="mp-move">
+      <li><strong>This plan</strong> (the calorie deficit, protein high) drives the fat loss.</li>
+      <li><strong>A little strength training</strong> (push-ups, a kettlebell, simple bodyweight work
+        2 to 3 times a week) keeps and even builds muscle, so you end up leaner and stronger, not just
+        lighter. See the <a href="#move">Move your body</a> chapter for the starting routine.</li>
+      <li><strong>Regular walks</strong> add burn with almost no downside, and help your head as much
+        as your waist.</li>
+    </ol>
+
+    <h3>The rules that make it work</h3>
+    <ol class="mp-rules">
+      <li><strong>Protein leads the plate.</strong> In a deficit your body can burn fat or muscle.
+        Protein tells it to burn fat and keep the muscle, so you get leaner and stronger, not just
+        lighter. Daily target: <strong>Guillermo about 160 g, Pilar about 110 g.</strong> That is why
+        chicken, fish, eggs and egg whites take the big part of the plate, and rice or pasta the small side.</li>
+      <li><strong>Your calories a day.</strong> Aim inside your band. The strict plan aims at the low
+        end, the relaxed way sits high.
+        <table class="mp-table" style="margin-top:.5rem">
+          <thead><tr><th>Person</th><th>Daily band</th><th>Strict aims at</th><th>Never below</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Guillermo</strong></td><td>2,200 to 2,400 kcal</td><td>~2,200 kcal</td><td>1,600 kcal</td></tr>
+            <tr><td><strong>Pilar</strong></td><td>1,300 to 1,500 kcal</td><td>~1,300 kcal</td><td>1,200 kcal</td></tr>
+          </tbody>
+        </table>
+        <span class="hint">Do not cut harder than about 500 kcal below your normal burn: past that the
+        body burns muscle and your energy tanks. Moderate cut plus protein plus a little training beats starving.</span></li>
+      <li><strong>Two portion sizes, one kitchen.</strong> Same dishes for both. Guillermo just gets a
+        bigger plate (a man on the site burns close to 900 kcal a day more). Cook once, serve two sizes.</li>
+      <li><strong>Eat to "not hungry", not "stuffed".</strong> Your gut signals fullness through
+        hormones (CCK, PYY) and it arrives late, about 15 to 20 minutes in. The fix is proven:
+        <strong>a glass of water before the meal, eat slowly, then wait.</strong></li>
+      <li><strong>Vegetables are free, and required</strong> at lunch and dinner. Big volume, almost no
+        calories. You never weigh the vegetables.</li>
+      <li><strong>Water 2 to 3 litres a day. Weigh 3 times a week</strong> and trust only the weekly average.</li>
+      <li><strong>One free meal every 2 weeks.</strong> Enjoy it fully, then straight back to plan. No "making up for it".</li>
+      <li><strong>Guillermo, the weekend is the trap.</strong> Off the scaffolding you burn far less,
+        so keep the base plan and skip the workday extras.</li>
+    </ol>
+    <p class="hint">Optional, nice to have: a daily omega-3, vitamin D in winter, 5 g creatine if you
+      train, magnesium at night. The plan works without any of them.</p>
+
+    <h3>Breakfast: pick 1</h3>
+    <p class="hint">Two of these live in jars in the fridge, so a work morning is just "open, grab, go".
+      Prep 4 to 5 at once on Sunday.</p>
+    <div class="mp-card">
+      <h4><span class="mp-tag">B1</span> Overnight oats and yogurt jar</h4>
+      <span class="mp-desc">Sweet, no cooking, keeps about 4 days. Add fresh berries and nuts in the morning.</span>
+      <table class="mp-table">
+        <thead><tr><th>Ingredient</th><th class="n">Pilar</th><th class="n">Guillermo</th></tr></thead>
+        <tbody>
+          <tr><td>Oats</td><td class="n">45 g</td><td class="n">70 g</td></tr>
+          <tr><td>High-protein yogurt</td><td class="n">175 g</td><td class="n">250 g</td></tr>
+          <tr><td>Blueberries</td><td class="n">80 g</td><td class="n">100 g</td></tr>
+          <tr><td>Walnuts</td><td class="n">12 g</td><td class="n">20 g</td></tr>
+          <tr class="mp-total"><td>Per serving</td><td class="n">~400 kcal · 26 g P</td><td class="n">~600 kcal · 37 g P</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="mp-card">
+      <h4><span class="mp-tag">B2</span> Egg-white omelette jar</h4>
+      <span class="mp-desc">Pure egg whites, no yolk: the lean savory one. Keeps about 5 days, toppings separate. Guillermo eats it cold or warms it 40 seconds. Want it more filling? Add a slice of wholegrain toast.</span>
+      <table class="mp-table">
+        <thead><tr><th>Ingredient</th><th class="n">Pilar</th><th class="n">Guillermo</th></tr></thead>
+        <tbody>
+          <tr><td>Egg whites (claras)</td><td class="n">200 g</td><td class="n">300 g</td></tr>
+          <tr><td>Ham cubes (serrano or turkey)</td><td class="n">30 g</td><td class="n">40 g</td></tr>
+          <tr><td>Spinach + onion</td><td class="n">free</td><td class="n">free</td></tr>
+          <tr><td>Olive oil</td><td class="n">5 g</td><td class="n">8 g</td></tr>
+          <tr><td>Cooked rice</td><td class="n">none</td><td class="n">80 g</td></tr>
+          <tr class="mp-total"><td>Per serving</td><td class="n">~230 kcal · 31 g P</td><td class="n">~450 kcal · 47 g P</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="mp-card">
+      <h4><span class="mp-tag">B3</span> Sweet potato and chicken hash</h4>
+      <span class="mp-desc">Warm and savory, a different protein from the egg breakfasts. Batch the chicken on Sunday. Prefer egg? Swap the chicken for 100 to 150 g egg whites (the sweet-potato-and-egg version).</span>
+      <table class="mp-table">
+        <thead><tr><th>Ingredient</th><th class="n">Pilar</th><th class="n">Guillermo</th></tr></thead>
+        <tbody>
+          <tr><td>Cooked chicken (or turkey)</td><td class="n">100 g</td><td class="n">160 g</td></tr>
+          <tr><td>Sweet potato</td><td class="n">120 g</td><td class="n">180 g</td></tr>
+          <tr><td>Spinach</td><td class="n">free</td><td class="n">free</td></tr>
+          <tr><td>Olive oil</td><td class="n">3 g</td><td class="n">5 g</td></tr>
+          <tr class="mp-total"><td>Per serving</td><td class="n">~300 kcal · 32 g P</td><td class="n">~460 kcal · 50 g P</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Lunch: pick 1 (the anchor meal)</h3>
+    <p class="hint">Always the same build: a big piece of protein, a mountain of vegetables, a small
+      portion of smart carbs. Protein takes the biggest part of the plate.</p>
+    <div class="mp-card">
+      <h4><span class="mp-tag">L1</span> Oven chicken + sweet potato + veg</h4>
+      <span class="mp-desc">The batch hero. Roast a big tray, it covers 2 to 3 days of lunches.</span>
+      <table class="mp-table">
+        <thead><tr><th>Ingredient</th><th class="n">Pilar</th><th class="n">Guillermo</th></tr></thead>
+        <tbody>
+          <tr><td>Chicken (breast or thigh)</td><td class="n">150 g</td><td class="n">220 g</td></tr>
+          <tr><td>Sweet potato</td><td class="n">130 g</td><td class="n">180 g</td></tr>
+          <tr><td>Vegetables</td><td class="n">free</td><td class="n">free</td></tr>
+          <tr><td>Olive oil</td><td class="n">6 g</td><td class="n">10 g</td></tr>
+          <tr class="mp-total"><td>Per serving</td><td class="n">~470 kcal · 46 g P</td><td class="n">~640 kcal · 68 g P</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="mp-card">
+      <h4><span class="mp-tag">L2</span> Euskal Okela lean beef</h4>
+      <span class="mp-desc">1 to 2 times a week only. Look for the Eusko Label at the butcher: grass-fed, zero-km Basque beef.</span>
+      <table class="mp-table">
+        <thead><tr><th>Ingredient</th><th class="n">Pilar</th><th class="n">Guillermo</th></tr></thead>
+        <tbody>
+          <tr><td>Lean beef (steak or mince)</td><td class="n">110 g</td><td class="n">180 g</td></tr>
+          <tr><td>Grilled vegetables</td><td class="n">free</td><td class="n">free</td></tr>
+          <tr><td>Potato</td><td class="n">80 g</td><td class="n">120 g</td></tr>
+          <tr><td>Olive oil</td><td class="n">5 g</td><td class="n">8 g</td></tr>
+          <tr class="mp-total"><td>Per serving</td><td class="n">~380 kcal · 34 g P</td><td class="n">~600 kcal · 52 g P</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="mp-card">
+      <h4><span class="mp-tag">L3</span> Basque or Mediterranean classic, lightened</h4>
+      <span class="mp-desc">So it never feels like a diet. Pick any one, cooked lighter (measured oil, more vegetables).</span>
+      <ul style="margin:.2rem 0 .3rem;padding-left:1.1rem;font-size:.92rem">
+        <li>Grilled hake or cod + big salad + half a cup of white beans</li>
+        <li>Marmitako (tuna and potato stew), lighter on the oil, heavier on the vegetables</li>
+        <li>Garbanzos con espinacas with a piece of cod on top</li>
+        <li>Lentejas with an egg or a little fish for extra protein</li>
+      </ul>
+      <span class="mp-desc" style="font-style:normal">Portion so protein leads: Pilar about 450 kcal, Guillermo about 600 kcal, protein 30 to 40 g.</span>
+    </div>
+    <div class="mp-band"><strong>Work-box tip (for the site):</strong> any lunch can go cold in a box.
+      Easiest is a big protein salad: tuna or leftover chicken + 2 boiled eggs + a handful of chickpeas
+      over a big salad with a spoon of oil and vinegar. Pilar ~360 kcal / 34 g P, Guillermo ~620 kcal / 58 g P.</div>
+
+    <h3>Dinner: pick 1 (keep it light)</h3>
+    <p class="hint">Lighter, especially on a low-movement evening: protein plus vegetables, little or no
+      starch, finished about 3 hours before bed.</p>
+    <div class="mp-card">
+      <h4><span class="mp-tag">D1</span> Euskal Okela burger + veg</h4>
+      <span class="mp-desc">The one Guillermo wanted. A lean grass-fed patty, no bun, a big pile of veg, a small spoon of rice if you want.</span>
+      <table class="mp-table">
+        <thead><tr><th>Ingredient</th><th class="n">Pilar</th><th class="n">Guillermo</th></tr></thead>
+        <tbody>
+          <tr><td>Lean beef patty</td><td class="n">90 g</td><td class="n">150 g</td></tr>
+          <tr><td>Vegetables</td><td class="n">free</td><td class="n">free</td></tr>
+          <tr><td>Cooked rice (optional)</td><td class="n">40 g</td><td class="n">60 g</td></tr>
+          <tr><td>Olive oil</td><td class="n">3 g</td><td class="n">5 g</td></tr>
+          <tr class="mp-total"><td>Per serving</td><td class="n">~300 kcal · 22 g P</td><td class="n">~470 kcal · 35 g P</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="mp-card">
+      <h4><span class="mp-tag">D2</span> Tortilla ligera</h4>
+      <span class="mp-desc">Light omelette, 5 minutes. Mostly egg whites plus one whole egg.</span>
+      <table class="mp-table">
+        <thead><tr><th>Ingredient</th><th class="n">Pilar</th><th class="n">Guillermo</th></tr></thead>
+        <tbody>
+          <tr><td>Whole egg</td><td class="n">1</td><td class="n">2</td></tr>
+          <tr><td>Egg whites (claras)</td><td class="n">120 g</td><td class="n">150 g</td></tr>
+          <tr><td>Ham cubes</td><td class="n">30 g</td><td class="n">40 g</td></tr>
+          <tr><td>Vegetables</td><td class="n">free</td><td class="n">free</td></tr>
+          <tr><td>Olive oil</td><td class="n">5 g</td><td class="n">8 g</td></tr>
+          <tr class="mp-total"><td>Per serving</td><td class="n">~280 kcal · 28 g P</td><td class="n">~430 kcal · 40 g P</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="mp-card">
+      <h4><span class="mp-tag">D3</span> White fish or salmon + sautéed greens</h4>
+      <span class="mp-desc">Seared with garlic and lemon, spinach or chard alongside. Light, fast, high protein.</span>
+      <table class="mp-table">
+        <thead><tr><th>Ingredient</th><th class="n">Pilar</th><th class="n">Guillermo</th></tr></thead>
+        <tbody>
+          <tr><td>White fish or salmon</td><td class="n">150 g</td><td class="n">220 g</td></tr>
+          <tr><td>Greens</td><td class="n">free</td><td class="n">free</td></tr>
+          <tr><td>Potato (optional, Guillermo)</td><td class="n">none</td><td class="n">100 g</td></tr>
+          <tr><td>Olive oil</td><td class="n">5 g</td><td class="n">8 g</td></tr>
+          <tr class="mp-total"><td>Per serving</td><td class="n">~230 kcal · 28 g P</td><td class="n">~420 kcal · 42 g P</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Snack and swaps</h3>
+    <p><strong>Snack (optional, mostly Guillermo on a hard day):</strong> protein yogurt + berries +
+      nuts (~180 to 260 kcal); or kefir + blueberries + oats (~200 kcal, energy before the site); or
+      cottage cheese + fruit (~200 kcal). Pilar usually skips it, or has it in place of dinner if she trained late.</p>
+    <p><strong>Do not like something? Swap it, do not skip the meal:</strong></p>
+    <ul style="padding-left:1.1rem">
+      <li><strong>Protein:</strong> chicken = turkey = rabbit = white fish = lean pork = lean beef = eggs = egg whites = blue fish (sardines, mackerel, a little higher in fat).</li>
+      <li><strong>Carbs:</strong> sweet potato = potato = rice = quinoa = legumes. Prefer sweet potato and legumes most days.</li>
+      <li><strong>Vegetables:</strong> free, and NOT only green. Broccoli, cauliflower, peppers, courgette, green beans, mushrooms, whatever you fancy. Cook them any way you like (oven, pan, boiled, puree).</li>
+      <li><strong>Fats:</strong> olive oil = a few nuts = a little avocado = olives. Always measured (a spoon of oil is about 120 kcal).</li>
+      <li>Weigh rice and pasta <strong>cooked</strong>, everything else <strong>raw</strong>. Never weigh vegetables.</li>
+    </ul>
+
+    <h3>Three example weeks (so you see it in action)</h3>
+    <p class="hint">Just one way to rotate the menu. Each breakfast, lunch and dinner shows up a few
+      times, beef only once or twice a week, fish often. Guillermo adds a snack on work days (Mon to
+      Fri); on the weekend he keeps the base plan. Swap any cell for another option you fancy.</p>
+    <table class="mp-table">
+      <thead><tr><th>Day</th><th>Breakfast</th><th>Lunch</th><th>Dinner</th></tr></thead>
+      <tbody>
+        <tr class="wk"><td colspan="4">Week 1</td></tr>
+        <tr><td><strong>Mon</strong></td><td>B1 oats</td><td>L1 oven chicken</td><td>D3 fish + greens</td></tr>
+        <tr><td><strong>Tue</strong></td><td>B2 egg-white</td><td>L3 lentejas + cod</td><td>D1 burger</td></tr>
+        <tr><td><strong>Wed</strong></td><td>B3 chicken hash</td><td>L1 leftovers</td><td>D2 tortilla</td></tr>
+        <tr><td><strong>Thu</strong></td><td>B1 oats</td><td>L2 Euskal Okela beef</td><td>D3 fish + greens</td></tr>
+        <tr><td><strong>Fri</strong></td><td>B2 egg-white</td><td>L1 oven chicken</td><td>D1 burger</td></tr>
+        <tr><td><strong>Sat</strong></td><td>B3 chicken hash</td><td>L3 marmitako</td><td>D2 tortilla</td></tr>
+        <tr><td><strong>Sun</strong></td><td>B1 oats</td><td>L2 beef (or free meal)</td><td>D3 fish</td></tr>
+        <tr class="wk"><td colspan="4">Week 2</td></tr>
+        <tr><td><strong>Mon</strong></td><td>B2 egg-white</td><td>L1 oven chicken</td><td>D1 burger</td></tr>
+        <tr><td><strong>Tue</strong></td><td>B1 oats</td><td>L3 garbanzos + cod</td><td>D3 fish + greens</td></tr>
+        <tr><td><strong>Wed</strong></td><td>B3 chicken hash</td><td>L1 leftovers</td><td>D2 tortilla</td></tr>
+        <tr><td><strong>Thu</strong></td><td>B2 egg-white</td><td>L2 Euskal Okela beef</td><td>D3 fish + greens</td></tr>
+        <tr><td><strong>Fri</strong></td><td>B1 oats</td><td>L1 oven chicken</td><td>D1 burger</td></tr>
+        <tr><td><strong>Sat</strong></td><td>B3 chicken hash</td><td>L3 hake + beans</td><td>D2 tortilla</td></tr>
+        <tr><td><strong>Sun</strong></td><td>B2 egg-white</td><td>L2 beef (or free meal)</td><td>D3 fish</td></tr>
+        <tr class="wk"><td colspan="4">Week 3</td></tr>
+        <tr><td><strong>Mon</strong></td><td>B1 oats</td><td>L1 oven chicken</td><td>D2 tortilla</td></tr>
+        <tr><td><strong>Tue</strong></td><td>B3 chicken hash</td><td>L3 lentejas</td><td>D1 burger</td></tr>
+        <tr><td><strong>Wed</strong></td><td>B2 egg-white</td><td>L1 leftovers</td><td>D3 fish + greens</td></tr>
+        <tr><td><strong>Thu</strong></td><td>B1 oats</td><td>L2 Euskal Okela beef</td><td>D1 burger</td></tr>
+        <tr><td><strong>Fri</strong></td><td>B3 chicken hash</td><td>L1 oven chicken</td><td>D2 tortilla</td></tr>
+        <tr><td><strong>Sat</strong></td><td>B2 egg-white</td><td>L3 marmitako</td><td>D3 fish + greens</td></tr>
+        <tr><td><strong>Sun</strong></td><td>B1 oats</td><td>L2 beef (or free meal)</td><td>D3 fish</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Weekly shopping list (2 people, small portions)</h3>
+    <div class="mp-grid">
+      <div>
+        <h4>Protein (the main spend)</h4>
+        <ul>
+          <li>Eggs: 1 dozen, plus 3 cartons of egg whites (claras)</li>
+          <li>Chicken: 1.5 to 2 kg (breakfast + lunch)</li>
+          <li>Euskal Okela lean beef (1 to 2 meals): 600 to 800 g</li>
+          <li>White fish or salmon: 800 g to 1 kg</li>
+          <li>Tuna in water: 3 to 4 tins</li>
+          <li>Ham cubes (serrano or turkey): 200 g</li>
+          <li>High-protein yogurt: 1.5 kg; kefir or cottage cheese if you like</li>
+        </ul>
+        <h4>Smart carbs (small amounts)</h4>
+        <ul>
+          <li>Sweet potato: 1.5 to 2 kg; potato: 1 kg</li>
+          <li>Oats: 500 g; rice: 500 g or a small bag of quinoa</li>
+          <li>Legumes: 2 tins or bags (chickpeas, lentils)</li>
+          <li>Wholegrain bread: 1 small loaf (Guillermo, work days)</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Fruit and fats</h4>
+        <ul>
+          <li>Blueberries or other berries: 500 g (frozen is fine)</li>
+          <li>Walnuts or almonds: 200 g</li>
+          <li>Extra virgin olive oil, a couple of avocados</li>
+        </ul>
+        <h4>Vegetables (free, buy plenty)</h4>
+        <ul>
+          <li>Spinach, peppers, courgette, onion, tomato, salad, cucumber, green beans, cauliflower, garlic, lemon. Whatever is fresh and cheap that week.</li>
+        </ul>
+        <p class="hint" style="margin-top:.3rem">Optional: creatine, omega-3, vitamin D, magnesium.</p>
+      </div>
+    </div>
+
+    <p class="hint">Track each day on the <a href="#plan">45-day plan sheet</a>. These numbers are
+      careful estimates: the scale over 2 to 3 weeks is the real test. If the weekly average is not
+      moving, trim a little or move a little more. Slow loss is kept loss.</p>
+    <div class="nextprev"><a class="btn ghost" href="#plan">Back</a><a class="btn primary" href="#contract">Next: Your contract</a></div>
+    </div>
+
+    <div class="lang-es">
+    <div class="eyebrow">Qué comer, en concreto</div>
+    <h2>El plan de comidas de 45 días 🍽️</h2>
+    <p class="lead">Un menú sencillo y alto en proteína que repetís durante 45 días, para que la grasa
+      baje mientras el músculo se queda. No son 45 menús distintos: una lista corta de la que elegís
+      cada día, en dos tamaños de ración (un plato más grande para Guillermo, uno más pequeño para Pilar).</p>
+    <p class="mp-dl"><a class="btn primary" href="assets/worksheets/meal-plan-es.pdf" target="_blank" rel="noopener">⬇️ Descargar el plan completo (PDF)</a></p>
+    <p>Leedlo entero y con calma, sin saltaros ninguna parte: es corto a propósito y todo encaja, así
+      que leedlo una vez de principio a fin para entenderlo del todo. Lo he dejado lo más sencillo
+      posible, y aun así tenéis tres versiones de cada comida, para que el día que os canséis de una,
+      cambiéis a otra.</p>
+
+    <h3>Dos maneras de hacerlo</h3>
+    <p><strong>Opción 1, el plan estricto de 45 días (el reto):</strong> lo seguís a rajatabla, dais en
+      vuestro objetivo casi todos los días, mantenéis la proteína alta, una comida libre cada 2
+      semanas. Aquí es donde ocurre el cambio de verdad.</p>
+    <p><strong>Opción 2, la manera relajada:</strong> el mismo menú, solo que más flexible. Apuntáis al
+      objetivo casi siempre, alguna comida libre más, sin agobios por un desliz. Más lento, pero fácil
+      de mantener, y perfecto para después de los 45 días.</p>
+    <div class="mp-band"><strong>Un plan estricto NO es aburrido.</strong> Seguís teniendo un menú
+      corto: <strong>3 desayunos, 3 comidas, 3 cenas.</strong> Cada día elegís uno de cada, en el
+      orden que queráis, y si un día no os apetece uno, lo cambiáis. La estructura es fija, la elección
+      es vuestra.</div>
+
+    <h3>El plan es solo la mitad: moverse</h3>
+    <p>Comer quita el peso. Lo que hacéis con el cuerpo decide qué tipo de peso se va. El resultado más
+      fuerte y mejor demostrado viene de tres cosas juntas:</p>
+    <ol class="mp-move">
+      <li><strong>Este plan</strong> (el déficit de calorías, la proteína alta) quema la grasa.</li>
+      <li><strong>Un poco de fuerza</strong> (flexiones, una pesa rusa, ejercicios sencillos con
+        vuestro peso 2 a 3 veces por semana) mantiene y hasta hace crecer el músculo, así acabáis más
+        definidos y fuertes, no solo más ligeros. Mirad el capítulo <a href="#move">Mover el cuerpo</a>
+        para la rutina de inicio.</li>
+      <li><strong>Pasear a menudo</strong> quema extra sin apenas inconvenientes, y ayuda tanto a la
+        cabeza como a la cintura.</li>
+    </ol>
+
+    <h3>Las reglas que hacen que funcione</h3>
+    <ol class="mp-rules">
+      <li><strong>La proteína manda en el plato.</strong> En déficit, el cuerpo puede quemar grasa o
+        músculo. La proteína le dice que queme grasa y guarde el músculo, así os ponéis más definidos y
+        fuertes, no solo más ligeros. Objetivo diario: <strong>Guillermo unos 160 g, Pilar unos 110
+        g.</strong> Por eso el pollo, el pescado, los huevos y las claras se llevan la mayor parte del
+        plato, y el arroz o la pasta la guarnición pequeña.</li>
+      <li><strong>Vuestras calorías al día.</strong> Apuntad dentro de vuestra franja. El plan estricto
+        apunta abajo, la manera relajada se queda arriba.
+        <table class="mp-table" style="margin-top:.5rem">
+          <thead><tr><th>Persona</th><th>Franja diaria</th><th>Estricto apunta a</th><th>Nunca por debajo</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Guillermo</strong></td><td>2.200 a 2.400 kcal</td><td>~2.200 kcal</td><td>1.600 kcal</td></tr>
+            <tr><td><strong>Pilar</strong></td><td>1.300 a 1.500 kcal</td><td>~1.300 kcal</td><td>1.200 kcal</td></tr>
+          </tbody>
+        </table>
+        <span class="hint">No recortéis más de unas 500 kcal por debajo de vuestro gasto normal: pasado
+        eso el cuerpo quema músculo y la energía se hunde. Un recorte moderado más proteína más un poco
+        de entrenamiento gana a pasar hambre.</span></li>
+      <li><strong>Dos tamaños de ración, una sola cocina.</strong> Los mismos platos para los dos.
+        Guillermo solo recibe un plato más grande (un hombre en la obra quema casi 900 kcal más al
+        día). Se cocina una vez y se sirve en dos tamaños.</li>
+      <li><strong>Comed hasta "ya no tengo hambre", no hasta "estoy lleno".</strong> El intestino avisa
+        de la saciedad con hormonas (CCK, PYY) y esa señal llega tarde, unos 15 a 20 minutos. El truco
+        está demostrado: <strong>un vaso de agua antes de comer, comer despacio, y esperar.</strong></li>
+      <li><strong>La verdura es libre y obligatoria</strong> en comida y cena. Mucho volumen, casi cero
+        calorías. La verdura no se pesa.</li>
+      <li><strong>2 a 3 litros de agua al día. Pesaos 3 veces por semana</strong> y fiaos solo de la media semanal.</li>
+      <li><strong>Una comida libre cada 2 semanas.</strong> Disfrutadla entera, y de vuelta al plan en la siguiente. Nada de "compensar".</li>
+      <li><strong>Guillermo, el fin de semana es la trampa.</strong> Fuera del andamio quemáis mucho
+        menos, así que mantened el plan base y dejad los extras de los días de trabajo.</li>
+    </ol>
+    <p class="hint">Opcional, está bien tenerlo: un omega-3 al día, vitamina D en invierno, 5 g de
+      creatina si entrenáis, magnesio por la noche. El plan funciona sin nada de esto.</p>
+
+    <h3>Desayuno: elige 1</h3>
+    <p class="hint">Dos de estos viven en tarros en la nevera, así una mañana de trabajo es solo
+      "abrir, coger, salir". Preparad 4 o 5 de golpe el domingo.</p>
+    <div class="mp-card">
+      <h4><span class="mp-tag">B1</span> Tarro de avena y yogur (overnight)</h4>
+      <span class="mp-desc">Dulce, sin cocinar, aguanta unos 4 días. Añadid los arándanos y las nueces frescos por la mañana.</span>
+      <table class="mp-table">
+        <thead><tr><th>Ingrediente</th><th class="n">Pilar</th><th class="n">Guillermo</th></tr></thead>
+        <tbody>
+          <tr><td>Avena</td><td class="n">45 g</td><td class="n">70 g</td></tr>
+          <tr><td>Yogur alto en proteína</td><td class="n">175 g</td><td class="n">250 g</td></tr>
+          <tr><td>Arándanos</td><td class="n">80 g</td><td class="n">100 g</td></tr>
+          <tr><td>Nueces</td><td class="n">12 g</td><td class="n">20 g</td></tr>
+          <tr class="mp-total"><td>Por ración</td><td class="n">~400 kcal · 26 g P</td><td class="n">~600 kcal · 37 g P</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="mp-card">
+      <h4><span class="mp-tag">B2</span> Tarro de tortilla de claras</h4>
+      <span class="mp-desc">Solo claras, sin yema: la salada y ligera. Aguanta unos 5 días, con los ingredientes aparte. Guillermo la come fría o la calienta 40 segundos. ¿Más saciante? Una rebanada de pan integral.</span>
+      <table class="mp-table">
+        <thead><tr><th>Ingrediente</th><th class="n">Pilar</th><th class="n">Guillermo</th></tr></thead>
+        <tbody>
+          <tr><td>Claras de huevo</td><td class="n">200 g</td><td class="n">300 g</td></tr>
+          <tr><td>Tacos de jamón (serrano o pavo)</td><td class="n">30 g</td><td class="n">40 g</td></tr>
+          <tr><td>Espinacas + cebolla</td><td class="n">libre</td><td class="n">libre</td></tr>
+          <tr><td>Aceite de oliva</td><td class="n">5 g</td><td class="n">8 g</td></tr>
+          <tr><td>Arroz cocido</td><td class="n">nada</td><td class="n">80 g</td></tr>
+          <tr class="mp-total"><td>Por ración</td><td class="n">~230 kcal · 31 g P</td><td class="n">~450 kcal · 47 g P</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="mp-card">
+      <h4><span class="mp-tag">B3</span> Boniato con pollo salteado</h4>
+      <span class="mp-desc">Caliente y salado, una proteína distinta de los desayunos con huevo. Cocinad el pollo en tanda el domingo. ¿Preferís huevo? Cambiad el pollo por 100 a 150 g de claras.</span>
+      <table class="mp-table">
+        <thead><tr><th>Ingrediente</th><th class="n">Pilar</th><th class="n">Guillermo</th></tr></thead>
+        <tbody>
+          <tr><td>Pollo cocido (o pavo)</td><td class="n">100 g</td><td class="n">160 g</td></tr>
+          <tr><td>Boniato</td><td class="n">120 g</td><td class="n">180 g</td></tr>
+          <tr><td>Espinacas</td><td class="n">libre</td><td class="n">libre</td></tr>
+          <tr><td>Aceite de oliva</td><td class="n">3 g</td><td class="n">5 g</td></tr>
+          <tr class="mp-total"><td>Por ración</td><td class="n">~300 kcal · 32 g P</td><td class="n">~460 kcal · 50 g P</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Comida: elige 1 (la comida principal)</h3>
+    <p class="hint">Siempre la misma estructura: un buen trozo de proteína, una montaña de verdura, y
+      una ración pequeña de hidratos buenos. La proteína se lleva la mayor parte del plato.</p>
+    <div class="mp-card">
+      <h4><span class="mp-tag">L1</span> Pollo al horno + boniato + verdura</h4>
+      <span class="mp-desc">El héroe en tanda. Asad una bandeja grande: cubre 2 o 3 días de comidas.</span>
+      <table class="mp-table">
+        <thead><tr><th>Ingrediente</th><th class="n">Pilar</th><th class="n">Guillermo</th></tr></thead>
+        <tbody>
+          <tr><td>Pollo (pechuga o muslo)</td><td class="n">150 g</td><td class="n">220 g</td></tr>
+          <tr><td>Boniato</td><td class="n">130 g</td><td class="n">180 g</td></tr>
+          <tr><td>Verduras</td><td class="n">libre</td><td class="n">libre</td></tr>
+          <tr><td>Aceite de oliva</td><td class="n">6 g</td><td class="n">10 g</td></tr>
+          <tr class="mp-total"><td>Por ración</td><td class="n">~470 kcal · 46 g P</td><td class="n">~640 kcal · 68 g P</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="mp-card">
+      <h4><span class="mp-tag">L2</span> Ternera magra Euskal Okela</h4>
+      <span class="mp-desc">Solo 1 o 2 veces por semana. Buscad el Eusko Label en la carnicería: ternera vasca, de pasto, de kilómetro cero.</span>
+      <table class="mp-table">
+        <thead><tr><th>Ingrediente</th><th class="n">Pilar</th><th class="n">Guillermo</th></tr></thead>
+        <tbody>
+          <tr><td>Ternera magra (filete o picada)</td><td class="n">110 g</td><td class="n">180 g</td></tr>
+          <tr><td>Verduras a la plancha</td><td class="n">libre</td><td class="n">libre</td></tr>
+          <tr><td>Patata</td><td class="n">80 g</td><td class="n">120 g</td></tr>
+          <tr><td>Aceite de oliva</td><td class="n">5 g</td><td class="n">8 g</td></tr>
+          <tr class="mp-total"><td>Por ración</td><td class="n">~380 kcal · 34 g P</td><td class="n">~600 kcal · 52 g P</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="mp-card">
+      <h4><span class="mp-tag">L3</span> Clásico vasco o mediterráneo, aligerado</h4>
+      <span class="mp-desc">Para que nunca parezca una dieta. Elegid uno, cocinado más ligero (aceite medido, más verdura).</span>
+      <ul style="margin:.2rem 0 .3rem;padding-left:1.1rem;font-size:.92rem">
+        <li>Merluza o bacalao a la plancha + ensalada grande + media taza de alubias blancas</li>
+        <li>Marmitako (guiso de bonito y patata), con menos aceite y más verdura</li>
+        <li>Garbanzos con espinacas y un trozo de bacalao por encima</li>
+        <li>Lentejas con un huevo o un poco de pescado para más proteína</li>
+      </ul>
+      <span class="mp-desc" style="font-style:normal">Con la proteína por delante: Pilar unas 450 kcal, Guillermo unas 600 kcal, 30 a 40 g de proteína.</span>
+    </div>
+    <div class="mp-band"><strong>Truco fiambrera (para la obra):</strong> cualquier comida se lleva
+      fría en un táper. La más fácil, una ensalada grande con proteína: atún o pollo que sobró + 2
+      huevos duros + un puñado de garbanzos sobre ensalada, con una cucharada de aceite y vinagre.
+      Pilar ~360 kcal / 34 g P, Guillermo ~620 kcal / 58 g P.</div>
+
+    <h3>Cena: elige 1 (que sea ligera)</h3>
+    <p class="hint">Más ligera, sobre todo en una tarde de poco movimiento: proteína más verdura, poco
+      o nada de almidón, terminada unas 3 horas antes de dormir.</p>
+    <div class="mp-card">
+      <h4><span class="mp-tag">D1</span> Hamburguesa Euskal Okela + verdura</h4>
+      <span class="mp-desc">La que quería Guillermo. Hamburguesa magra de pasto, sin pan, un buen montón de verdura y una cucharada pequeña de arroz si os apetece.</span>
+      <table class="mp-table">
+        <thead><tr><th>Ingrediente</th><th class="n">Pilar</th><th class="n">Guillermo</th></tr></thead>
+        <tbody>
+          <tr><td>Hamburguesa de ternera magra</td><td class="n">90 g</td><td class="n">150 g</td></tr>
+          <tr><td>Verduras</td><td class="n">libre</td><td class="n">libre</td></tr>
+          <tr><td>Arroz cocido (opcional)</td><td class="n">40 g</td><td class="n">60 g</td></tr>
+          <tr><td>Aceite de oliva</td><td class="n">3 g</td><td class="n">5 g</td></tr>
+          <tr class="mp-total"><td>Por ración</td><td class="n">~300 kcal · 22 g P</td><td class="n">~470 kcal · 35 g P</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="mp-card">
+      <h4><span class="mp-tag">D2</span> Tortilla ligera</h4>
+      <span class="mp-desc">Tortilla ligera, 5 minutos. Casi todo claras más un huevo entero.</span>
+      <table class="mp-table">
+        <thead><tr><th>Ingrediente</th><th class="n">Pilar</th><th class="n">Guillermo</th></tr></thead>
+        <tbody>
+          <tr><td>Huevo entero</td><td class="n">1</td><td class="n">2</td></tr>
+          <tr><td>Claras de huevo</td><td class="n">120 g</td><td class="n">150 g</td></tr>
+          <tr><td>Tacos de jamón</td><td class="n">30 g</td><td class="n">40 g</td></tr>
+          <tr><td>Verduras</td><td class="n">libre</td><td class="n">libre</td></tr>
+          <tr><td>Aceite de oliva</td><td class="n">5 g</td><td class="n">8 g</td></tr>
+          <tr class="mp-total"><td>Por ración</td><td class="n">~280 kcal · 28 g P</td><td class="n">~430 kcal · 40 g P</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="mp-card">
+      <h4><span class="mp-tag">D3</span> Pescado blanco o salmón + verdura salteada</h4>
+      <span class="mp-desc">A la plancha con ajo y limón, con espinacas o acelgas al lado. Ligero, rápido y con mucha proteína.</span>
+      <table class="mp-table">
+        <thead><tr><th>Ingrediente</th><th class="n">Pilar</th><th class="n">Guillermo</th></tr></thead>
+        <tbody>
+          <tr><td>Pescado blanco o salmón</td><td class="n">150 g</td><td class="n">220 g</td></tr>
+          <tr><td>Verdura de hoja</td><td class="n">libre</td><td class="n">libre</td></tr>
+          <tr><td>Patata (opcional, Guillermo)</td><td class="n">nada</td><td class="n">100 g</td></tr>
+          <tr><td>Aceite de oliva</td><td class="n">5 g</td><td class="n">8 g</td></tr>
+          <tr class="mp-total"><td>Por ración</td><td class="n">~230 kcal · 28 g P</td><td class="n">~420 kcal · 42 g P</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Merienda y cambios</h3>
+    <p><strong>Merienda (opcional, sobre todo Guillermo en día duro):</strong> yogur proteico + frutos
+      rojos + frutos secos (~180 a 260 kcal); o kéfir + arándanos + avena (~200 kcal, energía antes de
+      la obra); o requesón + fruta (~200 kcal). Pilar normalmente la salta, o la toma en lugar de la
+      cena si ha entrenado tarde.</p>
+    <p><strong>¿No os gusta algo? Cambiadlo, no os saltéis la comida:</strong></p>
+    <ul style="padding-left:1.1rem">
+      <li><strong>Proteína:</strong> pollo = pavo = conejo = pescado blanco = lomo de cerdo magro = ternera magra = huevos = claras = pescado azul (sardinas, caballa).</li>
+      <li><strong>Hidratos:</strong> boniato = patata = arroz = quinoa = legumbres. Casi siempre, mejor boniato y legumbres.</li>
+      <li><strong>Verduras:</strong> libres, y NO solo las verdes. Brócoli, coliflor, pimiento, calabacín, judías verdes, champiñones, lo que queráis. Como las cocinéis (horno, plancha, hervidas, en puré).</li>
+      <li><strong>Grasas:</strong> aceite de oliva = unos frutos secos = un poco de aguacate = aceitunas. Siempre medido (una cucharada son unas 120 kcal).</li>
+      <li>El arroz y la pasta se pesan <strong>cocidos</strong>, lo demás <strong>en crudo</strong>. La verdura no se pesa.</li>
+    </ul>
+
+    <h3>Tres semanas de ejemplo (para verlo funcionando)</h3>
+    <p class="hint">Solo una forma de rotar el menú. Cada desayuno, comida y cena aparece varias veces,
+      la ternera solo una o dos veces por semana, el pescado a menudo. Guillermo añade una merienda los
+      días de trabajo (lunes a viernes); el fin de semana mantiene el plan base. Cambiad cualquier
+      casilla por otra opción.</p>
+    <table class="mp-table">
+      <thead><tr><th>Día</th><th>Desayuno</th><th>Comida</th><th>Cena</th></tr></thead>
+      <tbody>
+        <tr class="wk"><td colspan="4">Semana 1</td></tr>
+        <tr><td><strong>Lun</strong></td><td>B1 avena</td><td>L1 pollo al horno</td><td>D3 pescado + verdura</td></tr>
+        <tr><td><strong>Mar</strong></td><td>B2 claras</td><td>L3 lentejas + bacalao</td><td>D1 hamburguesa</td></tr>
+        <tr><td><strong>Mié</strong></td><td>B3 boniato con pollo</td><td>L1 sobras</td><td>D2 tortilla</td></tr>
+        <tr><td><strong>Jue</strong></td><td>B1 avena</td><td>L2 ternera Euskal Okela</td><td>D3 pescado + verdura</td></tr>
+        <tr><td><strong>Vie</strong></td><td>B2 claras</td><td>L1 pollo al horno</td><td>D1 hamburguesa</td></tr>
+        <tr><td><strong>Sáb</strong></td><td>B3 boniato con pollo</td><td>L3 marmitako</td><td>D2 tortilla</td></tr>
+        <tr><td><strong>Dom</strong></td><td>B1 avena</td><td>L2 ternera (o comida libre)</td><td>D3 pescado</td></tr>
+        <tr class="wk"><td colspan="4">Semana 2</td></tr>
+        <tr><td><strong>Lun</strong></td><td>B2 claras</td><td>L1 pollo al horno</td><td>D1 hamburguesa</td></tr>
+        <tr><td><strong>Mar</strong></td><td>B1 avena</td><td>L3 garbanzos + bacalao</td><td>D3 pescado + verdura</td></tr>
+        <tr><td><strong>Mié</strong></td><td>B3 boniato con pollo</td><td>L1 sobras</td><td>D2 tortilla</td></tr>
+        <tr><td><strong>Jue</strong></td><td>B2 claras</td><td>L2 ternera Euskal Okela</td><td>D3 pescado + verdura</td></tr>
+        <tr><td><strong>Vie</strong></td><td>B1 avena</td><td>L1 pollo al horno</td><td>D1 hamburguesa</td></tr>
+        <tr><td><strong>Sáb</strong></td><td>B3 boniato con pollo</td><td>L3 merluza + alubias</td><td>D2 tortilla</td></tr>
+        <tr><td><strong>Dom</strong></td><td>B2 claras</td><td>L2 ternera (o comida libre)</td><td>D3 pescado</td></tr>
+        <tr class="wk"><td colspan="4">Semana 3</td></tr>
+        <tr><td><strong>Lun</strong></td><td>B1 avena</td><td>L1 pollo al horno</td><td>D2 tortilla</td></tr>
+        <tr><td><strong>Mar</strong></td><td>B3 boniato con pollo</td><td>L3 lentejas</td><td>D1 hamburguesa</td></tr>
+        <tr><td><strong>Mié</strong></td><td>B2 claras</td><td>L1 sobras</td><td>D3 pescado + verdura</td></tr>
+        <tr><td><strong>Jue</strong></td><td>B1 avena</td><td>L2 ternera Euskal Okela</td><td>D1 hamburguesa</td></tr>
+        <tr><td><strong>Vie</strong></td><td>B3 boniato con pollo</td><td>L1 pollo al horno</td><td>D2 tortilla</td></tr>
+        <tr><td><strong>Sáb</strong></td><td>B2 claras</td><td>L3 marmitako</td><td>D3 pescado + verdura</td></tr>
+        <tr><td><strong>Dom</strong></td><td>B1 avena</td><td>L2 ternera (o comida libre)</td><td>D3 pescado</td></tr>
+      </tbody>
+    </table>
+
+    <h3>La lista de la compra semanal (2 personas, raciones pequeñas)</h3>
+    <div class="mp-grid">
+      <div>
+        <h4>Proteína (el gasto principal)</h4>
+        <ul>
+          <li>Huevos: 1 docena, más 3 briks de claras</li>
+          <li>Pollo: 1,5 a 2 kg (desayuno + comida)</li>
+          <li>Ternera magra Euskal Okela (1 o 2 comidas): 600 a 800 g</li>
+          <li>Pescado blanco o salmón: 800 g a 1 kg</li>
+          <li>Atún al natural: 3 o 4 latas</li>
+          <li>Tacos de jamón (serrano o pavo): 200 g</li>
+          <li>Yogur alto en proteína: 1,5 kg; kéfir o requesón si os gustan</li>
+        </ul>
+        <h4>Hidratos buenos (poca cantidad)</h4>
+        <ul>
+          <li>Boniato: 1,5 a 2 kg; patata: 1 kg</li>
+          <li>Avena: 500 g; arroz: 500 g o una bolsa de quinoa</li>
+          <li>Legumbres: 2 botes o bolsas (garbanzos, lentejas)</li>
+          <li>Pan integral: 1 barra pequeña (Guillermo, días de trabajo)</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Fruta y grasas</h4>
+        <ul>
+          <li>Arándanos u otros frutos rojos: 500 g (congelados valen)</li>
+          <li>Nueces o almendras: 200 g</li>
+          <li>Aceite de oliva virgen extra, un par de aguacates</li>
+        </ul>
+        <h4>Verduras (libres, comprad de sobra)</h4>
+        <ul>
+          <li>Espinacas, pimiento, calabacín, cebolla, tomate, ensalada, pepino, judías verdes, coliflor, ajo, limón. Lo que esté fresco y barato esa semana.</li>
+        </ul>
+        <p class="hint" style="margin-top:.3rem">Opcional: creatina, omega-3, vitamina D, magnesio.</p>
+      </div>
+    </div>
+
+    <p class="hint">Marcad cada día en la <a href="#plan">hoja del plan de 45 días</a>. Los números son
+      estimaciones cuidadas: la báscula a lo largo de 2 o 3 semanas es la prueba de verdad. Si la media
+      semanal no se mueve, recortad un poco o moveos un poco más. Lo que se pierde despacio, se mantiene.</p>
+    <div class="nextprev"><a class="btn ghost" href="#plan">Atrás</a><a class="btn primary" href="#contract">Siguiente: Vuestro contrato</a></div>
     </div>
   </section>
 
@@ -2487,7 +3122,7 @@ table.swaps tr:last-child td{border-bottom:none}
     </div>
     <p class="hint">Marten prepares and prints the real one. You read it, adjust it together, and sign it
       by hand. That signature matters.</p>
-    <div class="nextprev"><a class="btn ghost" href="#plan">Back</a><a class="btn primary" href="#faster">Next: Want it faster?</a></div>
+    <div class="nextprev"><a class="btn ghost" href="#mealplan">Back</a><a class="btn primary" href="#faster">Next: Want it faster?</a></div>
     </div>
     <div class="lang-es">
     <div class="eyebrow">Dejadlo bien atado</div>
@@ -2551,7 +3186,7 @@ table.swaps tr:last-child td{border-bottom:none}
     </div>
     <p class="hint">Marten prepara e imprime el de verdad. Vosotros lo leéis, lo ajustáis juntos y lo
       firmáis a mano. Esa firma importa.</p>
-    <div class="nextprev"><a class="btn ghost" href="#plan">Atrás</a><a class="btn primary" href="#faster">Siguiente: ¿Lo queréis más rápido?</a></div>
+    <div class="nextprev"><a class="btn ghost" href="#mealplan">Atrás</a><a class="btn primary" href="#faster">Siguiente: ¿Lo queréis más rápido?</a></div>
     </div>
   </section>
 
@@ -2889,21 +3524,12 @@ table.swaps tr:last-child td{border-bottom:none}
       página, así que cambiad la bandera de arriba para tenerlas en español o en inglés.</p>
     </div>
 
-    <div class="ws-all-row">
-      <button class="btn primary ws-all-btn" onclick="printAllWorksheets()"><span aria-hidden="true">⬇️</span> <span class="lang-en">All in one PDF (with cover)</span><span class="lang-es">Todas en un PDF (con portada)</span></button>
-      <p class="hint"><span class="lang-en">Get the whole booklet at once, cover first, or pick a single sheet below.</span><span class="lang-es">Sacad el cuadernillo entero de una vez, con la portada delante, o elegid una hoja abajo.</span></p>
-    </div>
-
     <div class="ws-buttons">
-      <button class="btn ghost" onclick="printWorksheet('ws-cover')">📔 <span class="lang-en">Cover</span><span class="lang-es">Portada</span></button>
-      <button class="btn ghost" onclick="printWorksheet('ws-checkin')">✅ <span class="lang-en">Honest check-in</span><span class="lang-es">Chequeo honesto</span></button>
-      <a class="btn ghost" href="#how">⚖️ <span class="lang-en">Calorie sheet ↑</span><span class="lang-es">Hoja de calorías ↑</span></a>
-      <button class="btn ghost" onclick="printWorksheet('ws-mindset')">🧭 <span class="lang-en">Mindset</span><span class="lang-es">Mentalidad</span></button>
+      <button class="btn ghost" onclick="printWorksheet('meal-plan')">🍽️ <span class="lang-en">45-day meal plan</span><span class="lang-es">Menú de 45 días</span></button>
       <button class="btn ghost" onclick="printWorksheet('ws-plan')">🗺️ <span class="lang-en">45-day plan</span><span class="lang-es">Plan de 45 días</span></button>
+      <a class="btn ghost" href="#how">⚖️ <span class="lang-en">Calorie sheet ↑</span><span class="lang-es">Hoja de calorías ↑</span></a>
+      <a class="btn ghost" href="assets/mi-porque-worksheet.pdf" target="_blank" rel="noopener">❤️ <span class="lang-en">My Why</span><span class="lang-es">Mi Porqué</span></a>
       <button class="btn ghost" onclick="printWorksheet('ws-contract')">✍️ <span class="lang-en">Contract</span><span class="lang-es">Contrato</span></button>
-      <button class="btn ghost" onclick="printWorksheet('ws-power')">🔥 <span class="lang-en">Power page</span><span class="lang-es">Página de poder</span></button>
-      <button class="btn ghost" onclick="printWorksheet('ws-faster')">⚡ <span class="lang-en">Want it faster?</span><span class="lang-es">¿Lo queréis más rápido?</span></button>
-      <button class="btn ghost" onclick="printWorksheet('ws-cheatsheet')">📄 <span class="lang-en">Cheat sheet</span><span class="lang-es">Chuleta</span></button>
     </div>
 
     <div class="callout"><span class="lang-en">⚖️ <strong>The calorie sheet is personal.</strong> The calculator above works out your numbers on the screen; the sheet itself downloads blank, so write your name and those numbers on it. Do one each, and Guillermo's and Pilar's never get mixed up.</span><span class="lang-es">⚖️ <strong>La hoja de calorías es personal.</strong> La calculadora de arriba saca vuestros números en la pantalla; la hoja se descarga en blanco, así que escribid en ella vuestro nombre y esos números. Haced una cada uno, y la de Guillermo y la de Pilar nunca se mezclan.</span></div>
@@ -2914,11 +3540,10 @@ table.swaps tr:last-child td{border-bottom:none}
   <footer>
     <div class="es-ribbon" style="max-width:160px; margin:0 auto 1rem"></div>
     <div class="foot-qr">
-      <img src="assets/img/qr-audiolibro.png" alt="Código QR del audiolibro" width="190" height="190">
       <div>
-        <strong>🎧 Escuchad la guía como audiolibro</strong>
-        <span>Escanead el código con el móvil: se abre un reproductor con todos los capítulos, uno tras otro.</span>
-        <a class="dl-zip" href="assets/audio/audiolibro-es.zip" download="Guillermo-y-Pilar-Audiolibro.zip">⬇️ Descargar el audiolibro (ZIP)</a>
+        <strong>🎧 <span class="lang-en">Listen to the guide as an audiobook</span><span class="lang-es">Escuchad la guía como audiolibro</span></strong>
+        <span class="lang-en">Open the web player and listen chapter by chapter, one after another.</span><span class="lang-es">Abrid el reproductor y escuchad capítulo a capítulo, uno tras otro.</span>
+        <a class="dl-zip" href="player.html" target="_blank" rel="noopener">🎧 <span class="lang-en">Open the web player</span><span class="lang-es">Abrir el reproductor</span></a>
       </div>
     </div>
     Made with care for Guillermo &amp; Pilar · Amorebieta 🌿<br>
@@ -3399,8 +4024,8 @@ table.swaps tr:last-child td{border-bottom:none}
       <p class="intro-sub">A ten-second tour, so you know your way around.</p>
       <ul>
         <li><span class="ic">☰</span><span><strong>Top left:</strong> open the chapters menu to jump anywhere.</span></li>
-        <li><span class="ic">🌐</span><span><strong>Top right:</strong> switch language with the two flags.</span></li>
-        <li><span class="ic">🎧</span><span><strong>Audiobook:</strong> listen to the whole guide, or download it.</span></li>
+        <li><span class="ic">🌐</span><span><strong>Top right:</strong> tap the flag to switch language.</span></li>
+        <li><span class="ic">🎧</span><span><strong>Web player:</strong> tap the headphones to open the audio player.</span></li>
         <li><span class="ic">🖨️</span><span><strong>Worksheets:</strong> download the printable PDFs.</span></li>
         <li><span class="ic">▾</span><span><strong>The player:</strong> tap its little arrow to fold it away for more space.</span></li>
         <li><span class="ic">↑</span><span><strong>Bottom corner:</strong> the round button jumps you back to the top.</span></li>
@@ -3412,8 +4037,8 @@ table.swaps tr:last-child td{border-bottom:none}
       <p class="intro-sub">Un vistazo de diez segundos, para que sepáis moveros.</p>
       <ul>
         <li><span class="ic">☰</span><span><strong>Arriba a la izquierda:</strong> abrid el menú de capítulos para ir a cualquier parte.</span></li>
-        <li><span class="ic">🌐</span><span><strong>Arriba a la derecha:</strong> cambiad el idioma con las dos banderas.</span></li>
-        <li><span class="ic">🎧</span><span><strong>Audiolibro:</strong> escuchad la guía entera, o descargadla.</span></li>
+        <li><span class="ic">🌐</span><span><strong>Arriba a la derecha:</strong> tocad la bandera para cambiar el idioma.</span></li>
+        <li><span class="ic">🎧</span><span><strong>Reproductor:</strong> tocad los auriculares para abrir el reproductor de audio.</span></li>
         <li><span class="ic">🖨️</span><span><strong>Hojas:</strong> descargad los PDF para imprimir.</span></li>
         <li><span class="ic">▾</span><span><strong>El reproductor:</strong> tocad su flechita para plegarlo y tener más espacio.</span></li>
         <li><span class="ic">↑</span><span><strong>Esquina de abajo:</strong> el botón redondo os lleva arriba del todo.</span></li>
@@ -3446,6 +4071,7 @@ const CHAPTERS=[
   {id:"motivation",ic:"🔥",t:"Power page",te:"Página de poder"},
   {g:"Do", ge:"Manos a la obra"},
   {id:"plan",ic:"🗺️",t:"45-day plan",te:"Plan de 45 días"},
+  {id:"mealplan",ic:"🍽️",t:"Meal plan",te:"Plan de comidas",aud:"mealplan"},
   {g:"Commit", ge:"El compromiso"},
   {id:"contract",ic:"✍️",t:"Your contract",te:"Vuestro contrato"},
   {g:"Make it stick", ge:"Para que dure"},
@@ -3592,10 +4218,9 @@ document.querySelectorAll('.nextprev .btn.primary, .hero .cta .btn.primary').for
 /* ============ LANGUAGE (architecture ready; ES filled as last step) ============ */
 const I18N={en:{brandtitle:"Built to Last", brandsub:"A guide for Guillermo & Pilar", chapters:"Chapters", dlaudio:"Audiobook", audiopop:"Scan to open the player, or download all the audio:", dlall:"⬇️ Download all (ZIP)", dlpdf:"Worksheets", pdfpop:"Save the worksheets as PDF. All in one, or pick what you need:", pdfall:"⬇️ All in one PDF", pdfpick:"Pick individually →"},
   es:{brandtitle:"Hechos para durar", brandsub:"Una guía para Guillermo y Pilar", chapters:"Capítulos", dlaudio:"Audiolibro", audiopop:"Escanéalo para abrir el reproductor, o descárgalo todo:", dlall:"⬇️ Descargar todo (ZIP)", dlpdf:"Hojas PDF", pdfpop:"Guardad las hojas como PDF. Todas juntas, o elegid las que necesitéis:", pdfall:"⬇️ Todas en un PDF", pdfpick:"Elegir una a una →"}};
+function toggleLang(){ setLang(document.documentElement.dataset.lang==='es'?'en':'es'); }
 function setLang(l){
   document.documentElement.dataset.lang=l;
-  document.getElementById('btn-en').classList.toggle('active',l==='en');
-  document.getElementById('btn-es').classList.toggle('active',l==='es');
   document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.dataset.i18n; if(I18N[l][k])el.textContent=I18N[l][k];});
   if(typeof applyNavLang==='function')applyNavLang(l);
   localStorage.setItem('gp_lang',l);
@@ -4121,9 +4746,10 @@ const AUDIO_CHAPTERS=[
   {id:'move2',     title:'Mover el cuerpo · Parte 2',        file:'10-mover-el-cuerpo-2.mp3'},
   {id:'move3',     title:'Mover el cuerpo · Parte 3',        file:'10-mover-el-cuerpo-3.mp3'},
   {id:'motivation',title:'Página de Poder',                 file:'11-pagina-de-poder.mp3'},
+  {id:'mealplan',  title:'El plan de comidas de 45 días',   file:'12-plato-45-dias.mp3'},
 ];
 const AUDIO_VOICES=[
-  {key:'toni',      label:'Rápida',    has:['welcome','start','captain','struggles','systems','honest','why','insanity','close','how','move','move2','move3','motivation']},
+  {key:'toni',      label:'Rápida',    has:['welcome','start','captain','struggles','systems','honest','why','insanity','close','how','move','move2','move3','motivation','mealplan']},
 ];
 let audioVoice=localStorage.getItem('gp_voice')||'toni';
 if(!AUDIO_VOICES.some(v=>v.key===audioVoice)) audioVoice='toni';
@@ -4273,6 +4899,7 @@ const WS_DL={
   'ws-calc':        {es:'Hoja-de-calorias',         en:'Calorie-sheet'},
   'ws-mindset':     {es:'Mentalidad',               en:'Mindset'},
   'ws-plan':        {es:'Plan-de-45-dias',          en:'45-day-plan'},
+  'meal-plan':      {es:'Menu-de-45-dias',          en:'45-day-meal-plan'},
   'ws-contract':    {es:'Contrato',                 en:'Contract'},
   'ws-power':       {es:'Pagina-de-poder',          en:'Power-page'},
   'worksheets-all': {es:'Hojas-Guillermo-y-Pilar',  en:'Worksheets-Guillermo-and-Pilar'}
@@ -4280,11 +4907,8 @@ const WS_DL={
 function dlWorksheet(id){
   closePdfPop();
   const lang=(document.documentElement.getAttribute('data-lang')==='es')?'es':'en';
-  const a=document.createElement('a');
-  a.href='assets/worksheets/'+id+'-'+lang+'.pdf';
-  a.download=((WS_DL[id]&&WS_DL[id][lang])||id)+'.pdf';
-  a.rel='noopener';
-  document.body.appendChild(a); a.click(); setTimeout(function(){ a.remove(); }, 0);
+  // open in a NEW tab so closing the PDF never closes the guide
+  window.open('assets/worksheets/'+id+'-'+lang+'.pdf','_blank','noopener');
 }
 /* the buttons still call these names */
 function printWorksheet(id){ dlWorksheet(id); }
