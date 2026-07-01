@@ -147,9 +147,9 @@ html[data-lang="en"] .langflag .flag-es{display:none}
 @media print{ #toTop,#intro{display:none!important} }
 
 .shell{position:relative; z-index:1; max-width:1180px; margin:0 auto; padding:0 6% 5rem}
-nav.rail{position:fixed; top:0; left:0; z-index:60; width:min(280px,84vw); height:100vh; overflow:auto; padding:4rem .55rem 1.4rem; background:var(--paper); border-right:1px solid var(--line); box-shadow:var(--shadow-md); transform:translateX(-100%); transition:transform .3s cubic-bezier(.2,.8,.2,1)}
+nav.rail{position:fixed; top:0; left:0; z-index:60; width:280px; max-width:84vw; height:100vh; overflow-y:auto; -webkit-overflow-scrolling:touch; overscroll-behavior:contain; padding:4rem .55rem 1.4rem; background:var(--paper); border-right:1px solid var(--line); box-shadow:var(--shadow-md); transform:translateX(-100%); transition:transform .3s cubic-bezier(.2,.8,.2,1)}
 body.nav-open nav.rail{transform:translateX(0)}
-#navScrim{position:fixed; inset:0; z-index:55; background:rgba(34,40,22,.14); backdrop-filter:blur(2px); -webkit-backdrop-filter:blur(2px); opacity:0; visibility:hidden; transition:opacity .3s, visibility .3s}
+#navScrim{position:fixed; top:0; left:0; right:0; bottom:0; z-index:55; background:rgba(34,40,22,.14); backdrop-filter:blur(2px); -webkit-backdrop-filter:blur(2px); opacity:0; visibility:hidden; transition:opacity .3s, visibility .3s}
 body.nav-open #navScrim{opacity:1; visibility:visible}
 nav.rail .group{font-family:var(--body); font-weight:800; letter-spacing:.13em; text-transform:uppercase; font-size:.64rem; color:var(--ink-faint); margin:.8rem .8rem .2rem}
 nav.rail .group:first-child{margin-top:0}
@@ -4202,7 +4202,7 @@ CHAPTERS.forEach(c=>{
   const ic=document.createElement('span'); ic.className='ic';
   const lab=document.createElement('span'); lab.className='nav-t'; lab.dataset.en=c.t; lab.dataset.es=c.te||c.t; lab.textContent=c.t;
   a.appendChild(ic); a.appendChild(lab); rail.appendChild(a);
-  a.addEventListener('click',()=>document.body.classList.remove('nav-open'));
+  a.addEventListener('click',()=>{document.body.classList.remove('nav-open'); unlockScroll(false);});
   const a2=a.cloneNode(true); a2.addEventListener('click',toggleOverlay); ovLinks.appendChild(a2);
   if(c.aud){ const cue=()=>{ try{updateAudioBar(c.aud);}catch(e){} }; a.addEventListener('click',cue); a2.addEventListener('click',cue); }
 });
@@ -4686,11 +4686,11 @@ function lockScroll(){
   document.body.style.position='fixed'; document.body.style.top=(-y)+'px';
   document.body.style.left='0'; document.body.style.right='0'; document.body.style.width='100%';
 }
-function unlockScroll(){
+function unlockScroll(restore){
   var v=document.body.getAttribute('data-locked'); if(v===null) return;
   document.body.style.position=''; document.body.style.top=''; document.body.style.left=''; document.body.style.right=''; document.body.style.width='';
   document.body.removeAttribute('data-locked');
-  window.scrollTo(0, parseInt(v,10)||0);
+  if(restore!==false) window.scrollTo(0, parseInt(v,10)||0);
 }
 function openRecipe(i){
   const r=RECIPES[i]; if(!r) return; const lang=rlang(); const det=RDETAIL[r.n]||{};
@@ -4740,10 +4740,10 @@ const spy=new IntersectionObserver(entries=>{
 },{rootMargin:'-40% 0px -55% 0px'});
 document.querySelectorAll('main section[id]').forEach(s=>spy.observe(s));
 function toggleOverlay(){document.getElementById('overlay').classList.toggle('show');}
-function toggleNav(){document.body.classList.toggle('nav-open');}
+function toggleNav(){ var willOpen=!document.body.classList.contains('nav-open'); document.body.classList.toggle('nav-open', willOpen); if(willOpen){ lockScroll(); } else { unlockScroll(); } }
 function toggleAudioBar(){document.body.classList.toggle('audio-min');}
 function toggleAudioPop(ev){ ev.stopPropagation(); const p=document.getElementById('audioPop'); if(p) p.hidden=!p.hidden; }
-document.addEventListener('keydown',e=>{ if(e.key==='Escape') document.body.classList.remove('nav-open'); });
+document.addEventListener('keydown',e=>{ if(e.key==='Escape'){ document.body.classList.remove('nav-open'); unlockScroll(); } });
 
 /* ============ READ-ALOUD AUDIO (Spanish voice) ============ */
 /* Audio chapters: id matches the <section id>, title shows in the player picker, file is the stitched MP3 */
