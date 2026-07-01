@@ -369,7 +369,7 @@ details .body li{margin:.4rem 0}
 .recipe .recipe-more{margin-top:.6rem; font-size:.78rem; font-weight:800; color:var(--terracotta-deep); opacity:.75}
 .recipe:hover .recipe-more{opacity:1}
 /* recipe detail modal */
-#recipeModal{position:fixed; inset:0; z-index:85; background:rgba(34,40,22,.5); backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px); display:none; padding:max(4vh,1rem) 1rem; overflow:auto}
+#recipeModal{position:fixed; top:0; left:0; right:0; bottom:0; z-index:85; background:rgba(34,40,22,.5); -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px); display:none; padding:4vh 1rem; overflow-y:auto; -webkit-overflow-scrolling:touch; overscroll-behavior:contain}
 #recipeModal:not([hidden]){display:block}
 .rm-card{position:relative; max-width:460px; margin:0 auto; background:radial-gradient(360px 240px at 100% 0%, rgba(218,156,69,.12), transparent 65%), var(--paper); border:1px solid var(--line); border-radius:22px; padding:1.5rem 1.5rem 1.7rem; box-shadow:0 26px 70px rgba(34,40,22,.42); opacity:0; transform:translateY(16px) scale(.985); transition:opacity .25s, transform .25s}
 #recipeModal.show .rm-card{opacity:1; transform:none}
@@ -476,9 +476,9 @@ body.audio-min #abShow{display:inline-flex}
 .audio-pick{position:relative}
 .audio-pick-btn{display:flex; align-items:center; gap:.5rem; font-family:var(--body); font-weight:800; font-size:.9rem; color:#fff; background:rgba(255,255,255,.13); border:1px solid rgba(255,255,255,.26); border-radius:999px; padding:.32rem .85rem; cursor:pointer; max-width:min(52vw,250px); transition:background .15s}
 .audio-pick-btn:hover{background:rgba(255,255,255,.24)}
-.audio-voice{display:inline-flex; gap:.25rem; margin-top:.22rem; align-items:center}
+.audio-voice{display:inline-flex; margin-top:.22rem; align-items:center}
 .audio-voice .vlab{font-size:.6rem; font-weight:800; letter-spacing:.06em; text-transform:uppercase; opacity:.6; margin-right:.1rem}
-.audio-voice button{font-family:var(--body); font-weight:800; font-size:.6rem; letter-spacing:.04em; text-transform:uppercase; color:rgba(251,246,236,.72); background:rgba(255,255,255,.10); border:1px solid rgba(255,255,255,.22); border-radius:999px; padding:.14rem .6rem; cursor:pointer; transition:.15s}
+.audio-voice button{font-family:var(--body); font-weight:800; font-size:.6rem; letter-spacing:.04em; text-transform:uppercase; color:rgba(251,246,236,.72); background:rgba(255,255,255,.10); border:1px solid rgba(255,255,255,.22); border-radius:999px; padding:.14rem .6rem; margin-left:.25rem; cursor:pointer; transition:.15s}
 .audio-voice button:hover{background:rgba(255,255,255,.2)}
 .audio-voice button.on{background:#fff; color:var(--olive-deep); border-color:#fff}
 .audio-pick-menu button.disabled{opacity:.42; cursor:default}
@@ -4043,7 +4043,7 @@ table.swaps tr:last-child td{border-bottom:none}
         <li><span class="ic">☰</span><span><strong>Arriba a la izquierda:</strong> abrid el menú de capítulos para ir a cualquier parte.</span></li>
         <li><span class="ic">🌐</span><span><strong>Arriba a la derecha:</strong> tocad la bandera para cambiar el idioma.</span></li>
         <li><span class="ic">🎧</span><span><strong>Reproductor:</strong> tocad los auriculares para abrir el reproductor de audio.</span></li>
-        <li><span class="ic">🖨️</span><span><strong>Hojas:</strong> descargad los PDF para imprimir.</span></li>
+        <li><span class="ic">🔊</span><span><strong>La voz:</strong> en el reproductor podéis elegir voz lenta o rápida.</span></li>
         <li><span class="ic">▾</span><span><strong>El reproductor:</strong> tocad su flechita para plegarlo y tener más espacio.</span></li>
         <li><span class="ic">↑</span><span><strong>Esquina de abajo:</strong> el botón redondo os lleva arriba del todo.</span></li>
       </ul>
@@ -4679,6 +4679,19 @@ const RITEMS_ES={
  "Green juice (celery, spinach, lemon, ginger)":["2 ramas de apio","2 puñados de espinacas","½ pepino","½ limón","2 cm de jengibre"],
  "Green apple & cucumber juice":["2 manzanas verdes","½ pepino","½ lima","un chorro de agua"],
 };
+function lockScroll(){
+  if(document.body.getAttribute('data-locked')!==null) return;
+  var y=window.scrollY||window.pageYOffset||0;
+  document.body.setAttribute('data-locked', y);
+  document.body.style.position='fixed'; document.body.style.top=(-y)+'px';
+  document.body.style.left='0'; document.body.style.right='0'; document.body.style.width='100%';
+}
+function unlockScroll(){
+  var v=document.body.getAttribute('data-locked'); if(v===null) return;
+  document.body.style.position=''; document.body.style.top=''; document.body.style.left=''; document.body.style.right=''; document.body.style.width='';
+  document.body.removeAttribute('data-locked');
+  window.scrollTo(0, parseInt(v,10)||0);
+}
 function openRecipe(i){
   const r=RECIPES[i]; if(!r) return; const lang=rlang(); const det=RDETAIL[r.n]||{};
   const ed=(lang==='es')?(RDETAIL_ES[r.n]||{}):{};
@@ -4707,9 +4720,9 @@ function openRecipe(i){
       tweaksFor(r.m).map(t=>'<div class="rm-tweak"><span>'+t[0]+' '+t[1]+'</span><b>'+t[2]+'</b></div>').join('')+'</div>'+
     (tip?'<div class="callout win rm-tip">💡 <strong>'+rui('lighter')+'</strong> '+tip+'</div>':'')+
     shop;
-  const m=document.getElementById('recipeModal'); m.hidden=false; requestAnimationFrame(()=>m.classList.add('show'));
+  const m=document.getElementById('recipeModal'); m.hidden=false; lockScroll(); m.scrollTop=0; requestAnimationFrame(()=>m.classList.add('show'));
 }
-function closeRecipe(){ const m=document.getElementById('recipeModal'); m.classList.remove('show'); setTimeout(()=>{m.hidden=true;},220); }
+function closeRecipe(){ const m=document.getElementById('recipeModal'); m.classList.remove('show'); unlockScroll(); setTimeout(()=>{m.hidden=true;},220); }
 
 /* ============ PROGRESS, SCROLLSPY, OVERLAY ============ */
 const prog=document.getElementById('progress');
@@ -4753,6 +4766,7 @@ const AUDIO_CHAPTERS=[
   {id:'mealplan',  title:'El plan de comidas de 45 días',   file:'12-plato-45-dias.mp3'},
 ];
 const AUDIO_VOICES=[
+  {key:'dave',      label:'Lenta',     has:['welcome','start','captain','struggles','systems','honest','why','insanity','close','how','move','move2']},
   {key:'toni',      label:'Rápida',    has:['welcome','start','captain','struggles','systems','honest','why','insanity','close','how','move','move2','move3','motivation','mealplan']},
 ];
 let audioVoice=localStorage.getItem('gp_voice')||'toni';
