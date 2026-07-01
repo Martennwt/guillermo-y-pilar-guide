@@ -114,7 +114,7 @@ html[data-lang="en"] .langflag .flag-es{display:none}
 /* ===== stop the horizontal wobble on mobile (screen only, never touch print) =====
    NB: must be overflow-x:CLIP, not hidden (hidden makes body a scroll container)
    and breaks the sticky header; clip trims the overflow without that side effect. */
-@media screen{ html,body{overflow-x:clip} body{max-width:100%} }
+@media screen{ .shell{overflow-x:clip} html,body{max-width:100%; overflow-x:visible} }
 /* ===== phones: bigger menu button, smaller + more centred brand ===== */
 @media(max-width:560px){
   .menu-btn{font-size:1.35rem; padding:.32rem .7rem; line-height:1}
@@ -141,7 +141,7 @@ html[data-lang="en"] .langflag .flag-es{display:none}
 .intro-card .btn{width:100%; justify-content:center}
 @media print{ #toTop,#intro{display:none!important} }
 
-.shell{position:relative; z-index:1; max-width:1200px; margin:0 auto; padding:0 clamp(1rem,3vw,2rem) 5rem}
+.shell{position:relative; z-index:1; max-width:1180px; margin:0 auto; padding:0 clamp(1.25rem,5vw,3.5rem) 5rem}
 nav.rail{position:fixed; top:0; left:0; z-index:60; width:min(280px,84vw); height:100vh; overflow:auto; padding:4rem .55rem 1.4rem; background:var(--paper); border-right:1px solid var(--line); box-shadow:var(--shadow-md); transform:translateX(-100%); transition:transform .3s cubic-bezier(.2,.8,.2,1)}
 body.nav-open nav.rail{transform:translateX(0)}
 #navScrim{position:fixed; inset:0; z-index:55; background:rgba(34,40,22,.14); backdrop-filter:blur(2px); -webkit-backdrop-filter:blur(2px); opacity:0; visibility:hidden; transition:opacity .3s, visibility .3s}
@@ -848,7 +848,6 @@ table.swaps tr:last-child td{border-bottom:none}
   </a>
   <span class="spacer"></span>
   <a class="dl-head" href="player.html" target="_blank" rel="noopener" aria-label="Reproductor">🎧 <span class="dl-head-t"><span class="lang-en">Web player</span><span class="lang-es">Reproductor</span></span></a>
-  <a class="dl-head pdf" href="#printables" aria-label="PDF"><span aria-hidden="true">📄</span> <span class="dl-head-t" data-i18n="dlpdf">Worksheets</span></a>
   <button class="langflag" onclick="toggleLang()" aria-label="Cambiar idioma / Switch language" title="ES / EN">
     <svg class="flag flag-es" viewBox="0 0 3 2" aria-hidden="true"><rect width="3" height="2" fill="#AA151B"/><rect y="0.5" width="3" height="1" fill="#F1BF00"/></svg>
     <svg class="flag flag-en" viewBox="0 0 60 30" aria-hidden="true">
@@ -1131,7 +1130,7 @@ table.swaps tr:last-child td{border-bottom:none}
       just have to outlast it.</p>
 
     <figure class="photo kenburns">
-      <img src="assets/img/mundaka.webp" style="object-position:center 58%" alt="The famous left-hand wave peeling along the Mundaka sandbar, below the Santa Katalina hermitage" loading="lazy">
+      <img src="assets/img/mundaka.jpg" style="object-position:center 58%" alt="The famous left-hand wave peeling along the Mundaka sandbar, below the Santa Katalina hermitage" loading="lazy">
       <figcaption>The left at Mundaka, Bizkaia 🌊</figcaption>
     </figure>
 
@@ -1162,7 +1161,7 @@ table.swaps tr:last-child td{border-bottom:none}
     <p>Y aquí está lo que lo cambia todo: <span class="scrawl">un antojo es una ola, no un muro</span>. Sube, llega a su punto más alto y, si no lo alimentáis, rompe y se aleja, normalmente en unos minutos. Como las olas de Mundaka, siempre parece más grande desde la orilla de lo que en realidad es. No tenéis que vencerlo. Solo tenéis que aguantar más que él.</p>
 
     <figure class="photo kenburns">
-      <img src="assets/img/mundaka.webp" style="object-position:center 58%" alt="La famosa ola izquierda rompiendo en la barra de Mundaka, bajo la ermita de Santa Catalina" loading="lazy">
+      <img src="assets/img/mundaka.jpg" style="object-position:center 58%" alt="La famosa ola izquierda rompiendo en la barra de Mundaka, bajo la ermita de Santa Catalina" loading="lazy">
       <figcaption>La izquierda de Mundaka, Bizkaia 🌊</figcaption>
     </figure>
 
@@ -1846,7 +1845,7 @@ table.swaps tr:last-child td{border-bottom:none}
       room: put a short workout on the TV and follow along, no thinking required.</p>
 
     <figure class="move-ill">
-      <img src="assets/img/move/livingroom.webp" alt="A man doing a push-up on a mat at home, following a short workout on the TV" loading="lazy">
+      <img src="assets/img/move/livingroom.jpg" alt="A man doing a push-up on a mat at home, following a short workout on the TV" loading="lazy">
       <figcaption>Fifteen minutes, your living room, a video on the telly. That is the whole setup.</figcaption>
     </figure>
 
@@ -1858,7 +1857,7 @@ table.swaps tr:last-child td{border-bottom:none}
       and you have your whole body covered.</p>
 
     <figure class="move-ill">
-      <img src="assets/img/move/exercises.webp" alt="Four simple home exercises: a push-up, a squat, a floor core move, and a resistance-band back pull on a door" loading="lazy">
+      <img src="assets/img/move/exercises.jpg" alt="Four simple home exercises: a push-up, a squat, a floor core move, and a resistance-band back pull on a door" loading="lazy">
       <figcaption>Four moves to begin: a push-up, a squat, a core move on the floor, and a band pull on the door. That is plenty to start.</figcaption>
     </figure>
 
@@ -1870,7 +1869,7 @@ table.swaps tr:last-child td{border-bottom:none}
       talked about up there, the strength, the energy, the staying independent, are every bit as much yours.</p>
 
     <figure class="move-ill">
-      <img src="assets/img/move/pilar-livingroom.webp" alt="A woman doing a gentle morning workout at home, following a short workout on the TV" loading="lazy">
+      <img src="assets/img/move/pilar-livingroom.jpg" alt="A woman doing a gentle morning workout at home, following a short workout on the TV" loading="lazy">
       <figcaption>A quiet morning, a mat, a short workout on the telly. That is all it takes.</figcaption>
     </figure>
 
@@ -1880,7 +1879,7 @@ table.swaps tr:last-child td{border-bottom:none}
       minutes, a couple of times a week, the same as for him.</p>
 
     <figure class="move-ill">
-      <img src="assets/img/move/pilar-exercises.webp" alt="Four simple core and strength moves: a squat, a glute bridge, a forearm plank, and a wall push-up" loading="lazy">
+      <img src="assets/img/move/pilar-exercises.jpg" alt="Four simple core and strength moves: a squat, a glute bridge, a forearm plank, and a wall push-up" loading="lazy">
       <figcaption>The same basics, your version: a squat, a glute bridge, a plank, and a wall push-up. Strong from the middle out.</figcaption>
     </figure>
 
@@ -1922,7 +1921,7 @@ table.swaps tr:last-child td{border-bottom:none}
       pensar.</p>
 
     <figure class="move-ill">
-      <img src="assets/img/move/livingroom.webp" alt="Un hombre haciendo una flexión sobre una esterilla en casa, siguiendo un entreno corto en la tele" loading="lazy">
+      <img src="assets/img/move/livingroom.jpg" alt="Un hombre haciendo una flexión sobre una esterilla en casa, siguiendo un entreno corto en la tele" loading="lazy">
       <figcaption>Quince minutos, tu salón, un vídeo en la tele. Ese es todo el montaje.</figcaption>
     </figure>
 
@@ -1936,7 +1935,7 @@ table.swaps tr:last-child td{border-bottom:none}
     <p class="audio-only">Por cierto, en la guía tenéis una foto de cada uno de estos ejercicios, para que veáis exactamente cómo se hacen. Y si os apetece, poned un vídeo corto de YouTube en la tele y seguidlo paso a paso.</p>
 
     <figure class="move-ill">
-      <img src="assets/img/move/exercises.webp" alt="Cuatro ejercicios sencillos en casa: una flexión, una sentadilla, un ejercicio de core en el suelo y un tirón de espalda con banda elástica en una puerta" loading="lazy">
+      <img src="assets/img/move/exercises.jpg" alt="Cuatro ejercicios sencillos en casa: una flexión, una sentadilla, un ejercicio de core en el suelo y un tirón de espalda con banda elástica en una puerta" loading="lazy">
       <figcaption>Cuatro movimientos para empezar: una flexión, una sentadilla, un ejercicio de core en el suelo y un tirón con banda en la puerta. Con eso sobra para empezar.</figcaption>
     </figure>
 
@@ -1949,7 +1948,7 @@ table.swaps tr:last-child td{border-bottom:none}
       siendo independiente, son igual de tuyas.</p>
 
     <figure class="move-ill">
-      <img src="assets/img/move/pilar-livingroom.webp" alt="Una mujer haciendo un entreno suave por la mañana en casa, siguiendo un entreno corto en la tele" loading="lazy">
+      <img src="assets/img/move/pilar-livingroom.jpg" alt="Una mujer haciendo un entreno suave por la mañana en casa, siguiendo un entreno corto en la tele" loading="lazy">
       <figcaption>Una mañana tranquila, una esterilla, un entreno corto en la tele. No hace falta más.</figcaption>
     </figure>
 
@@ -1959,7 +1958,7 @@ table.swaps tr:last-child td{border-bottom:none}
       por semana, igual que él.</p>
 
     <figure class="move-ill">
-      <img src="assets/img/move/pilar-exercises.webp" alt="Cuatro movimientos sencillos de fuerza y core: una sentadilla, un puente de glúteos, una plancha sobre antebrazos y una flexión en la pared" loading="lazy">
+      <img src="assets/img/move/pilar-exercises.jpg" alt="Cuatro movimientos sencillos de fuerza y core: una sentadilla, un puente de glúteos, una plancha sobre antebrazos y una flexión en la pared" loading="lazy">
       <figcaption>Los mismos básicos, tu versión: una sentadilla, un puente de glúteos, una plancha y una flexión en la pared. Fuerte desde el centro.</figcaption>
     </figure>
 
@@ -3375,21 +3374,21 @@ table.swaps tr:last-child td{border-bottom:none}
         rule, so here it is: the ones to leave behind, and the ones to load up on.</p>
       <h4 class="foodhead">❌ Leave it on the shelf (or buy rarely, single-serve)</h4>
       <div class="foodgrid avoid">
-        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/cola.webp" alt="Sugary drinks like cola" loading="lazy"></div><span class="lbl">Sugary drinks</span></figure>
-        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/sweets.webp" alt="Sweets, chocolate and pastries" loading="lazy"></div><span class="lbl">Sweets &amp; pastries</span></figure>
-        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/chips.webp" alt="Crisps and fried snacks" loading="lazy"></div><span class="lbl">Crisps &amp; fried snacks</span></figure>
-        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/meat.webp" alt="Cured and processed meat" loading="lazy"></div><span class="lbl">Cured meat, daily</span></figure>
-        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/white.webp" alt="White bread and sugary cereal" loading="lazy"></div><span class="lbl">White bread &amp; sugary cereal</span></figure>
-        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/ready.webp" alt="Ready meals and instant noodles" loading="lazy"></div><span class="lbl">Ready meals &amp; instant noodles</span></figure>
+        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/cola.jpg" alt="Sugary drinks like cola" loading="lazy"></div><span class="lbl">Sugary drinks</span></figure>
+        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/sweets.jpg" alt="Sweets, chocolate and pastries" loading="lazy"></div><span class="lbl">Sweets &amp; pastries</span></figure>
+        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/chips.jpg" alt="Crisps and fried snacks" loading="lazy"></div><span class="lbl">Crisps &amp; fried snacks</span></figure>
+        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/meat.jpg" alt="Cured and processed meat" loading="lazy"></div><span class="lbl">Cured meat, daily</span></figure>
+        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/white.jpg" alt="White bread and sugary cereal" loading="lazy"></div><span class="lbl">White bread &amp; sugary cereal</span></figure>
+        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/ready.jpg" alt="Ready meals and instant noodles" loading="lazy"></div><span class="lbl">Ready meals &amp; instant noodles</span></figure>
       </div>
       <h4 class="foodhead">✅ Fill the cart with these</h4>
       <div class="foodgrid good">
-        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/veg.webp" alt="Fresh vegetables and salad" loading="lazy"></div><span class="lbl">Vegetables &amp; salad</span></figure>
-        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/fish.webp" alt="Fresh fish and tinned fish" loading="lazy"></div><span class="lbl">Fish &amp; seafood</span></figure>
-        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/eggs.webp" alt="Fresh eggs" loading="lazy"></div><span class="lbl">Eggs</span></figure>
-        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/beans.webp" alt="Beans, lentils and chickpeas" loading="lazy"></div><span class="lbl">Beans &amp; lentils</span></figure>
-        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/fruit.webp" alt="Seasonal fruit" loading="lazy"></div><span class="lbl">Fruit</span></figure>
-        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/yogurt.webp" alt="Plain yogurt with berries and nuts" loading="lazy"></div><span class="lbl">Plain yogurt &amp; nuts</span></figure>
+        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/veg.jpg" alt="Fresh vegetables and salad" loading="lazy"></div><span class="lbl">Vegetables &amp; salad</span></figure>
+        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/fish.jpg" alt="Fresh fish and tinned fish" loading="lazy"></div><span class="lbl">Fish &amp; seafood</span></figure>
+        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/eggs.jpg" alt="Fresh eggs" loading="lazy"></div><span class="lbl">Eggs</span></figure>
+        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/beans.jpg" alt="Beans, lentils and chickpeas" loading="lazy"></div><span class="lbl">Beans &amp; lentils</span></figure>
+        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/fruit.jpg" alt="Seasonal fruit" loading="lazy"></div><span class="lbl">Fruit</span></figure>
+        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/yogurt.jpg" alt="Plain yogurt with berries and nuts" loading="lazy"></div><span class="lbl">Plain yogurt &amp; nuts</span></figure>
       </div>
     </div>
 
@@ -3459,21 +3458,21 @@ table.swaps tr:last-child td{border-bottom:none}
         así que aquí está: las que dejar atrás, y las que cargar.</p>
       <h4 class="foodhead">❌ Dejadlo en la estantería (o compradlo poco, en ración individual)</h4>
       <div class="foodgrid avoid">
-        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/cola.webp" alt="Bebidas azucaradas como la cola" loading="lazy"></div><span class="lbl">Bebidas azucaradas</span></figure>
-        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/sweets.webp" alt="Dulces, chocolate y bollería" loading="lazy"></div><span class="lbl">Dulces y bollería</span></figure>
-        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/chips.webp" alt="Patatas fritas y frituras" loading="lazy"></div><span class="lbl">Patatas fritas y frituras</span></figure>
-        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/meat.webp" alt="Embutido y carne procesada" loading="lazy"></div><span class="lbl">Embutido, a diario</span></figure>
-        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/white.webp" alt="Pan blanco y cereales azucarados" loading="lazy"></div><span class="lbl">Pan blanco y cereales azucarados</span></figure>
-        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/ready.webp" alt="Platos precocinados y fideos instantáneos" loading="lazy"></div><span class="lbl">Precocinados y fideos instantáneos</span></figure>
+        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/cola.jpg" alt="Bebidas azucaradas como la cola" loading="lazy"></div><span class="lbl">Bebidas azucaradas</span></figure>
+        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/sweets.jpg" alt="Dulces, chocolate y bollería" loading="lazy"></div><span class="lbl">Dulces y bollería</span></figure>
+        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/chips.jpg" alt="Patatas fritas y frituras" loading="lazy"></div><span class="lbl">Patatas fritas y frituras</span></figure>
+        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/meat.jpg" alt="Embutido y carne procesada" loading="lazy"></div><span class="lbl">Embutido, a diario</span></figure>
+        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/white.jpg" alt="Pan blanco y cereales azucarados" loading="lazy"></div><span class="lbl">Pan blanco y cereales azucarados</span></figure>
+        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/ready.jpg" alt="Platos precocinados y fideos instantáneos" loading="lazy"></div><span class="lbl">Precocinados y fideos instantáneos</span></figure>
       </div>
       <h4 class="foodhead">✅ Llenad el carro con esto</h4>
       <div class="foodgrid good">
-        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/veg.webp" alt="Verdura fresca y ensalada" loading="lazy"></div><span class="lbl">Verdura y ensalada</span></figure>
-        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/fish.webp" alt="Pescado fresco y en conserva" loading="lazy"></div><span class="lbl">Pescado y marisco</span></figure>
-        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/eggs.webp" alt="Huevos frescos" loading="lazy"></div><span class="lbl">Huevos</span></figure>
-        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/beans.webp" alt="Alubias, lentejas y garbanzos" loading="lazy"></div><span class="lbl">Legumbres y lentejas</span></figure>
-        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/fruit.webp" alt="Fruta de temporada" loading="lazy"></div><span class="lbl">Fruta</span></figure>
-        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/yogurt.webp" alt="Yogur natural con frutos rojos y frutos secos" loading="lazy"></div><span class="lbl">Yogur natural y frutos secos</span></figure>
+        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/veg.jpg" alt="Verdura fresca y ensalada" loading="lazy"></div><span class="lbl">Verdura y ensalada</span></figure>
+        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/fish.jpg" alt="Pescado fresco y en conserva" loading="lazy"></div><span class="lbl">Pescado y marisco</span></figure>
+        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/eggs.jpg" alt="Huevos frescos" loading="lazy"></div><span class="lbl">Huevos</span></figure>
+        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/beans.jpg" alt="Alubias, lentejas y garbanzos" loading="lazy"></div><span class="lbl">Legumbres y lentejas</span></figure>
+        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/fruit.jpg" alt="Fruta de temporada" loading="lazy"></div><span class="lbl">Fruta</span></figure>
+        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/yogurt.jpg" alt="Yogur natural con frutos rojos y frutos secos" loading="lazy"></div><span class="lbl">Yogur natural y frutos secos</span></figure>
       </div>
     </div>
 
@@ -3993,21 +3992,21 @@ table.swaps tr:last-child td{border-bottom:none}
       <h3 class="lang-es">Qué cae en la cesta 🧺</h3>
       <h4 class="foodhead"><span class="lang-en">❌ Leave it on the shelf (buy rarely, single-serve)</span><span class="lang-es">❌ Dejadlo en la estantería (poco, ración individual)</span></h4>
       <div class="foodgrid avoid">
-        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/cola.webp" alt=""></div><span class="lbl"><span class="lang-en">Sugary drinks</span><span class="lang-es">Bebidas azucaradas</span></span></figure>
-        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/sweets.webp" alt=""></div><span class="lbl"><span class="lang-en">Sweets &amp; pastries</span><span class="lang-es">Dulces y bollería</span></span></figure>
-        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/chips.webp" alt=""></div><span class="lbl"><span class="lang-en">Crisps &amp; fried snacks</span><span class="lang-es">Patatas fritas y frituras</span></span></figure>
-        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/meat.webp" alt=""></div><span class="lbl"><span class="lang-en">Cured meat, daily</span><span class="lang-es">Embutido, a diario</span></span></figure>
-        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/white.webp" alt=""></div><span class="lbl"><span class="lang-en">White bread &amp; sugary cereal</span><span class="lang-es">Pan blanco y cereales azucarados</span></span></figure>
-        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/ready.webp" alt=""></div><span class="lbl"><span class="lang-en">Ready meals &amp; instant noodles</span><span class="lang-es">Precocinados y fideos</span></span></figure>
+        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/cola.jpg" alt=""></div><span class="lbl"><span class="lang-en">Sugary drinks</span><span class="lang-es">Bebidas azucaradas</span></span></figure>
+        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/sweets.jpg" alt=""></div><span class="lbl"><span class="lang-en">Sweets &amp; pastries</span><span class="lang-es">Dulces y bollería</span></span></figure>
+        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/chips.jpg" alt=""></div><span class="lbl"><span class="lang-en">Crisps &amp; fried snacks</span><span class="lang-es">Patatas fritas y frituras</span></span></figure>
+        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/meat.jpg" alt=""></div><span class="lbl"><span class="lang-en">Cured meat, daily</span><span class="lang-es">Embutido, a diario</span></span></figure>
+        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/white.jpg" alt=""></div><span class="lbl"><span class="lang-en">White bread &amp; sugary cereal</span><span class="lang-es">Pan blanco y cereales azucarados</span></span></figure>
+        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/ready.jpg" alt=""></div><span class="lbl"><span class="lang-en">Ready meals &amp; instant noodles</span><span class="lang-es">Precocinados y fideos</span></span></figure>
       </div>
       <h4 class="foodhead"><span class="lang-en">✅ Fill the cart with these</span><span class="lang-es">✅ Llenad el carro con esto</span></h4>
       <div class="foodgrid good">
-        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/veg.webp" alt=""></div><span class="lbl"><span class="lang-en">Vegetables &amp; salad</span><span class="lang-es">Verdura y ensalada</span></span></figure>
-        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/fish.webp" alt=""></div><span class="lbl"><span class="lang-en">Fish &amp; seafood</span><span class="lang-es">Pescado y marisco</span></span></figure>
-        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/eggs.webp" alt=""></div><span class="lbl"><span class="lang-en">Eggs</span><span class="lang-es">Huevos</span></span></figure>
-        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/beans.webp" alt=""></div><span class="lbl"><span class="lang-en">Beans &amp; lentils</span><span class="lang-es">Legumbres y lentejas</span></span></figure>
-        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/fruit.webp" alt=""></div><span class="lbl"><span class="lang-en">Fruit</span><span class="lang-es">Fruta</span></span></figure>
-        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/yogurt.webp" alt=""></div><span class="lbl"><span class="lang-en">Plain yogurt &amp; nuts</span><span class="lang-es">Yogur natural y frutos secos</span></span></figure>
+        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/veg.jpg" alt=""></div><span class="lbl"><span class="lang-en">Vegetables &amp; salad</span><span class="lang-es">Verdura y ensalada</span></span></figure>
+        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/fish.jpg" alt=""></div><span class="lbl"><span class="lang-en">Fish &amp; seafood</span><span class="lang-es">Pescado y marisco</span></span></figure>
+        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/eggs.jpg" alt=""></div><span class="lbl"><span class="lang-en">Eggs</span><span class="lang-es">Huevos</span></span></figure>
+        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/beans.jpg" alt=""></div><span class="lbl"><span class="lang-en">Beans &amp; lentils</span><span class="lang-es">Legumbres y lentejas</span></span></figure>
+        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/fruit.jpg" alt=""></div><span class="lbl"><span class="lang-en">Fruit</span><span class="lang-es">Fruta</span></span></figure>
+        <figure class="fooditem"><div class="pic"><img src="assets/img/cheatsheet/yogurt.jpg" alt=""></div><span class="lbl"><span class="lang-en">Plain yogurt &amp; nuts</span><span class="lang-es">Yogur natural y frutos secos</span></span></figure>
       </div>
     </div>
   </section>
@@ -4083,28 +4082,28 @@ const CHAPTERS=[
 ];
 
 const RECIPES=[
-  {e:"🍳",n:"Tomato and egg toast",m:"breakfast",cal:320,p:18,tags:["mediterranean","eggs","quick"],img:"assets/img/recipes/tomato-egg-toast.webp"},
+  {e:"🍳",n:"Tomato and egg toast",m:"breakfast",cal:320,p:18,tags:["mediterranean","eggs","quick"],img:"assets/img/recipes/tomato-egg-toast.jpg"},
   {e:"🥣",n:"Yogurt power bowl",m:"breakfast",cal:300,p:20,tags:["yogurt","quick","no-cook"],img:"assets/img/recipes/yogurt-bowl.jpg"},
   {e:"🍳",n:"Veggie omelette",m:"breakfast",cal:350,p:24,tags:["lowcarb","eggs"],img:"assets/img/recipes/veggie-omelette.jpg"},
-  {e:"🥣",n:"Proper porridge",m:"breakfast",cal:350,p:14,tags:["mediterranean","comfort"],img:"assets/img/recipes/porridge.webp"},
-  {e:"🧀",n:"Cottage cheese plate",m:"breakfast",cal:280,p:22,tags:["lowcarb","no-cook"],img:"assets/img/recipes/cottage-cheese.webp"},
-  {e:"🐟",n:"Grilled fish, salad and beans",m:"lunch",cal:500,p:38,tags:["mediterranean","fish"],img:"assets/img/recipes/grilled-fish-beans.webp"},
-  {e:"🥘",n:"Marmitako-style tuna stew",m:"lunch",cal:520,p:35,tags:["basque","mediterranean","comfort","fish"],img:"assets/img/recipes/marmitako.webp"},
-  {e:"🫘",n:"Garbanzos with morcilla (Basque)",m:"lunch",cal:480,p:26,tags:["basque","comfort","meat"],img:"assets/img/recipes/garbanzos-morcilla.webp"},
-  {e:"🍗",n:"Chicken and vegetable traybake",m:"lunch",cal:480,p:40,tags:["mediterranean","lowcarb","meat"],img:"assets/img/recipes/chicken-traybake.webp"},
-  {e:"🫘",n:"Lentil and vegetable stew",m:"lunch",cal:450,p:24,tags:["mediterranean","comfort"],img:"assets/img/recipes/lentil-stew.webp"},
-  {e:"🥗",n:"Big tuna and egg salad bowl",m:"lunch",cal:400,p:35,tags:["lowcarb","quick","no-cook","fish"],img:"assets/img/recipes/tuna-egg-salad.webp"},
-  {e:"🐟",n:"Bacalao with peppers (light pil-pil)",m:"lunch",cal:420,p:40,tags:["basque","mediterranean","fish","lowcarb"],img:"assets/img/recipes/bacalao.webp"},
-  {e:"🥩",n:"Steak with grilled vegetables",m:"dinner",cal:520,p:42,tags:["lowcarb","meat"],img:"assets/img/recipes/steak-veg.webp"},
-  {e:"🍲",n:"Vegetable soup with boiled eggs",m:"dinner",cal:300,p:16,tags:["mediterranean","comfort","eggs"],img:"assets/img/recipes/veg-soup-eggs.webp"},
-  {e:"🐟",n:"Pan-seared fish with greens",m:"dinner",cal:350,p:32,tags:["mediterranean","lowcarb","fish"],img:"assets/img/recipes/panseared-fish.webp"},
-  {e:"🍜",n:"Zucchini noodles with prawns",m:"dinner",cal:330,p:28,tags:["lowcarb","fish"],img:"assets/img/recipes/zucchini-prawns.webp"},
-  {e:"🍳",n:"Pisto with a fried egg",m:"dinner",cal:350,p:14,tags:["basque","mediterranean","comfort","eggs"],img:"assets/img/recipes/pisto-egg.webp"},
-  {e:"🫑",n:"Piperrada with egg",m:"dinner",cal:330,p:16,tags:["basque","mediterranean","eggs","comfort"],img:"assets/img/recipes/piperrada.webp"},
-  {e:"🥚",n:"Boiled eggs (carry-snack)",m:"snack",cal:70,p:6,tags:["lowcarb","quick"],img:"assets/img/recipes/boiled-eggs.webp"},
-  {e:"🥜",n:"Small handful of nuts",m:"snack",cal:170,p:6,tags:["quick","no-cook"],img:"assets/img/recipes/nuts.webp"},
-  {e:"🍫",n:"85% dark chocolate, 2 squares",m:"snack",cal:110,p:2,tags:["sweet","no-cook"],img:"assets/img/recipes/dark-choc.webp"},
-  {e:"🍓",n:"Greek yogurt with berries",m:"snack",cal:140,p:12,tags:["yogurt","sweet","no-cook"],img:"assets/img/recipes/greek-yogurt-berries.webp"},
+  {e:"🥣",n:"Proper porridge",m:"breakfast",cal:350,p:14,tags:["mediterranean","comfort"],img:"assets/img/recipes/porridge.jpg"},
+  {e:"🧀",n:"Cottage cheese plate",m:"breakfast",cal:280,p:22,tags:["lowcarb","no-cook"],img:"assets/img/recipes/cottage-cheese.jpg"},
+  {e:"🐟",n:"Grilled fish, salad and beans",m:"lunch",cal:500,p:38,tags:["mediterranean","fish"],img:"assets/img/recipes/grilled-fish-beans.jpg"},
+  {e:"🥘",n:"Marmitako-style tuna stew",m:"lunch",cal:520,p:35,tags:["basque","mediterranean","comfort","fish"],img:"assets/img/recipes/marmitako.jpg"},
+  {e:"🫘",n:"Garbanzos with morcilla (Basque)",m:"lunch",cal:480,p:26,tags:["basque","comfort","meat"],img:"assets/img/recipes/garbanzos-morcilla.jpg"},
+  {e:"🍗",n:"Chicken and vegetable traybake",m:"lunch",cal:480,p:40,tags:["mediterranean","lowcarb","meat"],img:"assets/img/recipes/chicken-traybake.jpg"},
+  {e:"🫘",n:"Lentil and vegetable stew",m:"lunch",cal:450,p:24,tags:["mediterranean","comfort"],img:"assets/img/recipes/lentil-stew.jpg"},
+  {e:"🥗",n:"Big tuna and egg salad bowl",m:"lunch",cal:400,p:35,tags:["lowcarb","quick","no-cook","fish"],img:"assets/img/recipes/tuna-egg-salad.jpg"},
+  {e:"🐟",n:"Bacalao with peppers (light pil-pil)",m:"lunch",cal:420,p:40,tags:["basque","mediterranean","fish","lowcarb"],img:"assets/img/recipes/bacalao.jpg"},
+  {e:"🥩",n:"Steak with grilled vegetables",m:"dinner",cal:520,p:42,tags:["lowcarb","meat"],img:"assets/img/recipes/steak-veg.jpg"},
+  {e:"🍲",n:"Vegetable soup with boiled eggs",m:"dinner",cal:300,p:16,tags:["mediterranean","comfort","eggs"],img:"assets/img/recipes/veg-soup-eggs.jpg"},
+  {e:"🐟",n:"Pan-seared fish with greens",m:"dinner",cal:350,p:32,tags:["mediterranean","lowcarb","fish"],img:"assets/img/recipes/panseared-fish.jpg"},
+  {e:"🍜",n:"Zucchini noodles with prawns",m:"dinner",cal:330,p:28,tags:["lowcarb","fish"],img:"assets/img/recipes/zucchini-prawns.jpg"},
+  {e:"🍳",n:"Pisto with a fried egg",m:"dinner",cal:350,p:14,tags:["basque","mediterranean","comfort","eggs"],img:"assets/img/recipes/pisto-egg.jpg"},
+  {e:"🫑",n:"Piperrada with egg",m:"dinner",cal:330,p:16,tags:["basque","mediterranean","eggs","comfort"],img:"assets/img/recipes/piperrada.jpg"},
+  {e:"🥚",n:"Boiled eggs (carry-snack)",m:"snack",cal:70,p:6,tags:["lowcarb","quick"],img:"assets/img/recipes/boiled-eggs.jpg"},
+  {e:"🥜",n:"Small handful of nuts",m:"snack",cal:170,p:6,tags:["quick","no-cook"],img:"assets/img/recipes/nuts.jpg"},
+  {e:"🍫",n:"85% dark chocolate, 2 squares",m:"snack",cal:110,p:2,tags:["sweet","no-cook"],img:"assets/img/recipes/dark-choc.jpg"},
+  {e:"🍓",n:"Greek yogurt with berries",m:"snack",cal:140,p:12,tags:["yogurt","sweet","no-cook"],img:"assets/img/recipes/greek-yogurt-berries.jpg"},
   {e:"🍳",n:"Scrambled eggs, paprika & spinach",m:"breakfast",cal:330,p:22,tags:["lowcarb","eggs","quick"],img:"assets/img/recipes/scrambled-eggs-paprika.jpg"},
   {e:"🥤",n:"Smart protein smoothie",m:"breakfast",cal:300,p:25,tags:["yogurt","quick"],img:"assets/img/recipes/protein-smoothie.jpg"},
   {e:"🍅",n:"Pan con tomate (Andalusian)",m:"breakfast",cal:280,p:10,tags:["mediterranean","quick"],img:"assets/img/recipes/pan-con-tomate.jpg"},
